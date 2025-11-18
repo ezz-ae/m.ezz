@@ -12,11 +12,12 @@ import {
 import { Logo } from './icons';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { Briefcase, DraftingCompass, Milestone, Rss } from 'lucide-react';
+import { Briefcase, DraftingCompass, Milestone, Rss, Presentation } from 'lucide-react';
 
 const navLinks = [
   { href: '/', label: 'Mind Board', icon: <Briefcase /> },
   { href: '/about', label: 'Map & About', icon: <DraftingCompass /> },
+  { href: '/projection', label: 'Projection', icon: <Presentation /> },
   { href: '/timeline', label: 'Timeline', icon: <Milestone /> },
   { href: '/contact', label: 'Contact', icon: <Rss /> },
 ];
@@ -49,3 +50,5 @@ export default function AppSidebar() {
     </Sidebar>
   );
 }
+
+    

@@ -24,6 +24,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+        url: 'https://ezz.ae/projection',
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.7,
+    },
+    {
       url: 'https://ezz.ae/timeline',
       lastModified: new Date(),
       changeFrequency: 'weekly',
@@ -38,3 +44,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...notebookUrls,
   ];
 }
+
+    
