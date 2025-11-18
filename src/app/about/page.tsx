@@ -4,6 +4,9 @@ import AboutSection from "@/components/AboutSection";
 import NowSection from "@/components/NowSection";
 import FooterMinimal from "@/components/FooterMinimal";
 import { Section } from '@/components/ScrollTypography';
+import HeroPulse from '@/components/HeroPulse';
+import IdentityStatement from '@/components/IdentityStatement';
+import TopicMap from '@/components/TopicMap';
 
 export const metadata: Metadata = {
   title: 'About Mahmoud Ezz',
@@ -14,6 +17,8 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-black text-neutral-100 overflow-x-hidden pt-24">
+        <HeroPulse />
+        <IdentityStatement />
         <Section>
           <section
             id="about-intro"
@@ -31,6 +36,10 @@ export default function AboutPage() {
             <NowSection />
           </section>
         </Section>
+
+        <section id="map" className="py-16 md:py-24">
+          <TopicMap />
+        </section>
         
         <FooterMinimal />
     </main>

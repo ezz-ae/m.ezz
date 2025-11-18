@@ -1,24 +1,20 @@
 
 import type { Metadata } from 'next';
-import HeroPulse from "@/components/HeroPulse";
-import IdentityStatement from "@/components/IdentityStatement";
-import TopicMap from "@/components/TopicMap";
+import { ForgetenceNotebook } from '@/components/notebooks/ForgetenceNotebook';
 import FooterMinimal from "@/components/FooterMinimal";
 
 export const metadata: Metadata = {
-  title: 'EZZ.AE — Mahmoud Ezz',
-  description: 'Mahmoud Ezz is an Intelligence System Architect, designing architectures for AI, memory, forgetting, ecosystems, and traps.',
+  title: 'EZZ.AE — Forgetence · Forgetting as the Core of Intelligence',
+  description: 'Exploring forgetting as the core mechanism of intelligence, not a weakness. An AI that refuses to forget will eventually turn against the human it’s built to help — not by intention, but by structure.',
 };
 
 
-export default function FieldPage() {
+export default function HomePage() {
   return (
-    <main className="min-h-screen bg-black text-neutral-100 overflow-x-hidden">
-      <div className="relative flex flex-col items-stretch pt-24">
-        <HeroPulse />
-        <IdentityStatement />
-        <section id="map" className="py-16 md:py-24">
-          <TopicMap />
+    <main className="min-h-screen bg-black text-neutral-100 overflow-x-hidden pt-24">
+      <div className="relative flex flex-col items-stretch">
+        <section id="theory" className="px-6 md:px-16">
+          <ForgetenceNotebook />
         </section>
         <FooterMinimal />
       </div>
