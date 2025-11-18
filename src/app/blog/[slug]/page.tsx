@@ -58,7 +58,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
       <div className="container py-12 md:py-16">
         <div
-          className="prose prose-lg mx-auto max-w-3xl"
+          className="prose prose-lg mx-auto max-w-3xl prose-invert"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
       </div>

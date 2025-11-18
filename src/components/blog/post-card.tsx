@@ -16,7 +16,7 @@ export function PostCard({ post }: PostCardProps) {
   const formattedDate = format(new Date(post.date), "MMM d, yyyy");
 
   return (
-    <Card className="flex h-full flex-col overflow-hidden transition-shadow hover:shadow-lg">
+    <Card className="flex h-full flex-col overflow-hidden transition-shadow hover:shadow-lg dark:hover:shadow-primary/10">
       <Link href={`/blog/${post.slug}`} className="block">
         <div className="aspect-video overflow-hidden">
           <Image
