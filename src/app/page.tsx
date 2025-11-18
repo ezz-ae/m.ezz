@@ -22,9 +22,6 @@ export default function Home() {
             </Link>
           </Button>
            <Button asChild size="lg" variant="outline">
-            <Link href="/studio">Enter The Studio</Link>
-          </Button>
-          <Button asChild size="lg" variant="outline">
             <Link href="/blog">Read The Blog</Link>
           </Button>
         </div>

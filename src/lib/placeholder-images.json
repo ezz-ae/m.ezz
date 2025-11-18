@@ -81,13 +81,13 @@
     {
       "id": "p5-cover",
       "description": "Canopy Cabin in the forest.",
-      "imageUrl": "https://images.unsplash.com/photo-1531692665211-6fa0ac99ac76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxmb3Jlc3QlMjBjYWJpbnxlbnwwfHx8fDE3NjMzNjY4NzR8MA&ixlib_rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1531692665211-6fa0ac99ac76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxmb3Jlc3QlMjBjYWJpbnxlbnwwfHx8fDE3NjMzNjY4NzR8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "forest cabin"
     },
     {
       "id": "p5-img1",
       "description": "Warm wood interior of Canopy Cabin.",
-      "imageUrl": "https://images.unsplash.com/photo-1612416845256-8414b229f853?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3b29kJTIwaW50ZXJpb3J8ZW58MHx8fHwxNzYzNDE4OTQyfDA&ixlib_rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1612416845256-8414b229f853?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3b29kJTIwaW50ZXJpb3J8ZW58MHx8fHwxNzYzNDE4OTQyfDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "wood interior"
     },
     {
@@ -105,19 +105,19 @@
     {
       "id": "blog1-cover",
       "description": "Architect sketching on a tablet.",
-      "imageUrl": "https://images.unsplash.com/photo-1649688066818-8274c4004f0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhcmNoaXRlY3QlMjBza2V0Y2h8ZW58MHx8fHwxNzYzMzYzNTEwfDA&ixlib_rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1649688066818-8274c4004f0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhcmNoaXRlY3QlMjBza2V0Y2h8ZW58MHx8fHwxNzYzMzYzNTEwfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "architect sketch"
     },
     {
       "id": "blog2-cover",
       "description": "Close up of a building blueprint.",
-      "imageUrl": "https://images.unsplash.com/photo-1721244653606-0d719a36fef5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxidWlsZGluZyUyMGJsdWVwcmludHxlbnwwfHx8fDE3NjM0MTg5NDJ8MA&ixlib_rb_4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1721244653606-0d719a36fef5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxidWlsZGluZyUyMGJsdWVwcmludHxlbnwwfHx8fDE3NjM0MTg5NDJ8MA&ixlib_rb-4.1.0&q=80&w=1080",
       "imageHint": "building blueprint"
     },
     {
       "id": "blog3-cover",
       "description": "Construction site with cranes.",
-      "imageUrl": "https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb25zdHJ1Y3Rpb24lMjBzaXRlfGVufDB8fHx8MTc2MzQwODYxNHww&ixlib_rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb25zdHJ1Y3Rpb24lMjBzaXRlfGVufDB8fHx8MTc2MzQwODYxNHww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "construction site"
     }
   ]
