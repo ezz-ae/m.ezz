@@ -14,6 +14,7 @@ type NotebookQueryInterfaceProps = {
 };
 
 export function NotebookQueryInterface({ slug }: NotebookQueryInterfaceProps) {
+  NotebookQueryInterface.displayName = 'NotebookQueryInterface';
   const { query, setQuery } = useStudioStore();
   const [answer, setAnswer] = useState('');
   const [isLoading, setIsLoading] = useState(false);

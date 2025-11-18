@@ -27,6 +27,7 @@ const notebookComponents: { [key: string]: React.ComponentType<any> } = {
 };
 
 export default function NotebookRenderer({ slug }: NotebookRendererProps) {
+  NotebookRenderer.displayName = 'NotebookRenderer';
   const notebook = NOTEBOOKS[slug as keyof typeof NOTEBOOKS];
 
   if (!notebook) {
