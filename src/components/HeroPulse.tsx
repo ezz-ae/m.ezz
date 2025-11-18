@@ -1,4 +1,3 @@
-
 // components/HeroPulse.tsx
 "use client";
 
@@ -33,13 +32,8 @@ export default function HeroPulse() {
             visible ? "opacity-100" : "opacity-0"
           }`}
         >
-          Intelligence System Architect · Marketing Strategist · AI-native builder
+          Intelligence System Architect
         </p>
-        <div className="mt-10 text-xs uppercase tracking-[0.25em] text-neutral-500 flex items-center gap-3">
-          <span className="inline-block h-[1px] w-10 bg-neutral-600" />
-          scroll to enter thinking
-          <span className="inline-block h-[1px] w-10 bg-neutral-600" />
-        </div>
       </div>
     </section>
   );
