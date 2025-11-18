@@ -1,10 +1,9 @@
 
+
 'use client';
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 import {
   ArrowRight,
   Loader2,
@@ -15,6 +14,8 @@ import {
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { queryLivingNotebook } from '@/lib/actions';
+import { Input } from '@/components/ui/input';
+import Link from 'next/link';
 
 type Message = {
   role: 'user' | 'assistant';
@@ -28,7 +29,7 @@ export default function StudioPage() {
     {
       role: 'assistant',
       content:
-        "Welcome to the Studio. I have been trained on the principles of Cognitive Architecture and the AIXSELF universe. Ask me anything.",
+        "Welcome to the Studio. I have been trained on the principles of Cognitive Architecture and the entire AIXSELF universe. Ask me anything, or explore a specific topic in the [Library](/library).",
     },
   ]);
 
@@ -41,6 +42,7 @@ export default function StudioPage() {
     setIsLoading(true);
     setQuery('');
 
+    // The general studio page queries all notebooks
     const result = await queryLivingNotebook({ query });
     
     let assistantMessage: Message;
@@ -90,7 +92,13 @@ export default function StudioPage() {
                         : 'bg-background'
                     }`}
                   >
-                    <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
+                    <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content.replace(/\[Library\]\(\/library\)/g, '')}
+                      {message.role === 'assistant' && message.content.includes('[Library](/library)') && (
+                        <Button asChild variant="link" className="p-0 h-auto font-normal text-sm block">
+                          <Link href="/library">Explore in the Library</Link>
+                        </Button>
+                      )}
+                    </p>
                   </div>
                   {message.role === 'user' && (
                     <Avatar className="h-8 w-8 border">

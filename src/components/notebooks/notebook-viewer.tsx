@@ -1,9 +1,11 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import type { NOTEBOOKS, NotebookKey } from './notebook-data';
+import { NotebookChat } from './notebook-chat';
 
 const TOPICS: { key: NotebookKey; label: string }[] = [
     { key: 'aixself', label: 'AIXSELF — The Instance' },
@@ -20,20 +22,39 @@ type NotebookViewerProps = {
 
 export function NotebookViewer({ notebooks }: NotebookViewerProps) {
   const [activeNotebook, setActiveNotebook] = useState<NotebookKey>('aixself');
+  const searchParams = useSearchParams();
 
-  const notebook = notebooks[activeNotebook];
+  useEffect(() => {
+    // This allows linking directly to a notebook from the MindMap or URL
+    const slugFromUrl = window.location.hash.substring(1) as NotebookKey;
+    if (slugFromUrl && notebooks[slugFromUrl]) {
+        setActiveNotebook(slugFromUrl);
+    }
+  }, [notebooks]);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.substring(1) as NotebookKey;
+      if (hash && notebooks[hash]) {
+        setActiveNotebook(hash);
+      }
+    };
+    window.addEventListener('hashchange', handleHashChange, false);
+    return () => window.removeEventListener('hashchange', handleHashChange, false);
+  }, [notebooks]);
+
 
   const handleTopicClick = (key: NotebookKey) => {
     setActiveNotebook(key);
-    const element = document.getElementById(key);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    window.location.hash = key;
   }
 
+  const notebook = notebooks[activeNotebook];
+
   return (
-    <section className="grid grid-cols-1 gap-6 md:grid-cols-[260px_1fr]">
-      <aside className="sticky top-20 h-fit self-start rounded-xl border border-[#e3e3e3] bg-white p-4">
+    <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] lg:grid-cols-[280px_1fr_450px] min-h-dvh">
+      {/* Sidebar */}
+      <aside className="sticky top-0 h-dvh self-start border-r border-[#e3e3e3] bg-white p-4 flex flex-col">
         <h2 className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-[#777]">
           The AIXSELF Universe
         </h2>
@@ -54,24 +75,33 @@ export function NotebookViewer({ notebooks }: NotebookViewerProps) {
             </button>
           ))}
         </div>
+        <div className="mt-auto pt-4 text-xs text-[#999]">
+            <p className="font-semibold">EZZ.AE</p>
+            <p>Cognitive Architecture</p>
+        </div>
       </aside>
 
-      <div>
-        {Object.entries(notebooks).map(([key, notebookContent]) => (
-            <article key={key} id={key} className="mb-8 min-h-[300px] rounded-2xl border border-[#e3e3e3] bg-white p-6 md:p-8 scroll-mt-20">
-                <p className="mb-1 text-xs uppercase tracking-[0.16em] text-[#888]">
-                Living Blueprint
-                </p>
-                <h3 className="text-xl font-bold text-[#111] md:text-2xl">
-                {notebookContent.title}
-                </h3>
-                <div className="my-4 h-px bg-[#eee]"></div>
-                <div className="whitespace-pre-wrap font-mono text-sm leading-relaxed text-[#222]">
-                {notebookContent.body}
-                </div>
-            </article>
-        ))}
+      {/* Main Content */}
+      <main className="p-8 md:p-12 overflow-y-auto h-dvh">
+        <article id={activeNotebook} className="rounded-2xl scroll-mt-20">
+            <p className="mb-1 text-xs uppercase tracking-[0.16em] text-[#888]">
+            Living Blueprint
+            </p>
+            <h1 className="text-2xl font-bold text-[#111] md:text-3xl">
+            {notebook.title}
+            </h1>
+            <div className="my-4 h-px bg-[#eee]"></div>
+            <div className="whitespace-pre-wrap font-mono text-base leading-relaxed text-[#222]">
+            {notebook.body}
+            </div>
+        </article>
+      </main>
+      
+      {/* Chat Panel */}
+      <div className="sticky top-0 h-dvh self-start border-l border-[#e3e3e3] bg-white">
+        <NotebookChat notebookKey={activeNotebook} notebookTitle={notebook.title} />
       </div>
-    </section>
+
+    </div>
   );
 }
