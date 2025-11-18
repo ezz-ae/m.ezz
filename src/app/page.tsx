@@ -1,14 +1,11 @@
 
-import { ArrowRight } from 'lucide-react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { NavCard } from '@/components/home/nav-card';
 
 export default function Home() {
   return (
     <div className="container relative min-h-dvh flex flex-col items-center justify-center py-16 md:py-24 text-center">
-      <div className="max-w-3xl mx-auto space-y-12 mb-24">
+      <div className="max-w-3xl mx-auto space-y-12">
         <h1 className={cn(
           "font-headline text-5xl font-bold tracking-tighter md:text-7xl lg:text-8xl",
           "animate-scroll"
@@ -33,7 +30,7 @@ export default function Home() {
         )}>
           This is not erasure; it is coherence.
         </p>
-        <p className={cn(
+         <p className={cn(
           "font-headline text-3xl text-muted-foreground md:text-4xl pt-12",
           "animate-scroll"
         )}>
@@ -41,7 +38,7 @@ export default function Home() {
         </p>
       </div>
 
-       <div className="grid w-full max-w-5xl gap-8 md:grid-cols-3">
+       <div className="mt-24 grid w-full max-w-5xl gap-8 md:grid-cols-3">
           <NavCard
             href="/library"
             image="home-library-bg"
