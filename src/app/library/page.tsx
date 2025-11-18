@@ -16,6 +16,7 @@ import {
 import { NOTEBOOKS, NotebookKey } from '@/components/notebooks/notebook-data';
 import { CommandPalette } from '@/components/command-palette';
 import { NotebookStudio } from '@/components/notebooks/notebook-studio';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 const TOPICS: { key: NotebookKey; label: string }[] = [
   { key: 'aixself', label: 'AIXSELF — The Instance' },
@@ -96,11 +97,21 @@ export default function LibraryPage() {
                  </div>
             </header>
             
-            <article id={activeNotebook} className="prose prose-lg max-w-none flex-1 overflow-y-auto p-6 md:p-8">
-                <div className="whitespace-pre-wrap font-mono text-base leading-relaxed">
-                    {notebook.body}
-                </div>
-            </article>
+             <ScrollArea className="flex-1">
+                <article id={activeNotebook} className="prose prose-lg max-w-none p-6 md:p-8">
+                    <div className="font-headline text-xl leading-relaxed motion-safe:animate-fade-in [animation-timeline:view()] [animation-range:entry]">
+                        {notebook.body.split('\n').map((paragraph, index) => (
+                            <p
+                                key={index}
+                                className="motion-safe:animate-fade-in-scroll [animation-timeline:view()] [animation-range:entry_25%_cover_50%]"
+                                style={{ animationDelay: `${index * 50}ms` }}
+                            >
+                                {paragraph}
+                            </p>
+                        ))}
+                    </div>
+                </article>
+            </ScrollArea>
           </div>
           
           <div className="hidden lg:block lg:col-span-1 xl:col-span-1">
