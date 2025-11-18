@@ -1,6 +1,7 @@
 
 // components/TopicMap.tsx
 "use client";
+import Link from 'next/link';
 
 const topics = [
   { id: "forgetence", label: "Forgetence / FCT", tag: "AI · Cognition" },
@@ -26,9 +27,10 @@ export default function TopicMap() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {topics.map((topic) => (
-            <button
+            <Link
+              href={`/notebooks/${topic.id}`}
               key={topic.id}
-              className="group relative overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-br from-white/5 via-black to-black px-4 py-4 text-left transition-transform duration-200 hover:-translate-y-1"
+              className="group block relative overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-br from-white/5 via-black to-black px-4 py-4 text-left transition-transform duration-200 hover:-translate-y-1"
             >
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-radial from-white/10 via-transparent to-transparent transition-opacity duration-200" />
               <div className="relative z-10 space-y-2">
@@ -39,10 +41,10 @@ export default function TopicMap() {
                   {topic.label}
                 </div>
                 <div className="text-xs text-neutral-500">
-                  Scroll into this notebook
+                  Enter this notebook
                 </div>
               </div>
-            </button>
+            </Link>
           ))}
         </div>
       </div>
