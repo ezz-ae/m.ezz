@@ -6,34 +6,16 @@ import { NotebookCard } from './NotebookCard';
 import { DeployWizard } from './DeployWizard';
 import { Button } from '../ui/button';
 import { Plus } from 'lucide-react';
+import { NOTEBOOKS } from './notebook-data';
 
-// Mock data for demonstration purposes
-const mockNotebooks = [
-  {
-    id: 'forgetence',
-    name: 'Forgetence / FCT',
-    roleIcon: '🧠',
-    status: 'active' as const,
-  },
-  {
-    id: 'notefullbook',
-    name: 'NotefullBook OS',
-    roleIcon: '📝',
-    status: 'sleeping' as const,
-  },
-  {
-    id: 'aixself',
-    name: 'AIXSELF Universe',
-    roleIcon: '🤖',
-    status: 'active' as const,
-  },
-  {
-    id: 'realestate',
-    name: 'Real Estate Intelligence',
-    roleIcon: '🏦',
-    status: 'archived' as const,
-  },
-];
+// Map over the NOTEBOOKS object to get an array of notebook data
+const notebooks = Object.values(NOTEBOOKS).map(nb => ({
+  id: nb.id,
+  name: nb.title,
+  roleIcon: '🧠', // Placeholder, you might want to add this to your notebook-data
+  status: 'active' as const, // Placeholder status
+}));
+
 
 export function MindBoard() {
   const [showDeployWizard, setShowDeployWizard] = React.useState(false);
@@ -53,9 +35,10 @@ export function MindBoard() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {mockNotebooks.map((notebook) => (
+        {notebooks.map((notebook) => (
           <NotebookCard
             key={notebook.id}
+            id={notebook.id}
             name={notebook.name}
             roleIcon={notebook.roleIcon}
             status={notebook.status}

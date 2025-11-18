@@ -5,10 +5,12 @@ import { motion } from 'framer-motion';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 import { Play, Pause, Archive, Edit } from 'lucide-react';
+import Link from 'next/link';
 
 type NotebookStatus = 'active' | 'sleeping' | 'archived';
 
 type NotebookCardProps = {
+  id: string;
   name: string;
   roleIcon: string;
   status: NotebookStatus;
@@ -32,7 +34,7 @@ const statusConfig = {
   },
 };
 
-export function NotebookCard({ name, roleIcon, status }: NotebookCardProps) {
+export function NotebookCard({ id, name, roleIcon, status }: NotebookCardProps) {
   const config = statusConfig[status];
 
   return (
@@ -56,14 +58,16 @@ export function NotebookCard({ name, roleIcon, status }: NotebookCardProps) {
       )}
 
       <div className="relative z-10">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-3xl">{roleIcon}</span>
-          <div className="flex items-center gap-2 text-xs text-neutral-300">
-            <span className={cn("w-2 h-2 rounded-full", config.color)} />
-            {config.label}
+        <Link href={`/notebooks/${id}`} className="block">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-3xl">{roleIcon}</span>
+            <div className="flex items-center gap-2 text-xs text-neutral-300">
+              <span className={cn("w-2 h-2 rounded-full", config.color)} />
+              {config.label}
+            </div>
           </div>
-        </div>
-        <h3 className="font-light text-neutral-50 text-lg leading-tight">{name}</h3>
+          <h3 className="font-light text-neutral-50 text-lg leading-tight">{name}</h3>
+        </Link>
       </div>
       
       <div className="relative z-10 flex items-center justify-end space-x-1">
