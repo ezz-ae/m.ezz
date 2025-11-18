@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Section, ScrollHeading, ScrollParagraph } from '@/components/ScrollTypography';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { ArrowRight, Cpu, Layers, ShieldCheck, Database, BrainCircuit, Filter, GitBranch, History, Bot, BookOpen } from 'lucide-react';
+import { ArrowRight, Cpu, Layers, ShieldCheck, Database, BrainCircuit, Filter, GitBranch, Bot, BookOpen } from 'lucide-react';
 import FooterMinimal from '@/components/FooterMinimal';
 
 export const metadata: Metadata = {
@@ -166,5 +166,7 @@ export default function ProjectionPage() {
         </div>
     );
 }
+
+    
 
     
