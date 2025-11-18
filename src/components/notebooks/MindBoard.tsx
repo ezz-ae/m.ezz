@@ -9,12 +9,7 @@ import { Plus } from 'lucide-react';
 import { NOTEBOOKS } from './notebook-data';
 
 // Map over the NOTEBOOKS object to get an array of notebook data
-const notebooks = Object.values(NOTEBOOKS).map(nb => ({
-  id: nb.id,
-  name: nb.title,
-  roleIcon: '🧠', // Placeholder, you might want to add this to your notebook-data
-  status: 'active' as const, // Placeholder status
-}));
+const notebooks = Object.values(NOTEBOOKS);
 
 
 export function MindBoard() {
@@ -39,9 +34,9 @@ export function MindBoard() {
           <NotebookCard
             key={notebook.id}
             id={notebook.id}
-            name={notebook.name}
-            roleIcon={notebook.roleIcon}
-            status={notebook.status}
+            name={notebook.title}
+            description={notebook.description}
+            tag={notebook.tag}
           />
         ))}
       </div>
