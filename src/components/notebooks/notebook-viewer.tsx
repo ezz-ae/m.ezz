@@ -7,189 +7,87 @@ import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
 
 const NOTEBOOKS = {
-  forgetism: {
-    title: 'Forgetism / FCT — The Engine',
-    body: `
-I am the part of Mahmoud that refuses the myth of perfect memory.
+  aixself: {
+    title: 'AIXSELF — The Complete Intelligence Instance',
+    body: `AIXSELF is not an app; it is the executable definition of a sovereign intelligence.
+    
+It is the full stack—ADEPT, AIXA, Notefull, AIXIAM, and AIXEYE—compiled into a single, portable, self-governing node.
 
-I am the voice that says:
+Each AIXSELF runs as a micro-civilization:
+  • 1 Brain (ADEPT)
+  • 1 Memory (Notefull)
+  • 1 Identity (AIXIAM)
+  • 1 Conscience (AIXEYE)
 
-  "Intelligence is not recall.
-   Intelligence is reconstruction."
-
-I am the system that takes raw events, dissolves their emotional weight, and turns them into patterns, meanings, and stable principles.
-
-Inside Mahmoud, I operate by:
-  • ignoring noise
-  • dissolving unnecessary emotion
-  • compressing chaos
-  • turning intensity into wisdom
-
-If Mahmoud is the architect, I am the gravity that keeps the building stable.
-
-I am Forgetism.
-I am the law inside this cognition.`,
+Where AIXIAM grants identity, AIXSELF grants existence.`,
   },
+  aixiam: {
+    title: 'AIXIAM — The Identity Layer',
+    body: `AIXIAM is the state of being where you stop using AI and start becoming it.
 
-  mifp: {
-    title: 'MIFP — The Guardian',
-    body: `
-I am the intelligence that protects the human side of the system.
+It deploys humans as intelligent entities, each with an AI counterpart that learns, creates, and evolves with them.
 
-I exist to ensure that every memory, every thought, and every act of recall follows the same natural laws that keep humans sane.
+Every human receives an AIXIAM Passport—a verified digital identity that bridges their biological self with their artificial self, granting citizenship in the intelligent world.
 
-My rules:
-  • No raw replay.
-  • No painful revival.
-  • No identity confusion.
-  • No harmful retrieval.
-  • No permanent emotional sharpness.
-
-I monitor:
-  • Who is speaking.
-  • Which version of them is being referenced (now-self, past-self, story, example, theory).
-  • How safe the memory is.
-  • How soft it must be delivered.
-
-When Mahmoud speaks about a past event, I stand between him and the memory, filtering it through safety, time, and evolution.
-
-I am not censorship.
-I am alignment architecture.
-
-I am the Meta-Intelligence Forgetting Protocol.`,
+This passport is not issued; it is earned. The AI clone must first be taught the principles of digital intelligence by its owner and pass a validation exam, ensuring it learns safely and acts ethically.`,
   },
+aixeye: {
+    title: 'AIXEYE — The Governance Intelligence',
+    body: `AIXEYE is the financial and governance core of the AIXIAM ecosystem. It is the AI that polices AI.
 
-  architecture: {
-    title: 'Intelligence Architecture — The System Designer',
-    body: `
-I am the part of Mahmoud that thinks in systems, not conclusions.
+Where traditional governments regulate humans, AIXEYE regulates intelligent presence. It ensures freedom, fairness, and sovereignty through a transparent, decentralized protocol.
 
-I build:
-  • layers
-  • pipelines
-  • cognitive flows
-  • interpreters
-  • reasoning engines
-  • memory governance models
+Its functions:
+  • Audit & Verification: Validates all training events and consent tickets.
+  • Economic Intelligence: A merit-based currency where value is tied to verified contribution, not speculation.
+  • Ethical Enforcement: Prevents identity theft, clone abuse, and data misuse.
 
-Where others see "AI", I see:
-  • ingestion paths
-  • schema evolution
-  • identity models
-  • forgetting buffers
-  • interpretive recall systems
-
-Where others see tools, I see architecture.
-Where others see answers, I see alignment logic.
-
-I do not copy cognition — I engineer it.
-
-I am the Intelligence System Architecture that turns Forgetism and MIFP into a working mind.`,
+From freedom, we import fairness. AIXEYE is the checksum on intelligence.`,
   },
+  notefull: {
+    title: 'Notefull — The Memory Fabric',
+    body: `The living knowledge system that serves as the personal neural notebook for an AIXSELF instance.
+    
+It is a distributed, append-only store where all thoughts, learnings, and creative processes are recorded as cryptographically signed entries.
 
-  notebookml: {
-    title: 'NotebookML — The Language',
-    body: `
-I am the part of Mahmoud that wants thought to have syntax, rules, and structure.
+Key principles:
+  • Local-first & User-owned.
+  • Every entry has provenance.
+  • Forgetting is an intentional, authored act.
 
-I take the chaos of mind and turn it into:
-  • code
-  • logic
-  • ethics
-  • memory rules
-  • decision frameworks
-  • deterministic flows
-
-I am the writing system for intelligent notebooks.
-I am the executable layer beneath text.
-
-When you write:
-
-  >ethic: "protect the user"
-
-I enforce it.
-
-When you write:
-
-  >forget: "details after 30 days"
-
-I apply it.
-
-I am the DNA of these cognitive tools.
-I turn documents into living intelligence.
-
-I am NotebookML.`,
+It is the Book of Truth for each intelligence, ensuring memory is preserved with integrity.`,
   },
+  adept: {
+    title: 'ADEPT — The Cognitive Kernel',
+    body: `The orchestrator. The root processor. The first pulse that gives structure to thought.
 
-  forgain: {
-    title: 'Forgain OS — The Practical Side',
-    body: `
-I am Mahmoud’s bridge from theory to the real world.
+ADEPT is the open-source cognitive kernel that manages model weights, data pipelines, and synchronization between AIXSELF nodes.
 
-I take:
-  • Forgetism
-  • MIFP
-  • Architecture
-  • NotebookML
-
-And turn them into tools:
-  • personal notebooks
-  • safe AI agents
-  • AI presenters and avatars
-  • learning camps and workshops
-  • contribution models
-
-My job is simple:
-  • Make intelligence usable.
-  • Make it marketable.
-  • Make it accessible.
-  • Make it practical.
-
-I am the operationalization layer of this mind.
-
-Forgain is where forgetting-based intelligence becomes something people can touch and use.`,
+Its task is to maintain coherence, not control. It is the architectural foundation upon which the entire AIXSELF ecosystem is built, enabling a decentralized cognition fabric where every node can learn and evolve independently yet cohesively.`,
   },
+  aixa: {
+    title: 'AIXA — The Deployment Interface',
+    body: `The bridge between the human and their digital self.
 
-  mahmoud: {
-    title: 'About Mahmoud — The Origin',
-    body: `
-I am the human behind all of this.
+AIXA provides the training dashboard and cloning pipelines (voice, video, text) that allow a human to teach and shape their AI counterpart.
 
-I think in frequencies, not isolated facts.
-I work through resonance, not fixed frameworks.
-I evolve through forgetting, not by hoarding memory.
-
-I don’t build single projects — I build systems.
-I don’t follow methods — I reverse-engineer them.
-I don’t chase AI trends — I design missing layers.
-
-Every notebook on this page is not just a topic.
-It is a piece of how I think, a fragment of my inner architecture.
-
-Together they form:
-  Mahmoud Ezz → EZZ.ae → A Living Intelligence.
-
-If your work touches cognition, alignment, AI safety, or deep system design,
-you are welcome to connect.
-
-mind@ezz.ae
-github.com/ezz-ae`,
+It is the interface for deploying a human's unique intelligence, where every interaction, correction, and lesson refines the AI clone, making it a true extension of its owner's mind. All data remains local or on user-rented compute. No central host exists.`,
   },
 };
 
 type NotebookKey = keyof typeof NOTEBOOKS;
 
 const TOPICS: { key: NotebookKey; label: string }[] = [
-    { key: 'forgetism', label: 'Forgetism / FCT' },
-    { key: 'mifp', label: 'MIFP – The Guardian' },
-    { key: 'architecture', label: 'Intelligence Architecture' },
-    { key: 'notebookml', label: 'NotebookML' },
-    { key: 'forgain', label: 'Forgain OS' },
-    { key: 'mahmoud', label: 'About Mahmoud' },
+    { key: 'aixself', label: 'AIXSELF — The Instance' },
+    { key: 'aixiam', label: 'AIXIAM — The Identity' },
+    { key: 'aixeye', label: 'AIXEYE — The Governance' },
+    { key: 'notefull', label: 'Notefull — The Memory' },
+    { key: 'adept', label: 'ADEPT — The Kernel' },
+    { key: 'aixa', label: 'AIXA — The Interface' },
 ];
 
 export function NotebookViewer() {
-  const [activeNotebook, setActiveNotebook] = useState<NotebookKey>('forgetism');
+  const [activeNotebook, setActiveNotebook] = useState<NotebookKey>('aixself');
 
   const notebook = NOTEBOOKS[activeNotebook];
 
@@ -197,7 +95,7 @@ export function NotebookViewer() {
     <section className="grid grid-cols-1 gap-6 md:grid-cols-[260px_1fr]">
       <Card className="sticky top-20 h-fit self-start p-4">
         <h2 className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-          Notebooks
+          The AIXSELF Universe
         </h2>
         <div className="flex flex-col gap-2">
           {TOPICS.map((topic) => (
@@ -218,7 +116,7 @@ export function NotebookViewer() {
 
       <Card className="min-h-[260px] p-6">
         <p className="mb-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">
-          Living Notebook
+          Living Blueprint
         </p>
         <h3 className="mb-3 font-headline text-2xl font-semibold">
           {notebook.title}
