@@ -31,16 +31,19 @@ export async function generateMetadata({ params }: NotebookPageProps): Promise<M
     return {};
   }
 
+  const title = `Notebook · ${notebook.title}`;
+  const description = notebook.description;
+
   return {
-    title: `Notebook · ${notebook.title}`,
-    description: notebook.description,
+    title,
+    description,
     openGraph: {
-        title: `Notebook · ${notebook.title} — EZZ.AE`,
-        description: notebook.description,
+        title: `${title} — EZZ.AE`,
+        description: description,
     },
     twitter: {
-        title: `Notebook · ${notebook.title} — EZZ.AE`,
-        description: notebook.description,
+        title: `${title} — EZZ.AE`,
+        description: description,
     }
   };
 }
