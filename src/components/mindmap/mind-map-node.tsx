@@ -18,10 +18,10 @@ export function MindMapNode({
   return (
     <Card
       className={cn(
-        'flex flex-col items-center justify-center rounded-xl p-4 text-center transition-all duration-300 hover:shadow-2xl hover:scale-105',
-        isCentral && 'h-32 w-48 border-2 border-primary bg-primary/10',
-        !isCentral && !isSubNode && 'h-32 w-48 bg-card',
-        isSubNode && 'h-28 w-40 bg-card/80 backdrop-blur-sm'
+        'flex h-full w-full cursor-pointer flex-col items-center justify-center rounded-xl p-4 text-center transition-all duration-300 hover:shadow-2xl hover:scale-105',
+        isCentral && 'border-2 border-primary bg-primary/10',
+        !isCentral && !isSubNode && 'bg-card',
+        isSubNode && 'bg-card/80 backdrop-blur-sm'
       )}
     >
       <h3
@@ -36,7 +36,7 @@ export function MindMapNode({
       </h3>
       <p className={cn(
           'mt-1 text-muted-foreground',
-          isSubNode ? 'text-[10px]' : 'text-xs'
+          isSubNode ? 'text-xs' : 'text-sm'
       )}>
         {description}
       </p>

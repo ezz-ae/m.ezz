@@ -37,8 +37,8 @@ const mindMapData = {
       description: 'The Memory Fabric',
        children: [
         { id: 'notefull-1', label: 'Provenance', description: 'Cryptographically signed entries' },
-        { id: 'notefull-2', label: 'User-Owned', 'description': 'Distributed, append-only store' },
-        { id: 'notefull-3', label: 'Authored Forgetting', 'description': 'Forgetting is an intentional act' },
+        { id: 'notefull-2', label: 'User-Owned', description: 'Distributed, append-only store' },
+        { id: 'notefull-3', label: 'Authored Forgetting', description: 'Forgetting is an intentional act' },
       ],
     },
     {
@@ -47,8 +47,8 @@ const mindMapData = {
       description: 'The Identity Layer',
        children: [
         { id: 'aixiam-1', label: 'Passport', description: 'Verified digital identity bridge' },
-        { id: 'aixiam-2', label: 'Validation', 'description': 'Clones must pass an ethics exam' },
-        { id: 'aixiam-3', label: 'Citizenship', 'description': 'State of being, not a tool' },
+        { id: 'aixiam-2', label: 'Validation', description: 'Clones must pass an ethics exam' },
+        { id: 'aixiam-3', label: 'Citizenship', description: 'State of being, not a tool' },
       ],
     },
     {
@@ -57,8 +57,8 @@ const mindMapData = {
       description: 'The Governance Intelligence',
       children: [
         { id: 'aixeye-1', label: 'Audit & Verification', description: 'Validates training & consent' },
-        { id: 'aixeye-2', label: 'Economic Intelligence', 'description': 'Merit-based currency' },
-        { id: 'aixeye-3', label: 'Ethical Enforcement', 'description': 'The AI that polices AI' },
+        { id: 'aixeye-2', label: 'Economic Intelligence', description: 'Merit-based currency' },
+        { id: 'aixeye-3', label: 'Ethical Enforcement', description: 'The AI that polices AI' },
       ],
     },
   ],
@@ -66,8 +66,8 @@ const mindMapData = {
 
 const ChildNode = ({ node, parentAngle, parentRadius }: { node: any; parentAngle: number, parentRadius: number }) => {
   if (!node.children) return null;
-  const childRadius = 100; // Adjusted radius for sub-nodes
-  const angleSpread = Math.PI / 4; // Spread angle for sub-nodes
+  const childRadius = 100;
+  const angleSpread = Math.PI / 4; 
 
   return (
     <>
