@@ -1,626 +1,187 @@
+
 {
   "entities": {
     "User": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "User",
-      "type": "object",
       "description": "Represents a user of the system.",
+      "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the User entity."
-        },
-        "displayName": {
-          "type": "string",
-          "description": "User's display name."
-        },
-        "email": {
-          "type": "string",
-          "description": "User's email address.",
-          "format": "email"
-        },
-        "createdAt": {
-          "type": "string",
-          "description": "Timestamp indicating when the user was created.",
-          "format": "date-time"
-        },
-        "role": {
-          "type": "string",
-          "description": "User's role in the system (owner, guest, beta).",
-          "format": "string"
-        }
+        "displayName": { "type": "string", "description": "User's display name." },
+        "email": { "type": "string", "description": "User's email address.", "format": "email" },
+        "createdAt": { "type": "string", "description": "Timestamp indicating when the user was created.", "format": "date-time" },
+        "role": { "type": "string", "description": "User's role in the system.", "enum": ["owner", "guest", "beta"] }
       },
-      "required": [
-        "id",
-        "displayName",
-        "email",
-        "createdAt",
-        "role"
-      ]
+      "required": ["displayName", "email", "createdAt", "role"]
     },
     "Notebook": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "Notebook",
+      "description": "Represents one 'living intelligence document'.",
       "type": "object",
-      "description": "Represents a notebook (living intelligence document).",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the Notebook entity."
-        },
-        "ownerId": {
-          "type": "string",
-          "description": "Reference to User. (Relationship: User 1:N Notebook)"
-        },
-        "slug": {
-          "type": "string",
-          "description": "URL-friendly slug for the notebook (e.g., forgetence, notefullbook)."
-        },
-        "title": {
-          "type": "string",
-          "description": "Title of the notebook."
-        },
-        "description": {
-          "type": "string",
-          "description": "Description of the notebook."
-        },
-        "visibility": {
-          "type": "string",
-          "description": "Visibility of the notebook (public, private, unlisted)."
-        },
-        "tags": {
-          "type": "array",
-          "description": "Tags associated with the notebook.",
-          "items": {
-            "type": "string"
-          }
-        },
-        "createdAt": {
-          "type": "string",
-          "description": "Timestamp indicating when the notebook was created.",
-          "format": "date-time"
-        },
-        "updatedAt": {
-          "type": "string",
-          "description": "Timestamp indicating when the notebook was last updated.",
-          "format": "date-time"
-        },
+        "ownerId": { "type": "string", "description": "ID of the user who owns the notebook." },
+        "slug": { "type": "string", "description": "URL-friendly slug for the notebook." },
+        "title": { "type": "string", "description": "Title of the notebook." },
+        "description": { "type": "string", "description": "Description of the notebook." },
+        "visibility": { "type": "string", "description": "Visibility of the notebook.", "enum": ["public", "private", "unlisted"] },
+        "tags": { "type": "array", "items": { "type": "string" }, "description": "Tags associated with the notebook." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of creation." },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Timestamp of last update." },
         "fctProfile": {
-          "type": "string",
-          "description": "FCT profile settings for the notebook, including fadeMode and maxBufferSize.",
-          "format": "string"
+          "type": "object",
+          "properties": {
+            "fadeMode": { "type": "string", "enum": ["soft", "strict"] },
+            "maxBufferSize": { "type": "number" }
+          },
+          "required": ["fadeMode", "maxBufferSize"]
         }
       },
-      "required": [
-        "id",
-        "ownerId",
-        "slug",
-        "title",
-        "description",
-        "visibility",
-        "tags",
-        "createdAt",
-        "updatedAt",
-        "fctProfile"
-      ]
+      "required": ["ownerId", "slug", "title", "visibility", "createdAt", "updatedAt", "fctProfile"]
     },
     "Note": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "Note",
-      "type": "object",
       "description": "Represents an atomic piece of input (text, thought, extract, transcript).",
+      "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the Note entity."
-        },
-        "notebookId": {
-          "type": "string",
-          "description": "Reference to Notebook. (Relationship: Notebook 1:N Note)"
-        },
-        "authorId": {
-          "type": "string",
-          "description": "Reference to User. (Relationship: User 1:N Note)"
-        },
-        "content": {
-          "type": "string",
-          "description": "Content of the note."
-        },
-        "source": {
-          "type": "string",
-          "description": "Source of the note (manual, import, transcript, ai)."
-        },
-        "sessionId": {
-          "type": "string",
-          "description": "Reference to Session. (Relationship: Session 1:N Note)"
-        },
-        "createdAt": {
-          "type": "string",
-          "description": "Timestamp indicating when the note was created.",
-          "format": "date-time"
-        },
-        "updatedAt": {
-          "type": "string",
-          "description": "Timestamp indicating when the note was last updated.",
-          "format": "date-time"
-        }
+        "authorId": { "type": "string", "description": "ID of the user who authored the note." },
+        "content": { "type": "string", "description": "Content of the note." },
+        "source": { "type": "string", "description": "Source of the note.", "enum": ["manual", "import", "transcript", "ai"] },
+        "sessionId": { "type": "string", "description": "ID of the session this note belongs to." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of creation." },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Timestamp of last update." }
       },
-      "required": [
-        "id",
-        "notebookId",
-        "authorId",
-        "content",
-        "source",
-        "createdAt",
-        "updatedAt"
-      ]
+      "required": ["authorId", "content", "source", "createdAt", "updatedAt"]
     },
     "Concept": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "Concept",
+      "description": "Represents a normalized idea or meaning extracted from notes.",
       "type": "object",
-      "description": "Represents a normalized idea/meaning extracted from notes.",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the Concept entity."
-        },
-        "notebookId": {
-          "type": "string",
-          "description": "Reference to Notebook. (Relationship: Notebook 1:N Concept)"
-        },
-        "label": {
-          "type": "string",
-          "description": "Label for the concept."
-        },
-        "summary": {
-          "type": "string",
-          "description": "Summary of the concept."
-        },
-        "relatedNoteIds": {
-          "type": "array",
-          "description": "References to Notes. (Relationship: Note N:N Concept)",
-          "items": {
-            "type": "string"
-          }
-        },
-        "frequency": {
-          "type": "number",
-          "description": "Frequency of the concept."
-        },
-        "returnRate": {
-          "type": "number",
-          "description": "Return rate of the concept."
-        },
-        "driftScore": {
-          "type": "number",
-          "description": "Drift score of the concept."
-        },
-        "persistenceScore": {
-          "type": "number",
-          "description": "Persistence score of the concept."
-        }
+        "label": { "type": "string", "description": "Label for the concept." },
+        "summary": { "type": "string", "description": "Summary of the concept." },
+        "relatedNoteIds": { "type": "array", "items": { "type": "string" }, "description": "IDs of notes related to this concept." },
+        "frequency": { "type": "number", "description": "Frequency of the concept." },
+        "returnRate": { "type": "number", "description": "Return rate of the concept." },
+        "driftScore": { "type": "number", "description": "Drift score of the concept." },
+        "persistenceScore": { "type": "number", "description": "Persistence score of the concept." }
       },
-      "required": [
-        "id",
-        "notebookId",
-        "label",
-        "summary",
-        "relatedNoteIds",
-        "frequency",
-        "returnRate",
-        "driftScore",
-        "persistenceScore"
-      ]
+      "required": ["label", "summary", "relatedNoteIds", "frequency", "returnRate", "driftScore", "persistenceScore"]
     },
     "Pattern": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "Pattern",
-      "type": "object",
       "description": "Represents a recurring theme across multiple notebooks.",
+      "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the Pattern entity."
-        },
-        "label": {
-          "type": "string",
-          "description": "Label for the pattern."
-        },
-        "description": {
-          "type": "string",
-          "description": "Description of the pattern."
-        },
-        "notebookIds": {
-          "type": "array",
-          "description": "References to Notebooks. (Relationship: Notebook N:N Pattern)",
-          "items": {
-            "type": "string"
-          }
-        },
-        "conceptIds": {
-          "type": "array",
-          "description": "References to Concepts. (Relationship: Concept N:N Pattern)",
-          "items": {
-            "type": "string"
-          }
-        },
-        "globalFrequency": {
-          "type": "number",
-          "description": "Global frequency of the pattern."
-        },
-        "createdAt": {
-          "type": "string",
-          "description": "Timestamp indicating when the pattern was created.",
-          "format": "date-time"
-        },
-        "updatedAt": {
-          "type": "string",
-          "description": "Timestamp indicating when the pattern was last updated.",
-          "format": "date-time"
-        }
+        "label": { "type": "string", "description": "Label for the pattern." },
+        "description": { "type": "string", "description": "Description of the pattern." },
+        "notebookIds": { "type": "array", "items": { "type": "string" }, "description": "IDs of notebooks where this pattern appears." },
+        "conceptIds": { "type": "array", "items": { "type": "string" }, "description": "IDs of concepts related to this pattern." },
+        "globalFrequency": { "type": "number", "description": "Global frequency of the pattern." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of creation." },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Timestamp of last update." }
       },
-      "required": [
-        "id",
-        "label",
-        "description",
-        "notebookIds",
-        "conceptIds",
-        "globalFrequency",
-        "createdAt",
-        "updatedAt"
-      ]
+      "required": ["label", "description", "notebookIds", "conceptIds", "globalFrequency", "createdAt", "updatedAt"]
     },
     "Session": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "Session",
+      "description": "Represents a time-bounded thinking or work session.",
       "type": "object",
-      "description": "Represents a time-bounded thinking/work session.",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the Session entity."
-        },
-        "userId": {
-          "type": "string",
-          "description": "Reference to User. (Relationship: User 1:N Session)"
-        },
-        "notebookId": {
-          "type": "string",
-          "description": "Reference to Notebook. (Relationship: Notebook 1:N Session)"
-        },
-        "startedAt": {
-          "type": "string",
-          "description": "Timestamp indicating when the session started.",
-          "format": "date-time"
-        },
-        "endedAt": {
-          "type": "string",
-          "description": "Timestamp indicating when the session ended.",
-          "format": "date-time"
-        },
-        "noteCount": {
-          "type": "number",
-          "description": "Number of notes created during the session."
-        },
-        "context": {
-          "type": "string",
-          "description": "Context of the session."
-        }
+        "userId": { "type": "string", "description": "ID of the user for this session." },
+        "notebookId": { "type": "string", "description": "ID of the notebook for this session." },
+        "startedAt": { "type": "string", "format": "date-time", "description": "Timestamp when the session started." },
+        "endedAt": { "type": "string", "format": "date-time", "description": "Timestamp when the session ended." },
+        "noteCount": { "type": "number", "description": "Number of notes created during the session." },
+        "context": { "type": "string", "description": "Context of the session." }
       },
-      "required": [
-        "id",
-        "userId",
-        "notebookId",
-        "startedAt",
-        "noteCount",
-        "context"
-      ]
+      "required": ["userId", "notebookId", "startedAt", "noteCount", "context"]
     },
     "LedgerEntry": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "LedgerEntry",
-      "type": "object",
       "description": "Represents a cognitive ledger line (reasoning trace).",
+      "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the LedgerEntry entity."
-        },
-        "notebookId": {
-          "type": "string",
-          "description": "Reference to Notebook. (Relationship: Notebook 1:N LedgerEntry)"
-        },
-        "userId": {
-          "type": "string",
-          "description": "Reference to User. (Relationship: User 1:N LedgerEntry)"
-        },
-        "type": {
-          "type": "string",
-          "description": "Type of ledger entry (decision, reflection, transform, fade)."
-        },
-        "payload": {
-          "type": "string",
-          "description": "Payload associated with the ledger entry.",
-          "format": "string"
-        },
-        "createdAt": {
-          "type": "string",
-          "description": "Timestamp indicating when the ledger entry was created.",
-          "format": "date-time"
-        },
-        "hash": {
-          "type": "string",
-          "description": "Hash of the ledger entry."
-        },
-        "prevHash": {
-          "type": "string",
-          "description": "Hash of the previous ledger entry."
-        }
+        "notebookId": { "type": "string", "description": "ID of the notebook for this entry." },
+        "userId": { "type": "string", "description": "ID of the user for this entry." },
+        "type": { "type": "string", "description": "Type of ledger entry.", "enum": ["decision", "reflection", "transform", "fade"] },
+        "payload": { "type": "object", "description": "Payload associated with the ledger entry." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of creation." },
+        "hash": { "type": "string", "description": "Hash of the ledger entry." },
+        "prevHash": { "type": "string", "description": "Hash of the previous ledger entry." }
       },
-      "required": [
-        "id",
-        "notebookId",
-        "type",
-        "payload",
-        "createdAt",
-        "hash"
-      ]
+      "required": ["notebookId", "type", "payload", "createdAt", "hash"]
     },
     "Artifact": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "Artifact",
-      "type": "object",
       "description": "Represents a forgetting artifact (compressed learning from decayed data).",
+      "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the Artifact entity."
-        },
-        "notebookId": {
-          "type": "string",
-          "description": "Reference to Notebook. (Relationship: Notebook 1:N Artifact)"
-        },
-        "sourceNoteIds": {
-          "type": "array",
-          "description": "References to Notes. (Relationship: Note N:N Artifact)",
-          "items": {
-            "type": "string"
-          }
-        },
-        "schemaLabel": {
-          "type": "string",
-          "description": "Schema label for the artifact."
-        },
-        "summary": {
-          "type": "string",
-          "description": "Summary of the artifact."
-        },
-        "compressedAt": {
-          "type": "string",
-          "description": "Timestamp indicating when the artifact was compressed.",
-          "format": "date-time"
-        },
-        "decayLevel": {
-          "type": "number",
-          "description": "Decay level of the artifact (0-1)."
-        }
+        "notebookId": { "type": "string", "description": "ID of the notebook for this artifact." },
+        "sourceNoteIds": { "type": "array", "items": { "type": "string" }, "description": "IDs of source notes." },
+        "schemaLabel": { "type": "string", "description": "Schema label for the artifact." },
+        "summary": { "type": "string", "description": "Summary of the artifact." },
+        "compressedAt": { "type": "string", "format": "date-time", "description": "Timestamp when the artifact was compressed." },
+        "decayLevel": { "type": "number", "description": "Decay level of the artifact (0-1)." }
       },
-      "required": [
-        "id",
-        "notebookId",
-        "sourceNoteIds",
-        "schemaLabel",
-        "summary",
-        "compressedAt",
-        "decayLevel"
-      ]
+      "required": ["notebookId", "sourceNoteIds", "schemaLabel", "summary", "compressedAt", "decayLevel"]
     },
     "Event": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "Event",
+      "description": "Represents an analytics or behavioral signal.",
       "type": "object",
-      "description": "Represents an analytics/behavioral signal.",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the Event entity."
-        },
-        "userId": {
-          "type": "string",
-          "description": "Reference to User. (Relationship: User 1:N Event)"
-        },
-        "type": {
-          "type": "string",
-          "description": "Type of event (page_view, notebook_open, session_start, session_end, note_created)."
-        },
-        "path": {
-          "type": "string",
-          "description": "Path associated with the event."
-        },
-        "notebookId": {
-          "type": "string",
-          "description": "Reference to Notebook. (Relationship: Notebook 1:N Event)"
-        },
-        "ts": {
-          "type": "string",
-          "description": "Timestamp indicating when the event occurred.",
-          "format": "date-time"
-        },
-        "meta": {
-          "type": "string",
-          "description": "Metadata associated with the event.",
-          "format": "string"
-        }
+        "userId": { "type": "string", "description": "ID of the user who triggered the event." },
+        "type": { "type": "string", "description": "Type of event.", "enum": ["page_view", "notebook_open", "session_start", "session_end", "note_created"] },
+        "path": { "type": "string", "description": "Path associated with the event." },
+        "notebookId": { "type": "string", "description": "ID of the notebook related to the event." },
+        "ts": { "type": "string", "format": "date-time", "description": "Timestamp of the event." },
+        "meta": { "type": "object", "description": "Metadata associated with the event." }
       },
-      "required": [
-        "id",
-        "type",
-        "ts"
-      ]
+      "required": ["type", "ts"]
     }
   },
   "auth": {
-    "providers": [
-      "password",
-      "anonymous"
-    ]
+    "providers": ["password", "anonymous"]
   },
   "firestore": {
     "structure": [
       {
         "path": "/users/{userId}",
-        "definition": {
-          "entityName": "User",
-          "schema": {
-            "$ref": "#/backend/entities/User"
-          },
-          "description": "Stores user profiles. Access is generally restricted to the user themselves, with admin overrides.",
-          "params": [
-            {
-              "name": "userId",
-              "description": "The unique identifier for the user."
-            }
-          ]
-        }
+        "definition": { "schema": { "$ref": "#/backend/entities/User" }, "description": "Stores user profiles." }
       },
       {
         "path": "/notebooks/{notebookId}",
-        "definition": {
-          "entityName": "Notebook",
-          "schema": {
-            "$ref": "#/backend/entities/Notebook"
-          },
-          "description": "Stores notebooks. Visibility controls (public, private, unlisted) are enforced in rules. The `ownerId` is used for ownership checks.",
-          "params": [
-            {
-              "name": "notebookId",
-              "description": "The unique identifier for the notebook."
-            }
-          ]
-        }
+        "definition": { "schema": { "$ref": "#/backend/entities/Notebook" }, "description": "Stores notebooks." }
       },
       {
         "path": "/notebooks/{notebookId}/notes/{noteId}",
-        "definition": {
-          "entityName": "Note",
-          "schema": {
-            "$ref": "#/backend/entities/Note"
-          },
-          "description": "Stores notes within notebooks. Path-based ownership ensures only the notebook owner can create or modify notes. Includes denormalized 'ownerId' from the parent notebook for authorization independence.",
-          "params": [
-            {
-              "name": "notebookId",
-              "description": "The unique identifier for the parent notebook."
-            },
-            {
-              "name": "noteId",
-              "description": "The unique identifier for the note."
-            }
-          ]
-        }
+        "definition": { "schema": { "$ref": "#/backend/entities/Note" }, "description": "Stores notes within a specific notebook." }
       },
       {
         "path": "/notebooks/{notebookId}/concepts/{conceptId}",
-        "definition": {
-          "entityName": "Concept",
-          "schema": {
-            "$ref": "#/backend/entities/Concept"
-          },
-          "description": "Stores concepts extracted from notes within a notebook. Access control follows the notebook's ownership. Includes denormalized 'ownerId' from the parent notebook for authorization independence.",
-          "params": [
-            {
-              "name": "notebookId",
-              "description": "The unique identifier for the parent notebook."
-            },
-            {
-              "name": "conceptId",
-              "description": "The unique identifier for the concept."
-            }
-          ]
-        }
+        "definition": { "schema": { "$ref": "#/backend/entities/Concept" }, "description": "Stores concepts extracted from notes within a notebook." }
       },
       {
         "path": "/patterns/{patternId}",
-        "definition": {
-          "entityName": "Pattern",
-          "schema": {
-            "$ref": "#/backend/entities/Pattern"
-          },
-          "description": "Stores patterns. These are global and may need separate access controls based on admin roles or visibility.",
-          "params": [
-            {
-              "name": "patternId",
-              "description": "The unique identifier for the pattern."
-            }
-          ]
-        }
+        "definition": { "schema": { "$ref": "#/backend/entities/Pattern" }, "description": "Stores recurring themes across multiple notebooks." }
       },
       {
         "path": "/sessions/{sessionId}",
-        "definition": {
-          "entityName": "Session",
-          "schema": {
-            "$ref": "#/backend/entities/Session"
-          },
-          "description": "Stores session data. Access is restricted to the user who created the session, using `userId`.",
-          "params": [
-            {
-              "name": "sessionId",
-              "description": "The unique identifier for the session."
-            }
-          ]
-        }
+        "definition": { "schema": { "$ref": "#/backend/entities/Session" }, "description": "Stores user work sessions." }
       },
       {
         "path": "/ledgerEntries/{ledgerEntryId}",
-        "definition": {
-          "entityName": "LedgerEntry",
-          "schema": {
-            "$ref": "#/backend/entities/LedgerEntry"
-          },
-          "description": "Stores ledger entries for tracking cognitive transformations. Access is restricted to the notebook owner.",
-          "params": [
-            {
-              "name": "ledgerEntryId",
-              "description": "The unique identifier for the ledger entry."
-            }
-          ]
-        }
+        "definition": { "schema": { "$ref": "#/backend/entities/LedgerEntry" }, "description": "Stores the cognitive ledger trace." }
       },
       {
         "path": "/artifacts/{artifactId}",
-        "definition": {
-          "entityName": "Artifact",
-          "schema": {
-            "$ref": "#/backend/entities/Artifact"
-          },
-          "description": "Stores forgetting artifacts. Access is restricted to the notebook owner.",
-          "params": [
-            {
-              "name": "artifactId",
-              "description": "The unique identifier for the artifact."
-            }
-          ]
-        }
+        "definition": { "schema": { "$ref": "#/backend/entities/Artifact" }, "description": "Stores forgetting artifacts." }
       },
       {
         "path": "/events/{eventId}",
-        "definition": {
-          "entityName": "Event",
-          "schema": {
-            "$ref": "#/backend/entities/Event"
-          },
-          "description": "Stores analytics events. These are generally public write, but read access may be restricted to admins.",
-          "params": [
-            {
-              "name": "eventId",
-              "description": "The unique identifier for the event."
-            }
-          ]
-        }
+        "definition": { "schema": { "$ref": "#/backend/entities/Event" }, "description": "Stores analytics events." }
       }
-    ],
-    "reasoning": "The Firestore data structure is designed to support the EZZ.AE application, focusing on notebooks, notes, cognitive patterns, and user-specific data.  It prioritizes Authorization Independence by denormalizing ownership and roles where necessary, and enabling secure list operations via structural segregation. Access control is managed primarily via path-based ownership and visibility flags. \n\n*   **Users:** `/users/{userId}`: Stores user profiles. Access is generally restricted to the user themselves, with admin overrides.\n*   **Notebooks:** `/notebooks/{notebookId}`: Stores notebooks.  Visibility controls (public, private, unlisted) are enforced in rules. The `ownerId` is used for ownership checks.\n*   **Notes:** `/notebooks/{notebookId}/notes/{noteId}`: Stores notes within notebooks. Path-based ownership ensures only the notebook owner can create or modify notes.\n*   **Concepts:** `/notebooks/{notebookId}/concepts/{conceptId}`: Stores concepts extracted from notes within a notebook.  Access control follows the notebook's ownership.\n*   **Patterns:** `/patterns/{patternId}`: Stores patterns.  These are global and may need separate access controls based on admin roles or visibility.\n*   **Sessions:** `/sessions/{sessionId}`: Stores session data. Access is restricted to the user who created the session, using `userId`.\n*   **Ledger Entries:** `/ledgerEntries/{ledgerEntryId}`: Stores ledger entries for tracking cognitive transformations. Access is restricted to the notebook owner.\n*   **Artifacts:** `/artifacts/{artifactId}`: Stores forgetting artifacts. Access is restricted to the notebook owner.\n*   **Events:** `/events/{eventId}`: Stores analytics events.  These are generally public write, but read access may be restricted to admins.\n\n\n**Authorization Independence (CRITICAL):**\n\n*   **Notebooks:** The `notebooks` collection stores the `ownerId` directly within each document, eliminating the need for security rules to fetch user data for authorization.\n*   **Subcollections (notes, concepts, etc.):**  Since these are nested under `/notebooks/{notebookId}`, the security rules can easily verify if `request.auth.uid == resource.data.ownerId` from the parent `notebooks` collection without needing a `get()` call.\n*   **Patterns and LedgerEntries** Since ledger entries and patterns don't inherently belong to a specific user, the rules enforce stricter controls based on existence or admin roles.\n\n\n**QAPs (Rules are not Filters):**\n\n*   The structure enables secure `list` operations by leveraging the `visibility` field in the `notebooks` collection.  Rules can allow public reads for notebooks where `visibility == 'public'` without additional filtering.\n*   Path-based ownership in subcollections ensures that listing notes or concepts requires the user to be the owner of the parent notebook.\n*   For collections like `patterns`, which might have global visibility, separate rules with admin roles or specific visibility attributes can be implemented to control list access securely."
+    ]
   }
 }
+
+    

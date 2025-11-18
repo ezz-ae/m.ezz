@@ -1,187 +1,76 @@
-/**
- * @fileoverview Firestore Security Rules for EZZ.AE.
- *
- * Core Philosophy:
- * This ruleset enforces a user-ownership model for private data, combined with
- * public read access for specifically designated content (e.g., public notebooks).
- * Access is granted based on verified user identity (request.auth) and
- * explicit ownership relationships within the data.
- *
- * Data Structure:
- * - /users/{userId}: User profiles, accessible only by the user themselves.
- * - /notebooks/{notebookId}: Notebooks, with visibility settings controlling read access.
- * - /notebooks/{notebookId}/notes/{noteId}: Notes within notebooks, accessible only by the notebook owner.
- * - /notebooks/{notebookId}/concepts/{conceptId}: Concepts within notebooks, access controlled by notebook ownership.
- * - /patterns/{patternId}: Global patterns, with restricted write access.
- * - /sessions/{sessionId}: User sessions, accessible only by the user who created the session.
- * - /ledgerEntries/{ledgerEntryId}: Ledger entries, accessible only by the notebook owner.
- * - /artifacts/{artifactId}: Forgetting artifacts, accessible only by the notebook owner.
- * - /events/{eventId}: Analytics events, publicly writable, restricted read access.
- *
- * Key Security Decisions:
- * - User listing is disallowed.
- * - Public notebooks are readable by anyone.
- * - Owner-only access is strictly enforced for private notebooks and associated data.
- * - Events are publicly writable but not listable.
- *
- * Denormalization for Authorization:
- * - Notebooks store the `ownerId` directly, enabling efficient ownership checks.
- */
+
 rules_version = '2';
+
 service cloud.firestore {
   match /databases/{database}/documents {
-
-    /**
-     * @description Checks if the user is signed in.
-     */
+  
+    // Helper functions
     function isSignedIn() {
       return request.auth != null;
     }
 
-    /**
-     * @description Checks if the authenticated user is the owner of the resource,
-     * based on the provided userId.
-     */
     function isOwner(userId) {
-      return isSignedIn() && request.auth.uid == userId;
+      return request.auth.uid == userId;
+    }
+    
+    function isNotebookOwner(notebookId) {
+    	return get(/databases/$(database)/documents/notebooks/$(notebookId)).data.ownerId == request.auth.uid;
     }
 
-    /**
-     * @description Checks if the authenticated user is the owner of the resource,
-     * and that the document already exists (for update/delete operations).
-     */
-    function isExistingOwner(userId) {
-        return isOwner(userId) && resource != null;
-    }
-
-
-    /**
-     * @description Enforces that the authenticated user's UID matches the document ID.
-     * @path /users/{userId}
-     * @allow (create) User with ID matching auth UID.
-     * @deny (create) User with mismatched ID.
-     * @principle Enforces document ownership for writes.
-     */
+    // USERS
     match /users/{userId} {
-      allow get: if isOwner(userId);
+      allow read, update, delete: if isOwner(userId);
+      allow create: if isSignedIn() && request.resource.data.id == request.auth.uid;
       allow list: if false;
-
-      allow create: if isOwner(userId) && request.resource.data.id == request.auth.uid;
-      allow update: if isExistingOwner(userId) && request.resource.data.id == resource.data.id;
-      allow delete: if isExistingOwner(userId);
     }
 
-    /**
-     * @description Controls access to notebooks based on visibility and ownership.
-     * @path /notebooks/{notebookId}
-     * @allow (get, list) Public notebooks for all users.
-     * @allow (create, update, delete) Owner-only access.
-     * @deny (create, update, delete) Non-owner access.
-     * @principle Enforces document ownership for writes, allows public reads for specific documents.
-     */
+    // NOTEBOOKS
     match /notebooks/{notebookId} {
-      allow get, list: if resource.data.visibility == 'public';
-
+      allow get: if resource.data.visibility == 'public' || isOwner(resource.data.ownerId);
+      allow list: if resource.data.visibility == 'public';
       allow create: if isSignedIn() && request.resource.data.ownerId == request.auth.uid;
-      allow update: if isExistingOwner(resource.data.ownerId);
-      allow delete: if isExistingOwner(resource.data.ownerId);
+      allow update, delete: if isOwner(get(/databases/$(database)/documents/notebooks/$(notebookId)).data.ownerId);
     }
-
-    /**
-     * @description Restricts access to notes within notebooks to the notebook owner.
-     * @path /notebooks/{notebookId}/notes/{noteId}
-     * @allow (create, update, delete) Owner of the parent notebook.
-     * @deny (create, update, delete) Non-owner access.
-     * @principle Enforces path-based ownership for writes.
-     */
+    
+    // NOTES (subcollection of notebooks)
     match /notebooks/{notebookId}/notes/{noteId} {
-      allow get, list: if isOwner(get(/databases/$(database)/documents/notebooks/$(notebookId)).data.ownerId);
-
-      allow create: if isSignedIn() && get(/databases/$(database)/documents/notebooks/$(notebookId)).data.ownerId == request.auth.uid && request.resource.data.authorId == request.auth.uid;
-      allow update: if isSignedIn() && get(/databases/$(database)/documents/notebooks/$(notebookId)).data.ownerId == request.auth.uid;
-      allow delete: if isSignedIn() && get(/databases/$(database)/documents/notebooks/$(notebookId)).data.ownerId == request.auth.uid;
+    	allow read, list, create, update, delete: if isNotebookOwner(notebookId);
     }
-
-    /**
-     * @description Restricts access to concepts within notebooks to the notebook owner.
-     * @path /notebooks/{notebookId}/concepts/{conceptId}
-     * @allow (create, update, delete) Owner of the parent notebook.
-     * @deny (create, update, delete) Non-owner access.
-     * @principle Enforces path-based ownership for writes.
-     */
+    
+    // CONCEPTS (subcollection of notebooks)
     match /notebooks/{notebookId}/concepts/{conceptId} {
-      allow get, list: if isOwner(get(/databases/$(database)/documents/notebooks/$(notebookId)).data.ownerId);
-      allow create: if isSignedIn() && get(/databases/$(database)/documents/notebooks/$(notebookId)).data.ownerId == request.auth.uid;
-      allow update: if isSignedIn() && get(/databases/$(database)/documents/notebooks/$(notebookId)).data.ownerId == request.auth.uid;
-      allow delete: if isSignedIn() && get(/databases/$(database)/documents/notebooks/$(notebookId)).data.ownerId == request.auth.uid;
+      allow read, list: if get(/databases/$(database)/documents/notebooks/$(notebookId)).data.visibility == 'public' || isNotebookOwner(notebookId);
+    	allow create, update, delete: if isNotebookOwner(notebookId);
     }
-
-    /**
-     * @description Controls access to patterns.
-     * @path /patterns/{patternId}
-     * @allow (get, list) Public access.
-     * @allow (create, update, delete) No direct client access.
-     * @principle Restricts write access to backend services.
-     */
+    
+    // PATTERNS
     match /patterns/{patternId} {
-      allow get, list: if true;
-      allow create, update, delete: if false; // TODO: Add admin role check for pattern management.
+    	allow get, list: if true;
+      allow create, update, delete: if false; // Managed by backend functions
     }
-
-    /**
-     * @description Restricts access to sessions to the user who created them.
-     * @path /sessions/{sessionId}
-     * @allow (create, update, delete) Owner-only access.
-     * @deny (create, update, delete) Non-owner access.
-     * @principle Enforces document ownership for writes.
-     */
+    
+    // SESSIONS
     match /sessions/{sessionId} {
-      allow get: if isOwner(resource.data.userId);
-      allow list: if isOwner(resource.data.userId);
-      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
-      allow update: if isExistingOwner(resource.data.userId) && request.resource.data.userId == resource.data.userId;
-      allow delete: if isExistingOwner(resource.data.userId);
+      allow read, create, update, delete: if isOwner(resource.data.userId);
+      allow list: if false;
     }
-
-    /**
-     * @description Restricts access to ledger entries to the notebook owner.
-     * @path /ledgerEntries/{ledgerEntryId}
-     * @allow (create, update, delete) Owner of the parent notebook.
-     * @deny (create, update, delete) Non-owner access.
-     * @principle Enforces path-based ownership for writes.
-     */
-    match /ledgerEntries/{ledgerEntryId} {
-      allow get, list: if isOwner(resource.data.userId); // TODO: Should be owner of the notebook, not user. Fix the data model.
-      allow create: if isSignedIn() && get(/databases/$(database)/documents/notebooks/$(resource.data.notebookId)).data.ownerId == request.auth.uid;
-      allow update: if isSignedIn() && get(/databases/$(database)/documents/notebooks/$(resource.data.notebookId)).data.ownerId == request.auth.uid;
-      allow delete: if isSignedIn() && get(/databases/$(database)/documents/notebooks/$(resource.data.notebookId)).data.ownerId == request.auth.uid;
+    
+    // LEDGER ENTRIES
+    match /ledgerEntries/{entryId} {
+       allow get: if isNotebookOwner(resource.data.notebookId);
+       allow list, create, update, delete: if false; // Managed by backend functions
     }
-
-    /**
-     * @description Restricts access to artifacts to the notebook owner.
-     * @path /artifacts/{artifactId}
-     * @allow (create, update, delete) Owner of the parent notebook.
-     * @deny (create, update, delete) Non-owner access.
-     * @principle Enforces path-based ownership for writes.
-     */
+    
+    // ARTIFACTS
     match /artifacts/{artifactId} {
-      allow get, list: if isOwner(get(/databases/$(database)/documents/notebooks/$(resource.data.notebookId)).data.ownerId);
-      allow create: if isSignedIn() && get(/databases/$(database)/documents/notebooks/$(resource.data.notebookId)).data.ownerId == request.auth.uid;
-      allow update: if isSignedIn() && get(/databases/$(database)/documents/notebooks/$(resource.data.notebookId)).data.ownerId == request.auth.uid;
-      allow delete: if isSignedIn() && get(/databases/$(database)/documents/notebooks/$(resource.data.notebookId)).data.ownerId == request.auth.uid;
+       allow get: if isNotebookOwner(resource.data.notebookId);
+       allow list, create, update, delete: if false; // Managed by backend functions
     }
 
-    /**
-     * @description Allows public write access to events but restricts read access.
-     * @path /events/{eventId}
-     * @allow (create) All authenticated users.
-     * @deny (get, list, update, delete) All users.
-     * @principle Public write access with restricted reads.
-     */
+    // EVENTS
     match /events/{eventId} {
-      allow get, list: if false;
       allow create: if true;
-      allow update, delete: if false;
+      allow read, list, update, delete: if false;
     }
   }
 }
