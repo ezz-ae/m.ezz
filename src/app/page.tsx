@@ -1,5 +1,7 @@
 
 import type { Metadata } from 'next';
+import HeroPulse from "@/components/HeroPulse";
+import IdentityStatement from "@/components/IdentityStatement";
 import TopicMap from "@/components/TopicMap";
 import FooterMinimal from "@/components/FooterMinimal";
 
@@ -13,6 +15,8 @@ export default function FieldPage() {
   return (
     <main className="min-h-screen bg-black text-neutral-100 overflow-x-hidden">
       <div className="relative flex flex-col items-stretch pt-24">
+        <HeroPulse />
+        <IdentityStatement />
         <section id="map" className="py-16 md:py-24">
           <TopicMap />
         </section>
