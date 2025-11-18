@@ -2,7 +2,7 @@
 'use client';
 
 import { MindMapNode } from '@/components/mindmap/mind-map-node';
-import { Share2 } from 'lucide-react';
+import { SidebarInset } from '@/components/ui/sidebar';
 import React from 'react';
 import Link from 'next/link';
 
@@ -112,9 +112,10 @@ export default function MindMapPage() {
     const parentRadius = 250;
 
   return (
-    <div className="container py-16 md:py-24">
+    <SidebarInset>
+        <div className="container py-16 md:py-24">
       <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-        <Share2 className="mb-4 h-12 w-12 text-primary" />
+        
         <h1 className="font-headline text-4xl font-bold tracking-tight md:text-5xl">
           The AIXSELF Universe
         </h1>
@@ -160,5 +161,7 @@ export default function MindMapPage() {
 
       </div>
     </div>
+    </SidebarInset>
+  
   );
 }

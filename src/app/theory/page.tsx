@@ -2,12 +2,14 @@
 import Image from 'next/image';
 import { getImage } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
+import { SidebarInset } from '@/components/ui/sidebar';
 
 export default function TheoryPage() {
   const portraitImage = getImage('about-portrait');
 
   return (
-    <div className="container py-16 md:py-24">
+    <SidebarInset>
+        <div className="container py-16 md:py-24">
       <div className="mx-auto max-w-4xl">
         <header className="mb-12 text-center">
           <h1 className="font-headline text-4xl font-bold tracking-tight md:text-5xl">
@@ -60,5 +62,7 @@ export default function TheoryPage() {
         </div>
       </div>
     </div>
+    </SidebarInset>
+    
   );
 }

@@ -4,6 +4,7 @@ import { PT_Sans, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
+import { SiteLayout } from '@/components/layout/site-layout';
 
 const ptSans = PT_Sans({
   subsets: ['latin'],
@@ -35,9 +36,9 @@ export default function RootLayout({
           playfairDisplay.variable
         )}
       >
-        <div className="relative flex min-h-dvh flex-col">
-          <main className="flex-1">{children}</main>
-        </div>
+        <SiteLayout>
+            {children}
+        </SiteLayout>
         <Toaster />
       </body>
     </html>
