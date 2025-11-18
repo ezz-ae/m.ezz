@@ -13,6 +13,24 @@
       "imageHint": "architect portrait"
     },
     {
+      "id": "home-library-bg",
+      "description": "Background for the library section on the homepage.",
+      "imageUrl": "https://images.unsplash.com/photo-1507842217343-583bb7270b66?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsaWJyYXJ5fGVufDB8fHx8MTc2MzQwODYxNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "library books"
+    },
+    {
+      "id": "home-theory-bg",
+      "description": "Background for the theory section on the homepage.",
+      "imageUrl": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0aGVvcnklMjBkaWFncmFtfGVufDB8fHx8MTc2NDI3ODU4Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "theory diagram"
+    },
+    {
+      "id": "home-mindmap-bg",
+      "description": "Background for the mindmap section on the homepage.",
+      "imageUrl": "https://images.unsplash.com/photo-1583324132333-6a56b5d3550c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtaW5kbWFwfGVufDB8fHx8MTc2NDI3ODY0N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mindmap connections"
+    },
+    {
       "id": "p1-cover",
       "description": "The Obelisk Villa front view.",
       "imageUrl": "https://images.unsplash.com/photo-1655025074116-119793238a0f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtaW5pbWFsaXN0JTIwaG91c2V8ZW58MHx8fHwxNzYzMzY2ODc0fDA&ixlib=rb-4.1.0&q=80&w=1080",
@@ -33,7 +51,7 @@
     {
       "id": "p2-cover",
       "description": "Symmetry Tower in an urban setting.",
-      "imageUrl": "https://images.unsplash.com/photo-1696592876133-41dce7099f15?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx1cmJhbiUyMGJ1aWxkaW5nfGVufDB8fHx8MTc2MzM2NTcyMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1696592876133-41dce7099f15?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx1cmJhbiUyMGJ1aWxkaW5nfGVufDB8fHx8MTc2MzM2NTcyMnww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "urban building"
     },
     {
@@ -45,7 +63,7 @@
     {
       "id": "p2-img2",
       "description": "Office interior of Symmetry Tower.",
-      "imageUrl": "https://images.unsplash.com/photo-1715593949273-09009558300a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxvZmZpY2UlMjBpbnRlcmlvcnxlbnwwfHx8fDE3NjM0MDI1ODV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1715593949273-09009558300a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxvZmZpY2UlMjBpbnRlcmlvcnxlbnwwfHx8fDE3NjM0MDI1ODV8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "office interior"
     },
     {
@@ -99,7 +117,7 @@
     {
       "id": "p6-img1",
       "description": "View from The Oracle overlooking the cityscape.",
-      "imageUrl": "https://images.unsplash.com/photo-1563648437691-0316649cfc7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2l0eXNjYXBlJTIwdmlld3xlbnwwfHx8fDE3NjMzNjY4NTZ8MA&ixlib_rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1563648437691-0316649cfc7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2l0eXNjYXBlJTIwdmlld3xlbnwwfHx8fDE3NjMzNjY4NTZ8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "cityscape view"
     },
     {
