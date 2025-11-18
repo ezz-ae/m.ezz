@@ -1,10 +1,10 @@
 
-import { SidebarInset } from '@/components/ui/sidebar';
 import { cn } from '@/lib/utils';
 
 export default function Home() {
   return (
-    <SidebarInset>
+    <div className="relative">
+      <div className="glow-scroll" />
       <div className="container relative flex min-h-dvh flex-col items-center justify-center py-24 text-center md:py-32">
         <div className="mx-auto max-w-3xl space-y-12">
           <h1
@@ -20,6 +20,7 @@ export default function Home() {
               'font-headline text-3xl text-muted-foreground md:text-4xl',
               'animate-scroll'
             )}
+            style={{ animationDelay: '0.1s' }}
           >
             Intelligence is not a function of memory, but of forgetting.
           </p>
@@ -28,6 +29,7 @@ export default function Home() {
               'font-headline text-3xl text-muted-foreground md:text-4xl',
               'animate-scroll'
             )}
+            style={{ animationDelay: '0.2s' }}
           >
             We design systems that learn by letting go, creating resonant
             frequencies from the graceful decay of information.
@@ -37,6 +39,7 @@ export default function Home() {
               'font-headline text-3xl text-muted-foreground md:text-4xl',
               'animate-scroll'
             )}
+            style={{ animationDelay: '0.3s' }}
           >
             This is not erasure; it is coherence.
           </p>
@@ -121,6 +124,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </SidebarInset>
+    </div>
   );
 }
