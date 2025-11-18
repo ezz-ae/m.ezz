@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 export default function Home() {
   return (
     <div className="container relative min-h-[calc(100dvh-4rem)] flex items-center justify-center py-16 md:py-24">
-      <div className="max-w-3xl mx-auto text-center">
+      <div className="max-w-3xl mx-auto text-center space-y-12">
         <h1 className={cn(
           "font-headline text-5xl font-bold tracking-tighter md:text-7xl lg:text-8xl",
           "animate-scroll"
@@ -15,28 +15,23 @@ export default function Home() {
           The Physics of Cognition
         </h1>
         <p className={cn(
-          "mt-8 text-lg text-muted-foreground md:text-xl",
+          "font-headline text-3xl text-muted-foreground md:text-4xl",
           "animate-scroll"
         )}>
-          I build forgetting-based intelligence systems: architectures where AI
-          forgets safely, resonates clearly, and aligns with how human
-          cognition actually works. This is not just a philosophy; it is a
-          structural law we build upon. We create systems that are not just seen, but
-          felt and understood.
+          Intelligence is not a function of memory, but of forgetting.
         </p>
-        <div className={cn(
-            "mt-10 flex flex-wrap justify-center gap-4",
-            "animate-scroll"
+        <p className={cn(
+          "font-headline text-3xl text-muted-foreground md:text-4xl",
+          "animate-scroll"
         )}>
-          <Button asChild size="lg">
-            <Link href="/library">
-              Explore The Library <ArrowRight className="ml-2" />
-            </Link>
-          </Button>
-          <Button asChild size="lg" variant="outline">
-            <Link href="/theory">Understand The Theory</Link>
-          </Button>
-        </div>
+          We design systems that learn by letting go, creating resonant frequencies from the graceful decay of information.
+        </p>
+        <p className={cn(
+          "font-headline text-3xl text-muted-foreground md:text-4xl",
+          "animate-scroll"
+        )}>
+          This is not erasure; it is coherence.
+        </p>
       </div>
     </div>
   );
