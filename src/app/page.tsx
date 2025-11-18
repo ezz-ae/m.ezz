@@ -1,16 +1,21 @@
 
+import type { Metadata } from 'next';
 import HeroPulse from "@/components/HeroPulse";
 import IdentityStatement from "@/components/IdentityStatement";
 import TopicMap from "@/components/TopicMap";
 import AboutSection from "@/components/AboutSection";
 import NowSection from "@/components/NowSection";
 import FooterMinimal from "@/components/FooterMinimal";
-import SiteHeader from "@/components/SiteHeader";
+
+export const metadata: Metadata = {
+  title: 'EZZ.AE — Mahmoud Ezz',
+  description: 'Mahmoud Ezz is an Intelligence System Architect, designing architectures for AI, memory, forgetting, ecosystems, and traps.',
+};
+
 
 export default function FieldPage() {
   return (
     <main className="min-h-screen bg-black text-neutral-100 overflow-x-hidden">
-        <SiteHeader />
       {/* Global wrapper for future cognitive weather / theming */}
       <div className="relative flex flex-col items-stretch pt-24">
         <HeroPulse />

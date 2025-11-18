@@ -1,10 +1,10 @@
 
-// src/app/notebooks/[slug]/page.tsx
 import { notFound } from 'next/navigation';
 import { NOTEBOOKS, isNotebookId } from '@/components/notebooks/notebook-data';
 import NotebookRenderer from '@/components/notebooks/NotebookRenderer';
 import FooterMinimal from '@/components/FooterMinimal';
 import { NotebookShell } from '@/components/notebooks/NotebookShell';
+import type { Metadata } from 'next';
 
 type NotebookPageProps = {
   params: {
@@ -17,6 +17,34 @@ export async function generateStaticParams() {
     slug,
   }));
 }
+
+export async function generateMetadata({ params }: NotebookPageProps): Promise<Metadata> {
+  const { slug } = params;
+
+  if (!isNotebookId(slug)) {
+    notFound();
+  }
+  
+  const notebook = NOTEBOOKS[slug];
+  
+  if (!notebook) {
+    return {};
+  }
+
+  return {
+    title: `Notebook · ${notebook.title}`,
+    description: notebook.description,
+    openGraph: {
+        title: `Notebook · ${notebook.title} — EZZ.AE`,
+        description: notebook.description,
+    },
+    twitter: {
+        title: `Notebook · ${notebook.title} — EZZ.AE`,
+        description: notebook.description,
+    }
+  };
+}
+
 
 export default function NotebookPage({ params }: NotebookPageProps) {
   const { slug } = params;

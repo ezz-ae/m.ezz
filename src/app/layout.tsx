@@ -5,6 +5,7 @@ import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import SiteHeader from '@/components/SiteHeader';
+import AnalyticsListener from '@/components/AnalyticsListener';
 
 const ptSans = PT_Sans({
   subsets: ['latin'],
@@ -18,8 +19,23 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'EZZ.AE - Mahmoud Ezz - Intelligence System Architect',
-  description: "Mahmoud Ezz's work in AI, cognition, real estate, security, puzzles, and music—one mind, many systems.",
+  title: {
+    default: 'EZZ.AE — Intelligence System Architecture',
+    template: '%s — EZZ.AE',
+  },
+  description: "A living documentation of Mahmoud Ezz’s work on Forgetence, AI memory safety, intelligence OS design, real estate infrastructure, traps, puzzles, and behavioural systems.",
+  openGraph: {
+    title: 'EZZ.AE — Intelligence System Architecture',
+    description: "A living documentation of Mahmoud Ezz’s work on Forgetence, AI memory safety, intelligence OS design, real estate infrastructure, traps, puzzles, and behavioural systems.",
+    url: 'https://ezz.ae',
+    siteName: 'EZZ.AE',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'EZZ.AE — Intelligence System Architecture',
+    description: "A living documentation of Mahmoud Ezz’s work on Forgetence, AI memory safety, intelligence OS design, real estate infrastructure, traps, puzzles, and behavioural systems.",
+  },
 };
 
 export default function RootLayout({
@@ -36,6 +52,7 @@ export default function RootLayout({
           playfairDisplay.variable
         )}
       >
+        <AnalyticsListener />
         <SiteHeader />
         {children}
         <Toaster />
