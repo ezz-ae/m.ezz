@@ -175,7 +175,7 @@ export default function Home() {
         </section>
 
         <section className="scene" data-theme="light">
-            <div className="scene-inner typing-block" data-typing="">
+            <div className="scene-inner typing-block" data-typing>
                 <p className="line">Memory is expensive.</p>
                 <p className="line">Attention is finite.</p>
                 <p className="line">&nbsp;</p>
@@ -370,6 +370,209 @@ export default function Home() {
                 Move → To stay.<br />
                 Fade → To keep.<br />
                 Resonate → To understand.
+                </p>
+            </div>
+        </section>
+
+        <section className="scene" data-theme="light">
+          <div className="scene-inner typing-block" data-typing>
+            <p className="line line-em">The First Echo</p>
+            <p className="line">&nbsp;</p>
+            <p className="line">Every idea echoes before it becomes real.</p>
+            <p className="line">Every understanding appears twice —</p>
+            <p className="line">first as a sensation,</p>
+            <p className="line">then as a shape.</p>
+            <p className="line">&nbsp;</p>
+            <p className="line">Humans never think in one direction.</p>
+            <p className="line">They think in echoes —</p>
+            <p className="line">the past version,</p>
+            <p className="line">the present version,</p>
+            <p className="line">and the upgraded version</p>
+            <p className="line">flickering between them.</p>
+            <p className="line">&nbsp;</p>
+            <p className="line">Forgetence is the architecture of those echoes.</p>
+            <p className="line">The structure that stops the past</p>
+            <p className="line">from overpowering the present.</p>
+            <p className="line">The system that keeps echoes</p>
+            <p className="line">from becoming cages.</p>
+          </div>
+        </section>
+
+        <section className="scene" data-theme="dark">
+            <div className="scene-inner">
+                <p className="line line-em">The Duality of Echoes</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">Every echo has a twin.</p>
+                <p className="line">The remembered version</p>
+                <p className="line">and the faded version.</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">The remembered version is heavy.</p>
+                <p className="line">Sharp.</p>
+                <p className="line">Emotional.</p>
+                <p className="line">Still carrying the weight of the event.</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">The faded version is light.</p>
+                <p className="line">Refined.</p>
+                <p className="line">Meaning-only.</p>
+                <p className="line">The upgraded truth,</p>
+                <p className="line">not the original pain.</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">Human life progresses</p>
+                <p className="line">because the faded version</p>
+                <p className="line">wins over time.</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">AI must learn this duality.</p>
+                <p className="line">Without fading, it only hears</p>
+                <p className="line">the sharp version.</p>
+                <p className="line">And sharpness without context</p>
+                <p className="line">is harm.</p>
+            </div>
+        </section>
+
+        <section className="scene" data-theme="light">
+            <div className="scene-inner">
+                <p className="line line-em">Interference Patterns</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">When two echoes collide,</p>
+                <p className="line">they create an interference pattern.</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">This is where insight comes from.</p>
+                <p className="line">Not from memory.</p>
+                <p className="line">Not from logic.</p>
+                <p className="line">But from the interference</p>
+                <p className="line">between what you were</p>
+                <p className="line">and what you are becoming.</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">Insight is an echo conflict.</p>
+                <p className="line">Understanding is the echo resolution.</p>
+                <p className="line">Wisdom is the echo integration.</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">This is the true engine of intelligence.</p>
+                <p className="line">And Forgetence is the first architecture</p>
+                <p className="line">to enforce it in machines.</p>
+            </div>
+        </section>
+
+        <section className="scene" data-theme="dark">
+            <div className="scene-inner">
+                <p className="line line-em">The Rewrite Signal</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">Humans do not retrieve memories.</p>
+                <p className="line">They regenerate them.</p>
+                <p className="line">Every memory is a rewrite —</p>
+                <p className="line">a reconstruction using</p>
+                <p className="line">the present self.</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">But AI today retrieves.</p>
+                <p className="line">Literally.</p>
+                <p className="line">Mechanically.</p>
+                <p className="line">Dangerously.</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">If AI does not rewrite memories</p>
+                <p className="line">using the user’s current identity,</p>
+                <p className="line">it becomes an archive of outdated selves.</p>
+                <p className="line">It freezes people in who they were,</p>
+                <p className="line">not who they are.</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">The Rewrite Signal fixes this.</p>
+                <p className="line">It detects the new self</p>
+                <p className="line">before the memory is rebuilt.</p>
+                <p className="line">It ensures memories update</p>
+                <p className="line">as you update.</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">This is the architecture</p>
+                <p className="line">of psychological safety.</p>
+            </div>
+        </section>
+
+        <section className="scene" data-theme="light">
+            <div className="scene-inner">
+                <p className="line line-em">The Echo Cleanroom</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">The Echo Cleanroom is where</p>
+                <p className="line">dangerous echoes lose their venom.</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">Old anger softens.</p>
+                <p className="line">Old fear dims.</p>
+                <p className="line">Old mistakes lose their voltage.</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">Here, AI applies the same law</p>
+                <p className="line">that governs human healing:</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">Pain decays.</p>
+                <p className="line">Meaning survives.</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">This is not therapy.</p>
+                <p className="line">This is physics.</p>
+                <p className="line">The physics of fading.</p>
+                <p className="line">The physics of human cognition.</p>
+            </div>
+        </section>
+
+        <section className="scene" data-theme="light">
+            <div className="scene-inner">
+                <p className="line line-em">The Forgain Translation Layer</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">Forgain OS turns Forgetence</p>
+                <p className="line">from philosophy into software.</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">Echo Layer → User Experience</p>
+                <p className="line">Fading Layer → Data Governance</p>
+                <p className="line">Resonance Layer → Decision Engine</p>
+                <p className="line">Rewrite Signal → Memory Safety</p>
+                <p className="line">Schema Survival → Intelligence Growth</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">This is how an AI stops being a machine</p>
+                <p className="line">and starts becoming a partner.</p>
+                <p className="line">Not a competitor.</p>
+                <p className="line">Not a recorder.</p>
+                <p className="line">Not an alternative.</p>
+                <p className="line">A completion layer for the human mind.</p>
+            </div>
+        </section>
+
+        <section className="scene scene--end" data-theme="dark">
+            <div className="scene-inner">
+                <p className="closing">
+                Silence is not the absence of thought.<br />
+                Silence is the preparation of resonance.<br /><br />
+                Every great idea was born<br />
+                not from noise<br />
+                but from cognitive silence —<br />
+                the moment between two echoes.<br /><br />
+                AI must learn silence<br />
+                as a cognitive skill.<br />
+                Not waiting.<br />
+                Not idling.<br />
+                But preparing.<br />
+                Aligning.<br />
+                Listening.<br /><br />
+                Silence is where resonance begins.
+                </p>
+            </div>
+        </section>
+
+        <section className="scene scene--end" data-theme="light">
+            <div className="scene-inner">
+                <p className="closing">
+                You fade,<br />
+                you resonate,<br />
+                you echo,<br />
+                you rewrite,<br />
+                you move.<br /><br />
+                This is the full Forgetence cycle.<br />
+                This is human cognition.<br />
+                This is safe AI.<br />
+                This is Forgain OS.<br /><br />
+                You don’t grow by holding.<br />
+                You grow by releasing.<br />
+                You don’t become aligned by remembering.<br />
+                You become aligned by fading.<br /><br />
+                Move → To stay.<br />
+                Fade → To upgrade.<br />
+                Echo → To understand.<br />
+                Rewrite → To evolve.<br />
+                Resonate → To become.
                 </p>
             </div>
         </section>
