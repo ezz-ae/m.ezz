@@ -5,74 +5,48 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 60 57% 92%; /* Beige */
-    --primary-foreground: 20 10% 10%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 60 57% 92%;
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 0 0% 3.9%;
-    --sidebar-border: 0 0% 89.8%;
-    --sidebar-accent: 0 0% 94%;
-    --sidebar-accent-foreground: 0 0% 9%;
-    --sidebar-ring: 60 57% 92%;
-
-    --bg-light: #f0f0f0;
-    --bg-dark: #010203;
-    --fg-main: #1a1a1a;
-    --fg-soft: #5a5a5a;
-    --accent-color: #000000;
-  }
-
-  .dark {
-    --background: 20 10% 10%;
-    --foreground: 0 0% 95%;
-    --card: 20 10% 12%;
-    --card-foreground: 0 0% 95%;
-    --popover: 20 10% 10%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 60 57% 92%; /* Beige */
-    --primary-foreground: 20 10% 10%;
-    --secondary: 20 14.3% 13.5%;
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 20 14.3% 13.5%;
+    --muted: 0 0% 14.9%;
     --muted-foreground: 0 0% 63.9%;
-    --accent: 20 14.3% 13.5%;
+    --accent: 0 0% 14.9%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 20 14.3% 13.5%;
-    --input: 20 14.3% 13.5%;
-    --ring: 60 57% 92%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --radius: 0.5rem;
+  }
 
-    --sidebar-background: 20 10% 12%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-border: 20 14.3% 13.5%;
-    --sidebar-accent: 20 10% 15%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-ring: 60 57% 92%;
-
-    --bg-light: #050608;
-    --bg-dark: #010203;
-    --fg-main: #f5f5f5;
-    --fg-soft: #a7a7a7;
-    --accent-color: #ffffff;
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
   }
 }
 
@@ -81,109 +55,10 @@
     @apply border-border;
   }
   body {
-    background: var(--bg-light);
-    color: var(--fg-main);
+    @apply bg-background text-foreground;
   }
+}
 
-  .page {
-    min-height: 100vh;
-  }
-
-  .scene {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 16px;
-    opacity: 0;
-    transform: translateY(40px) scale(0.99);
-    transition:
-      opacity 0.8s ease,
-      transform 0.8s ease;
-    will-change: opacity, transform;
-    background: radial-gradient(circle at top, #151515 0, #000000 55%);
-    color: var(--fg-main);
-  }
-
-  .scene[data-theme="dark"] {
-    background: radial-gradient(circle at top, #151515 0, #000000 55%);
-  }
-
-  .scene[data-theme="light"] {
-     background: radial-gradient(circle at top, #0d0f14 0, #050608 55%);
-  }
-
-  .scene-inner {
-    max-width: 720px;
-    width: 100%;
-  }
-
-  .scene--hero .scene-inner {
-    text-align: left;
-  }
-
-  .title {
-    font-family: var(--font-headline);
-    font-size: clamp(2.8rem, 5vw, 4rem);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin: 0 0 16px;
-  }
-
-  .subtitle {
-    margin: 0;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    font-family: var(--font-body);
-    color: var(--fg-soft);
-  }
-
-  .line {
-    font-family: var(--font-body);
-    font-size: 1.15rem;
-    line-height: 1.7;
-    margin: 4px 0;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  
-  .scene--hero .title,
-  .scene--hero .subtitle {
-    transition: transform 0.6s ease;
-  }
-
-  .line-em {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: hsl(var(--primary));
-  }
-  
-  .line-soft {
-    color: var(--fg-soft);
-  }
-
-  .closing {
-    font-family: var(--font-headline);
-    font-size: 1.5rem;
-    text-align: center;
-    line-height: 1.8;
-  }
-
-  /* Active states set by JS */
-  .scene.is-visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-
-  .scene.is-visible .line {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .typing-block .line {
-    opacity: 0;
-    transform: none;
-    white-space: pre-wrap;
-  }
+.bg-radial {
+    background-image: radial-gradient(circle, var(--tw-gradient-stops));
 }

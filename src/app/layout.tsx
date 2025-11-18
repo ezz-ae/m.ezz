@@ -17,8 +17,8 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'EZZ.AE - Cognitive Architecture',
-  description: "Mahmoud Ezz's Forgetting Systems & Memory-Safe Intelligence",
+  title: 'EZZ.AE - Mahmoud Ezz - Intelligence System Architect',
+  description: "Mahmoud Ezz's work in AI, cognition, real estate, security, puzzles, and music—one mind, many systems.",
 };
 
 export default function RootLayout({
@@ -30,7 +30,7 @@ export default function RootLayout({
     <html lang="en" className="dark" suppressHydrationWarning>
       <body
         className={cn(
-          'min-h-screen bg-background font-body antialiased',
+          'min-h-screen bg-black font-body text-neutral-100 antialiased overflow-x-hidden',
           ptSans.variable,
           playfairDisplay.variable
         )}
