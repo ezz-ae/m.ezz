@@ -65,34 +65,39 @@ const mindMapData = {
 
 const ChildNode = ({ node, parentAngle, parentRadius }: { node: any; parentAngle: number, parentRadius: number }) => {
   if (!node.children) return null;
-  const childRadius = 90;
+  const childRadius = 100; // Adjusted radius for sub-nodes
+  const angleSpread = Math.PI / 4; // Spread angle for sub-nodes
 
   return (
     <>
       {node.children.map((childNode: any, index: number) => {
         const totalChildren = node.children.length;
-        const angleOffset = (Math.PI / 3) * (index - (totalChildren -1) / 2);
+        const angleOffset = totalChildren > 1 ? (index - (totalChildren - 1) / 2) * angleSpread : 0;
         const childAngle = parentAngle + angleOffset;
-        const x = Math.cos(childAngle) * (parentRadius + childRadius);
-        const y = Math.sin(childAngle) * (parentRadius + childRadius);
         
-        const lineX1 = Math.cos(parentAngle) * (parentRadius);
-        const lineY1 = Math.sin(parentAngle) * (parentRadius);
-        const lineX2 = Math.cos(childAngle) * (parentRadius + childRadius - 60);
-        const lineY2 = Math.sin(childAngle) * (parentRadius + childRadius - 60);
+        const parentX = Math.cos(parentAngle) * parentRadius;
+        const parentY = Math.sin(parentAngle) * parentRadius;
+
+        const childX = Math.cos(childAngle) * (parentRadius + childRadius + 60);
+        const childY = Math.sin(childAngle) * (parentRadius + childRadius + 60);
+        
+        const lineX2 = Math.cos(childAngle) * (parentRadius + childRadius);
+        const lineY2 = Math.sin(childAngle) * (parentRadius + childRadius);
 
         return (
           <React.Fragment key={childNode.id}>
              <line
-                x1={lineX1}
-                y1={lineY1}
+                x1={parentX}
+                y1={parentY}
                 x2={lineX2}
                 y2={lineY2}
                 stroke="hsl(var(--border))"
                 strokeWidth="1"
              />
-            <g transform={`translate(${x}, ${y})`}>
-              <MindMapNode label={childNode.label} description={childNode.description} isSubNode />
+            <g transform={`translate(${childX}, ${childY})`}>
+              <foreignObject x="-70" y="-56" width="140" height="112">
+                 <MindMapNode label={childNode.label} description={childNode.description} isSubNode />
+              </foreignObject>
             </g>
           </React.Fragment>
         );
@@ -103,7 +108,7 @@ const ChildNode = ({ node, parentAngle, parentRadius }: { node: any; parentAngle
 
 
 export default function MindMapPage() {
-    const parentRadius = 280;
+    const parentRadius = 250;
 
   return (
     <div className="container py-16 md:py-24">
@@ -118,9 +123,17 @@ export default function MindMapPage() {
         </p>
       </div>
 
-      <div className="relative mt-20 flex min-h-[700px] items-center justify-center">
-        <svg width="100%" height="100%" className="absolute inset-0" style={{ transform: 'translate(50%, 50%)' }}>
+      <div className="relative mt-12 flex h-[800px] items-center justify-center overflow-auto md:h-[900px]">
+        <svg width="1000" height="1000" viewBox="-500 -500 1000 1000" className="max-w-full max-h-full">
             <g>
+              <foreignObject x="-96" y="-64" width="192" height="128">
+                 <MindMapNode
+                    label={mindMapData.label}
+                    description={mindMapData.description}
+                    isCentral
+                 />
+              </foreignObject>
+
                 {mindMapData.children.map((node, index) => {
                     const angle = (index / mindMapData.children.length) * 2 * Math.PI - Math.PI / 2;
                     const x = Math.cos(angle) * parentRadius;
@@ -128,6 +141,11 @@ export default function MindMapPage() {
                     return (
                         <React.Fragment key={node.id}>
                             <line x1="0" y1="0" x2={x} y2={y} stroke="hsl(var(--border))" strokeWidth="1" />
+                            <g transform={`translate(${x}, ${y})`}>
+                              <foreignObject x="-96" y="-64" width="192" height="128">
+                                <MindMapNode label={node.label} description={node.description} />
+                              </foreignObject>
+                            </g>
                              <ChildNode node={node} parentAngle={angle} parentRadius={parentRadius} />
                         </React.Fragment>
                     )
@@ -135,31 +153,6 @@ export default function MindMapPage() {
             </g>
         </svg>
 
-        <div className="absolute">
-            <MindMapNode
-                label={mindMapData.label}
-                description={mindMapData.description}
-                isCentral
-            />
-        </div>
-
-        {mindMapData.children.map((node, index) => {
-          const angle = (index / mindMapData.children.length) * 2 * Math.PI - Math.PI / 2;
-          const x = Math.cos(angle) * parentRadius;
-          const y = Math.sin(angle) * parentRadius;
-
-          return (
-            <div
-              key={node.id}
-              className="absolute"
-              style={{
-                transform: `translate(${x}px, ${y}px)`,
-              }}
-            >
-              <MindMapNode label={node.label} description={node.description} />
-            </div>
-          );
-        })}
       </div>
     </div>
   );
