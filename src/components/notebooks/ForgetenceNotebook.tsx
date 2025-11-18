@@ -89,7 +89,7 @@ export function ForgetenceNotebook() {
         <ScrollParagraph>
           A healthy brain does not recall events with full resolution. Painful memories soften. Embarrassing moments lose their sharp
           edges. What was once a fight at school becomes, over decades, a joke,
-          a lesson, or a story.
+          a lesson, a story.
         </ScrollParagraph>
         <ScrollParagraph>
           Now imagine an AI that replays every humiliation in 4K detail, recalculates every loss at today’s value, and freezes you in your worst version, treating you as that version forever.
