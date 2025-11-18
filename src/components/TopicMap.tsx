@@ -2,9 +2,10 @@
 // components/TopicMap.tsx
 "use client";
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { NOTEBOOKS, NotebookId } from '@/components/notebooks/notebook-data';
 
-// Convert the NOTEBOOKS object into an array for mapping
 const topics = Object.keys(NOTEBOOKS).map(key => {
     const notebook = NOTEBOOKS[key as NotebookId];
     return {
@@ -14,7 +15,23 @@ const topics = Object.keys(NOTEBOOKS).map(key => {
     };
 });
 
+const containerVariants = {
+  initial: {},
+  animate: {
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+};
+
+const itemVariants = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+};
+
 export default function TopicMap() {
+  const [hoveredId, setHoveredId] = useState<NotebookId | null>(null);
+
   return (
     <div className="relative py-16 md:py-24 px-6 md:px-16 bg-black">
       <div className="max-w-5xl mx-auto">
@@ -25,25 +42,38 @@ export default function TopicMap() {
           Each node is a living notebook — a full self-introduction of one system.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <motion.div 
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+            variants={containerVariants}
+            initial="initial"
+            animate="animate"
+            onHoverEnd={() => setHoveredId(null)}
+        >
           {topics.map((topic) => (
-            <Link
-              href={`/notebooks/${topic.id}`}
-              key={topic.id}
-              className="group block relative overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-br from-white/5 via-black to-black px-4 py-4 text-left transition-transform duration-200 hover:-translate-y-1"
+            <motion.div
+                key={topic.id}
+                variants={itemVariants}
+                onHoverStart={() => setHoveredId(topic.id as NotebookId)}
+                animate={{ opacity: hoveredId === null || hoveredId === topic.id ? 1 : 0.5 }}
+                transition={{ duration: 0.3 }}
             >
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-radial from-white/10 via-transparent to-transparent transition-opacity duration-200" />
-              <div className="relative z-10 space-y-2">
-                <div className="text-[11px] uppercase tracking-[0.2em] text-neutral-500">
-                  {topic.tag}
+              <Link
+                href={`/notebooks/${topic.id}`}
+                className="group block h-full relative overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-br from-white/5 via-black to-black px-4 py-4 text-left transition-transform duration-200 hover:-translate-y-1"
+              >
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-radial from-white/10 via-transparent to-transparent transition-opacity duration-200" />
+                <div className="relative z-10 space-y-2">
+                  <div className="text-[11px] uppercase tracking-[0.2em] text-neutral-500">
+                    {topic.tag}
+                  </div>
+                  <div className="text-base md:text-lg text-neutral-50">
+                    {topic.label}
+                  </div>
                 </div>
-                <div className="text-base md:text-lg text-neutral-50">
-                  {topic.label}
-                </div>
-              </div>
-            </Link>
+              </Link>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );
