@@ -44,7 +44,7 @@ export function SecurityNotebook() {
         <ScrollParagraph>Two brief cases illustrate the principle:</ScrollParagraph>
         <ul className="!list-none !pl-0">
           <ScrollParagraph as="li"><strong>The Cracked Software Trap:</strong> We bundled a harmless payload with a highly sought-after piece of "cracked" software. The download rate revealed how willing people are to compromise their security for perceived value, even when they know the risks.</ScrollParagraph>
-          <ScrollParagraph as="li"><strong>The Jupiter NFT Trap:</strong> We simulated a high-profile, "exclusive" NFT mint with hidden clauses in the smart contract. It demonstrated how urgency and FOMO (Fear Of Missing Out) can lead even experienced users to bypass standard due diligence, like reading the contract they are signing.</ScrollParagraph>
+          <ScrollParagraph as="li" className="mt-4"><strong>The Jupiter NFT Trap:</strong> We simulated a high-profile, "exclusive" NFT mint with hidden clauses in the smart contract. It demonstrated how urgency and FOMO (Fear Of Missing Out) can lead even experienced users to bypass standard due diligence, like reading the contract they are signing.</ScrollParagraph>
         </ul>
         <ScrollParagraph>Each trap is a research instrument. The results are not just data points; they are deep insights into human behavior under pressure.</ScrollParagraph>
       </Section>

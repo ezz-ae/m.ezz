@@ -24,7 +24,7 @@ export function MarketingNotebook() {
 
       <Section>
         <ScrollHeading as="h2">From Campaigns to Market Systems</ScrollHeading>
-        <ScrollParagraph>A campaign is a temporary spike. A system is a sustainable current. With projects like MTC Communications, Marketinum, and Willionnaire, my focus shifted from single-shot advertising to building self-sustaining ecosystems. In real estate, this meant moving beyond "selling a unit" to architecting the entire market of developers, brokers, buyers, and financiers. The goal became to design a system where value flows naturally, rather than being pushed through ads.</ScrollParagraph>
+        <ScrollParagraph>A campaign is a temporary spike. A system is a sustainable current. My focus shifted from single-shot advertising to building self-sustaining ecosystems. In real estate, this meant moving beyond "selling a unit" to architecting the entire market of developers, brokers, buyers, and financiers. The goal became to design a system where value flows naturally, rather than being pushed through ads.</ScrollParagraph>
       </Section>
       
       <Section>

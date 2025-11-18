@@ -24,7 +24,7 @@ export function AIXSELFNotebook() {
       
       <Section>
         <ScrollHeading as="h3">1. ADEPT – The Cognitive Kernel</ScrollHeading>
-        <ScrollParagraph>ADEPT (Autonomous Deliberative-Emulative Processing Toolkit) is the core thinking and orchestration layer. It doesn't execute tasks directly. Instead, it reasons, plans, and delegates. It models potential futures, simulates outcomes, and selects the most resonant path forward based on the user's intent. It is the seat of strategic thought, the conductor of the orchestra.</ScrollParagraph>
+        <ScrollParagraph>ADEPT (Autonomous Deliberative-Emulative Processing Toolkit) is the core thinking and orchestration layer. It does not execute tasks directly. Instead, it reasons, plans, and delegates. It models potential futures, simulates outcomes, and selects the most resonant path forward based on my intent. It is the seat of strategic thought, the conductor of the orchestra.</ScrollParagraph>
       </Section>
 
       <Section>
@@ -39,7 +39,7 @@ export function AIXSELFNotebook() {
 
       <Section>
         <ScrollHeading as="h3">4. AIXIAM – The Identity Layer</ScrollHeading>
-        <ScrollParagraph>AIXIAM is the identity and alignment layer. It answers the question, "Who is this intelligence for, and what does it stand for?" It holds the core principles, values, and long-term goals of the user or institution. AIXIAM acts as a constitutional anchor, ensuring that all actions taken by AIXA and all reasoning done by ADEPT remain aligned with the foundational identity. It is the system's conscience.</ScrollParagraph>
+        <ScrollParagraph>AIXIAM is the identity and alignment layer. It answers the question, "Who is this intelligence for, and what does it stand for?" It holds the core principles, values, and long-term goals that I define. AIXIAM acts as a constitutional anchor, ensuring that all actions taken by AIXA and all reasoning done by ADEPT remain aligned with my foundational identity. It is the system's conscience.</ScrollParagraph>
       </Section>
 
       <Section>

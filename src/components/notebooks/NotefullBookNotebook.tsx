@@ -26,12 +26,7 @@ export function NotefullBookNotebook() {
         <ScrollHeading as="h2">NotebookML: A Language for Thought</ScrollHeading>
         <ScrollParagraph>NotebookML is the language that powers NotefullBook. It is a superset of Markdown designed to capture not just text, but logic, memory, and relationships. Its core principle is merging `Markdown × Logic × Memory` into a single, human-readable artifact.</ScrollParagraph>
         <ScrollCallout label="NotebookML Principles">
-            <ul>
-                <li><strong>One Truth:</strong> A single, auditable source for a piece of knowledge or a decision.</li>
-                <li><strong>Deterministic:</strong> The same notebook will always produce the same output, making it reliable.</li>
-                <li><strong>Auditable:</strong> Every conclusion can be traced back to its premises, creating a "cognitive ledger."</li>
-                <li><strong>Portable:</strong> As plain text, it is not locked into any platform.</li>
-            </ul>
+            A notebook should be a single source of truth: deterministic, auditable, and portable.
         </ScrollCallout>
         <ScrollParagraph as="pre" className="!bg-white/5 !text-neutral-300">
 {`@SOP(name="Client Onboarding")
