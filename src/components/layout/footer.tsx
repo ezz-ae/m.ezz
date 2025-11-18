@@ -4,10 +4,10 @@ import Link from 'next/link';
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/notebooks', label: 'Notebooks' },
+  { href: '/library', label: 'Library' },
+  { href: '/theory', label: 'Theory' },
+  { href: '/mindmap', label: 'MindMap' },
   { href: '/studio', label: 'Studio' },
-  { href: '/blog', label: 'Blog' },
 ];
 
 export function SiteFooter() {

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { getImage } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
 
-export default function AboutPage() {
+export default function TheoryPage() {
   const portraitImage = getImage('about-portrait');
 
   return (

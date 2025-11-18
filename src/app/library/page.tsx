@@ -2,7 +2,7 @@
 import { NotebookViewer } from '@/components/notebooks/notebook-viewer';
 import { NOTEBOOKS } from '@/components/notebooks/notebook-data';
 
-export default function NotebooksPage() {
+export default function LibraryPage() {
   return (
     <div className="bg-[#f5f5f5] text-[#111] min-h-screen py-12 md:py-16">
       <main className="mx-auto max-w-6xl p-4 sm:p-8">
