@@ -1,5 +1,6 @@
 // src/components/notebooks/NotebookShell.tsx
 'use client';
+import React from 'react';
 import Link from 'next/link';
 import { ArrowLeft, BrainCircuit, BotMessageSquare, Milestone, Music } from 'lucide-react';
 import { motion } from 'framer-motion';
