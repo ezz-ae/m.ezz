@@ -1,48 +1,54 @@
+# EZZ.AE Firebase Functions
 
-# EZZ.AE Backend Cloud Functions
+Backend for EZZ.AE / NotefullBook / FCT (Forgetting Core Thinking).
 
-This directory contains the backend logic for the EZZ.AE project, implemented as Firebase Cloud Functions.
+## Stack
 
-## Project Structure
+- Firebase Functions v2 (Node 20, TypeScript)
+- Firestore (native mode)
+- Lightweight analytics
+- FCT engine:
+  - SINLM job on note write
+  - Scheduled Forgetting Artifact job
 
-- `src/`: Contains all the TypeScript source code for the functions.
-  - `index.ts`: The main entry point that exports all the functions for deployment.
-  - `model.ts`: Defines the TypeScript interfaces for the Firestore data model.
-  - `http.ts`: Contains all HTTP-triggered functions that serve as the API for the frontend.
-  - `fct.ts`: Implements the core logic for the Forgetting Core Thinking (FCT) engine, including the SINLM and Forgetting Artifact jobs.
-  - `analytics.ts`: Handles the lightweight analytics and event tracking.
+## Structure
 
-## Development
+- `firebase.json` – project config
+- `firestore.rules` – security rules
+- `firestore.indexes.json` – indexes
+- `functions/`
+  - `src/firebase.ts` – admin init
+  - `src/model.ts` – TypeScript models
+  - `src/fct.ts` – FCT engine: triggers + scheduled jobs
+  - `src/http.ts` – HTTP API:
+    - `getPublicNotebooks`
+    - `getNotebookDetail`
+    - `createNote`
+    - `startSession`
+    - `endSession`
+    - `getTimeline`
+  - `src/analytics.ts` – `/analytics` endpoint
+  - `src/index.ts` – exports all functions
 
-### Prerequisites
-
-- Node.js (v20)
-- Firebase CLI (`npm install -g firebase-tools`)
-
-### Installation
-
-1.  Navigate to the `functions` directory: `cd functions`
-2.  Install the dependencies: `npm install`
-
-### Running the Emulators
-
-To run the functions and Firestore locally for development, use the Firebase Emulators:
-
-```bash
-npm run serve
-```
-This will start the Functions and Firestore emulators. You can then interact with them locally.
-
-### Deployment
-
-To deploy the functions to your Firebase project, run:
+## Setup
 
 ```bash
-firebase deploy --only functions
+cd functions
+npm install
+npm run build
 ```
 
-To deploy the Firestore rules and indexes, run:
+From project root:
 
 ```bash
-firebase deploy --only firestore
+firebase emulators:start --only functions,firestore
 ```
+
+## Deploy
+
+```bash
+npm run build
+firebase deploy --only functions,firestore
+```
+
+Update `.firebaserc` "default" with your real Firebase project id.

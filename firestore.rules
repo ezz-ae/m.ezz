@@ -1,76 +1,77 @@
-
 rules_version = '2';
-
 service cloud.firestore {
   match /databases/{database}/documents {
-  
-    // Helper functions
-    function isSignedIn() {
-      return request.auth != null;
-    }
 
-    function isOwner(userId) {
-      return request.auth.uid == userId;
-    }
-    
-    function isNotebookOwner(notebookId) {
-    	return get(/databases/$(database)/documents/notebooks/$(notebookId)).data.ownerId == request.auth.uid;
-    }
-
-    // USERS
+    // Users
     match /users/{userId} {
-      allow read, update, delete: if isOwner(userId);
-      allow create: if isSignedIn() && request.resource.data.id == request.auth.uid;
-      allow list: if false;
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow create: if request.auth != null && request.auth.uid == userId;
+      allow update, delete: if request.auth != null && request.auth.uid == userId;
     }
 
-    // NOTEBOOKS
+    // Notebooks
     match /notebooks/{notebookId} {
-      allow get: if resource.data.visibility == 'public' || isOwner(resource.data.ownerId);
-      allow list: if resource.data.visibility == 'public';
-      allow create: if isSignedIn() && request.resource.data.ownerId == request.auth.uid;
-      allow update, delete: if isOwner(get(/databases/$(database)/documents/notebooks/$(notebookId)).data.ownerId);
-    }
-    
-    // NOTES (subcollection of notebooks)
-    match /notebooks/{notebookId}/notes/{noteId} {
-    	allow read, list, create, update, delete: if isNotebookOwner(notebookId);
-    }
-    
-    // CONCEPTS (subcollection of notebooks)
-    match /notebooks/{notebookId}/concepts/{conceptId} {
-      allow read, list: if get(/databases/$(database)/documents/notebooks/$(notebookId)).data.visibility == 'public' || isNotebookOwner(notebookId);
-    	allow create, update, delete: if isNotebookOwner(notebookId);
-    }
-    
-    // PATTERNS
-    match /patterns/{patternId} {
-    	allow get, list: if true;
-      allow create, update, delete: if false; // Managed by backend functions
-    }
-    
-    // SESSIONS
-    match /sessions/{sessionId} {
-      allow read, create, update, delete: if isOwner(resource.data.userId);
-      allow list: if false;
-    }
-    
-    // LEDGER ENTRIES
-    match /ledgerEntries/{entryId} {
-       allow get: if isNotebookOwner(resource.data.notebookId);
-       allow list, create, update, delete: if false; // Managed by backend functions
-    }
-    
-    // ARTIFACTS
-    match /artifacts/{artifactId} {
-       allow get: if isNotebookOwner(resource.data.notebookId);
-       allow list, create, update, delete: if false; // Managed by backend functions
+      allow read: if resource.data.visibility == 'public'
+                  || (request.auth != null && request.auth.uid == resource.data.ownerId);
+
+      allow create: if request.auth != null
+                    && request.auth.uid == request.resource.data.ownerId;
+
+      allow update, delete: if request.auth != null
+                            && request.auth.uid == resource.data.ownerId;
+
+      // Notes inside notebooks
+      match /notes/{noteId} {
+        allow read: if get(/databases/$(database)/documents/notebooks/$(notebookId)).data.visibility == 'public'
+                    || (request.auth != null
+                        && request.auth.uid == get(/databases/$(database)/documents/notebooks/$(notebookId)).data.ownerId);
+
+        allow create: if request.auth != null
+                      && request.auth.uid == get(/databases/$(database)/documents/notebooks/$(notebookId)).data.ownerId;
+
+        allow update, delete: if request.auth != null
+                              && request.auth.uid == get(/databases/$(database)/documents/notebooks/$(notebookId)).data.ownerId;
+      }
+
+      // Concepts inside notebooks
+      match /concepts/{conceptId} {
+        allow read: if get(/databases/$(database)/documents/notebooks/$(notebookId)).data.visibility == 'public'
+                    || (request.auth != null
+                        && request.auth.uid == get(/databases/$(database)/documents/notebooks/$(notebookId)).data.ownerId);
+
+        allow write: if request.auth != null
+                     && request.auth.uid == get(/databases/$(database)/documents/notebooks/$(notebookId)).data.ownerId;
+      }
     }
 
-    // EVENTS
+    // Global patterns
+    match /patterns/{patternId} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.token.admin == true;
+    }
+
+    // Sessions
+    match /sessions/{sessionId} {
+      allow read, write: if request.auth != null && request.auth.uid == resource.data.userId;
+      allow create: if request.auth != null && request.auth.uid == request.resource.data.userId;
+    }
+
+    // Ledger entries – only owner can see (or via Functions)
+    match /ledgerEntries/{entryId} {
+      allow read, write: if request.auth != null
+                         && request.auth.uid == resource.data.userId;
+    }
+
+    // Artifacts – only owner
+    match /artifacts/{artifactId} {
+      allow read, write: if request.auth != null
+                         && request.auth.uid == resource.data.ownerId;
+    }
+
+    // Events (analytics) – writes via backend only.
     match /events/{eventId} {
-      allow create: if true;
-      allow read, list, update, delete: if false;
+      allow read: if request.auth != null && request.auth.token.admin == true;
+      allow write: if false; // always via Functions
     }
   }
 }
