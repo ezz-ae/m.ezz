@@ -19,6 +19,7 @@ import Link from 'next/link';
 import { type Notebook } from '@/components/notebooks/notebook-data';
 import { type NotebookKey } from '@/components/notebooks/notebook-data';
 import { useStudioStore } from '@/lib/store';
+import { cn } from '@/lib/utils';
 
 type Message = {
   role: 'user' | 'assistant';
@@ -108,9 +109,10 @@ export function NotebookStudio({ activeNotebook, activeNotebookSlug }: NotebookS
               {messages.map((message, index) => (
                 <div
                   key={index}
-                  className={`flex items-start gap-3 ${
-                    message.role === 'user' ? 'justify-end' : ''
-                  }`}
+                  className={cn('flex items-start gap-3', 
+                    message.role === 'user' ? 'justify-end' : '',
+                    message.role === 'assistant' && 'animate-fade-in'
+                  )}
                 >
                   {message.role === 'assistant' && (
                     <Avatar className="h-8 w-8 border">
@@ -144,7 +146,7 @@ export function NotebookStudio({ activeNotebook, activeNotebookSlug }: NotebookS
                 </div>
               ))}
               {isLoading && (
-                 <div className="flex items-start gap-3">
+                 <div className="flex items-start gap-3 animate-fade-in">
                     <Avatar className="h-8 w-8 border">
                         <AvatarFallback className="bg-primary text-primary-foreground">
                         <Bot className="h-5 w-5" />
