@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/sidebar';
 import { NOTEBOOKS, NotebookKey } from '@/components/notebooks/notebook-data';
 import { CommandPalette } from '@/components/command-palette';
+import { NotebookStudio } from '@/components/notebooks/notebook-studio';
 
 const TOPICS: { key: NotebookKey; label: string }[] = [
   { key: 'aixself', label: 'AIXSELF — The Instance' },
@@ -81,8 +82,9 @@ export default function LibraryPage() {
           </SidebarContent>
         </Sidebar>
         
-        <SidebarInset className="max-w-4xl mx-auto px-4 md:px-8 py-12 !min-h-0">
-            <header className="flex items-center gap-4 mb-8">
+        <SidebarInset className="!min-h-0 flex-1 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-0">
+          <div className="lg:col-span-1 xl:col-span-2 flex flex-col h-[calc(100dvh-4rem)]">
+            <header className="flex items-center gap-4 p-4 border-b">
                  <SidebarTrigger className="md:hidden" />
                  <div>
                     <p className="text-sm uppercase tracking-widest text-muted-foreground">
@@ -94,11 +96,16 @@ export default function LibraryPage() {
                  </div>
             </header>
             
-            <article id={activeNotebook} className="prose prose-lg max-w-none">
+            <article id={activeNotebook} className="prose prose-lg max-w-none flex-1 overflow-y-auto p-6 md:p-8">
                 <div className="whitespace-pre-wrap font-mono text-base leading-relaxed">
                     {notebook.body}
                 </div>
             </article>
+          </div>
+          
+          <div className="hidden lg:block lg:col-span-1 xl:col-span-1">
+             <NotebookStudio activeNotebook={notebook} activeNotebookSlug={activeNotebook} />
+          </div>
         </SidebarInset>
       </div>
     </SidebarProvider>

@@ -1,5 +1,10 @@
 
-export const NOTEBOOKS = {
+export type Notebook = {
+    title: string;
+    body: string;
+};
+
+export const NOTEBOOKS: Record<string, Notebook> = {
   aixself: {
     title: 'AIXSELF — The Complete Intelligence Instance',
     body: `AIXSELF = ADEPT + AIXA + Notefull + AIXIAM + AIXEYE, compiled into one operating unit.

@@ -6,7 +6,6 @@ const navLinks = [
   { href: '/library', label: 'Library' },
   { href: '/theory', label: 'Theory' },
   { href: '/mindmap', label: 'MindMap' },
-  { href: '/studio', label: 'Studio' },
   { href: '/blog', label: 'Blog' },
 ];
 

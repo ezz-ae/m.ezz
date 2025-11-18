@@ -1,7 +1,6 @@
-
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   ArrowRight,
@@ -15,22 +14,43 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { queryLivingNotebook } from '@/lib/actions';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
+import { type Notebook } from '@/components/notebooks/notebook-data';
+import { type NotebookKey } from '@/components/notebooks/notebook-data';
 
 type Message = {
   role: 'user' | 'assistant';
   content: string;
 };
 
-export default function StudioPage() {
+type NotebookStudioProps = {
+    activeNotebook: Notebook;
+    activeNotebookSlug: NotebookKey;
+}
+
+export function NotebookStudio({ activeNotebook, activeNotebookSlug }: NotebookStudioProps) {
   const [query, setQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      role: 'assistant',
-      content:
-        "Welcome to the Studio. I have been trained on the principles of Cognitive Architecture and the entire AIXSELF universe. Ask me anything, or explore a specific topic in the [Library](/library).",
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMessages([
+      {
+        role: 'assistant',
+        content: `I am ready to answer questions about "${activeNotebook.title}".`,
+      },
+    ]);
+  }, [activeNotebook]);
+  
+  useEffect(() => {
+    if (scrollAreaRef.current) {
+        const viewport = scrollAreaRef.current.querySelector('div[data-radix-scroll-area-viewport]');
+        if (viewport) {
+            viewport.scrollTop = viewport.scrollHeight;
+        }
+    }
+  }, [messages, isLoading]);
+
 
   const handleQuery = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,8 +61,7 @@ export default function StudioPage() {
     setIsLoading(true);
     setQuery('');
 
-    // The general studio page queries all notebooks
-    const result = await queryLivingNotebook({ query });
+    const result = await queryLivingNotebook({ query, slug: activeNotebookSlug });
     
     let assistantMessage: Message;
     if (result.error) {
@@ -56,19 +75,18 @@ export default function StudioPage() {
   };
 
   return (
-    <div className="container mx-auto max-w-4xl py-12 md:py-16">
-      <div className="h-[75dvh] w-full flex flex-col rounded-xl border bg-card text-card-foreground shadow-sm">
+    <div className="h-full w-full flex flex-col rounded-xl border bg-card text-card-foreground shadow-sm">
         <header className="border-b p-4">
             <div className="flex items-center gap-2">
                 <Sparkles className="h-6 w-6 text-primary" />
                 <h1 className="font-headline text-xl font-bold">
-                    Studio Notebook
+                    Studio
                 </h1>
             </div>
-           <p className="text-sm text-muted-foreground ml-8">Ask the AI Principal about Cognitive Architecture.</p>
+           <p className="text-sm text-muted-foreground ml-8">Ask about this notebook.</p>
         </header>
         <div className="flex-1 p-0 flex flex-col overflow-hidden">
-          <ScrollArea className="flex-1 p-4 md:p-6">
+          <ScrollArea className="flex-1 p-4 md:p-6" ref={scrollAreaRef}>
             <div className="space-y-6">
               {messages.map((message, index) => (
                 <div
@@ -127,7 +145,7 @@ export default function StudioPage() {
               <Input
                 value={query}
                 onChange={e => setQuery(e.target.value)}
-                placeholder="Ask about AIXSELF, Notefull, or Forgetism..."
+                placeholder="Ask a follow-up question..."
                 className="flex-1"
                 disabled={isLoading}
               />
@@ -143,6 +161,5 @@ export default function StudioPage() {
           </div>
         </div>
       </div>
-    </div>
   );
 }
