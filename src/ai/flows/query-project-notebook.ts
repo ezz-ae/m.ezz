@@ -9,7 +9,7 @@
  */
 
 import { ai } from '@/ai/genkit';
-import { z } from 'genkit';
+import { z } from 'zod';
 import { projects } from '@/lib/data';
 
 // Define a simplified text-only representation of projects for the AI context.
