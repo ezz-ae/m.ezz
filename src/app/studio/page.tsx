@@ -1,8 +1,9 @@
+
 'use client';
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import {
   ArrowRight,
@@ -27,7 +28,7 @@ export default function StudioPage() {
     {
       role: 'assistant',
       content:
-        "Welcome to the Project Studio. I have been trained on all of Mahmoud Ezz's architectural projects. Ask me anything about them.",
+        "Welcome to the Studio. I have been trained on the principles of Cognitive Architecture and the AIXSELF universe. Ask me anything.",
     },
   ]);
 
@@ -59,8 +60,9 @@ export default function StudioPage() {
         <CardHeader className="border-b">
           <CardTitle className="flex items-center gap-2 font-headline">
             <Sparkles className="h-6 w-6 text-primary" />
-            Project Studio Notebook
+            Studio Notebook
           </CardTitle>
+           <CardDescription>Ask the AI Principal about Cognitive Architecture.</CardDescription>
         </CardHeader>
         <CardContent className="flex-1 p-0 flex flex-col">
           <ScrollArea className="flex-1 p-4 md:p-6">
@@ -86,7 +88,7 @@ export default function StudioPage() {
                         : 'bg-muted'
                     }`}
                   >
-                    <p className="text-sm">{message.content}</p>
+                    <p className="text-sm whitespace-pre-wrap">{message.content}</p>
                   </div>
                   {message.role === 'user' && (
                     <Avatar className="h-8 w-8">
@@ -116,7 +118,7 @@ export default function StudioPage() {
               <Input
                 value={query}
                 onChange={e => setQuery(e.target.value)}
-                placeholder="Ask about a project, e.g., 'Tell me about The Obelisk Villa'..."
+                placeholder="Ask about AIXSELF, Notefull, or Forgetism..."
                 className="flex-1"
                 disabled={isLoading}
               />

@@ -1,9 +1,10 @@
+
 'use client';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Logo } from '@/components/icons';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -15,8 +16,6 @@ const navLinks: NavLink[] = [
   { href: '/about', label: 'About' },
   { href: '/notebooks', label: 'Notebooks' },
   { href: '/studio', label: 'Studio' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contact', label: 'Contact' },
 ];
 
 export function SiteHeader() {
@@ -26,7 +25,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
-        <div className="mr-4 hidden md:flex">
+        <div className="mr-8 hidden md:flex">
           <Logo />
         </div>
 
@@ -89,7 +88,7 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex items-center justify-end">
-            {/* Future elements like social icons can go here */}
+            {/* Future elements can go here */}
           </div>
         </div>
       </div>

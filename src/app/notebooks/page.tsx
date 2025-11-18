@@ -1,8 +1,9 @@
+
 import { NotebookViewer } from '@/components/notebooks/notebook-viewer';
 
 export default function NotebooksPage() {
   return (
-    <div className="bg-[#f5f5f5] text-[#111] min-h-screen">
+    <div className="bg-[#f5f5f5] text-[#111] min-h-screen py-12 md:py-16">
       <main className="mx-auto max-w-6xl p-4 sm:p-8">
         <header className="mb-8">
           <h1 className="text-3xl font-bold uppercase tracking-[0.03em]">

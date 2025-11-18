@@ -1,3 +1,4 @@
+
 import { Logo } from '@/components/icons';
 import { Github, Linkedin, Twitter } from 'lucide-react';
 import Link from 'next/link';
@@ -7,8 +8,6 @@ const navLinks = [
   { href: '/about', label: 'About' },
   { href: '/notebooks', label: 'Notebooks' },
   { href: '/studio', label: 'Studio' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contact', label: 'Contact' },
 ];
 
 export function SiteFooter() {
@@ -19,7 +18,7 @@ export function SiteFooter() {
           <div className="flex flex-col items-start gap-4">
             <Logo />
             <p className="max-w-xs text-sm text-muted-foreground">
-              Architectural design rooted in the physics of cognition.
+              Forgetting systems & memory-safe intelligence.
             </p>
           </div>
           <div className="md:justify-self-center">
@@ -48,7 +47,7 @@ export function SiteFooter() {
                 <Linkedin className="h-6 w-6" />
                 <span className="sr-only">LinkedIn</span>
               </a>
-              <a href="#" className="text-muted-foreground transition-colors hover:text-primary">
+              <a href="https://github.com/ezz-ae" target="_blank" rel="noopener noreferrer" className="text-muted-foreground transition-colors hover:text-primary">
                 <Github className="h-6 w-6" />
                 <span className="sr-only">GitHub</span>
               </a>

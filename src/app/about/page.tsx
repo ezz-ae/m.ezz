@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { getImage } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
@@ -19,7 +20,7 @@ export default function AboutPage() {
 
         <div className="grid gap-12 md:grid-cols-3">
           <div className="md:col-span-1">
-            <Card className="overflow-hidden">
+            <Card className="overflow-hidden rounded-lg">
                 <Image
                   src={portraitImage.imageUrl}
                   alt={portraitImage.description}
@@ -31,7 +32,7 @@ export default function AboutPage() {
             </Card>
              <div className="mt-4 text-center">
                 <h2 className="font-headline text-2xl font-semibold">Mahmoud Ezz</h2>
-                <p className="text-sm text-muted-foreground">Principal Architect</p>
+                <p className="text-sm text-muted-foreground">Cognitive Architect</p>
             </div>
           </div>
 
@@ -43,14 +44,14 @@ export default function AboutPage() {
               "Limitation is the mother of meaning."
             </blockquote>
             <p>
-              Our work seeks to embody this principle. We don't design buildings; we establish boundaries that allow life to form coherent patterns. A project without constraints—of site, of material, of purpose—is mere noise. It is through the thoughtful application of limitation that we collapse infinite possibility into a singular, resonant form.
+              Our work seeks to embody this principle. We don't design systems; we establish boundaries that allow life to form coherent patterns. A project without constraints—of site, of material, of purpose—is mere noise. It is through the thoughtful application of limitation that we collapse infinite possibility into a singular, resonant form.
             </p>
             <h3 className="font-headline text-2xl font-semibold">Our Process</h3>
             <ul>
               <li><strong>Limitation → Frequency:</strong> We embrace constraints to distill the core frequency of a project.</li>
               <li><strong>Frequency → Resonance:</strong> We shape forms and spaces that resonate with their context and inhabitants.</li>
-              <li><strong>Resonance → Meaning:</strong> We create architecture that is not just seen, but felt and understood.</li>
-              <li><strong>Meaning → Intelligence:</strong> Our goal is to build intelligent spaces that adapt, endure, and inspire.</li>
+              <li><strong>Resonance → Meaning:</strong> We create systems that are not just seen, but felt and understood.</li>
+              <li><strong>Meaning → Intelligence:</strong> Our goal is to build intelligent systems that adapt, endure, and inspire.</li>
             </ul>
             <p>
               This approach transforms architecture from a static object into a dynamic system—a stable, creative, and meaningful environment that is deeply aligned with human experience. This is not just a philosophy; it is a structural law we build upon.

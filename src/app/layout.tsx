@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { PT_Sans, Playfair_Display } from 'next/font/google';
 import './globals.css';
@@ -18,8 +19,8 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'Ezz.AE Showcase',
-  description: "Mahmoud Ezz's Architectural Portfolio",
+  title: 'EZZ.AE - Cognitive Architecture',
+  description: "Mahmoud Ezz's Forgetting Systems & Memory-Safe Intelligence",
 };
 
 export default function RootLayout({
@@ -49,7 +50,9 @@ export default function RootLayout({
         )}
       >
         <div className="relative flex min-h-dvh flex-col">
-          {children}
+          <SiteHeader />
+          <main className="flex-1">{children}</main>
+          <SiteFooter />
         </div>
         <Toaster />
       </body>

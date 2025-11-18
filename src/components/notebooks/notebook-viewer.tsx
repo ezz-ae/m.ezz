@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -90,7 +91,7 @@ export function NotebookViewer() {
 
   return (
     <section className="grid grid-cols-1 gap-6 md:grid-cols-[260px_1fr]">
-      <aside className="sticky top-4 h-fit self-start rounded-xl border border-[#e3e3e3] bg-white p-4">
+      <aside className="sticky top-20 h-fit self-start rounded-xl border border-[#e3e3e3] bg-white p-4">
         <h2 className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-[#777]">
           The AIXSELF Universe
         </h2>
@@ -98,11 +99,12 @@ export function NotebookViewer() {
           {TOPICS.map((topic) => (
             <button
               key={topic.key}
-              className={cn(
-                'w-full cursor-pointer rounded-full border border-[#ddd] bg-[#fafafa] px-3 py-2 text-left text-sm transition-colors duration-100 ease-in hover:border-[#ccc] hover:bg-[#f0f0f0]',
-                activeNotebook === topic.key && 'border-black bg-black text-white'
-              )}
               onClick={() => setActiveNotebook(topic.key)}
+              className={cn(
+                'w-full cursor-pointer rounded-full border border-transparent bg-transparent px-3 py-2 text-left text-sm font-medium transition-colors duration-150',
+                'hover:bg-gray-100',
+                activeNotebook === topic.key ? 'bg-primary text-primary-foreground shadow-sm hover:bg-primary/90' : 'text-gray-700'
+              )}
             >
               {topic.label}
             </button>
@@ -110,18 +112,18 @@ export function NotebookViewer() {
         </div>
       </aside>
 
-      <section className="min-h-[260px] rounded-2xl border border-[#e3e3e3] bg-white p-6">
+      <article className="min-h-[260px] rounded-2xl border border-[#e3e3e3] bg-white p-6">
         <p className="mb-1 text-xs uppercase tracking-[0.16em] text-[#888]">
           Living Blueprint
         </p>
-        <h3 className="mb-3 text-xl font-semibold text-[#111]">
+        <h3 className="mb-3 font-headline text-xl font-semibold text-[#111]">
           {notebook.title}
         </h3>
         <div className="my-4 h-px bg-[#eee]"></div>
         <div className="whitespace-pre-wrap font-mono text-sm leading-relaxed text-[#222]">
           {notebook.body}
         </div>
-      </section>
+      </article>
     </section>
   );
 }

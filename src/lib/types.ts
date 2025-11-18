@@ -1,23 +1,6 @@
-export type Project = {
-  slug: string;
-  title: string;
-  category: 'Residential' | 'Commercial' | 'Cultural';
-  description: string;
-  longDescription: string;
-  keyElements: string;
-  coverImage: string;
-  images: string[];
-  year: number;
-};
 
-export type Post = {
-  slug: string;
-  title:string;
-  date: string;
-  excerpt: string;
-  content: string;
-  coverImage: string;
-};
+// This file is now empty as the types are no longer needed for the redesigned site.
+// It can be removed in a future cleanup.
 
 export type NavLink = {
   href: string;
