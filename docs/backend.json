@@ -1,9 +1,8 @@
-
 {
   "entities": {
     "User": {
       "title": "User",
-      "description": "Represents a user of the system.",
+      "description": "Represents a user of the system (e.g., Mahmoud).",
       "type": "object",
       "properties": {
         "displayName": { "type": "string", "description": "User's display name." },
@@ -15,14 +14,15 @@
     },
     "Notebook": {
       "title": "Notebook",
-      "description": "Represents one 'living intelligence document'.",
+      "description": "Represents one 'living intelligence document' or sovereign intelligence.",
       "type": "object",
       "properties": {
         "ownerId": { "type": "string", "description": "ID of the user who owns the notebook." },
         "slug": { "type": "string", "description": "URL-friendly slug for the notebook." },
         "title": { "type": "string", "description": "Title of the notebook." },
-        "description": { "type": "string", "description": "Description of the notebook." },
+        "description": { "type": "string", "description": "Purpose of the notebook." },
         "visibility": { "type": "string", "description": "Visibility of the notebook.", "enum": ["public", "private", "unlisted"] },
+        "status": { "type": "string", "description": "Operational status of the notebook.", "enum": ["active", "sleeping", "archived"] },
         "tags": { "type": "array", "items": { "type": "string" }, "description": "Tags associated with the notebook." },
         "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of creation." },
         "updatedAt": { "type": "string", "format": "date-time", "description": "Timestamp of last update." },
@@ -33,9 +33,19 @@
             "maxBufferSize": { "type": "number" }
           },
           "required": ["fadeMode", "maxBufferSize"]
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "languages": { "type": "array", "items": { "type": "string" } },
+            "masterSkills": { "type": "array", "items": { "type": "string" } },
+            "learningDomains": { "type": "array", "items": { "type": "object", "properties": { "domain": { "type": "string" }, "depth": { "type": "string", "enum": ["Beginner", "Practitioner", "Expert"] } } } },
+            "inputs": { "type": "array", "items": { "type": "string" } },
+            "outputs": { "type": "array", "items": { "type": "string" } }
+          }
         }
       },
-      "required": ["ownerId", "slug", "title", "visibility", "createdAt", "updatedAt", "fctProfile"]
+      "required": ["ownerId", "slug", "title", "status", "visibility", "createdAt", "updatedAt", "fctProfile"]
     },
     "Note": {
       "title": "Note",
@@ -51,92 +61,21 @@
       },
       "required": ["authorId", "content", "source", "createdAt", "updatedAt"]
     },
-    "Concept": {
-      "title": "Concept",
-      "description": "Represents a normalized idea or meaning extracted from notes.",
+    "VertexEntry": {
+      "title": "Vertex Entry",
+      "description": "Represents the metadata stored alongside a vector embedding in the Notebook Vertex (Vector DB).",
       "type": "object",
       "properties": {
-        "label": { "type": "string", "description": "Label for the concept." },
-        "summary": { "type": "string", "description": "Summary of the concept." },
-        "relatedNoteIds": { "type": "array", "items": { "type": "string" }, "description": "IDs of notes related to this concept." },
-        "frequency": { "type": "number", "description": "Frequency of the concept." },
-        "returnRate": { "type": "number", "description": "Return rate of the concept." },
-        "driftScore": { "type": "number", "description": "Drift score of the concept." },
-        "persistenceScore": { "type": "number", "description": "Persistence score of the concept." }
+        "owner_did": { "type": "string", "description": "Decentralized Identifier of the owner." },
+        "notebook_id": { "type": "string", "description": "ID of the notebook this entry belongs to." },
+        "source_note_id": { "type": "string", "description": "The original note from which the vector was derived." },
+        "tag_type": { "type": "string", "description": "The semantic type of the content (e.g., 'question', 'decision', 'raw_log')." },
+        "reflection_status": { "type": "string", "description": "The current state in the FCT lifecycle.", "enum": ["raw", "processed", "fading", "archived"] },
+        "schema_id": { "type": "string", "description": "Identifier for the extracted pattern or schema this vector contributes to." },
+        "emotional_tag": { "type": "string", "description": "FCT-based emotional or intentional tag." },
+        "timestamp": { "type": "string", "format": "date-time" }
       },
-      "required": ["label", "summary", "relatedNoteIds", "frequency", "returnRate", "driftScore", "persistenceScore"]
-    },
-    "Pattern": {
-      "title": "Pattern",
-      "description": "Represents a recurring theme across multiple notebooks.",
-      "type": "object",
-      "properties": {
-        "label": { "type": "string", "description": "Label for the pattern." },
-        "description": { "type": "string", "description": "Description of the pattern." },
-        "notebookIds": { "type": "array", "items": { "type": "string" }, "description": "IDs of notebooks where this pattern appears." },
-        "conceptIds": { "type": "array", "items": { "type": "string" }, "description": "IDs of concepts related to this pattern." },
-        "globalFrequency": { "type": "number", "description": "Global frequency of the pattern." },
-        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of creation." },
-        "updatedAt": { "type": "string", "format": "date-time", "description": "Timestamp of last update." }
-      },
-      "required": ["label", "description", "notebookIds", "conceptIds", "globalFrequency", "createdAt", "updatedAt"]
-    },
-    "Session": {
-      "title": "Session",
-      "description": "Represents a time-bounded thinking or work session.",
-      "type": "object",
-      "properties": {
-        "userId": { "type": "string", "description": "ID of the user for this session." },
-        "notebookId": { "type": "string", "description": "ID of the notebook for this session." },
-        "startedAt": { "type": "string", "format": "date-time", "description": "Timestamp when the session started." },
-        "endedAt": { "type": "string", "format": "date-time", "description": "Timestamp when the session ended." },
-        "noteCount": { "type": "number", "description": "Number of notes created during the session." },
-        "context": { "type": "string", "description": "Context of the session." }
-      },
-      "required": ["userId", "notebookId", "startedAt", "noteCount", "context"]
-    },
-    "LedgerEntry": {
-      "title": "LedgerEntry",
-      "description": "Represents a cognitive ledger line (reasoning trace).",
-      "type": "object",
-      "properties": {
-        "notebookId": { "type": "string", "description": "ID of the notebook for this entry." },
-        "userId": { "type": "string", "description": "ID of the user for this entry." },
-        "type": { "type": "string", "description": "Type of ledger entry.", "enum": ["decision", "reflection", "transform", "fade"] },
-        "payload": { "type": "object", "description": "Payload associated with the ledger entry." },
-        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of creation." },
-        "hash": { "type": "string", "description": "Hash of the ledger entry." },
-        "prevHash": { "type": "string", "description": "Hash of the previous ledger entry." }
-      },
-      "required": ["notebookId", "type", "payload", "createdAt", "hash"]
-    },
-    "Artifact": {
-      "title": "Artifact",
-      "description": "Represents a forgetting artifact (compressed learning from decayed data).",
-      "type": "object",
-      "properties": {
-        "notebookId": { "type": "string", "description": "ID of the notebook for this artifact." },
-        "sourceNoteIds": { "type": "array", "items": { "type": "string" }, "description": "IDs of source notes." },
-        "schemaLabel": { "type": "string", "description": "Schema label for the artifact." },
-        "summary": { "type": "string", "description": "Summary of the artifact." },
-        "compressedAt": { "type": "string", "format": "date-time", "description": "Timestamp when the artifact was compressed." },
-        "decayLevel": { "type": "number", "description": "Decay level of the artifact (0-1)." }
-      },
-      "required": ["notebookId", "sourceNoteIds", "schemaLabel", "summary", "compressedAt", "decayLevel"]
-    },
-    "Event": {
-      "title": "Event",
-      "description": "Represents an analytics or behavioral signal.",
-      "type": "object",
-      "properties": {
-        "userId": { "type": "string", "description": "ID of the user who triggered the event." },
-        "type": { "type": "string", "description": "Type of event.", "enum": ["page_view", "notebook_open", "session_start", "session_end", "note_created"] },
-        "path": { "type": "string", "description": "Path associated with the event." },
-        "notebookId": { "type": "string", "description": "ID of the notebook related to the event." },
-        "ts": { "type": "string", "format": "date-time", "description": "Timestamp of the event." },
-        "meta": { "type": "object", "description": "Metadata associated with the event." }
-      },
-      "required": ["type", "ts"]
+      "required": ["owner_did", "notebook_id", "source_note_id", "tag_type", "reflection_status", "timestamp"]
     }
   },
   "auth": {
@@ -150,38 +89,69 @@
       },
       {
         "path": "/notebooks/{notebookId}",
-        "definition": { "schema": { "$ref": "#/backend/entities/Notebook" }, "description": "Stores notebooks." }
+        "definition": { "schema": { "$ref": "#/backend/entities/Notebook" }, "description": "Stores sovereign intelligence notebooks." }
       },
       {
         "path": "/notebooks/{notebookId}/notes/{noteId}",
         "definition": { "schema": { "$ref": "#/backend/entities/Note" }, "description": "Stores notes within a specific notebook." }
-      },
-      {
-        "path": "/notebooks/{notebookId}/concepts/{conceptId}",
-        "definition": { "schema": { "$ref": "#/backend/entities/Concept" }, "description": "Stores concepts extracted from notes within a notebook." }
-      },
-      {
-        "path": "/patterns/{patternId}",
-        "definition": { "schema": { "$ref": "#/backend/entities/Pattern" }, "description": "Stores recurring themes across multiple notebooks." }
-      },
-      {
-        "path": "/sessions/{sessionId}",
-        "definition": { "schema": { "$ref": "#/backend/entities/Session" }, "description": "Stores user work sessions." }
-      },
-      {
-        "path": "/ledgerEntries/{ledgerEntryId}",
-        "definition": { "schema": { "$ref": "#/backend/entities/LedgerEntry" }, "description": "Stores the cognitive ledger trace." }
-      },
-      {
-        "path": "/artifacts/{artifactId}",
-        "definition": { "schema": { "$ref": "#/backend/entities/Artifact" }, "description": "Stores forgetting artifacts." }
-      },
-      {
-        "path": "/events/{eventId}",
-        "definition": { "schema": { "$ref": "#/backend/entities/Event" }, "description": "Stores analytics events." }
       }
     ]
+  },
+  "api": {
+    "sensehub": {
+      "description": "The SenseHub ingestion engine for the NotefullBook Memory Fabric.",
+      "endpoints": [
+        {
+          "path": "/mem/entry",
+          "method": "POST",
+          "description": "Adds a new signed entry (NotebookML Envelope) to the memory fabric. The entry is processed, vectorized, and stored in the Notebook Vertex.",
+          "request": {
+            "body": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "notebookId": { "type": "string" },
+                  "notebookml_content": { "type": "string" },
+                  "signature": { "type": "string" }
+                },
+                "required": ["notebookId", "notebookml_content", "signature"]
+              }
+            }
+          },
+          "response": {
+            "202": { "description": "Accepted for processing." }
+          }
+        }
+      ]
+    },
+    "adept": {
+      "description": "The ADEPT/Reflection engine for orchestrating and querying intelligence.",
+      "endpoints": [
+        {
+          "path": "/mem/search",
+          "method": "GET",
+          "description": "Performs a Meaning-First Retrieval (MFR) query against the Notebook Vertex using FCT-based criteria.",
+          "request": {
+            "query_params": {
+              "q": { "type": "string", "description": "The natural language query." },
+              "notebook_id": { "type": "string", "description": "The ID of the notebook to search within." },
+              "k": { "type": "number", "description": "The number of results to return." },
+              "intent": { "type": "string", "description": "The user's intent to guide FCT-based recall." }
+            }
+          },
+          "response": {
+            "200": {
+              "description": "A list of contextually relevant schemas, logic rules, and behavioral artifacts.",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/backend/entities/VertexEntry"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
   }
 }
-
-    
