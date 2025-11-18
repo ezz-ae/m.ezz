@@ -2,6 +2,7 @@
 
 import { z } from 'zod';
 import { generateDesignInsights, type GenerateDesignInsightsInput } from '@/ai/flows/generate-design-insights';
+import { queryProjectNotebook as queryNotebook, type QueryProjectNotebookInput } from '@/ai/flows/query-project-notebook';
 import { revalidatePath } from 'next/cache';
 
 // AI Design Insights Action
@@ -14,6 +15,18 @@ export async function getAIDesignInsights(input: GenerateDesignInsightsInput) {
     return { data: null, error: 'Failed to generate insights. Please try again later.' };
   }
 }
+
+// Project Notebook Query Action
+export async function queryProjectNotebook(input: QueryProjectNotebookInput) {
+  try {
+    const result = await queryNotebook(input);
+    return { data: result.answer, error: null };
+  } catch (error) {
+    console.error('Project Notebook Query Error:', error);
+    return { data: null, error: 'Failed to get an answer. The AI model may be unavailable. Please try again later.' };
+  }
+}
+
 
 // Contact Form Action
 const ContactFormSchema = z.object({
