@@ -1,9 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
 
 const NOTEBOOKS = {
@@ -93,39 +90,38 @@ export function NotebookViewer() {
 
   return (
     <section className="grid grid-cols-1 gap-6 md:grid-cols-[260px_1fr]">
-      <Card className="sticky top-20 h-fit self-start p-4">
-        <h2 className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+      <aside className="sticky top-4 h-fit self-start rounded-xl border border-[#e3e3e3] bg-white p-4">
+        <h2 className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-[#777]">
           The AIXSELF Universe
         </h2>
         <div className="flex flex-col gap-2">
           {TOPICS.map((topic) => (
-            <Button
+            <button
               key={topic.key}
-              variant={activeNotebook === topic.key ? 'default' : 'outline'}
               className={cn(
-                'w-full justify-start rounded-md px-3 text-left',
-                activeNotebook === topic.key && 'bg-foreground text-background hover:bg-foreground/90'
+                'w-full cursor-pointer rounded-full border border-[#ddd] bg-[#fafafa] px-3 py-2 text-left text-sm transition-colors duration-100 ease-in hover:border-[#ccc] hover:bg-[#f0f0f0]',
+                activeNotebook === topic.key && 'border-black bg-black text-white'
               )}
               onClick={() => setActiveNotebook(topic.key)}
             >
               {topic.label}
-            </Button>
+            </button>
           ))}
         </div>
-      </Card>
+      </aside>
 
-      <Card className="min-h-[260px] p-6">
-        <p className="mb-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">
+      <section className="min-h-[260px] rounded-2xl border border-[#e3e3e3] bg-white p-6">
+        <p className="mb-1 text-xs uppercase tracking-[0.16em] text-[#888]">
           Living Blueprint
         </p>
-        <h3 className="mb-3 font-headline text-2xl font-semibold">
+        <h3 className="mb-3 text-xl font-semibold text-[#111]">
           {notebook.title}
         </h3>
-        <Separator />
-        <div className="mt-4 whitespace-pre-wrap font-mono text-sm leading-relaxed text-foreground/80">
+        <div className="my-4 h-px bg-[#eee]"></div>
+        <div className="whitespace-pre-wrap font-mono text-sm leading-relaxed text-[#222]">
           {notebook.body}
         </div>
-      </Card>
+      </section>
     </section>
   );
 }
