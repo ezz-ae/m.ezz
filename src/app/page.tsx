@@ -1,129 +1,160 @@
 
+'use client';
+
+import React, { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 
 export default function Home() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    const scenes = document.querySelectorAll(".scene");
+
+    const sceneObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+
+            const typingBlock = entry.target.querySelector("[data-typing]");
+            if (typingBlock && !(typingBlock as HTMLElement).dataset.started) {
+              (typingBlock as HTMLElement).dataset.started = "true";
+              runTypingBlock(typingBlock);
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.35,
+      }
+    );
+
+    scenes.forEach((scene) => sceneObserver.observe(scene));
+    
+    const handleScroll = () => {
+        if (heroRef.current && titleRef.current) {
+            const { top, height } = heroRef.current.getBoundingClientRect();
+            const scrollPercent = Math.max(0, Math.min(1, (-top / height) * 1.5));
+            
+            if (scrollPercent > 0.3) {
+                 const scale = 1 - (scrollPercent - 0.3) * 0.1; // Start scaling down after 30% scroll
+                 titleRef.current.style.transform = `scale(${Math.max(0.94, scale)})`;
+            } else {
+                 titleRef.current.style.transform = 'scale(1)';
+            }
+        }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+
+
+    return () => {
+      scenes.forEach((scene) => sceneObserver.unobserve(scene));
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const runTypingBlock = (block: Element) => {
+    const lines = Array.from(block.querySelectorAll(".line")) as HTMLElement[];
+    let lineIndex = 0;
+
+    function typeNextLine() {
+      if (lineIndex >= lines.length) return;
+      const el = lines[lineIndex];
+      const text = el.textContent || '';
+      el.textContent = "";
+      el.style.opacity = '1';
+      let charIndex = 0;
+
+      function typeChar() {
+        if (charIndex > text.length) {
+          lineIndex++;
+          setTimeout(typeNextLine, 220); // delay between lines
+          return;
+        }
+        el.textContent = text.slice(0, charIndex);
+        charIndex++;
+        setTimeout(typeChar, 40); // typing speed
+      }
+
+      typeChar();
+    }
+
+    typeNextLine();
+  };
+
   return (
-    <div className="relative">
-      <div className="glow-scroll" />
-      <div className="container relative flex min-h-dvh flex-col items-center justify-center py-24 text-center md:py-32">
-        <div className="mx-auto max-w-3xl space-y-12">
-          <h1
-            className={cn(
-              'font-headline text-5xl font-bold tracking-tighter md:text-7xl lg:text-8xl',
-              'animate-scroll'
-            )}
-          >
-            The Physics of Cognition
+    <main className="page">
+      <section className="scene scene--hero" data-theme="light" ref={heroRef}>
+        <div className="scene-inner">
+          <h1 className="title" ref={titleRef}>
+            EZZ.AE
           </h1>
-          <p
-            className={cn(
-              'font-headline text-3xl text-muted-foreground md:text-4xl',
-              'animate-scroll'
-            )}
-            style={{ animationDelay: '0.1s' }}
-          >
-            Intelligence is not a function of memory, but of forgetting.
+          <p className="subtitle">
+            Intelligence is not what stays.
+            <br />
+            It’s what survives forgetting.
           </p>
-          <p
-            className={cn(
-              'font-headline text-3xl text-muted-foreground md:text-4xl',
-              'animate-scroll'
-            )}
-            style={{ animationDelay: '0.2s' }}
-          >
-            We design systems that learn by letting go, creating resonant
-            frequencies from the graceful decay of information.
-          </p>
-          <p
-            className={cn(
-              'font-headline text-3xl text-muted-foreground md:text-4xl',
-              'animate-scroll'
-            )}
-            style={{ animationDelay: '0.3s' }}
-          >
-            This is not erasure; it is coherence.
-          </p>
-          <div className={cn('space-y-12 pt-24', 'animate-scroll')}>
-            <h2 className="font-headline text-4xl font-bold tracking-tight md:text-5xl">
-              The Law of Resonance
-            </h2>
-            <p className="font-headline text-2xl text-muted-foreground md:text-3xl">
-              A system that remembers everything resonates with nothing. Meaning is
-              born from the signal that remains after the noise has gracefully
-              decayed.
-            </p>
-            <p className="font-headline text-2xl text-muted-foreground md:text-3xl">
-              We build architectures that find this signal.
-            </p>
-          </div>
-          <div className={cn('space-y-12 pt-24', 'animate-scroll')}>
-            <h2 className="font-headline text-4xl font-bold tracking-tight md:text-5xl">
-              The Economy of Forgetting
-            </h2>
-            <p className="font-headline text-2xl text-muted-foreground md:text-3xl">
-              Cognitive energy is finite. Forgetting is not a flaw but an economic
-              necessity—a lossless compression algorithm for intelligence.
-            </p>
-            <p className="font-headline text-2xl text-muted-foreground md:text-3xl">
-              It is the art of preserving the essential at the lowest possible
-              cost.
-            </p>
-          </div>
-          <div className={cn('space-y-12 pt-24', 'animate-scroll')}>
-            <h2 className="font-headline text-4xl font-bold tracking-tight md:text-5xl">
-              The Architecture of Meaning
-            </h2>
-            <p className="font-headline text-2xl text-muted-foreground md:text-3xl">
-              We do not construct models; we define boundaries. Within these
-              boundaries, meaning emerges organically, like a crystal forming in a
-              constrained solution.
-            </p>
-            <p className="font-headline text-2xl text-muted-foreground md:text-3xl">
-              The structure is not the object; it is the space that allows the
-              object to become.
-            </p>
-          </div>
-          <div className={cn('space-y-12 pt-24', 'animate-scroll')}>
-            <h2 className="font-headline text-4xl font-bold tracking-tight md:text-5xl">
-              The Harm of Perfect Memory
-            </h2>
-            <p className="font-headline text-2xl text-muted-foreground md:text-3xl">
-              An intelligence with perfect recall is a trauma loop. It is a system
-              trapped in the past, incapable of adaptation or growth.
-            </p>
-            <p className="font-headline text-2xl text-muted-foreground md:text-3xl">
-              To be intelligent is to have the freedom to become something new.
-              Forgetting grants this freedom.
-            </p>
-          </div>
-          <div className={cn('space-y-12 pt-24', 'animate-scroll')}>
-            <h2 className="font-headline text-4xl font-bold tracking-tight md:text-5xl">
-              The Principle of Fade-In Intelligence
-            </h2>
-            <p className="font-headline text-2xl text-muted-foreground md:text-3xl">
-              Knowledge should not be static. It should "fade-in," integrating
-              with the present moment at the right resolution, with the
-              irrelevant details gracefully left behind.
-            </p>
-            <p className="font-headline text-2xl text-muted-foreground md:text-3xl">
-              This is how memory remains relevant, not just accurate.
-            </p>
-          </div>
-          <div className={cn('space-y-12 pt-24', 'animate-scroll')}>
-            <h2 className="font-headline text-4xl font-bold tracking-tight md:text-5xl">
-              The Human × Machine Cognitive Boundary
-            </h2>
-            <p className="font-headline text-2xl text-muted-foreground md:text-3xl">
-              Our systems are not replacements for human cognition; they are
-              resonant extensions of it. They are designed to operate at the
-              boundary, amplifying our ability to find meaning.
-            </p>
-            <p className="font-headline text-2xl text-muted-foreground md:text-3xl">
-              We are not building a second brain; we are tuning the first one.
-            </p>
-          </div>
         </div>
-      </div>
-    </div>
+      </section>
+
+      <section className="scene" data-theme="light">
+        <div className="scene-inner typing-block" data-typing>
+          <p className="line">We don’t remember life as it happened.</p>
+          <p className="line">We remember what repeated.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">The rest softens.</p>
+          <p className="line">The rest becomes atmosphere.</p>
+        </div>
+      </section>
+
+      <section className="scene" data-theme="light">
+        <div className="scene-inner">
+            <p className="line line-soft" style={{ transitionDelay: '0s' }}>Pain fades.</p>
+            <p className="line line-soft" style={{ transitionDelay: '0.1s' }}>Structure stays.</p>
+            <p className="line line-soft">&nbsp;</p>
+            <p className="line line-soft" style={{ transitionDelay: '0.2s' }}>Forgetting is not failure.</p>
+            <p className="line line-soft" style={{ transitionDelay: '0.3s' }}>
+                It is pressure release. It is how the mind stays livable.
+            </p>
+        </div>
+      </section>
+
+      <section className="scene" data-theme="light">
+        <div className="scene-inner">
+            <p className="line" style={{ transitionDelay: '0s' }}>The brain does not archive events.</p>
+            <p className="line" style={{ transitionDelay: '0.1s' }}>It archives patterns.</p>
+            <p className="line line-em" style={{ transitionDelay: '0.3s' }}>Frequency becomes meaning.</p>
+            <p className="line" style={{ transitionDelay: '0.5s' }}>Meaning becomes logic.</p>
+            <p className="line" style={{ transitionDelay: '0.6s' }}>Logic becomes identity.</p>
+        </div>
+      </section>
+
+      <section className="scene" data-theme="dark">
+        <div className="scene-inner">
+            <p className="line" style={{ transitionDelay: '0s' }}>A machine that remembers everything</p>
+            <p className="line" style={{ transitionDelay: '0.1s' }}>is not intelligent.</p>
+            <p className="line" style={{ transitionDelay: '0.2s' }}>It is unstable.</p>
+            <p className="line" style={{ transitionDelay: '0.3s' }}>&nbsp;</p>
+            <p className="line" style={{ transitionDelay: '0.4s' }}>Forgetence designs systems</p>
+            <p className="line" style={{ transitionDelay: '0.5s' }}>that forget safely,</p>
+            <p className="line" style={{ transitionDelay: '0.6s' }}>and think with you,</p>
+            <p className="line" style={{ transitionDelay: '0.7s' }}>not about you.</p>
+        </div>
+      </section>
+
+      <section className="scene scene--end" data-theme="light">
+        <div className="scene-inner">
+          <p className="closing">
+            Intelligence is not memory.
+            <br />
+            It is what remains
+            <br />
+            after memory lets go.
+          </p>
+        </div>
+      </section>
+    </main>
   );
 }
