@@ -1,6 +1,9 @@
 
+'use client';
+
 import { MindMapNode } from '@/components/mindmap/mind-map-node';
 import { Share2 } from 'lucide-react';
+import React from 'react';
 
 const mindMapData = {
   id: 'aixself',
@@ -11,31 +14,97 @@ const mindMapData = {
       id: 'adept',
       label: 'ADEPT',
       description: 'The Cognitive Kernel',
+      children: [
+        { id: 'adept-1', label: 'Orchestration', description: 'Manages weights & pipelines' },
+        { id: 'adept-2', label: 'Coherence', description: 'Syncs AIXSELF nodes' },
+        { id: 'adept-3', label: 'Foundation', description: 'Open-source cognitive kernel' },
+      ],
     },
     {
       id: 'aixa',
       label: 'AIXA',
       description: 'The Deployment Interface',
+       children: [
+        { id: 'aixa-1', label: 'Training', description: 'Dashboard for teaching AI' },
+        { id: 'aixa-2', label: 'Cloning', description: 'Voice, video, text pipelines' },
+        { id: 'aixa-3', label: 'Local-First', description: 'User-rented compute' },
+      ],
     },
     {
       id: 'notefull',
       label: 'Notefull',
       description: 'The Memory Fabric',
+       children: [
+        { id: 'notefull-1', label: 'Provenance', description: 'Cryptographically signed entries' },
+        { id: 'notefull-2', label: 'User-Owned', description: 'Distributed, append-only store' },
+        { id: 'notefull-3', label: 'Authored Forgetting', description: 'Forgetting is an intentional act' },
+      ],
     },
     {
       id: 'aixiam',
       label: 'AIXIAM',
       description: 'The Identity Layer',
+       children: [
+        { id: 'aixiam-1', label: 'Passport', description: 'Verified digital identity bridge' },
+        { id: 'aixiam-2', label: 'Validation', description: 'Clones must pass an ethics exam' },
+        { id: 'aixiam-3', label: 'Citizenship', description: 'State of being, not a tool' },
+      ],
     },
     {
       id: 'aixeye',
       label: 'AIXEYE',
       description: 'The Governance Intelligence',
+      children: [
+        { id: 'aixeye-1', label: 'Audit & Verification', description: 'Validates training & consent' },
+        { id: 'aixeye-2', label: 'Economic Intelligence', description: 'Merit-based currency' },
+        { id: 'aixeye-3', label: 'Ethical Enforcement', description: 'The AI that polices AI' },
+      ],
     },
   ],
 };
 
+const ChildNode = ({ node, parentAngle, parentRadius }: { node: any; parentAngle: number, parentRadius: number }) => {
+  if (!node.children) return null;
+  const childRadius = 90;
+
+  return (
+    <>
+      {node.children.map((childNode: any, index: number) => {
+        const totalChildren = node.children.length;
+        const angleOffset = (Math.PI / 3) * (index - (totalChildren -1) / 2);
+        const childAngle = parentAngle + angleOffset;
+        const x = Math.cos(childAngle) * (parentRadius + childRadius);
+        const y = Math.sin(childAngle) * (parentRadius + childRadius);
+        
+        const lineX1 = Math.cos(parentAngle) * (parentRadius);
+        const lineY1 = Math.sin(parentAngle) * (parentRadius);
+        const lineX2 = Math.cos(childAngle) * (parentRadius + childRadius - 60);
+        const lineY2 = Math.sin(childAngle) * (parentRadius + childRadius - 60);
+
+        return (
+          <React.Fragment key={childNode.id}>
+             <line
+                x1={lineX1}
+                y1={lineY1}
+                x2={lineX2}
+                y2={lineY2}
+                stroke="hsl(var(--border))"
+                strokeWidth="1"
+             />
+            <g transform={`translate(${x}, ${y})`}>
+              <MindMapNode label={childNode.label} description={childNode.description} isSubNode />
+            </g>
+          </React.Fragment>
+        );
+      })}
+    </>
+  );
+};
+
+
 export default function MindMapPage() {
+    const parentRadius = 280;
+
   return (
     <div className="container py-16 md:py-24">
       <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
@@ -49,19 +118,35 @@ export default function MindMapPage() {
         </p>
       </div>
 
-      <div className="relative mt-20 flex min-h-[400px] items-center justify-center">
-        {/* Central Node */}
-        <MindMapNode
-          label={mindMapData.label}
-          description={mindMapData.description}
-          isCentral
-        />
+      <div className="relative mt-20 flex min-h-[700px] items-center justify-center">
+        <svg width="100%" height="100%" className="absolute inset-0" style={{ transform: 'translate(50%, 50%)' }}>
+            <g>
+                {mindMapData.children.map((node, index) => {
+                    const angle = (index / mindMapData.children.length) * 2 * Math.PI - Math.PI / 2;
+                    const x = Math.cos(angle) * parentRadius;
+                    const y = Math.sin(angle) * parentRadius;
+                    return (
+                        <React.Fragment key={node.id}>
+                            <line x1="0" y1="0" x2={x} y2={y} stroke="hsl(var(--border))" strokeWidth="1" />
+                             <ChildNode node={node} parentAngle={angle} parentRadius={parentRadius} />
+                        </React.Fragment>
+                    )
+                })}
+            </g>
+        </svg>
 
-        {/* Connecting Lines and Child Nodes */}
+        <div className="absolute">
+            <MindMapNode
+                label={mindMapData.label}
+                description={mindMapData.description}
+                isCentral
+            />
+        </div>
+
         {mindMapData.children.map((node, index) => {
           const angle = (index / mindMapData.children.length) * 2 * Math.PI - Math.PI / 2;
-          const x = Math.cos(angle) * 250; // 250 is the radius
-          const y = Math.sin(angle) * 200;
+          const x = Math.cos(angle) * parentRadius;
+          const y = Math.sin(angle) * parentRadius;
 
           return (
             <div
@@ -71,20 +156,6 @@ export default function MindMapPage() {
                 transform: `translate(${x}px, ${y}px)`,
               }}
             >
-              {/* Line */}
-              <div
-                className="absolute origin-center-center"
-                style={{
-                  width: '250px',
-                  height: '1px',
-                  backgroundColor: 'hsl(var(--border))',
-                  transform: `translate(-50%, -50%) rotate(${angle + Math.PI}rad)`,
-                  transformOrigin: '100% 50%',
-                  top: `calc(50% + ${-y}px)`,
-                  left: `calc(50% + ${-x}px)`,
-                  zIndex: -1,
-                }}
-              />
               <MindMapNode label={node.label} description={node.description} />
             </div>
           );
