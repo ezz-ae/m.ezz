@@ -2,6 +2,7 @@
 // src/components/notebooks/NotebookRenderer.tsx
 import { NOTEBOOKS } from './notebook-data';
 import { ForgetenceNotebook } from './ForgetenceNotebook';
+import { PlaceholderNotebook } from './PlaceholderNotebook';
 
 type NotebookRendererProps = {
   slug: string;
@@ -17,9 +18,9 @@ export default function NotebookRenderer({ slug }: NotebookRendererProps) {
 
   const Component = notebook.component;
   
-  if (notebook.id === 'forgetence') {
-      return <ForgetenceNotebook />;
+  if (Component === PlaceholderNotebook) {
+    return <PlaceholderNotebook topic={notebook.title} />;
   }
 
-  return <Component topic={notebook.title} />;
+  return <Component />;
 }
