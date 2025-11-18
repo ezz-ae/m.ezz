@@ -5,6 +5,7 @@ import NotebookRenderer from '@/components/notebooks/NotebookRenderer';
 import FooterMinimal from '@/components/FooterMinimal';
 import { NotebookShell } from '@/components/notebooks/NotebookShell';
 import type { Metadata } from 'next';
+import { NotebookQueryInterface } from '@/components/notebooks/NotebookQueryInterface';
 
 type NotebookPageProps = {
   params: {
@@ -66,7 +67,10 @@ export default function NotebookPage({ params }: NotebookPageProps) {
     <div className="bg-black min-h-screen pt-24">
         <main className="pb-16">
             <NotebookShell title={notebook.title} description={notebook.description}>
+                {/* Renders the core static content of the notebook */}
                 <NotebookRenderer slug={slug} />
+                {/* Renders the interactive query "studio" */}
+                <NotebookQueryInterface slug={slug} />
             </NotebookShell>
         </main>
         <FooterMinimal />
