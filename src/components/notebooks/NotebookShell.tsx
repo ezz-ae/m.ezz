@@ -1,12 +1,10 @@
-
 // src/components/notebooks/NotebookShell.tsx
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, BrainCircuit, BotMessageSquare, Milestone, Music } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ScrollHeading, ScrollParagraph } from '../ScrollTypography';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 type NotebookShellProps = {
   title: string;
@@ -15,6 +13,7 @@ type NotebookShellProps = {
 };
 
 export function NotebookShell({ title, description, children }: NotebookShellProps) {
+  // This function maps children to their designated roles based on their display name.
   const contentMap = React.Children.toArray(children).reduce((acc: {[key: string]: React.ReactNode}, child) => {
     if (React.isValidElement(child) && typeof child.type !== 'string') {
         const key = (child.type as any).displayName || child.type.name;
@@ -37,7 +36,7 @@ export function NotebookShell({ title, description, children }: NotebookShellPro
       {/* Soft background glow */}
       <div className="absolute inset-0 -z-10 bg-radial from-white/5 via-black to-black opacity-40" />
       
-      <div className="max-w-4xl mx-auto px-6">
+      <header className="max-w-4xl mx-auto px-6">
         <motion.div 
           className="py-12 border-b border-white/10"
           initial={{ opacity: 0, y: 20 }}
@@ -51,30 +50,15 @@ export function NotebookShell({ title, description, children }: NotebookShellPro
             <ScrollHeading as="h1" className="text-3xl md:text-5xl font-light text-neutral-50">{title}</ScrollHeading>
             <ScrollParagraph className="mt-4 text-lg text-neutral-300">{description}</ScrollParagraph>
         </motion.div>
-      </div>
+      </header>
 
-        <Tabs defaultValue="theory" className="w-full">
-            <div className="max-w-4xl mx-auto px-6 sticky top-0 z-20 bg-black/80 backdrop-blur-sm py-4">
-                 <TabsList className="grid w-full grid-cols-4 bg-neutral-900/80 border border-white/10">
-                    <TabsTrigger value="theory"><BrainCircuit className="mr-2 h-4 w-4" />Theory</TabsTrigger>
-                    <TabsTrigger value="conversation"><BotMessageSquare className="mr-2 h-4 w-4" />AI Conversation</TabsTrigger>
-                    <TabsTrigger value="mindmap"><Milestone className="mr-2 h-4 w-4" />Mind Map</TabsTrigger>
-                    <TabsTrigger value="audio"><Music className="mr-2 h-4 w-4" />Audio Overview</TabsTrigger>
-                </TabsList>
-            </div>
-            <TabsContent value="theory">
-                {contentMap.theory}
-            </TabsContent>
-            <TabsContent value="conversation">
-                {contentMap.conversation}
-            </TabsContent>
-            <TabsContent value="mindmap">
-                 {contentMap.mindmap}
-            </TabsContent>
-             <TabsContent value="audio">
-                 {contentMap.audio}
-            </TabsContent>
-        </Tabs>
+      {/* Main content flow */}
+      <div>
+        {contentMap.theory}
+        {contentMap.conversation}
+        {contentMap.mindmap}
+        {contentMap.audio}
+      </div>
 
     </motion.div>
   );
