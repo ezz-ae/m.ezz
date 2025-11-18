@@ -16,13 +16,13 @@ export function trackClientEvent(event: Omit<AnalyticsEvent, 'ts'>): void {
 
   if (process.env.NODE_ENV === 'production') {
     try {
+      const data = JSON.stringify(fullEvent);
       if (navigator.sendBeacon) {
-        const blob = new Blob([JSON.stringify(fullEvent)], { type: 'application/json' });
-        navigator.sendBeacon('/api/analytics', blob);
+        navigator.sendBeacon('/api/analytics', data);
       } else {
         fetch('/api/analytics', {
           method: 'POST',
-          body: JSON.stringify(fullEvent),
+          body: data,
           keepalive: true,
           headers: { 'Content-Type': 'application/json' },
         });
