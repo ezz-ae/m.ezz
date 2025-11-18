@@ -1,5 +1,6 @@
 
 import { NotebookViewer } from '@/components/notebooks/notebook-viewer';
+import { NOTEBOOKS } from '@/components/notebooks/notebook-data';
 
 export default function NotebooksPage() {
   return (
@@ -19,7 +20,7 @@ export default function NotebooksPage() {
           </p>
         </header>
 
-        <NotebookViewer />
+        <NotebookViewer notebooks={NOTEBOOKS} />
 
         <footer className="mt-8 border-t border-[#e3e3e3] pt-4 text-sm text-[#777]">
           “Intelligence isn’t memory. Intelligence is forgetting well.”
