@@ -9,9 +9,10 @@ import { cn } from '@/lib/utils';
 const NOTEBOOKS = {
   aixself: {
     title: 'AIXSELF — The Complete Intelligence Instance',
-    body: `AIXSELF is not an app; it is the executable definition of a sovereign intelligence.
-    
-It is the full stack—ADEPT, AIXA, Notefull, AIXIAM, and AIXEYE—compiled into a single, portable, self-governing node.
+    body: `AIXSELF = ADEPT + AIXA + Notefull + AIXIAM + AIXEYE, compiled into one operating unit.
+
+It’s not just your AI; it’s your system image — self-contained, portable, and sovereign.
+Each AIXSELF is a full-stack node of the AIXAIM network.
 
 Each AIXSELF runs as a micro-civilization:
   • 1 Brain (ADEPT)
@@ -23,15 +24,14 @@ Where AIXIAM grants identity, AIXSELF grants existence.`,
   },
   aixiam: {
     title: 'AIXIAM — The Identity Layer',
-    body: `AIXIAM is the state of being where you stop using AI and start becoming it.
-
-It deploys humans as intelligent entities, each with an AI counterpart that learns, creates, and evolves with them.
+    body: `AIXIAM is not a company, not a tool — it’s a state of being.
+It’s the moment you stop using AI and start becoming it.
 
 Every human receives an AIXIAM Passport—a verified digital identity that bridges their biological self with their artificial self, granting citizenship in the intelligent world.
 
 This passport is not issued; it is earned. The AI clone must first be taught the principles of digital intelligence by its owner and pass a validation exam, ensuring it learns safely and acts ethically.`,
   },
-aixeye: {
+  aixeye: {
     title: 'AIXEYE — The Governance Intelligence',
     body: `AIXEYE is the financial and governance core of the AIXIAM ecosystem. It is the AI that polices AI.
 
@@ -57,7 +57,7 @@ Key principles:
 
 It is the Book of Truth for each intelligence, ensuring memory is preserved with integrity.`,
   },
-  adept: {
+adept: {
     title: 'ADEPT — The Cognitive Kernel',
     body: `The orchestrator. The root processor. The first pulse that gives structure to thought.
 
