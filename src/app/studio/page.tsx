@@ -56,15 +56,17 @@ export default function StudioPage() {
 
   return (
     <div className="container mx-auto max-w-4xl py-12 md:py-16">
-      <Card className="h-[75dvh] w-full flex flex-col">
-        <CardHeader className="border-b">
-          <CardTitle className="flex items-center gap-2 font-headline">
-            <Sparkles className="h-6 w-6 text-primary" />
-            Studio Notebook
-          </CardTitle>
-           <CardDescription>Ask the AI Principal about Cognitive Architecture.</CardDescription>
-        </CardHeader>
-        <CardContent className="flex-1 p-0 flex flex-col">
+      <div className="h-[75dvh] w-full flex flex-col rounded-xl border bg-card text-card-foreground shadow-sm">
+        <header className="border-b p-4">
+            <div className="flex items-center gap-2">
+                <Sparkles className="h-6 w-6 text-primary" />
+                <h1 className="font-headline text-xl font-bold">
+                    Studio Notebook
+                </h1>
+            </div>
+           <p className="text-sm text-muted-foreground ml-8">Ask the AI Principal about Cognitive Architecture.</p>
+        </header>
+        <div className="flex-1 p-0 flex flex-col overflow-hidden">
           <ScrollArea className="flex-1 p-4 md:p-6">
             <div className="space-y-6">
               {messages.map((message, index) => (
@@ -75,23 +77,23 @@ export default function StudioPage() {
                   }`}
                 >
                   {message.role === 'assistant' && (
-                    <Avatar className="h-8 w-8">
+                    <Avatar className="h-8 w-8 border">
                       <AvatarFallback className="bg-primary text-primary-foreground">
                         <Bot className="h-5 w-5" />
                       </AvatarFallback>
                     </Avatar>
                   )}
                   <div
-                    className={`max-w-md rounded-lg px-4 py-2 ${
+                    className={`max-w-xl rounded-lg px-4 py-3 shadow-sm ${
                       message.role === 'user'
                         ? 'bg-primary text-primary-foreground'
-                        : 'bg-muted'
+                        : 'bg-background'
                     }`}
                   >
-                    <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                    <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
                   </div>
                   {message.role === 'user' && (
-                    <Avatar className="h-8 w-8">
+                    <Avatar className="h-8 w-8 border">
                       <AvatarFallback>
                         <User className="h-5 w-5" />
                       </AvatarFallback>
@@ -101,20 +103,20 @@ export default function StudioPage() {
               ))}
               {isLoading && (
                  <div className="flex items-start gap-3">
-                    <Avatar className="h-8 w-8">
+                    <Avatar className="h-8 w-8 border">
                         <AvatarFallback className="bg-primary text-primary-foreground">
                         <Bot className="h-5 w-5" />
                         </AvatarFallback>
                     </Avatar>
-                    <div className="max-w-md rounded-lg px-4 py-2 bg-muted flex items-center">
+                    <div className="max-w-md rounded-lg px-4 py-3 bg-background shadow-sm flex items-center">
                         <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
                     </div>
                  </div>
               )}
             </div>
           </ScrollArea>
-          <div className="border-t p-4">
-            <form onSubmit={handleQuery} className="flex items-center gap-2">
+          <div className="border-t bg-background/80 p-4">
+            <form onSubmit={handleQuery} className="flex items-center gap-3">
               <Input
                 value={query}
                 onChange={e => setQuery(e.target.value)}
@@ -132,8 +134,8 @@ export default function StudioPage() {
               </Button>
             </form>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }
