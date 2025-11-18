@@ -11,6 +11,7 @@ import {
   CommandList,
 } from '@/components/ui/command';
 import { Bot } from 'lucide-react';
+import { useStudioStore } from '@/lib/store';
 
 type CommandPaletteProps = {
     open: boolean;
@@ -18,10 +19,12 @@ type CommandPaletteProps = {
 }
 
 export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
+  const [inputValue, setInputValue] = React.useState('');
+  const setQuery = useStudioStore(state => state.setQuery);
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || e.key === 'K' && (e.metaKey || e.ctrlKey)) {
+      if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || (e.key === 'K' && (e.metaKey || e.ctrlKey))) {
         e.preventDefault();
         onOpenChange(!open);
       }
@@ -30,20 +33,42 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
     document.addEventListener('keydown', down);
     return () => document.removeEventListener('keydown', down);
   }, [open, onOpenChange]);
+  
+  const handleSelect = (value: string) => {
+    setQuery(value);
+    onOpenChange(false);
+    setInputValue('');
+  }
 
   return (
     <CommandDialog open={open} onOpenChange={onOpenChange}>
-      <CommandInput placeholder="Ask the Studio AI or search..." />
+      <CommandInput 
+        placeholder="Ask the Studio AI..." 
+        value={inputValue}
+        onValueChange={setInputValue}
+      />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
+        {inputValue && (
+             <CommandGroup heading="Ask AI">
+                <CommandItem onSelect={() => handleSelect(inputValue)}>
+                     <Bot className="mr-2 h-4 w-4" />
+                    <span>{inputValue}</span>
+                </CommandItem>
+            </CommandGroup>
+        )}
         <CommandGroup heading="Suggestions">
-          <CommandItem>
+          <CommandItem onSelect={() => handleSelect('Explain the ADEPT Kernel')}>
             <Bot className="mr-2 h-4 w-4" />
-            <span>Ask about the ADEPT Kernel</span>
+            <span>Explain the ADEPT Kernel</span>
           </CommandItem>
-           <CommandItem>
+           <CommandItem onSelect={() => handleSelect('What is the purpose of Notefull?')}>
             <Bot className="mr-2 h-4 w-4" />
-            <span>Explain the concept of Notefull</span>
+            <span>What is the purpose of Notefull?</span>
+          </CommandItem>
+           <CommandItem onSelect={() => handleSelect('Compare AIXIAM and AIXEYE')}>
+            <Bot className="mr-2 h-4 w-4" />
+            <span>Compare AIXIAM and AIXEYE</span>
           </CommandItem>
         </CommandGroup>
       </CommandList>

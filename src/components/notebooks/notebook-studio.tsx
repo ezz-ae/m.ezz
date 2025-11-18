@@ -8,6 +8,7 @@ import {
   Bot,
   User,
   Sparkles,
+  Command,
 } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
@@ -16,6 +17,7 @@ import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 import { type Notebook } from '@/components/notebooks/notebook-data';
 import { type NotebookKey } from '@/components/notebooks/notebook-data';
+import { useStudioStore } from '@/lib/store';
 
 type Message = {
   role: 'user' | 'assistant';
@@ -28,10 +30,12 @@ type NotebookStudioProps = {
 }
 
 export function NotebookStudio({ activeNotebook, activeNotebookSlug }: NotebookStudioProps) {
-  const [query, setQuery] = useState('');
+  const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+
+  const { query: globalQuery, setQuery: setGlobalQuery } = useStudioStore();
 
   useEffect(() => {
     setMessages([
@@ -43,6 +47,13 @@ export function NotebookStudio({ activeNotebook, activeNotebookSlug }: NotebookS
   }, [activeNotebook]);
   
   useEffect(() => {
+    if (globalQuery) {
+      handleQuerySubmit(globalQuery);
+      setGlobalQuery(''); // Reset the global query after handling
+    }
+  }, [globalQuery, setGlobalQuery]);
+
+  useEffect(() => {
     if (scrollAreaRef.current) {
         const viewport = scrollAreaRef.current.querySelector('div[data-radix-scroll-area-viewport]');
         if (viewport) {
@@ -52,16 +63,15 @@ export function NotebookStudio({ activeNotebook, activeNotebookSlug }: NotebookS
   }, [messages, isLoading]);
 
 
-  const handleQuery = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!query.trim() || isLoading) return;
+  const handleQuerySubmit = async (queryToSubmit: string) => {
+    if (!queryToSubmit.trim() || isLoading) return;
 
-    const userMessage: Message = { role: 'user', content: query };
+    const userMessage: Message = { role: 'user', content: queryToSubmit };
     setMessages(prev => [...prev, userMessage]);
     setIsLoading(true);
-    setQuery('');
+    setInputValue('');
 
-    const result = await queryLivingNotebook({ query, slug: activeNotebookSlug });
+    const result = await queryLivingNotebook({ query: queryToSubmit, slug: activeNotebookSlug });
     
     let assistantMessage: Message;
     if (result.error) {
@@ -73,6 +83,12 @@ export function NotebookStudio({ activeNotebook, activeNotebookSlug }: NotebookS
     setMessages(prev => [...prev, assistantMessage]);
     setIsLoading(false);
   };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleQuerySubmit(inputValue);
+  };
+
 
   return (
     <div className="h-full w-full flex flex-col rounded-xl border bg-card text-card-foreground shadow-sm">
@@ -141,15 +157,18 @@ export function NotebookStudio({ activeNotebook, activeNotebookSlug }: NotebookS
             </div>
           </ScrollArea>
           <div className="border-t bg-background/80 p-4">
-            <form onSubmit={handleQuery} className="flex items-center gap-3">
+            <form onSubmit={handleFormSubmit} className="relative flex items-center gap-3">
               <Input
-                value={query}
-                onChange={e => setQuery(e.target.value)}
-                placeholder="Ask a follow-up question..."
-                className="flex-1"
+                value={inputValue}
+                onChange={e => setInputValue(e.target.value)}
+                placeholder="Ask a follow-up..."
+                className="flex-1 pr-24"
                 disabled={isLoading}
               />
-              <Button type="submit" size="icon" disabled={isLoading || !query.trim()}>
+              <div className="absolute right-14 flex items-center text-xs text-muted-foreground">
+                <Command className="h-3 w-3 mr-1" /> K
+              </div>
+              <Button type="submit" size="icon" disabled={isLoading || !inputValue.trim()}>
                 {isLoading ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
                 ) : (
