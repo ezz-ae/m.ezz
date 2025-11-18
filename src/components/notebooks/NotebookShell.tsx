@@ -1,5 +1,5 @@
+
 // src/components/notebooks/NotebookShell.tsx
-'use client';
 import React from 'react';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
@@ -13,17 +13,17 @@ type NotebookShellProps = {
 };
 
 export function NotebookShell({ title, description, children }: NotebookShellProps) {
-  // This function maps children to their designated roles based on their display name.
-  const contentMap = React.Children.toArray(children).reduce((acc: {[key: string]: React.ReactNode}, child) => {
+  const contentMap: { [key: string]: React.ReactNode } = {};
+  React.Children.forEach(children, (child) => {
     if (React.isValidElement(child) && typeof child.type !== 'string') {
-        const key = (child.type as any).displayName || child.type.name;
-        if (key === 'NotebookRenderer') acc.theory = child;
-        if (key === 'NotebookQueryInterface') acc.conversation = child;
-        if (key === 'MindmapView') acc.mindmap = child;
-        if (key === 'AudioOverview') acc.audio = child;
+      const displayName = (child.type as any).displayName || child.type.name;
+      if (displayName === 'NotebookRenderer') {
+        contentMap.theory = child;
+      } else if (displayName === 'NotebookQueryInterface') {
+        contentMap.conversation = child;
+      }
     }
-    return acc;
-  }, {});
+  });
 
 
   return (
@@ -56,8 +56,6 @@ export function NotebookShell({ title, description, children }: NotebookShellPro
       <div>
         {contentMap.theory}
         {contentMap.conversation}
-        {contentMap.mindmap}
-        {contentMap.audio}
       </div>
 
     </motion.div>
