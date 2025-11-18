@@ -1,3 +1,4 @@
+
 // functions/src/analytics.ts
 import { onRequest } from 'firebase-functions/v2/https';
 import { logger } from 'firebase-functions';
