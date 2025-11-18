@@ -23,6 +23,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    {
+        url: 'https://ezz.ae/contact',
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.6,
+    },
     ...notebookUrls,
   ];
 }

@@ -7,7 +7,7 @@ const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/#map', label: 'Notebooks' },
     { href: '/timeline', label: 'Timeline' },
-    { href: '/#now', label: 'Contact' },
+    { href: '/contact', label: 'Contact' },
 ];
 
 export default function SiteHeader() {
