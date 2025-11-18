@@ -99,12 +99,11 @@ export default function LibraryPage() {
             
              <ScrollArea className="flex-1">
                 <article id={activeNotebook} className="prose prose-lg max-w-none p-6 md:p-8">
-                    <div className="font-headline text-xl leading-relaxed motion-safe:animate-fade-in [animation-timeline:view()] [animation-range:entry]">
+                    <div className="font-headline text-xl leading-relaxed">
                         {notebook.body.split('\n').map((paragraph, index) => (
                             <p
                                 key={index}
-                                className="motion-safe:animate-fade-in-scroll [animation-timeline:view()] [animation-range:entry_25%_cover_50%]"
-                                style={{ animationDelay: `${index * 50}ms` }}
+                                className="animate-scroll"
                             >
                                 {paragraph}
                             </p>
