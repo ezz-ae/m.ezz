@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { queryProjectNotebook } from '@/lib/actions';
+import { queryLivingNotebook } from '@/lib/actions';
 
 type Message = {
   role: 'user' | 'assistant';
@@ -41,7 +41,7 @@ export default function StudioPage() {
     setIsLoading(true);
     setQuery('');
 
-    const result = await queryProjectNotebook({ query });
+    const result = await queryLivingNotebook({ query });
     
     let assistantMessage: Message;
     if (result.error) {

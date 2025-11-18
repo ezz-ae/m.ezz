@@ -3,9 +3,9 @@
 
 import { z } from 'zod';
 import { generateDesignInsights, type GenerateDesignInsightsInput } from '@/ai/flows/generate-design-insights';
-import { queryProjectNotebook as queryNotebook, type QueryProjectNotebookInput } from '@/ai/flows/query-project-notebook';
+import { queryLivingNotebook as queryNotebook, type QueryLivingNotebookInput } from '@/ai/flows/query-living-notebook';
 
-// AI Design Insights Action (Legacy, can be removed if no longer used)
+// This action is deprecated as it relates to the old portfolio design.
 export async function getAIDesignInsights(input: GenerateDesignInsightsInput) {
   try {
     const result = await generateDesignInsights(input);
@@ -16,13 +16,13 @@ export async function getAIDesignInsights(input: GenerateDesignInsightsInput) {
   }
 }
 
-// Project Notebook Query Action
-export async function queryProjectNotebook(input: QueryProjectNotebookInput) {
+// Notebook Query Action
+export async function queryLivingNotebook(input: QueryLivingNotebookInput) {
   try {
     const result = await queryNotebook(input);
     return { data: result.answer, error: null };
   } catch (error) {
-    console.error('Project Notebook Query Error:', error);
+    console.error('Living Notebook Query Error:', error);
     return { data: null, error: 'Failed to get an answer. The AI model may be unavailable. Please try again later.' };
   }
 }
