@@ -4,6 +4,7 @@
 import { MindMapNode } from '@/components/mindmap/mind-map-node';
 import { Share2 } from 'lucide-react';
 import React from 'react';
+import Link from 'next/link';
 
 const mindMapData = {
   id: 'aixself',
@@ -127,11 +128,13 @@ export default function MindMapPage() {
         <svg width="1000" height="1000" viewBox="-500 -500 1000 1000" className="max-w-full max-h-full">
             <g>
               <foreignObject x="-96" y="-64" width="192" height="128">
-                 <MindMapNode
-                    label={mindMapData.label}
-                    description={mindMapData.description}
-                    isCentral
-                 />
+                <Link href={`/library#${mindMapData.id}`}>
+                    <MindMapNode
+                        label={mindMapData.label}
+                        description={mindMapData.description}
+                        isCentral
+                    />
+                 </Link>
               </foreignObject>
 
                 {mindMapData.children.map((node, index) => {
@@ -143,7 +146,9 @@ export default function MindMapPage() {
                             <line x1="0" y1="0" x2={x} y2={y} stroke="hsl(var(--border))" strokeWidth="1" />
                             <g transform={`translate(${x}, ${y})`}>
                               <foreignObject x="-96" y="-64" width="192" height="128">
-                                <MindMapNode label={node.label} description={node.description} />
+                                <Link href={`/library#${node.id}`}>
+                                    <MindMapNode label={node.label} description={node.description} />
+                                </Link>
                               </foreignObject>
                             </g>
                              <ChildNode node={node} parentAngle={angle} parentRadius={parentRadius} />

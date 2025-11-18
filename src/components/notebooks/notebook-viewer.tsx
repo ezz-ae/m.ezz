@@ -23,6 +23,14 @@ export function NotebookViewer({ notebooks }: NotebookViewerProps) {
 
   const notebook = notebooks[activeNotebook];
 
+  const handleTopicClick = (key: NotebookKey) => {
+    setActiveNotebook(key);
+    const element = document.getElementById(key);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
   return (
     <section className="grid grid-cols-1 gap-6 md:grid-cols-[260px_1fr]">
       <aside className="sticky top-20 h-fit self-start rounded-xl border border-[#e3e3e3] bg-white p-4">
@@ -33,7 +41,7 @@ export function NotebookViewer({ notebooks }: NotebookViewerProps) {
           {TOPICS.map((topic) => (
             <button
               key={topic.key}
-              onClick={() => setActiveNotebook(topic.key)}
+              onClick={() => handleTopicClick(topic.key)}
               className={cn(
                 'w-full cursor-pointer rounded-full border px-3 py-2 text-left text-sm font-medium transition-all duration-150 ease-in-out',
                 'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black',
@@ -48,18 +56,22 @@ export function NotebookViewer({ notebooks }: NotebookViewerProps) {
         </div>
       </aside>
 
-      <article className="min-h-[300px] rounded-2xl border border-[#e3e3e3] bg-white p-6 md:p-8">
-        <p className="mb-1 text-xs uppercase tracking-[0.16em] text-[#888]">
-          Living Blueprint
-        </p>
-        <h3 className="text-xl font-bold text-[#111] md:text-2xl">
-          {notebook.title}
-        </h3>
-        <div className="my-4 h-px bg-[#eee]"></div>
-        <div className="whitespace-pre-wrap font-mono text-sm leading-relaxed text-[#222]">
-          {notebook.body}
-        </div>
-      </article>
+      <div>
+        {Object.entries(notebooks).map(([key, notebookContent]) => (
+            <article key={key} id={key} className="mb-8 min-h-[300px] rounded-2xl border border-[#e3e3e3] bg-white p-6 md:p-8 scroll-mt-20">
+                <p className="mb-1 text-xs uppercase tracking-[0.16em] text-[#888]">
+                Living Blueprint
+                </p>
+                <h3 className="text-xl font-bold text-[#111] md:text-2xl">
+                {notebookContent.title}
+                </h3>
+                <div className="my-4 h-px bg-[#eee]"></div>
+                <div className="whitespace-pre-wrap font-mono text-sm leading-relaxed text-[#222]">
+                {notebookContent.body}
+                </div>
+            </article>
+        ))}
+      </div>
     </section>
   );
 }

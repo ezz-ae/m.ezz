@@ -8,15 +8,13 @@ export default function LibraryPage() {
       <main className="mx-auto max-w-6xl p-4 sm:p-8">
         <header className="mb-8">
           <h1 className="text-3xl font-bold uppercase tracking-[0.03em]">
-            EZZ.ae
+            The Library
           </h1>
           <p className="mt-2 text-sm uppercase tracking-[0.08em] text-[#666]">
             COGNITIVE ARCHITECT – FORGETTING SYSTEMS & MEMORY-SAFE INTELLIGENCE
           </p>
           <p className="mt-2 max-w-xl text-base leading-relaxed text-[#444]">
-            I build forgetting-based intelligence systems: architectures where AI
-            forgets safely, resonates clearly, and aligns with how human cognition
-            actually works.
+            An open and living collection of notebooks documenting the principles, architecture, and philosophy of the AIXSELF universe.
           </p>
         </header>
 
