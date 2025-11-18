@@ -30,7 +30,7 @@ ADEPT is the open-source cognitive kernel that manages model weights, data pipel
 
 Its task is to maintain coherence, not control. It is the architectural foundation upon which the entire AIXSELF ecosystem is built, enabling a decentralized cognition fabric where every node can learn and evolve independently yet cohesively.`,
   },
-  aixa: {
+aixa: {
     title: 'AIXA — The Deployment Interface',
     body: `The bridge between the human and their digital self.
 
@@ -103,7 +103,7 @@ export function NotebookViewer() {
               key={topic.key}
               variant={activeNotebook === topic.key ? 'default' : 'outline'}
               className={cn(
-                'w-full justify-start rounded-full px-3 text-left',
+                'w-full justify-start rounded-md px-3 text-left',
                 activeNotebook === topic.key && 'bg-foreground text-background hover:bg-foreground/90'
               )}
               onClick={() => setActiveNotebook(topic.key)}
