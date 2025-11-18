@@ -19,18 +19,6 @@ export default function NowSection() {
         <li>— Security / trap simulations for real-world phishing and crypto awareness.</li>
         <li>— Deep workshops & talks on AI, cognition, and behavioural intelligence.</li>
       </ul>
-
-      <div className="pt-6 border-t border-white/5 flex flex-col gap-3 md:flex-row md:items-center md:justify-between text-sm text-neutral-400">
-        <div>
-          For serious conversations and collaborations:
-          <div className="text-neutral-100">
-            {/* replace with your real email */}
-            <a href="mailto:hello@ezz.ae" className="underline underline-offset-4">
-              hello@ezz.ae
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
