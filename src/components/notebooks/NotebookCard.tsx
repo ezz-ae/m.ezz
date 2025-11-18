@@ -67,13 +67,13 @@ export function NotebookCard({ name, roleIcon, status }: NotebookCardProps) {
       </div>
       
       <div className="relative z-10 flex items-center justify-end space-x-1">
-        <Button variant="ghost" size="icon" className="w-8 h-8">
+        <Button variant="ghost" size="icon" className="w-8 h-8" title={status === 'sleeping' ? 'Wake' : 'Sleep'}>
             {status === 'sleeping' ? <Play size={14} /> : <Pause size={14} />}
         </Button>
-        <Button variant="ghost" size="icon" className="w-8 h-8">
+        <Button variant="ghost" size="icon" className="w-8 h-8" title="Backup">
             <Archive size={14} />
         </Button>
-         <Button variant="ghost" size="icon" className="w-8 h-8">
+         <Button variant="ghost" size="icon" className="w-8 h-8" title="Edit">
             <Edit size={14} />
         </Button>
       </div>
