@@ -13,14 +13,11 @@ export default function HeroPulse() {
   }, []);
 
   return (
-    <section className="relative h-[80vh] flex items-center justify-center">
+    <section className="relative h-[calc(80vh-6rem)] flex items-center justify-center">
       {/* Soft radial glow */}
       <div className="pointer-events-none absolute inset-0 bg-radial from-white/5 via-transparent to-black opacity-80" />
 
       <div className="relative z-10 flex flex-col items-center text-center space-y-4">
-        <div className="text-xs tracking-[0.35em] uppercase text-neutral-500">
-          ezz.ae
-        </div>
         <h1
           className={`text-3xl md:text-5xl font-light transition-opacity duration-1000 ${
             visible ? "opacity-100" : "opacity-0"

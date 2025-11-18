@@ -4,8 +4,9 @@ import { PT_Sans, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
-import SiteHeader from '@/components/SiteHeader';
 import AnalyticsListener from '@/components/AnalyticsListener';
+import { SidebarProvider } from '@/components/ui/sidebar';
+import AppSidebar from '@/components/AppSidebar';
 
 const ptSans = PT_Sans({
   subsets: ['latin'],
@@ -52,10 +53,16 @@ export default function RootLayout({
           playfairDisplay.variable
         )}
       >
-        <AnalyticsListener />
-        <SiteHeader />
-        {children}
-        <Toaster />
+        <SidebarProvider>
+          <div className="flex">
+            <AppSidebar />
+            <main className="flex-1">
+              <AnalyticsListener />
+              {children}
+              <Toaster />
+            </main>
+          </div>
+        </SidebarProvider>
       </body>
     </html>
   );

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-black text-neutral-100 overflow-x-hidden pt-24">
+    <main className="min-h-screen bg-black text-neutral-100 overflow-x-hidden pt-12 md:pt-24">
       <div className="relative flex flex-col items-stretch">
         <section id="mind-board" className="px-6 md:px-16">
           <MindBoard />

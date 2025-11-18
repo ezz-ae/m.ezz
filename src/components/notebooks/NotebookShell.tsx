@@ -1,3 +1,4 @@
+
 // src/components/notebooks/NotebookShell.tsx
 'use client';
 import React from 'react';
@@ -28,7 +29,7 @@ export function NotebookShell({ title, description, children }: NotebookShellPro
 
   return (
     <motion.div 
-      className="relative isolate overflow-hidden"
+      className="relative isolate overflow-hidden pt-12 md:pt-24"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -43,7 +44,7 @@ export function NotebookShell({ title, description, children }: NotebookShellPro
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-            <Link href="/#mind-board" className="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-neutral-100 transition-colors mb-8">
+            <Link href="/" className="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-neutral-100 transition-colors mb-8">
                 <ArrowLeft size={16} />
                 Back to Mind Board
             </Link>
@@ -53,7 +54,7 @@ export function NotebookShell({ title, description, children }: NotebookShellPro
       </div>
 
         <Tabs defaultValue="theory" className="w-full">
-            <div className="max-w-4xl mx-auto px-6 sticky top-[88px] z-20 bg-black/80 backdrop-blur-sm py-4">
+            <div className="max-w-4xl mx-auto px-6 sticky top-0 z-20 bg-black/80 backdrop-blur-sm py-4">
                  <TabsList className="grid w-full grid-cols-4 bg-neutral-900/80 border border-white/10">
                     <TabsTrigger value="theory"><BrainCircuit className="mr-2 h-4 w-4" />Theory</TabsTrigger>
                     <TabsTrigger value="conversation"><BotMessageSquare className="mr-2 h-4 w-4" />AI Conversation</TabsTrigger>

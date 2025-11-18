@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-black text-neutral-100 overflow-x-hidden pt-24">
+    <main className="min-h-screen bg-black text-neutral-100 overflow-x-hidden pt-12 md:pt-24">
         <HeroPulse />
         <IdentityStatement />
         <section id="map" className="py-16 md:py-24">

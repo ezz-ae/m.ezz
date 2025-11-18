@@ -1,5 +1,5 @@
-
-// components/SiteHeader.tsx
+// This component is no longer used and will be removed in a future cleanup.
+// The navigation has been moved to AppSidebar.tsx
 import Link from 'next/link';
 import { Logo } from './icons';
 
