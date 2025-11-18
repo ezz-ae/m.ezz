@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { Logo } from './icons';
 
 const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/#map', label: 'Notebooks' },
+    { href: '/', label: 'Notebooks' },
+    { href: '/about', label: 'About' },
     { href: '/timeline', label: 'Timeline' },
     { href: '/contact', label: 'Contact' },
 ];
