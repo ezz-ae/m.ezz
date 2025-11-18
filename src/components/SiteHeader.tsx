@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Logo } from './icons';
 
 const navLinks = [
-    { href: '/', label: 'Theory' },
+    { href: '/', label: 'Mind Board' },
     { href: '/about', label: 'Map & About' },
     { href: '/timeline', label: 'Timeline' },
     { href: '/contact', label: 'Contact' },
