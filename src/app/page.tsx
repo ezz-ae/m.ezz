@@ -15,14 +15,17 @@ export default function Home() {
           forgets safely, resonates clearly, and aligns with how human cognition
           actually works.
         </p>
-        <div className="mt-8 flex justify-center gap-4">
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Button asChild size="lg">
-            <Link href="/notebooks">
+            <Link href="/library">
               Explore The Notebooks <ArrowRight className="ml-2" />
             </Link>
           </Button>
+           <Button asChild size="lg" variant="outline">
+            <Link href="/studio">Enter The Studio</Link>
+          </Button>
           <Button asChild size="lg" variant="outline">
-            <Link href="/about">Discover The Philosophy</Link>
+            <Link href="/theory">Discover The Philosophy</Link>
           </Button>
         </div>
       </div>
