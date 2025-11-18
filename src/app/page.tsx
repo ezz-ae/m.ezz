@@ -89,7 +89,7 @@ export default function Home() {
       <section className="scene scene--hero" data-theme="light" ref={heroRef}>
         <div className="scene-inner">
           <h1 className="title" ref={titleRef}>
-            EZZ.AE
+            FCT – Forgetence Core Thinking
           </h1>
           <p className="subtitle">
             Intelligence is not what stays.
@@ -155,6 +155,73 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+        <section className="scene" data-theme="light">
+            <div className="scene-inner">
+                <p className="line line-em">The Law of Resonance</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">
+                Intelligence does not live in storage. It lives in the match.
+                </p>
+                <p className="line">
+                When a new signal hits an old pattern and they fit,
+                understanding appears.
+                </p>
+                <p className="line">
+                Forgetence designs systems that optimise for that match,
+                not for the size of the archive.
+                </p>
+            </div>
+        </section>
+
+        <section className="scene" data-theme="light">
+            <div className="scene-inner typing-block" data-typing="">
+                <p className="line">Memory is expensive.</p>
+                <p className="line">Attention is finite.</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">Forgetting is how the mind does accounting.</p>
+                <p className="line">
+                What repeats is promoted. What fades is written off.
+                </p>
+                <p className="line">
+                Intelligence is the balance sheet of what survived.
+                </p>
+            </div>
+        </section>
+
+        <section className="scene" data-theme="dark">
+            <div className="scene-inner">
+                <p className="line line-em">The Human × Machine Boundary</p>
+                <p className="line">&nbsp;</p>
+                <p className="line">
+                Humans re-render the past every time they remember.
+                </p>
+                <p className="line">
+                Machines replay the past every time they are asked.
+                </p>
+                <p className="line">&nbsp;</p>
+                <p className="line">
+                Forgetence exists to close that gap:
+                </p>
+                <p className="line">
+                machines that reconstruct, soften, and respect the changing self
+                instead of freezing it.
+                </p>
+            </div>
+        </section>
+
+        <section className="scene scene--end" data-theme="light">
+            <div className="scene-inner">
+                <p className="closing">
+                Forgetence is the discipline of<br />
+                forgetting-driven intelligence.<br /><br />
+                It treats forgetting as structure,<br />
+                not damage.<br /><br />
+                It is the missing layer between<br />
+                human memory and machine memory.
+                </p>
+            </div>
+        </section>
     </main>
   );
 }
