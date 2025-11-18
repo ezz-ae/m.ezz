@@ -6,7 +6,7 @@ import AboutSection from "@/components/AboutSection";
 import NowSection from "@/components/NowSection";
 import FooterMinimal from "@/components/FooterMinimal";
 
-export default function HomePage() {
+export default function FieldPage() {
   return (
     <main className="min-h-screen bg-black text-neutral-100 overflow-x-hidden">
       {/* Global wrapper for future cognitive weather / theming */}
