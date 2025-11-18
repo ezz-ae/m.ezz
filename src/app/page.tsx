@@ -18,14 +18,14 @@ export default function Home() {
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Button asChild size="lg">
             <Link href="/library">
-              Explore The Notebooks <ArrowRight className="ml-2" />
+              Explore The Library <ArrowRight className="ml-2" />
             </Link>
           </Button>
            <Button asChild size="lg" variant="outline">
             <Link href="/studio">Enter The Studio</Link>
           </Button>
           <Button asChild size="lg" variant="outline">
-            <Link href="/theory">Discover The Philosophy</Link>
+            <Link href="/blog">Read The Blog</Link>
           </Button>
         </div>
       </div>

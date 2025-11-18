@@ -11,11 +11,11 @@ import { cn } from '@/lib/utils';
 import type { NavLink } from '@/lib/types';
 
 const navLinks: NavLink[] = [
-  { href: '/', label: 'Home' },
   { href: '/library', label: 'Library' },
   { href: '/theory', label: 'Theory' },
   { href: '/mindmap', label: 'MindMap' },
   { href: '/studio', label: 'Studio' },
+  { href: '/blog', label: 'Blog' },
 ];
 
 export function SiteHeader() {
@@ -77,7 +77,7 @@ export function SiteHeader() {
                 href={link.href}
                 className={cn(
                   'transition-colors hover:text-primary',
-                  pathname.startsWith(link.href) && link.href !== '/' || pathname === link.href
+                  pathname.startsWith(link.href)
                     ? 'text-foreground'
                     : 'text-muted-foreground'
                 )}

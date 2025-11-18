@@ -3,11 +3,11 @@ import { Github, Linkedin, Twitter } from 'lucide-react';
 import Link from 'next/link';
 
 const navLinks = [
-  { href: '/', label: 'Home' },
   { href: '/library', label: 'Library' },
   { href: '/theory', label: 'Theory' },
   { href: '/mindmap', label: 'MindMap' },
   { href: '/studio', label: 'Studio' },
+  { href: '/blog', label: 'Blog' },
 ];
 
 export function SiteFooter() {
