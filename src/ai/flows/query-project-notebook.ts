@@ -12,10 +12,19 @@ import { ai } from '@/ai/genkit';
 import { z } from 'zod';
 import { projects } from '@/lib/data';
 
-// Define a simplified text-only representation of projects for the AI context.
-const projectContext = projects
-  .map(
-    p => `
+// Helper to generate a context string for one or all projects
+function getProjectContext(slug?: string): string {
+  const projectsToProcess = slug 
+    ? projects.filter(p => p.slug === slug) 
+    : projects;
+
+  if (projectsToProcess.length === 0) {
+    return 'No project information found.';
+  }
+
+  return projectsToProcess
+    .map(
+      p => `
 Project Title: ${p.title}
 Category: ${p.category}
 Year: ${p.year}
@@ -24,11 +33,13 @@ Full Details: ${p.longDescription}
 Key Architectural Elements: ${p.keyElements}
 ---
 `
-  )
-  .join('\n');
+    )
+    .join('\n');
+}
 
 const QueryProjectNotebookInputSchema = z.object({
-  query: z.string().describe('The user\'s question about the projects.'),
+  query: z.string().describe("The user's question about the projects."),
+  slug: z.string().optional().describe('The slug of a specific project to scope the context.'),
 });
 export type QueryProjectNotebookInput = z.infer<
   typeof QueryProjectNotebookInputSchema
@@ -49,7 +60,7 @@ export async function queryProjectNotebook(
 
 const prompt = ai.definePrompt({
   name: 'queryProjectNotebookPrompt',
-  input: { schema: QueryProjectNotebookInputSchema },
+  input: { schema: QueryProjectNotebookInputSchema.extend({ context: z.string() }) },
   output: { schema: QueryProjectNotebookOutputSchema },
   prompt: `You are an expert architectural assistant for Mahmoud Ezz. Your task is to answer questions based *exclusively* on the project data provided below. Do not use any outside knowledge. If the answer cannot be found in the context, clearly state that you don't have the information.
 
@@ -68,14 +79,14 @@ const queryProjectNotebookFlow = ai.defineFlow(
     inputSchema: QueryProjectNotebookInputSchema,
     outputSchema: QueryProjectNotebookOutputSchema,
   },
-  async ({ query }) => {
-    const { output } = await prompt({
-        query,
-        // This is a simple RAG implementation. We provide the entire project database
-        // as context to the LLM. For larger datasets, a vector database would be used
-        // to retrieve only the most relevant documents.
-        context: projectContext,
-    });
+  async ({ query, slug }) => {
+    const context = getProjectContext(slug);
+    
+    // For a more advanced implementation, we would use a vector database
+    // to find the most relevant project information based on the query.
+    // For this simple RAG, we provide the whole (filtered) context.
+    const { output } = await prompt({ query, context });
+    
     return output!;
   }
 );

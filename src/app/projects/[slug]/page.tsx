@@ -5,6 +5,8 @@ import { getImage } from '@/lib/utils';
 import { DesignInsights } from '@/components/projects/design-insights';
 import { Badge } from '@/components/ui/badge';
 import type { Metadata } from 'next';
+import { ProjectNotebook } from '@/components/projects/project-notebook';
+import { Separator } from '@/components/ui/separator';
 
 type Props = {
   params: { slug: string };
@@ -95,6 +97,12 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
             );
           })}
         </div>
+      </div>
+
+      <Separator />
+
+      <div className="container py-16 md:py-24">
+        <ProjectNotebook project={project} />
       </div>
 
     </article>
