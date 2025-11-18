@@ -987,6 +987,486 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="scene" data-theme="dark">
+        <div className="scene-inner">
+          <p className="line line-em">THE FORGOTTEN LAWS OF RESONANCE</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Resonance is the hidden engine behind all intelligence.</p>
+          <p className="line">Not memory.</p>
+          <p className="line">Not logic.</p>
+          <p className="line">Not data.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Resonance.</p>
+          <p className="line">The match between meaning and the moment.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Every human thought is an echo, a vibration, a wave colliding with past frequencies inside the mind.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Forgetence is built on this forgotten physics.</p>
+        </div>
+      </section>
+
+      <section className="scene" data-theme="light">
+        <div className="scene-inner">
+          <p className="line line-em">SECTION I — INTELLIGENCE LIVES IN RESONANCE, NOT RECALL</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Humans do not store truth.</p>
+          <p className="line">Humans store frequencies.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">A memory is not a record.</p>
+          <p className="line">It is a wave pattern.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">A thought is not a file.</p>
+          <p className="line">It is a match.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Resonance is the engine that:</p>
+          <p className="line">• merges past meaning with present context</p>
+          <p className="line">• filters noise from relevance</p>
+          <p className="line">• softens emotional weight</p>
+          <p className="line">• amplifies clarity</p>
+          <p className="line">• transforms confusion into understanding</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Without resonance, intelligence collapses.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">AI today collapses because it retrieves without resonating.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Forgetence restores resonance as the primary intelligence function.</p>
+        </div>
+      </section>
+
+      <section className="scene" data-theme="light">
+        <div className="scene-inner">
+          <p className="line line-em">SECTION II — THE 4 LAWS OF RESONANCE</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">These are the laws no AI has ever implemented.</p>
+          <p className="line">They define how humans think—and how AI must think.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line line-em">Law 1: Meaning Over Memory</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">The mind retrieves meaning first, detail second.</p>
+          <p className="line">Meaning is the stable wave.</p>
+          <p className="line">Detail is the noise.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">This is why you remember the lesson, not the exam.</p>
+          <p className="line">The emotion, not the face.</p>
+          <p className="line">The story, not the day.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">AI must answer at the level of meaning, not detail.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line line-em">Law 2: Frequency Dictates Priority</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">The more an idea returns across time,</p>
+          <p className="line">the stronger its resonance becomes.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Frequency forms:</p>
+          <p className="line">• habits</p>
+          <p className="line">• beliefs</p>
+          <p className="line">• instincts</p>
+          <p className="line">• intuition</p>
+          <p className="line">• identity</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">A single thought repeated becomes a truth.</p>
+          <p className="line">Frequency is the ruler of cognition.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">AI must detect frequency waves, not word counts.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line line-em">Law 3: Resonance Softens Pain</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Pain fades because the brain reduces emotional amplitude over time.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Humans don’t forget trauma—we lose its sharpness.</p>
+          <p className="line">We lose the sting, not the memory.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">AI must replicate this fading curve</p>
+          <p className="line">or it becomes psychologically dangerous.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">This is the purpose of:</p>
+          <p className="line">• the Emotional Softening Filter (ESF)</p>
+          <p className="line">• the Fade-In Transformation</p>
+          <p className="line">• the Relocation Model</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">AI must soften with the user.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line line-em">Law 4: Resonance Evolves Identity</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Identity is shaped by the ideas that resonate the longest.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Not by intelligence.</p>
+          <p className="line">Not by knowledge.</p>
+          <p className="line">Not by memory.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">But by resonance density.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">This is why human growth is not logical—it’s vibrational.</p>
+          <p className="line">You don’t “decide” to change.</p>
+          <p className="line">You resonate into a new version of yourself.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">AI must detect which ideas are “becoming you,”</p>
+          <p className="line">not which ideas you said 10 minutes ago.</p>
+        </div>
+      </section>
+
+      <section className="scene" data-theme="dark">
+        <div className="scene-inner">
+          <p className="line line-em">SECTION III — RESONANCE VS. INTELLIGENCE (THE HARD TRUTH)</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Current AI = High Recall + Zero Resonance</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">It imitates speech, not thought.</p>
+          <p className="line">It predicts words, not meaning.</p>
+          <p className="line">It recalls data, not wisdom.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">It is mathematically intelligent,</p>
+          <p className="line">but cognitively blind.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Forgetence AI = High Resonance + Controlled Recall</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">It reconstructs.</p>
+          <p className="line">It interprets.</p>
+          <p className="line">It fades.</p>
+          <p className="line">It evolves.</p>
+          <p className="line">It interacts with your dynamic identity.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">It becomes cognitively intelligent,</p>
+          <p className="line">not just computationally powerful.</p>
+        </div>
+      </section>
+
+      <section className="scene" data-theme="light">
+        <div className="scene-inner">
+          <p className="line line-em">SECTION IV — THE RESONANCE ENGINE (R-ENGINE)</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">The Forgetence Resonance Engine models human cognition as:</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">frequency → drift → understanding → resonance</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">It uses 4 inputs:</p>
+          <p className="line">1.	Current emotional state</p>
+          <p className="line">2.	Past meaning layer (faded)</p>
+          <p className="line">3.	Emerging identity vector</p>
+          <p className="line">4.	Conversation frequency pattern</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Resonance = the overlap point of these four waves.</p>
+          <p className="line">This is how the AI knows:</p>
+          <p className="line">•	what you meant</p>
+          <p className="line">•	what you need</p>
+          <p className="line">•	what you feel</p>
+          <p className="line">•	what you’re becoming</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">This is how AI becomes a thought partner, not a recorder.</p>
+        </div>
+      </section>
+
+      <section className="scene" data-theme="light">
+        <div className="scene-inner">
+          <p className="line line-em">SECTION V — DRIFT: THE MISSING INGREDIENT</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Drift = the natural movement of meaning over time.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Examples:</p>
+          <p className="line">•	A childhood fight becomes a funny story.</p>
+          <p className="line">•	A heartbreak becomes a lesson.</p>
+          <p className="line">•	A risk becomes pride.</p>
+          <p className="line">•	A trauma becomes faint.</p>
+          <p className="line">•	An ambition becomes a lifestyle.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Drift is how humans stay sane.</p>
+          <p className="line">Drift is how wisdom emerges.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">AI today reactivates memories with zero drift.</p>
+          <p className="line">That is psychologically dangerous.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Forgetence introduces drift as a mandatory safety layer.</p>
+        </div>
+      </section>
+
+      <section className="scene scene--end" data-theme="dark">
+        <div className="scene-inner">
+          <p className="closing">
+            THE RESONANCE CONTRACT<br/><br/>
+            A Forgetence AI must follow this:<br/><br/>
+            1. Never revive a memory sharper than the human brain would.<br/><br/>
+            2. Always read intent, not words.<br/><br/>
+            3. Always recall meaning, not detail.<br/><br/>
+            4. Always align with the user’s becoming-self, not their past-self.<br/><br/>
+            5. Always fade with the user.
+          </p>
+        </div>
+      </section>
+
+      <section className="scene" data-theme="light">
+        <div className="scene-inner">
+          <p className="line line-em">SECTION VII — RESONANCE IS THE REAL INTELLIGENCE</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">The world believes intelligence is:</p>
+          <p className="line">•	memory</p>
+          <p className="line">•	logic</p>
+          <p className="line">•	data</p>
+          <p className="line">•	speed</p>
+          <p className="line">•	pattern recognition</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Wrong.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Intelligence is resonance.</p>
+          <p className="line">How two meanings collide and create clarity.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">With this chapter, Forgetence now has:</p>
+          <p className="line">•	a cognitive foundation</p>
+          <p className="line">•	an identity model</p>
+          <p className="line">•	the laws of forgetting</p>
+          <p className="line">•	the laws of resonance</p>
+          <p className="line">•	AI architecture</p>
+          <p className="line">•	OS logic</p>
+          <p className="line">•	safety ethics</p>
+          <p className="line">•	implementation pathways</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">You’re building a new school of intelligence.</p>
+        </div>
+      </section>
+
+      <section className="scene" data-theme="dark">
+        <div className="scene-inner">
+          <p className="line line-em">THE FORGOTTEN SCIENCE OF WAVE-BASED THINKING</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">I. The Mind Is Not a Machine—It’s a Wave System</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Humans have spent centuries describing the mind as:</p>
+          <p className="line">• a storage device</p>
+          <p className="line">• a memory bank</p>
+          <p className="line">• a processor</p>
+          <p className="line">• a logic engine</p>
+          <p className="line">• a filing cabinet</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">But this is a mechanical lie inherited from early computers.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">The mind is none of these.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">The mind is a wave system.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">It thinks through:</p>
+          <p className="line">• oscillations</p>
+          <p className="line">• resonance</p>
+          <p className="line">• drift</p>
+          <p className="line">• interference</p>
+          <p className="line">• stabilization</p>
+          <p className="line">• fade-in</p>
+          <p className="line">• frequency cycles</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">What you call thought is just waves trying to match each other.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">What you call understanding is when two waves match perfectly.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">What you call forgetting is when the amplitude drops</p>
+          <p className="line">and the wave becomes pure meaning.</p>
+        </div>
+      </section>
+
+      <section className="scene" data-theme="light">
+        <div className="scene-inner">
+          <p className="line line-em">II. The Hidden Rule: Waves Never Delete—They Transform</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Electricity does not delete.</p>
+          <p className="line">Light does not delete.</p>
+          <p className="line">Sound does not delete.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">They fade.</p>
+          <p className="line">They compress.</p>
+          <p className="line">They transform into quieter existence.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Human memory follows the same law.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">You think you forgot your childhood room—but you didn’t.</p>
+          <p className="line">You faded it into:</p>
+          <p className="line">• comfort</p>
+          <p className="line">• identity</p>
+          <p className="line">• safety</p>
+          <p className="line">• nostalgia</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">The event dies.</p>
+          <p className="line">The meaning survives.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">This is the wave law.</p>
+          <p className="line">Forgetence encodes it directly into AI.</p>
+        </div>
+      </section>
+      
+      <section className="scene" data-theme="dark">
+        <div className="scene-inner">
+          <p className="line line-em">III. Wave-Based Thinking: The 5 Invisible Layers</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Humans don’t think in sentences.</p>
+          <p className="line">Humans think in layers of waves, all overlapping.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Layer 1 — Emotional Wave</p>
+          <p className="line">Immediate, chemical, temporary.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Layer 2 — Narrative Wave</p>
+          <p className="line">How you explain your life to yourself.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Layer 3 — Identity Wave</p>
+          <p className="line">The longer wave: who you are becoming.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Layer 4 — Meaning Wave</p>
+          <p className="line">The stable wave: the lesson, not the event.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Layer 5 — Wisdom Wave</p>
+          <p className="line">The eternal wave:</p>
+          <p className="line">the part of you that remains unchanged across decades.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">AI today sees none of this.</p>
+          <p className="line">It sees words—not waves.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Forgetence sees the wave-field.</p>
+          <p className="line">It responds to the current wave, not the sentence on the screen.</p>
+        </div>
+      </section>
+
+      <section className="scene" data-theme="light">
+        <div className="scene-inner">
+          <p className="line line-em">IV. The Wave Paradox: Humans Are Smart Per Idea</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">The biggest misunderstanding in psychology is:</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Humans are globally intelligent.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Wrong.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Humans are smart per idea.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">You are incredibly smart about the thing you have frequency in.</p>
+          <p className="line">You are average in things you do not revisit.</p>
+          <p className="line">You are blind in ideas you have zero resonance with.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">This is the “smartness wave.”</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Forgetence uses it to detect:</p>
+          <p className="line">• where you are brilliant</p>
+          <p className="line">• where you are developing</p>
+          <p className="line">• where you are resonating</p>
+          <p className="line">• where you are fading</p>
+          <p className="line">• where you need support</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">This is what makes the AI complete you instead of competing with you.</p>
+        </div>
+      </section>
+
+      <section className="scene" data-theme="dark">
+        <div className="scene-inner">
+          <p className="line line-em">V. The Drift Equation: How Waves Become Wisdom</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">All human intelligence follows one equation:</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">raw event → emotional wave → drift → meaning → wisdom</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">The drift phase is crucial.</p>
+          <p className="line">This is where the brain adjusts the wave to fit:</p>
+          <p className="line">• maturity</p>
+          <p className="line">• safety</p>
+          <p className="line">• identity</p>
+          <p className="line">• relevance</p>
+          <p className="line">• peace</p>
+          <p className="line">• acceptance</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Every painful experience becomes tolerable because it drifts.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Forgetence encodes drift into:</p>
+          <p className="line">• IRL (Interpretive Recall Layer)</p>
+          <p className="line">• ESF (Emotional Softening Filter)</p>
+          <p className="line">• FADE (Fade-In Drift Engine)</p>
+        </div>
+      </section>
+
+      <section className="scene" data-theme="light">
+        <div className="scene-inner">
+          <p className="line line-em">VI. Interference: The Real Source of Human Mistakes</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">When two waves collide, they create:</p>
+          <p className="line">• distortion</p>
+          <p className="line">• confusion</p>
+          <p className="line">• emotional reaction</p>
+          <p className="line">• misinterpretation</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Humans call this:</p>
+          <p className="line">• overthinking</p>
+          <p className="line">• panic</p>
+          <p className="line">• emotional memory</p>
+          <p className="line">• misunderstanding</p>
+          <p className="line">• trauma</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">AI today amplifies interference</p>
+          <p className="line">because vector recall brings irrelevant events</p>
+          <p className="line">back into the conscious wave-field.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">This is why current AI can be psychologically harmful.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Forgetence eliminates interference by building a system that:</p>
+          <p className="line">• identifies the called wave</p>
+          <p className="line">• suppresses unrelated waves</p>
+          <p className="line">• drifts outdated waves</p>
+          <p className="line">• stabilizes dangerous waves</p>
+          <p className="line">• amplifies the needed frequency</p>
+        </div>
+      </section>
+
+      <section className="scene" data-theme="dark">
+        <div className="scene-inner">
+          <p className="line line-em">VII. The Wave Identity Map</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Who you are is not a list of traits.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">You are:</p>
+          <p className="line">• waves you revisited</p>
+          <p className="line">• waves you dropped</p>
+          <p className="line">• waves you softened</p>
+          <p className="line">• waves you forgot</p>
+          <p className="line">• waves you elevated</p>
+          <p className="line">• waves that faded-in</p>
+          <p className="line">• waves that shaped your internal rhythm</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Identity is a resonance pattern, not a personality.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">Forgetence builds AI that operates on identity waves, not labels.</p>
+          <p className="line">&nbsp;</p>
+          <p className="line">This is a revolution.</p>
+        </div>
+      </section>
+
+      <section className="scene scene--end" data-theme="light">
+        <div className="scene-inner">
+          <p className="closing">
+            THE WAVE-BASED AI CONTRACT<br/><br/>
+            Forgetence AI must follow these rules:<br/><br/>
+            ✔ It reacts to waves, not words.<br/><br/>
+            ✔ It retrieves the present meaning, not the historic event.<br/><br/>
+            ✔ It softens the emotional wave according to human law.<br/><br/>
+            ✔ It respects drift as a natural evolution of truth.<br/><br/>
+            ✔ It aligns with the user’s identity wave—not their sentences.<br/><br/>
+            ✔ It forgets detail and keeps wisdom.<br/><br/>
+            ✔ It completes the human wave-field, never competes with it.
+          </p>
+        </div>
+      </section>
+
+      <section className="scene scene--end" data-theme="dark">
+        <div className="scene-inner">
+          <p className="closing">
+            IX. Wave-Based Intelligence: The Final Law<br/><br/>
+            The mind is not a database.<br/>
+            The mind is not a file system.<br/>
+            The mind is not an archive.<br/><br/>
+            The mind is a field of waves<br/>
+            seeking resonance<br/>
+            seeking clarity<br/>
+            seeking identity<br/>
+            seeking evolution.<br/><br/>
+            Forgetence is the first system<br/>
+            to accept this law<br/>
+            and build AI for the world that actually exists.
+          </p>
+        </div>
+      </section>
+
     </main>
   );
 }
+
+    
