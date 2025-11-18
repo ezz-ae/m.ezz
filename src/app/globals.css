@@ -101,24 +101,16 @@
       opacity 0.8s ease,
       transform 0.8s ease;
     will-change: opacity, transform;
+    background: radial-gradient(circle at top, #151515 0, #000000 55%);
+    color: var(--fg-main);
   }
 
   .scene[data-theme="dark"] {
     background: radial-gradient(circle at top, #151515 0, #000000 55%);
-    color: #f5f5f5;
-  }
-  .scene[data-theme="dark"] .subtitle,
-  .scene[data-theme="dark"] .line-soft {
-    color: #a7a7a7;
   }
 
   .scene[data-theme="light"] {
-    background: radial-gradient(circle at top, #0d0f14 0, #050608 55%);
-    color: #f5f5f5;
-  }
-  .scene[data-theme="light"] .subtitle,
-  .scene[data-theme="light"] .line-soft {
-    color: #a7a7a7;
+     background: radial-gradient(circle at top, #0d0f14 0, #050608 55%);
   }
 
   .scene-inner {
@@ -143,6 +135,7 @@
     font-size: 1.1rem;
     line-height: 1.6;
     font-family: var(--font-body);
+    color: var(--fg-soft);
   }
 
   .line {
@@ -163,6 +156,11 @@
   .line-em {
     font-size: 1.3rem;
     font-weight: 600;
+    color: hsl(var(--primary));
+  }
+  
+  .line-soft {
+    color: var(--fg-soft);
   }
 
   .closing {
