@@ -1,0 +1,48 @@
+
+// src/components/notebooks/MarketingNotebook.tsx
+import { motion } from 'framer-motion';
+
+const Section: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+    <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6 }}
+    >
+        {children}
+    </motion.section>
+);
+
+export function MarketingNotebook() {
+  return (
+    <article className="prose prose-invert max-w-3xl mx-auto py-16 space-y-12">
+      <Section>
+        <p className="text-xs tracking-[0.3em] uppercase text-neutral-500">
+          Notebook · MTC · Marketinum
+        </p>
+        <h1 className="text-3xl md:text-4xl font-light text-neutral-50 mt-4 !mb-6">
+          Marketing as Behavioural Architecture
+        </h1>
+        <p className="lead !text-neutral-300 !text-lg !leading-relaxed">
+          I started in advertising. I learned quickly that marketing is not about ads, impressions, or clicks. It is behavioural architecture. You are not selling a product; you are designing a cognitive pathway for a human being to decide to change themselves. The product is just a token of that change.
+        </p>
+      </Section>
+
+      <Section>
+        <h2>Personalisation as a Trigger for Self-Change</h2>
+        <p>My work in medical awareness campaigns was formative. We weren't just "raising awareness" for a condition; we were building systems to help individuals recognize a pattern in their own lives and seek help. The content was a mirror. The goal was not a sale, but a decision. This taught me that the most powerful marketing doesn't create desire for an object, but creates a recognition of a need within the self.</p>
+      </Section>
+
+      <Section>
+        <h2>From Campaigns to Market Systems</h2>
+        <p>A campaign is a temporary spike. A system is a sustainable current. With projects like MTC Communications, Marketinum, and Willionnaire, my focus shifted from single-shot advertising to building self-sustaining ecosystems. In real estate, this meant moving beyond "selling a unit" to architecting the entire market of developers, brokers, buyers, and financiers. The goal became to design a system where value flows naturally, rather than being pushed through ads.</p>
+      </Section>
+      
+      <Section>
+        <h2>Human Value Perception: The Power of the "Unvalued"</h2>
+        <p>The market fixates on high-value signals: luxury, scarcity, hype. But true intelligence lies in understanding the entire spectrum of value. The biggest opportunities are often in the "unvalued" spaces—the ignored problems, the overlooked efficiencies, the quiet needs.</p>
+        <p>Value is not just in what people pay attention to; it's also in what they systematically ignore. Designing for the ignored is a form of cognitive arbitrage. It is about seeing the pattern that the market has dismissed as noise, and building a system around that insight. This is the core of moving from marketing to market architecture.</p>
+      </Section>
+    </article>
+  );
+}

@@ -1,7 +1,15 @@
 // src/components/notebooks/notebook-data.ts
 import React from 'react';
 import { ForgetenceNotebook } from './ForgetenceNotebook';
+import { NotefullBookNotebook } from './NotefullBookNotebook';
+import { AIXSELFNotebook } from './AIXSELFNotebook';
+import { RealEstateNotebook } from './RealEstateNotebook';
+import { SecurityNotebook } from './SecurityNotebook';
+import { PuzzlesNotebook } from './PuzzlesNotebook';
+import { MarketingNotebook } from './MarketingNotebook';
+import { SoundNotebook } from './SoundNotebook';
 import { PlaceholderNotebook } from './PlaceholderNotebook';
+
 
 export type NotebookId = 'forgetence' | 'notefullbook' | 'aixself' | 'realestate' | 'security' | 'puzzles' | 'marketing' | 'sound';
 
@@ -35,7 +43,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         description: 'An OS where notebooks are living minds, and a markup language that merges logic and memory.',
         tag: 'OS · Language',
         body: 'NotefullBook is an OS where notebooks are living minds. NotebookML is a format merging Markdown, logic, and memory. It treats AI as an OS layer.',
-        component: PlaceholderNotebook,
+        component: NotefullBookNotebook,
     },
     aixself: {
         id: 'aixself',
@@ -43,7 +51,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         description: 'Modeling AI identity through digital clones like AIXA, AIXIAM, and AIXEYE.',
         tag: 'Identity · AI Clones',
         body: 'The AIXSELF Universe explores AI identity through clones like AIXA, AIXIAM, and AIXEYE. It models how digital identities can form and evolve.',
-        component: PlaceholderNotebook,
+        component: AIXSELFNotebook,
     },
     realestate: {
         id: 'realestate',
@@ -51,7 +59,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         description: 'Using AI for tokenization and building sovereign real estate infrastructure.',
         tag: 'DLDCHAIN · Mashroi',
         body: 'Using AI for real estate intelligence with systems like DLDCHAIN, Mashroi, and EBRAM. Focuses on tokenization and sovereign real estate infrastructure.',
-        component: PlaceholderNotebook,
+        component: RealEstateNotebook,
     },
     security: {
         id: 'security',
@@ -59,7 +67,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         description: 'Designing phishing traps and scam simulators as a cognitive design problem.',
         tag: 'Luredoor · KAP',
         body: 'Designing phishing traps, scam simulators, and other security measures like Luredoor and KAP Traps. Security as a cognitive design problem.',
-        component: PlaceholderNotebook,
+        component: SecurityNotebook,
     },
     puzzles: {
         id: 'puzzles',
@@ -67,7 +75,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         description: 'Using puzzles as a lab for studying pattern, bias, and complex systems.',
         tag: 'BruteBrains · ChainCrack',
         body: 'Using puzzles like Bitcoin addresses and chain analysis as a lab for studying pattern, bias, and failure. Includes projects like BruteBrains and ChainCrack.',
-        component: PlaceholderNotebook,
+        component: PuzzlesNotebook,
     },
     marketing: {
         id: 'marketing',
@@ -75,7 +83,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         description: 'Building market systems and ecosystems, not just single campaigns.',
         tag: 'MTC · Marketinum',
         body: 'Building marketing systems and ecosystems, not just campaigns. Includes MTC, Marketinum, and Willionnaire.',
-        component: PlaceholderNotebook,
+        component: MarketingNotebook,
     },
     sound: {
         id: 'sound',
@@ -83,6 +91,6 @@ export const NOTEBOOKS: NotebookRegistry = {
         description: 'Exploring the connection between sound, identity, and environment.',
         tag: 'Ezzton · Setup',
         body: 'Exploring the connection between sound, identity, and environment through projects like Ezzton and personal setup design.',
-        component: PlaceholderNotebook,
+        component: SoundNotebook,
     }
 };

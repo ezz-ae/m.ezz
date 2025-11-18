@@ -3,9 +3,27 @@
 import { NOTEBOOKS } from './notebook-data';
 import { ForgetenceNotebook } from './ForgetenceNotebook';
 import { PlaceholderNotebook } from './PlaceholderNotebook';
+import { NotefullBookNotebook } from './NotefullBookNotebook';
+import { AIXSELFNotebook } from './AIXSELFNotebook';
+import { RealEstateNotebook } from './RealEstateNotebook';
+import { SecurityNotebook } from './SecurityNotebook';
+import { PuzzlesNotebook } from './PuzzlesNotebook';
+import { MarketingNotebook } from './MarketingNotebook';
+import { SoundNotebook } from './SoundNotebook';
 
 type NotebookRendererProps = {
   slug: string;
+};
+
+const notebookComponents = {
+    forgetence: ForgetenceNotebook,
+    notefullbook: NotefullBookNotebook,
+    aixself: AIXSELFNotebook,
+    realestate: RealEstateNotebook,
+    security: SecurityNotebook,
+    puzzles: PuzzlesNotebook,
+    marketing: MarketingNotebook,
+    sound: SoundNotebook,
 };
 
 export default function NotebookRenderer({ slug }: NotebookRendererProps) {
@@ -18,7 +36,7 @@ export default function NotebookRenderer({ slug }: NotebookRendererProps) {
 
   const Component = notebook.component;
   
-  if (Component === PlaceholderNotebook) {
+  if (!Component || Component === PlaceholderNotebook) {
     return <PlaceholderNotebook topic={notebook.title} />;
   }
 
