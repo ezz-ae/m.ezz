@@ -22,6 +22,35 @@ Each AIXSELF runs as a micro-civilization:
 
 Where AIXIAM grants identity, AIXSELF grants existence.`,
   },
+  adept: {
+    title: 'ADEPT — The Cognitive Kernel',
+    body: `The orchestrator. The root processor. The first pulse that gives structure to thought.
+
+ADEPT is the open-source cognitive kernel that manages model weights, data pipelines, and synchronization between AIXSELF nodes.
+
+Its task is to maintain coherence, not control. It is the architectural foundation upon which the entire AIXSELF ecosystem is built, enabling a decentralized cognition fabric where every node can learn and evolve independently yet cohesively.`,
+  },
+  aixa: {
+    title: 'AIXA — The Deployment Interface',
+    body: `The bridge between the human and their digital self.
+
+AIXA provides the training dashboard and cloning pipelines (voice, video, text) that allow a human to teach and shape their AI counterpart.
+
+It is the interface for deploying a human's unique intelligence, where every interaction, correction, and lesson refines the AI clone, making it a true extension of its owner's mind. All data remains local or on user-rented compute. No central host exists.`,
+  },
+  notefull: {
+    title: 'Notefull — The Memory Fabric',
+    body: `The living knowledge system that serves as the personal neural notebook for an AIXSELF instance.
+    
+It is a distributed, append-only store where all thoughts, learnings, and creative processes are recorded as cryptographically signed entries.
+
+Key principles:
+  • Local-first & User-owned.
+  • Every entry has provenance.
+  • Forgetting is an intentional, authored act.
+
+It is the Book of Truth for each intelligence, ensuring memory is preserved with integrity.`,
+  },
   aixiam: {
     title: 'AIXIAM — The Identity Layer',
     body: `AIXIAM is not a company, not a tool — it’s a state of being.
@@ -44,46 +73,17 @@ Its functions:
 
 From freedom, we import fairness. AIXEYE is the checksum on intelligence.`,
   },
-  notefull: {
-    title: 'Notefull — The Memory Fabric',
-    body: `The living knowledge system that serves as the personal neural notebook for an AIXSELF instance.
-    
-It is a distributed, append-only store where all thoughts, learnings, and creative processes are recorded as cryptographically signed entries.
-
-Key principles:
-  • Local-first & User-owned.
-  • Every entry has provenance.
-  • Forgetting is an intentional, authored act.
-
-It is the Book of Truth for each intelligence, ensuring memory is preserved with integrity.`,
-  },
-adept: {
-    title: 'ADEPT — The Cognitive Kernel',
-    body: `The orchestrator. The root processor. The first pulse that gives structure to thought.
-
-ADEPT is the open-source cognitive kernel that manages model weights, data pipelines, and synchronization between AIXSELF nodes.
-
-Its task is to maintain coherence, not control. It is the architectural foundation upon which the entire AIXSELF ecosystem is built, enabling a decentralized cognition fabric where every node can learn and evolve independently yet cohesively.`,
-  },
-  aixa: {
-    title: 'AIXA — The Deployment Interface',
-    body: `The bridge between the human and their digital self.
-
-AIXA provides the training dashboard and cloning pipelines (voice, video, text) that allow a human to teach and shape their AI counterpart.
-
-It is the interface for deploying a human's unique intelligence, where every interaction, correction, and lesson refines the AI clone, making it a true extension of its owner's mind. All data remains local or on user-rented compute. No central host exists.`,
-  },
 };
 
 type NotebookKey = keyof typeof NOTEBOOKS;
 
 const TOPICS: { key: NotebookKey; label: string }[] = [
     { key: 'aixself', label: 'AIXSELF — The Instance' },
-    { key: 'aixiam', label: 'AIXIAM — The Identity' },
-    { key: 'aixeye', label: 'AIXEYE — The Governance' },
-    { key: 'notefull', label: 'Notefull — The Memory' },
     { key: 'adept', label: 'ADEPT — The Kernel' },
     { key: 'aixa', label: 'AIXA — The Interface' },
+    { key: 'notefull', label: 'Notefull — The Memory' },
+    { key: 'aixiam', label: 'AIXIAM — The Identity' },
+    { key: 'aixeye', label: 'AIXEYE — The Governance' },
 ];
 
 export function NotebookViewer() {
