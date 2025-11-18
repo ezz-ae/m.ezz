@@ -1,5 +1,6 @@
 
 // src/components/notebooks/NotebookShell.tsx
+'use client';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';

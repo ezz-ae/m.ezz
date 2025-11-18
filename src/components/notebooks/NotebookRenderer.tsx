@@ -15,7 +15,7 @@ type NotebookRendererProps = {
   slug: string;
 };
 
-const notebookComponents = {
+const notebookComponents: { [key: string]: React.ComponentType<any> } = {
     forgetence: ForgetenceNotebook,
     notefullbook: NotefullBookNotebook,
     aixself: AIXSELFNotebook,
@@ -34,9 +34,9 @@ export default function NotebookRenderer({ slug }: NotebookRendererProps) {
     return <p>Notebook not found.</p>;
   }
 
-  const Component = notebook.component;
+  const Component = notebookComponents[slug] || PlaceholderNotebook;
   
-  if (!Component || Component === PlaceholderNotebook) {
+  if (Component === PlaceholderNotebook) {
     return <PlaceholderNotebook topic={notebook.title} />;
   }
 

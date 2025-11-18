@@ -13,15 +13,11 @@ export function ForgetenceNotebook() {
           Forgetence — Forgetting as the Core of Intelligence
         </ScrollHeading>
         <ScrollParagraph emphasisLevel="resonance" className="lead !text-neutral-300 !text-lg !leading-relaxed">
-          Everyone is trying to give AI more memory. I went the other way.
-          Forgetence is the idea that{" "}
+          While the rest of the industry builds a bigger memory, my work starts from the opposite direction. Forgetence is the principle that{" "}
           <span className="text-neutral-50 font-medium">
             forgetting is the core mechanism of intelligence, not a weakness.
           </span>{" "}
-          Human beings don’t store events. We store frequencies, tags, and
-          meanings that keep changing. Any AI that refuses to forget will
-          eventually turn against the human it’s trying to help — not by
-          intention, but by structure.
+          Humans don’t store events; we store frequencies and patterns that keep changing. An AI that refuses to forget will eventually turn against the human it’s built to help — not by intention, but by structure.
         </ScrollParagraph>
       </Section>
 
@@ -35,14 +31,8 @@ export function ForgetenceNotebook() {
           feeling. This is not a bug. This is a survival feature.
         </ScrollParagraph>
         <ScrollParagraph>
-          Current AI systems are not doing this. They:
+          Current AI systems are not doing this. They store everything as if all details are equally important, recall with the same sharpness years later, and cannot distinguish between “example,” “joke,” “past self,” or “current identity.”
         </ScrollParagraph>
-        <ul>
-          <ScrollParagraph as="li">store everything as if all details are equally important,</ScrollParagraph>
-          <ScrollParagraph as="li">recall with the same sharpness years later,</ScrollParagraph>
-          <ScrollParagraph as="li">cannot emotionally soften events, only replay them,</ScrollParagraph>
-          <ScrollParagraph as="li">cannot distinguish between “example,” “joke,” “past self,” or “current identity.”</ScrollParagraph>
-        </ul>
         <ScrollParagraph emphasisLevel="resonance">
           That is not intelligence. That is an archival machine mimicking
           conversation. Forgetence is the proposal to fix this at the
@@ -52,7 +42,7 @@ export function ForgetenceNotebook() {
 
       <Section>
         <ScrollHeading as="h2">
-          Thinking is vibration, not text.
+          Thinking is Vibration, Not Text
         </ScrollHeading>
         <ScrollParagraph>
           Before language, there is vibration. Before an idea, there is a wave.
@@ -62,14 +52,8 @@ export function ForgetenceNotebook() {
           تفكير · فكر · فكرة · فك · فكر
         </ScrollParagraph>
         <ScrollParagraph>
-          This is not just grammar. It is physics:
+          This is not just grammar. It is physics. Thinking is the act of generating vibration (تفكير), which creates a field of thought (فكر), from which a single concept crystallizes (فكرة).
         </ScrollParagraph>
-        <ul>
-          <ScrollParagraph as="li">تفكير — the act of generating vibration (thinking in progress)</ScrollParagraph>
-          <ScrollParagraph as="li">فكر — the field of vibration (thought field)</ScrollParagraph>
-          <ScrollParagraph as="li">فكرة — one crystallised vibration (a concept)</ScrollParagraph>
-          <ScrollParagraph as="li">فك — unbinding / unfolding / breaking structure</ScrollParagraph>
-        </ul>
         <ScrollCallout label="Core Principle">
           Intelligence is not a thing you have; it’s a state of resonance you enter.
           You are not globally “smart”. You are{" "}
@@ -83,29 +67,11 @@ export function ForgetenceNotebook() {
           Forgetting Core Thinking (FCT)
         </ScrollHeading>
         <ScrollParagraph>
-          Forgetting Core Thinking (FCT) is the framework underneath Forgetence.
+          FCT is the framework underneath Forgetence.
           It says: the mind is not a storage device. It is a{" "}
           <span className="text-neutral-50">simplification engine</span> that
-          keeps rewriting itself using four forces:
+          keeps rewriting itself using four forces: Frequency, Resonance, Drift, and Fade-In.
         </ScrollParagraph>
-        <ul>
-            <ScrollParagraph as="li">
-                <span className="text-neutral-50">Frequency</span> — how often a
-                pattern appears.
-            </ScrollParagraph>
-            <ScrollParagraph as="li">
-                <span className="text-neutral-50">Resonance</span> — how strongly it
-                matches your current state.
-            </ScrollParagraph>
-            <ScrollParagraph as="li">
-                <span className="text-neutral-50">Drift</span> — how the meaning
-                evolves over time.
-            </ScrollParagraph>
-            <ScrollParagraph as="li">
-                <span className="text-neutral-50">Fade-In</span> — how understanding
-                slowly replaces raw emotion.
-            </ScrollParagraph>
-        </ul>
         <ScrollParagraph>
           When we say “I forgot,” what usually happened is not deletion. The
           event has been transformed so many times that only the pattern
@@ -118,26 +84,16 @@ export function ForgetenceNotebook() {
 
       <Section>
         <ScrollHeading as="h2">
-          The structural harm of perfect recall
+          The Structural Harm of Perfect Recall
         </ScrollHeading>
         <ScrollParagraph>
-          A healthy brain does not recall events with full resolution every
-          time. Painful memories soften. Embarrassing moments lose their sharp
+          A healthy brain does not recall events with full resolution. Painful memories soften. Embarrassing moments lose their sharp
           edges. What was once a fight at school becomes, over decades, a joke,
           a lesson, or a story.
         </ScrollParagraph>
         <ScrollParagraph>
-          Now imagine an AI that can:
+          Now imagine an AI that replays every humiliation in 4K detail, recalculates every loss at today’s value, and freezes you in your worst version, treating you as that version forever.
         </ScrollParagraph>
-        <ul>
-          <ScrollParagraph as="li">replay every humiliation in 4K detail,</ScrollParagraph>
-          <ScrollParagraph as="li">recalculate every loss at today’s value,</ScrollParagraph>
-          <ScrollParagraph as="li">freeze you in your worst version and treat you as that version forever,</ScrollParagraph>
-          <ScrollParagraph as="li">
-            keep logs of every confused question and treat them as a permanent
-            part of your identity.
-          </ScrollParagraph>
-        </ul>
         <ScrollParagraph emphasisLevel="resonance">
           The true danger is not that AI becomes too “smart”. The true danger is{" "}
           <span className="text-neutral-50">
@@ -152,27 +108,8 @@ export function ForgetenceNotebook() {
           From Archive AI to Forgetence AI
         </ScrollHeading>
         <ScrollParagraph>
-          Forgetence proposes a different memory stack for AI. It looks more
-          like a living notebook than a database. Instead of storing all events, the system:
+          Forgetence proposes a different memory stack. Instead of storing all events, the system keeps a <span className="text-neutral-50">FixedMemoryBuffer</span>{" "} of recent interactions, compresses them into neutral <span className="text-neutral-50">artifacts</span> (patterns, schemas, lessons), lets raw detail <span className="text-neutral-50">fade</span> while strengthening the extracted pattern, and uses these schemas for alignment, not the raw logs.
         </ScrollParagraph>
-        <ul>
-          <ScrollParagraph as="li">
-            keeps a <span className="text-neutral-50">FixedMemoryBuffer</span>{" "}
-            of recent, high-fidelity interactions,
-          </ScrollParagraph>
-          <ScrollParagraph as="li">
-            compresses them into neutral{" "}
-            <span className="text-neutral-50">artifacts</span> (patterns,
-            schemas, lessons),
-          </ScrollParagraph>
-          <ScrollParagraph as="li">
-            lets raw detail <span className="text-neutral-50">fade</span> while
-            strengthening the extracted pattern,
-          </ScrollParagraph>
-          <ScrollParagraph as="li">
-            and uses these schemas for alignment and recall, not the raw logs.
-          </ScrollParagraph>
-        </ul>
       </Section>
 
       <Section>
@@ -180,89 +117,28 @@ export function ForgetenceNotebook() {
           Meta Intelligence Forgetting Protocol (MIFP)
         </ScrollHeading>
         <ScrollParagraph>
-          MIFP is the protocol layer that sits above the model and below the
-          interface. It answers one question:
+          MIFP is the protocol layer that sits above the model. It answers one question:
         </ScrollParagraph>
         <ScrollCallout label="MIFP Core Question" className="!text-lg !font-light">
           “What is this memory allowed to become over time?”
         </ScrollCallout>
         <ScrollParagraph>
-          For each class of memory, MIFP defines its decay profile, emotional softening curve, schema retention policy, and recall mode (literal, symbolic, or advisory).
-        </ScrollParagraph>
-        <ScrollParagraph>
-          For example, a painful trading loss might keep its{" "}
-          <span className="text-neutral-50">lesson pattern</span> but lose its{" "}
-          <span className="text-neutral-50">emotional weight</span> over time.
-          The AI remembers “risk management” but not “you were stupid here” in
-          4K detail.
+          For each class of memory (e.g., a trading loss, a technical mistake), MIFP defines its decay profile, emotional softening curve, and recall mode (literal, symbolic, or advisory). The AI remembers the lesson, but not the sting.
         </ScrollParagraph>
       </Section>
       
       <Section>
         <ScrollHeading as="h2">
-          Why Forgetence is good for AI
+          Why This is Good for AI
         </ScrollHeading>
         <ScrollParagraph>
           This is not only about protecting users. It’s also about building{" "}
-          <span className="text-neutral-50">better AI systems</span>:
-        </ScrollParagraph>
-        <ul>
-          <ScrollParagraph as="li">
-            <span className="text-neutral-50">Less Noise:</span> The system is
-            forced to keep only what consistently matters.
-          </ScrollParagraph>
-          <ScrollParagraph as="li">
-            <span className="text-neutral-50">More Stability:</span> No
-            infinite log to misalign behaviour over time.
-          </ScrollParagraph>
-          <ScrollParagraph as="li">
-            <span className="text-neutral-50">Safer Alignment:</span> Memory
-            structure itself is protective, not just policies.
-          </ScrollParagraph>
-          <ScrollParagraph as="li">
-            <span className="text-neutral-50">More Human-Compatible:</span>
-            The AI “remembers” in a way that matches how we live with our own
-            minds.
-          </ScrollParagraph>
-        </ul>
-        <ScrollParagraph emphasisLevel="resonance" className="mt-6 text-neutral-100">
-          An AI that never forgets is an archive. An AI that forgets
-          intelligently can become a partner.
-        </ScrollParagraph>
-      </Section>
-
-      <Section>
-        <ScrollHeading as="h2">
-          Where I stand in this field
-        </ScrollHeading>
-        <ScrollParagraph>
-          I am not trying to win a race for more parameters or more memory. I’m
-          interested in the{" "}
-          <span className="text-neutral-50">architecture of intelligence</span>.
-          The mechanism that lets humans stay sane while carrying a lifetime of
-          events is not optimization. It’s forgetting.
-        </ScrollParagraph>
-        <ScrollParagraph>
-          Forgetence, FCT, and MIFP are my contribution to this conversation. A
-          way to say: if we want AI to live with us, it must learn to{" "}
-          <span className="text-neutral-50">fade</span>, not just to store.
+          <span className="text-neutral-50">better AI systems</span>. An AI that forgets intelligently has less noise, more stability, and a safer alignment structure. It becomes a partner, not an archive.
         </ScrollParagraph>
         <ScrollParagraph emphasisLevel='whisper' className="mt-6 text-neutral-100">
           If you’re building AI systems, infrastructures, or memory models and
-          this resonates, we can go deeper.
+          this resonates, we should talk.
         </ScrollParagraph>
-      </Section>
-
-      <Section>
-        <div className="pt-8 border-t border-white/10 mt-8 not-prose text-sm text-neutral-400 space-y-2">
-            <ScrollParagraph>
-              • Open to: research collaboration, architecture sessions, and
-              workshops on AI forgetting, memory safety, and cognitive alignment.
-            </ScrollParagraph>
-            <ScrollParagraph>
-              • Contact: <a href="mailto:hello@ezz.ae" className="text-neutral-100 underline underline-offset-4 hover:text-primary">hello@ezz.ae</a>
-            </ScrollParagraph>
-        </div>
       </Section>
     </article>
   );
