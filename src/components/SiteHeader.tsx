@@ -5,14 +5,14 @@ import { Logo } from './icons';
 
 const navLinks = [
     { href: '/', label: 'Home' },
+    { href: '/#map', label: 'Notebooks' },
     { href: '/timeline', label: 'Timeline' },
-    // { href: '/map', label: 'Map' },
-    // { href: '/contact', label: 'Contact' },
+    { href: '/#now', label: 'Contact' },
 ];
 
 export default function SiteHeader() {
   return (
-    <header className="absolute top-0 left-0 right-0 z-50 p-6 md:p-8">
+    <header className="fixed top-0 left-0 right-0 z-50 p-6 md:p-8 bg-black/50 backdrop-blur-sm border-b border-white/5">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Logo />
         <nav className="hidden md:flex items-center space-x-6">

@@ -2,17 +2,17 @@
 // components/TopicMap.tsx
 "use client";
 import Link from 'next/link';
+import { NOTEBOOKS, NotebookId } from '@/components/notebooks/notebook-data';
 
-const topics = [
-  { id: "forgetence", label: "Forgetence / FCT", tag: "AI · Cognition" },
-  { id: "notefullbook", label: "NotefullBook & NotebookML", tag: "OS · Language" },
-  { id: "aixself", label: "AIXSELF Universe", tag: "Identity · AI Clones" },
-  { id: "realestate", label: "Real Estate Intelligence", tag: "DLDCHAIN · Mashroi" },
-  { id: "security", label: "Security & Traps", tag: "Luredoor · KAP" },
-  { id: "puzzles", label: "Puzzles & Crypto", tag: "BruteBrains · ChainCrack" },
-  { id: "marketing", label: "Marketing & Ecosystems", tag: "MTC · Marketinum · Willionnaire" },
-  { id: "sound", label: "Sound & Identity", tag: "Ezzton · Setup" },
-];
+// Convert the NOTEBOOKS object into an array for mapping
+const topics = Object.keys(NOTEBOOKS).map(key => {
+    const notebook = NOTEBOOKS[key as NotebookId];
+    return {
+        id: notebook.id,
+        label: notebook.title,
+        tag: notebook.tag,
+    };
+});
 
 export default function TopicMap() {
   return (
@@ -39,9 +39,6 @@ export default function TopicMap() {
                 </div>
                 <div className="text-base md:text-lg text-neutral-50">
                   {topic.label}
-                </div>
-                <div className="text-xs text-neutral-500">
-                  Enter this notebook
                 </div>
               </div>
             </Link>

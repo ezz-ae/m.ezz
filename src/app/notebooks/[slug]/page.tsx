@@ -1,10 +1,10 @@
 
 // src/app/notebooks/[slug]/page.tsx
 import { notFound } from 'next/navigation';
-import { NOTEBOOKS } from '@/components/notebooks/notebook-data';
+import { NOTEBOOKS, isNotebookId } from '@/components/notebooks/notebook-data';
 import NotebookRenderer from '@/components/notebooks/NotebookRenderer';
-import SiteHeader from '@/components/SiteHeader';
 import FooterMinimal from '@/components/FooterMinimal';
+import { NotebookShell } from '@/components/notebooks/NotebookShell';
 
 type NotebookPageProps = {
   params: {
@@ -20,17 +20,23 @@ export async function generateStaticParams() {
 
 export default function NotebookPage({ params }: NotebookPageProps) {
   const { slug } = params;
-  const notebook = NOTEBOOKS[slug as keyof typeof NOTEBOOKS];
+
+  if (!isNotebookId(slug)) {
+    notFound();
+  }
+
+  const notebook = NOTEBOOKS[slug];
 
   if (!notebook) {
     notFound();
   }
 
   return (
-    <div className="bg-black min-h-screen">
-        <SiteHeader />
-        <main className="py-16 px-6">
-            <NotebookRenderer slug={slug} />
+    <div className="bg-black min-h-screen pt-24">
+        <main className="pb-16">
+            <NotebookShell title={notebook.title} description={notebook.description}>
+                <NotebookRenderer slug={slug} />
+            </NotebookShell>
         </main>
         <FooterMinimal />
     </div>

@@ -1,5 +1,7 @@
 
 // src/components/TimelineView.tsx
+"use client";
+import { motion } from 'framer-motion';
 
 const timelinePhases = [
     {
@@ -59,16 +61,38 @@ export default function TimelineView() {
             <p className="text-neutral-400 mb-12">A cognitive evolution, not a CV.</p>
 
             <div className="relative space-y-12">
-                <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-white/10" />
+                <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-white/10">
+                    <motion.div 
+                        className="w-full h-full bg-primary origin-top"
+                        style={{ scaleY: 0 }}
+                        animate={{ scaleY: 1 }}
+                        transition={{ duration: 2, ease: "easeInOut" }}
+                    />
+                </div>
+                
                 {timelinePhases.map((phase, index) => (
-                    <div key={phase.phase} className="relative flex items-start">
-                        <div className="absolute left-4 md:left-1/2 top-2 -translate-x-1/2 w-3 h-3 bg-neutral-600 rounded-full" />
+                    <motion.div 
+                        key={phase.phase} 
+                        className="relative flex items-start"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                    >
+                        <motion.div 
+                            className="absolute left-4 md:left-1/2 top-2 -translate-x-1/2 w-3 h-3 bg-neutral-600 rounded-full"
+                            whileInView={{
+                                scale: [1, 1.5, 1],
+                                transition: { duration: 1, repeat: Infinity, delay: 0.5 + index * 0.2 }
+                            }}
+                            viewport={{ once: true, amount: 0.5 }}
+                        />
                         <div className={`w-full p-6 rounded-2xl md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:ml-[50%] md:pl-12'}`}>
                             <p className="text-xs tracking-[0.2em] uppercase text-neutral-500">{phase.tag}</p>
                             <h2 className="text-lg md:text-xl font-medium text-neutral-100 mt-2">{phase.title}</h2>
                             <p className="mt-2 text-sm text-neutral-400 leading-relaxed">{phase.description}</p>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </div>
