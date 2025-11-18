@@ -1,4 +1,3 @@
-
 import { Logo } from '@/components/icons';
 import { Github, Linkedin, Twitter } from 'lucide-react';
 import Link from 'next/link';
@@ -8,6 +7,7 @@ const navLinks = [
   { href: '/about', label: 'About' },
   { href: '/notebooks', label: 'Notebooks' },
   { href: '/studio', label: 'Studio' },
+  { href: '/blog', label: 'Blog' },
 ];
 
 export function SiteFooter() {

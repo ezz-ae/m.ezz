@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -16,6 +15,7 @@ const navLinks: NavLink[] = [
   { href: '/about', label: 'About' },
   { href: '/notebooks', label: 'Notebooks' },
   { href: '/studio', label: 'Studio' },
+  { href: '/blog', label: 'Blog' },
 ];
 
 export function SiteHeader() {

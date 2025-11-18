@@ -39,7 +39,7 @@
     {
       "id": "p2-img1",
       "description": "Facade detail of Symmetry Tower.",
-      "imageUrl": "https://images.unsplash.com/photo-1667072927315-735980a96ffc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxmYWNhZGUlMjBkZXRhaWx8ZW58MHx8fHwxNzYzNDE4OTQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1667072927315-735980a96ffc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxmYWNhZGUlMjBkZXRhaWx8ZW58MHx8fHwxNzYzNDE4OTQyfDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "facade detail"
     },
     {
@@ -51,73 +51,73 @@
     {
       "id": "p3-cover",
       "description": "The Resonance cultural center.",
-      "imageUrl": "https://images.unsplash.com/photo-1598707206160-0a6b20211774?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjdWx0dXJhbCUyMGNlbnRlcnxlbnwwfHx8fDE3NjM0MTg5NDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1598707206160-0a6b20211774?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjdWx0dXJhbCUyMGNlbnRlcnxlbnwwfHx8fDE3NjM0MTg5NDJ8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "cultural center"
     },
     {
       "id": "p3-img1",
       "description": "Museum interior of The Resonance.",
-      "imageUrl": "https://images.unsplash.com/photo-1570638776412-633370087d21?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtdXNldW0lMjBpbnRlcmlvcnxlbnwwfHx8fDE3NjMzNjkxNjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1570638776412-633370087d21?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtdXNldW0lMjBpbnRlcmlvcnxlbnwwfHx8fDE3NjMzNjkxNjJ8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "museum interior"
     },
     {
       "id": "p3-img2",
       "description": "Abstract architectural view of The Resonance.",
-      "imageUrl": "https://images.unsplash.com/photo-1493397212122-2b85dda8106b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxhYnN0cmFjdCUyMGFyY2hpdGVjdHVyZXxlbnwwfHx8fDE3NjM0MDU3OTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1493397212122-2b85dda8106b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxhYnN0cmFjdCUyMGFyY2hpdGVjdHVyZXxlbnwwfHx8fDE3NjM0MDU3OTl8MA&ixlib_rb-4.1.0&q=80&w=1080",
       "imageHint": "abstract architecture"
     },
     {
       "id": "p4-cover",
       "description": "Desert Bloom House exterior.",
-      "imageUrl": "https://images.unsplash.com/photo-1561065091-4908548ee638?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxkZXNlcnQlMjBob3VzZXxlbnwwfHx8fDE3NjMzNDkyOTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1561065091-4908548ee638?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxkZXNlcnQlMjBob3VzZXxlbnwwfHx8fDE3NjMzNDkyOTB8MA&ixlib_rb-4.1.0&q=80&w=1080",
       "imageHint": "desert house"
     },
     {
       "id": "p4-img1",
       "description": "Brutalist concrete detail of Desert Bloom House.",
-      "imageUrl": "https://images.unsplash.com/photo-1660404871825-6172f096ebfd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxicnV0YWxpc3QlMjBjb25jcmV0ZXxlbnwwfHx8fDE3NjM0MTg5NDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1660404871825-6172f096ebfd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxicnV0YWxpc3QlMjBjb25jcmV0ZXxlbnwwfHx8fDE3NjM0MTg5NDJ8MA&ixlib_rb-4.1.0&q=80&w=1080",
       "imageHint": "brutalist concrete"
     },
     {
       "id": "p5-cover",
       "description": "Canopy Cabin in the forest.",
-      "imageUrl": "https://images.unsplash.com/photo-1531692665211-6fa0ac99ac76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxmb3Jlc3QlMjBjYWJpbnxlbnwwfHx8fDE3NjMzNjY4NzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1531692665211-6fa0ac99ac76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxmb3Jlc3QlMjBjYWJpbnxlbnwwfHx8fDE3NjMzNjY4NzR8MA&ixlib_rb-4.1.0&q=80&w=1080",
       "imageHint": "forest cabin"
     },
     {
       "id": "p5-img1",
       "description": "Warm wood interior of Canopy Cabin.",
-      "imageUrl": "https://images.unsplash.com/photo-1612416845256-8414b229f853?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3b29kJTIwaW50ZXJpb3J8ZW58MHx8fHwxNzYzNDE4OTQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1612416845256-8414b229f853?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3b29kJTIwaW50ZXJpb3J8ZW58MHx8fHwxNzYzNDE4OTQyfDA&ixlib_rb-4.1.0&q=80&w=1080",
       "imageHint": "wood interior"
     },
     {
       "id": "p6-cover",
       "description": "The Oracle skyscraper with glass facade.",
-      "imageUrl": "https://images.unsplash.com/photo-1574886248530-3063f166bf95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxza3lzY3JhcGVyJTIwZ2xhc3N8ZW58MHx8fHwxNzYzNDE4OTQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1574886248530-3063f166bf95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxza3lzY3JhcGVyJTIwZ2xhc3N8ZW58MHx8fHwxNzYzNDE4OTQyfDA&ixlib_rb-4.1.0&q=80&w=1080",
       "imageHint": "skyscraper glass"
     },
     {
       "id": "p6-img1",
       "description": "View from The Oracle overlooking the cityscape.",
-      "imageUrl": "https://images.unsplash.com/photo-1563648437691-0316649cfc7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2l0eXNjYXBlJTIwdmlld3xlbnwwfHx8fDE3NjMzNjY4NTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1563648437691-0316649cfc7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2l0eXNjYXBlJTIwdmlld3xlbnwwfHx8fDE3NjMzNjY4NTZ8MA&ixlib_rb-4.1.0&q=80&w=1080",
       "imageHint": "cityscape view"
     },
     {
       "id": "blog1-cover",
       "description": "Architect sketching on a tablet.",
-      "imageUrl": "https://images.unsplash.com/photo-1649688066818-8274c4004f0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhcmNoaXRlY3QlMjBza2V0Y2h8ZW58MHx8fHwxNzYzMzYzNTEwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1649688066818-8274c4004f0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhcmNoaXRlY3QlMjBza2V0Y2h8ZW58MHx8fHwxNzYzMzYzNTEwfDA&ixlib_rb-4.1.0&q=80&w=1080",
       "imageHint": "architect sketch"
     },
     {
       "id": "blog2-cover",
       "description": "Close up of a building blueprint.",
-      "imageUrl": "https://images.unsplash.com/photo-1721244653606-0d719a36fef5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxidWlsZGluZyUyMGJsdWVwcmludHxlbnwwfHx8fDE3NjM0MTg5NDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1721244653606-0d719a36fef5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxidWlsZGluZyUyMGJsdWVwcmludHxlbnwwfHx8fDE3NjM0MTg5NDJ8MA&ixlib_rb_4.1.0&q=80&w=1080",
       "imageHint": "building blueprint"
     },
     {
       "id": "blog3-cover",
       "description": "Construction site with cranes.",
-      "imageUrl": "https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb25zdHJ1Y3Rpb24lMjBzaXRlfGVufDB8fHx8MTc2MzQwODYxNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb25zdHJ1Y3Rpb24lMjBzaXRlfGVufDB8fHx8MTc2MzQwODYxNHww&ixlib_rb-4.1.0&q=80&w=1080",
       "imageHint": "construction site"
     }
   ]
