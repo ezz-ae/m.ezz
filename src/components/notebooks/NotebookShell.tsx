@@ -1,15 +1,9 @@
-
 // src/components/notebooks/NotebookShell.tsx
 'use client';
-import React from 'react';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ScrollHeading, ScrollParagraph } from '../ScrollTypography';
-import NotebookRenderer from './NotebookRenderer';
-import { NotebookQueryInterface } from './NotebookQueryInterface';
-import { AudioOverview } from './AudioOverview';
-import { MindmapView } from './MindmapView';
 
 type NotebookShellProps = {
   title: string;
@@ -18,25 +12,6 @@ type NotebookShellProps = {
 };
 
 export function NotebookShell({ title, description, children }: NotebookShellProps) {
-  
-  const contentMap: { [key: string]: React.ReactNode } = {};
-  
-  React.Children.forEach(children, (child) => {
-    if (React.isValidElement(child) && typeof child.type !== 'string') {
-      const displayName = (child.type as any).displayName || child.type.name;
-      if (displayName === 'NotebookRenderer') {
-        contentMap.theory = child;
-      } else if (displayName === 'NotebookQueryInterface') {
-        contentMap.conversation = child;
-      } else if (displayName === 'AudioOverview') {
-        contentMap.audio = child;
-      } else if (displayName === 'MindmapView') {
-          contentMap.mindmap = child;
-      }
-    }
-  });
-
-
   return (
     <motion.div 
       className="relative isolate overflow-hidden pt-12 md:pt-24"
@@ -63,12 +38,9 @@ export function NotebookShell({ title, description, children }: NotebookShellPro
         </motion.div>
       </header>
 
-      {/* Main content flow */}
+      {/* Main content is passed directly */}
       <div>
-        {contentMap.theory}
-        {contentMap.audio}
-        {contentMap.mindmap}
-        {contentMap.conversation}
+        {children}
       </div>
 
     </motion.div>
