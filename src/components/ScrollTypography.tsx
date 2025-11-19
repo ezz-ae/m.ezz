@@ -90,7 +90,7 @@ export const ScrollHeading: React.FC<ScrollHeadingProps> = ({
     resonance: 'font-medium tracking-tight',
   }
 
-  const glowStyle = glow ? { textShadow: '0 0 40px hsla(var(--foreground), 0.25)' } : {};
+  const glowStyle = glow ? { textShadow: '0 0 40px hsla(var(--foreground), 0.25), 0 0 80px hsla(var(--foreground), 0.1)' } : {};
 
   return (
     <Component

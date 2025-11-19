@@ -1,6 +1,5 @@
 
 'use client';
-import type { Metadata } from 'next';
 import React from 'react';
 import { NotebookCard } from '@/components/notebooks/NotebookCard';
 import { DeployWizard } from '@/components/notebooks/DeployWizard';
@@ -12,11 +11,6 @@ import Link from 'next/link';
 
 // Map over the NOTEBOOKS object to get an array of notebook data
 const notebooks = Object.values(NOTEBOOKS);
-
-// export const metadata: Metadata = {
-//   title: 'EZZ.AE — Mind Board',
-//   description: 'The Mind Board for the NotefullBook Intelligence OS. Manage, deploy, and interact with your sovereign intelligences.',
-// };
 
 export default function MindBoardPage() {
   const [showDeployWizard, setShowDeployWizard] = React.useState(false);
