@@ -1,13 +1,12 @@
 
 import Link from 'next/link';
-import { Briefcase, DraftingCompass, Milestone, Rss, Presentation } from 'lucide-react';
 
 const navLinks = [
-  { href: '/', label: 'Mind Board', icon: <Briefcase /> },
-  { href: '/about', label: 'Map & About', icon: <DraftingCompass /> },
-  { href: '/projection', label: 'Projection', icon: <Presentation /> },
-  { href: '/timeline', label: 'Timeline', icon: <Milestone /> },
-  { href: '/contact', label: 'Contact', icon: <Rss /> },
+  { href: '/', label: 'Mind Board' },
+  { href: '/about', label: 'Map & About' },
+  { href: '/projection', label: 'Projection' },
+  { href: '/timeline', label: 'Timeline' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export default function SiteHeader() {
