@@ -1,4 +1,3 @@
-
 // src/components/TimelineView.tsx
 "use client";
 
@@ -10,11 +9,11 @@ const layers = [
         question: "What problem did you challenge?",
         points: [
             "Challenged the ontological assumptions of:",
-            "Memory",
-            "Conscious cognition",
-            "Generative thought",
-            "Human perceptual continuity",
-            "Psychological models of recall and identity"
+            "• Memory",
+            "• Conscious cognition",
+            "• Generative thought",
+            "• Human perceptual continuity",
+            "• Psychological models of recall and identity"
         ],
         contribution: {
             title: "Your contribution:",
@@ -115,13 +114,13 @@ const layers = [
         title: "LAYER 9 — Future Extensions",
         question: "What comes next?",
         points: [
-            "Forgain OS v1",
-            "Memory Reconstruction Simulator",
-            "Cognitive Ratio API",
-            "Generative Thinking Curriculum",
-            "AI Safety Framework (State-Based Cognition)",
-            "Human-AI Shared Cognitive Standards",
-            "Consciousness Computation Index"
+            "• Forgain OS v1",
+            "• Memory Reconstruction Simulator",
+            "• Cognitive Ratio API",
+            "• Generative Thinking Curriculum",
+            "• AI Safety Framework (State-Based Cognition)",
+            "• Human-AI Shared Cognitive Standards",
+            "• Consciousness Computation Index"
         ]
     },
     {
@@ -145,9 +144,16 @@ const LayerCard = ({ layer, index }: { layer: typeof layers[0], index: number })
         <p className="text-sm text-neutral-500 italic mb-4">{layer.question}</p>
         
         <div className="prose prose-invert prose-sm max-w-none text-neutral-300 space-y-2">
-            {layer.points.map((point, i) => (
-                 <p key={i}>{point.startsWith("•") ? <span className="ml-4">{point}</span> : point}</p>
-            ))}
+            {layer.points.map((point, i) => {
+                const isListItem = point.startsWith('•');
+                const content = isListItem ? point.substring(1).trim() : point;
+                return (
+                    <p key={i} className={isListItem ? "ml-4" : ""}>
+                        {isListItem && <span className="mr-2">•</span>}
+                        {content}
+                    </p>
+                )
+            })}
             
             {layer.contribution && (
                 <div className="pt-2">
