@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Logo } from './icons';
 
 const navLinks = [
+  { href: '/mind-board', label: 'Mind Board' },
   { href: '/aixa', label: 'AIXA' },
   { href: '/about', label: 'Map & About' },
   { href: '/projection', label: 'Projection' },
