@@ -45,10 +45,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          'min-h-screen bg-black font-body text-neutral-100 antialiased overflow-x-hidden',
+          'min-h-screen bg-background font-body text-foreground antialiased overflow-x-hidden',
           ptSans.variable,
           playfairDisplay.variable
         )}

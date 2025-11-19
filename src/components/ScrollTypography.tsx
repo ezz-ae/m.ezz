@@ -14,10 +14,10 @@ type BaseScrollProps = {
 // Generic Section with a consistent animation
 export const Section: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <motion.section
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0.8, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
     >
         {children}
     </motion.section>
@@ -38,13 +38,13 @@ export const ScrollParagraph: React.FC<ScrollParagraphProps> = ({
   const isInView = useInView(ref, { once: true, amount: 0.5 });
 
   const variants = {
-    hidden: { opacity: 0, y: 15 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.17, 0.55, 0.55, 1] } },
   };
 
   const emphasisClasses = {
-    base: 'text-neutral-300',
-    resonance: 'text-neutral-100 font-medium tracking-wide',
+    base: 'text-neutral-600',
+    resonance: 'text-neutral-800 font-medium',
     whisper: 'text-neutral-500 italic',
   };
 
@@ -81,14 +81,16 @@ export const ScrollHeading: React.FC<ScrollHeadingProps> = ({
   const isInView = useInView(ref, { once: true, amount: 0.5 });
 
   const variants = {
-    hidden: { opacity: 0, y: 20, filter: 'blur(5px)' },
-    visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.8, ease: 'easeOut' } },
+    hidden: { opacity: 0, y: 25, filter: 'blur(8px)' },
+    visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.9, delay: 0.1, ease: [0.17, 0.55, 0.55, 1] } },
   };
   
   const emphasisClasses = {
-    base: 'text-neutral-100',
-    resonance: 'text-neutral-50 font-medium tracking-tight',
+    base: 'text-neutral-900',
+    resonance: 'text-black font-medium tracking-tight',
   }
+
+  const glowStyle = glow ? { textShadow: '0 0 30px rgba(0,0,0,0.15)' } : {};
 
   return (
     <Component
@@ -96,7 +98,8 @@ export const ScrollHeading: React.FC<ScrollHeadingProps> = ({
       className={cn('font-headline !mb-4', emphasisClasses[emphasisLevel], className)}
     >
       <motion.span 
-        className={cn("inline-block", glow && '[text-shadow:0_0_12px_rgba(255,255,255,0.3)]')}
+        className="inline-block"
+        style={glowStyle}
         variants={variants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
@@ -119,11 +122,11 @@ export const ScrollCallout: React.FC<ScrollCalloutProps> = ({
 }) => {
     return (
         <Section>
-            <div className={cn("my-8 border-l-2 border-neutral-700 pl-6 py-4 bg-white/5 rounded-r-lg", className)}>
+            <div className={cn("my-12 border-l-4 border-neutral-300 pl-6 py-4", className)}>
                 {label && (
-                    <p className="text-xs font-semibold tracking-[0.2em] uppercase text-neutral-400 mb-3">{label}</p>
+                    <p className="text-xs font-semibold tracking-widest uppercase text-neutral-500 mb-3">{label}</p>
                 )}
-                <p className="text-neutral-200 leading-relaxed">{children}</p>
+                <p className="text-neutral-800 text-lg md:text-xl font-headline tracking-tight leading-relaxed">{children}</p>
             </div>
         </Section>
     )

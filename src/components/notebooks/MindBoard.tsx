@@ -1,3 +1,4 @@
+
 // src/components/notebooks/MindBoard.tsx
 "use client";
 
@@ -23,7 +24,7 @@ export function MindBoard() {
           open={showDeployWizard}
           onOpenChange={setShowDeployWizard}
         >
-          <Button onClick={() => setShowDeployWizard(true)}>
+          <Button onClick={() => setShowDeployWizard(true)} variant="outline" className="text-neutral-100 border-neutral-700 hover:bg-neutral-800 hover:text-neutral-50">
             <Plus className="mr-2 h-4 w-4" /> Deploy New Mind
           </Button>
         </DeployWizard>
