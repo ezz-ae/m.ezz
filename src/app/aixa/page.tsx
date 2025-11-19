@@ -1,21 +1,24 @@
 
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
 import FooterMinimal from '@/components/FooterMinimal';
 import { NOTEBOOKS, NotebookId } from '@/components/notebooks/notebook-data';
+import { cn } from '@/lib/utils';
 
 const nodesData = Object.values(NOTEBOOKS).map((notebook, i) => {
-    // Distribute nodes in a more visually pleasing circular layout
     const angle = (i / Object.keys(NOTEBOOKS).length) * 2 * Math.PI;
-    const radius = i % 2 === 0 ? 35 : 25; // Alternate radius for variety
+    const radius = i % 2 === 0 ? 35 : 25; 
     const left = 50 + radius * Math.cos(angle);
     const top = 50 + radius * Math.sin(angle);
     return {
         top: `${top}%`,
         left: `${left}%`,
         title: notebook.title,
+        description: notebook.description,
         label: notebook.tag,
         id: notebook.id,
     };
@@ -26,6 +29,19 @@ const AixaPage: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const diagramRef = useRef<HTMLDivElement>(null);
   const nodesRef = useRef<(HTMLDivElement | null)[]>([]);
+  const [hoveredNode, setHoveredNode] = useState<typeof nodesData[0] | null>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [clickedNode, setClickedNode] = useState<string | null>(null);
+  const router = useRouter();
+
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      setMousePosition({ x: event.clientX, y: event.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -45,31 +61,22 @@ const AixaPage: React.FC = () => {
     };
 
     class Particle {
-      x: number;
-      y: number;
-      tx: number;
-      ty: number;
-      progress: number;
-      xCurrent: number = 0;
-      yCurrent: number = 0;
-
+      x: number; y: number; tx: number; ty: number; progress: number; xCurrent: number = 0; yCurrent: number = 0;
       constructor(x: number, y: number, tx: number, ty: number) {
         this.x = x; this.y = y; this.tx = tx; this.ty = ty;
         this.progress = Math.random();
       }
-
       update() {
         this.progress += 0.003;
         if (this.progress > 1) this.progress = 0;
         this.xCurrent = this.x + (this.tx - this.x) * this.progress;
         this.yCurrent = this.y + (this.ty - this.y) * this.progress;
       }
-
       draw() {
         if (!ctx) return;
         ctx.beginPath();
         ctx.arc(this.xCurrent, this.yCurrent, 1.5, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(255,127,80,0.5)';
+        ctx.fillStyle = `rgba(255, 127, 80, ${Math.max(0.2, Math.sin(this.progress * Math.PI) * 0.8)})`;
         ctx.fill();
       }
     }
@@ -85,14 +92,14 @@ const AixaPage: React.FC = () => {
 
       currentNodes.forEach((a, i) => {
         currentNodes.forEach((b, j) => {
-          if (i < j) { // Only connect each pair once
+          if (i < j) { 
             const rectA = a.getBoundingClientRect();
             const rectB = b.getBoundingClientRect();
             const x1 = rectA.left + rectA.width / 2 - diagramRect.left;
             const y1 = rectA.top + rectA.height / 2 - diagramRect.top;
             const x2 = rectB.left + rectB.width / 2 - diagramRect.left;
             const y2 = rectB.top + rectB.height / 2 - diagramRect.top;
-            for (let k = 0; k < 2; k++) particles.push(new Particle(x1, y1, x2, y2));
+            for (let k = 0; k < 3; k++) particles.push(new Particle(x1, y1, x2, y2));
           }
         });
       });
@@ -113,20 +120,26 @@ const AixaPage: React.FC = () => {
     const init = () => {
         resizeCanvas();
         generateParticles();
+        if (animationFrameId) cancelAnimationFrame(animationFrameId);
         drawConnections();
     };
 
-    // Use a timeout to ensure all elements are rendered and have dimensions
     const timeoutId = setTimeout(init, 100);
-
     window.addEventListener('resize', init);
-
     return () => {
       clearTimeout(timeoutId);
       window.removeEventListener('resize', init);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
+
+  const handleNodeClick = (e: React.MouseEvent, id: NotebookId) => {
+    e.preventDefault();
+    setClickedNode(id);
+    setTimeout(() => {
+      router.push(`/notebooks/${id}`);
+    }, 400); // Duration of the zoom animation
+  };
 
 
   return (
@@ -159,28 +172,48 @@ const AixaPage: React.FC = () => {
           font-size: 0.75rem;
           transform: translate(-50%, -50%); /* Center the nodes */
         }
+        .node-link {
+          display: block;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+        }
         .node:hover {
           transform: translate(-50%, -50%) scale(1.2);
           box-shadow: 0 0 100px rgba(255, 127, 80, 0.5);
+        }
+        .node.clicked {
+          animation: zoom-out 0.4s ease-in-out forwards;
         }
         @keyframes pulse-node {
           0% { transform: translate(-50%, -50%) scale(1); }
           100% { transform: translate(-50%, -50%) scale(1.03); }
         }
-        .tooltip {
-          position: fixed;
-          background: rgba(0, 0, 0, 0.85);
-          color: #fff;
-          padding: 8px 12px;
-          border-radius: 8px;
-          font-size: 0.85rem;
-          pointer-events: none;
-          z-index: 9999;
-          white-space: nowrap;
-          box-shadow: 0 0 15px rgba(255, 127, 80, 0.2);
-          transition: opacity 0.2s;
+        @keyframes zoom-out {
+          0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+          100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
         }
       `}</style>
+      
+      <AnimatePresence>
+        {hoveredNode && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            style={{
+              left: mousePosition.x + 15,
+              top: mousePosition.y + 15,
+            }}
+            className="pointer-events-none fixed z-50 max-w-sm rounded-lg border border-neutral-700 bg-neutral-900/80 p-4 text-sm text-neutral-200 shadow-2xl backdrop-blur-sm"
+          >
+            <h4 className="font-bold text-base text-orange-400 mb-1">{hoveredNode.title}</h4>
+            <p className="text-neutral-400">{hoveredNode.description}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <main className="aixa-page">
         <section id="architecture" className="container mx-auto px-6">
           <div className="text-center">
@@ -190,16 +223,19 @@ const AixaPage: React.FC = () => {
 
           <div ref={diagramRef} id="diagram" style={{ position: 'relative', width: '100%', height: 'calc(100vh - 300px)', minHeight: '500px', margin: '50px auto' }}>
             {nodesData.map((nodeInfo, i) => (
-              <Link href={`/notebooks/${nodeInfo.id}`} key={nodeInfo.id}>
-                <div
-                    ref={el => { nodesRef.current[i] = el; }}
-                    className="node"
-                    style={{ top: nodeInfo.top, left: nodeInfo.left }}
-                    title={nodeInfo.title}
-                >
-                    {nodeInfo.label}
-                </div>
-              </Link>
+              <div
+                  ref={el => { nodesRef.current[i] = el; }}
+                  key={nodeInfo.id}
+                  className={cn("node", clickedNode === nodeInfo.id && 'clicked')}
+                  style={{ top: nodeInfo.top, left: nodeInfo.left }}
+                  onMouseEnter={() => setHoveredNode(nodeInfo)}
+                  onMouseLeave={() => setHoveredNode(null)}
+                  onClick={(e) => handleNodeClick(e, nodeInfo.id as NotebookId)}
+              >
+                <Link href={`/notebooks/${nodeInfo.id}`} className="node-link" aria-label={`Go to ${nodeInfo.title} notebook`}>
+                  <div className="flex h-full w-full items-center justify-center">{nodeInfo.label}</div>
+                </Link>
+              </div>
             ))}
             <canvas ref={canvasRef} id="connections" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}></canvas>
           </div>
