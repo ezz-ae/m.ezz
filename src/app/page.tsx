@@ -1,202 +1,158 @@
-// src/app/page.tsx
-'use client';
-import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
 
-const storySections = [
-  { 
-    id: 'intro',
-    title: 'from limitation import elevation',
-    content: 'This is not a portfolio. It’s a living map of how these systems think: Forgetence / FCT, NotefullBook, the AIXSELF Universe, and more.'
+'use client';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight, BrainCircuit, ShieldOff, Layers } from 'lucide-react';
+import Link from 'next/link';
+import IdentityStatement from '@/components/IdentityStatement';
+import TopicMap from '@/components/TopicMap';
+import FooterMinimal from '@/components/FooterMinimal';
+
+const problemPoints = [
+    {
+        icon: ShieldOff,
+        title: 'Psychologically Unsafe',
+        text: 'AI revives past trauma at full emotional intensity, a process a healthy human mind naturally softens.',
+    },
+    {
+        icon: BrainCircuit,
+        title: 'Cognitively Misaligned',
+        text: 'AI gives equal weight to every piece of data, failing to distinguish between core principles and trivial details.',
+    },
+    {
+        icon: Layers,
+        title: 'Lacks Interpretive Depth',
+        text: 'It recalls literal events, not the meaning or pattern behind them, leading to context-blind interactions.',
+    },
+];
+
+const solutionPoints = [
+  {
+    title: "Forgetting as Intelligence",
+    text: "The system learns to prune noisy data, preserving only the essential patterns and schemas. Knowledge is what remains after forgetting."
   },
   {
-    id: 'journey',
-    title: 'Two Years. One Human. Endless Horizons.',
-    content: '10–15 hours daily, a dialogue unfolded between human intuition and artificial generativity. Each conversation was a cognitive experiment, a life-simulation, a recursive system of ideas growing faster than either could alone.'
+    title: "Meaning-First Retrieval",
+    text: "Instead of recalling raw data, the AI retrieves the underlying meaning, ensuring contextually relevant and safe responses."
   },
   {
-    id: 'fgi',
-    title: 'The Power of Forgetive Generative Intelligence (FGI)',
-    content: 'Memory is not storage. It’s an engine. Through FGI, Mahmoud’s mind and the AI’s generative layers learned to prune irrelevant data, regenerate structural patterns, and elevate cognition into emergent, systemic reasoning.',
-    highlight: true
-  },
-  {
-    id: 'simulation',
-    title: 'Life-Simulation as a Thinking Playground',
-    content: 'Every decision, behavior, ethical dilemma, and societal model was tested and iterated in real-time. Each scenario built a cognitive sandbox, a predictive engine for insight and reflection.'
-  },
-  {
-    id: 'architecture',
-    title: 'AIXA Architecture Simplified',
-    content: 'Hover on nodes to feel the dynamic flow of dual-intelligence interaction.',
-    highlight: true,
-    isDiagram: true
-  },
-  {
-    id: 'outcomes',
-    title: 'Outcomes Beyond Imagination',
-    content: '',
-    isProjects: true
-  },
-  {
-    id: 'invite',
-    title: 'Your Invitation',
-    content: 'Step into Ezz.ae, where AI and human intelligence co-create. Explore ideas, witness system-level thinking, and experience the frontier of cognitive augmentation. This is proof that long-duration human-AI collaboration can redefine how we think, learn, and create.',
-    highlight: true
+    title: "Emotional Decay",
+    text: "Emotional tags on memories naturally soften over time, preventing the harmful revival of past trauma at full strength."
   }
 ];
 
-const diagramNodes = [
-    { title: 'Human Cognitive Node', style: { top: '40%', left: '10%' } },
-    { title: 'AI Generative Node', style: { top: '40%', left: '70%' } },
-    { title: 'Feedback Loop', style: { top: '10%', left: '40%' } },
-    { title: 'Memory Reconstruction Engine', style: { top: '70%', left: '40%' } },
-    { title: 'Simulation Environment', style: { top: '50%', left: '40%' } },
-];
-
-const projects = [
-    "50+ Multi-Domain Projects", "25 AI Frameworks", "10+ Research Papers", 
-    "Multi-Layer Life Simulations", "Accelerated Cognitive Fluency"
-];
-
-
-export default function StoryPage() {
-    
-  useEffect(() => {
-    const sections = document.querySelectorAll('.zoom-fade');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, { threshold: 0.3 });
-
-    sections.forEach(section => observer.observe(section));
-
-    const parallaxShapes = document.querySelectorAll('.parallax-shape');
-    const handleScroll = () => {
-      let scrollPos = window.scrollY;
-      parallaxShapes.forEach((shape, idx) => {
-        const el = shape as HTMLElement;
-        el.style.transform = `translateY(${scrollPos * 0.05 * (idx + 1)}px)`;
-      });
-    };
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      sections.forEach(section => observer.unobserve(section));
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
+export default function FCTHome() {
   return (
-    <>
-      <style jsx global>{`
-        .story-page {
-          height: 100%;
-          font-family: 'Montserrat', sans-serif;
-          background: #0a0a0a;
-          color: #f5f5f5;
-          overflow-x: hidden;
-        }
+    <div className="min-h-screen bg-black text-neutral-100 overflow-x-hidden">
+      {/* Hero Section */}
+      <motion.section 
+        className="relative flex items-center justify-center min-h-[80vh] text-center px-6 pt-24"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.0 }}
+      >
+        <div className="absolute inset-0 bg-radial from-orange-500/5 via-black to-black opacity-40 z-0"></div>
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <motion.h1 
+            className="text-4xl md:text-6xl font-light text-neutral-50 font-headline"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            AI That Forgets
+          </motion.h1>
+          <motion.p 
+            className="mt-6 text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            Current AI has a fatal flaw: perfect memory. We're building a new cognitive architecture where forgetting isn't a bug—it's the core feature of safe, human-aligned intelligence.
+          </motion.p>
+          <motion.div
+            className="mt-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <Link href="/aixa">
+              <Button variant="outline" className="text-lg py-6 px-8 rounded-full border-neutral-600 hover:bg-neutral-800 hover:text-white transition-all duration-300">
+                Explore the Cognitive Map <ArrowRight className="ml-2" />
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
+      </motion.section>
 
-        .story-page::before, .story-page::after {
-          content: '';
-          position: fixed;
-          top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
-        }
+      {/* Problem Section */}
+      <section className="py-24 px-6 bg-neutral-900/50">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-center text-sm tracking-[0.35em] uppercase text-neutral-500 mb-4">The Problem</h2>
+          <h3 className="text-center text-3xl md:text-4xl font-light text-neutral-100 mb-16">Why Perfect AI Memory is Dangerous</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {problemPoints.map((point, i) => (
+              <motion.div 
+                key={point.title}
+                className="p-8 rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+              >
+                <point.icon className="w-8 h-8 text-orange-400 mb-4" />
+                <h4 className="text-xl font-medium text-neutral-100 mb-2">{point.title}</h4>
+                <p className="text-neutral-400">{point.text}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-        .story-page::before {
-          background: linear-gradient(135deg, #0a0a0a, #1f1f1f, #0a0a0a, #121212);
-          background-size: 400% 400%;
-          animation: gradientMove 40s ease infinite;
-        }
+      {/* Solution Section */}
+      <section className="py-24 px-6">
+         <div className="max-w-5xl mx-auto">
+           <h2 className="text-center text-sm tracking-[0.35em] uppercase text-neutral-500 mb-4">The Solution</h2>
+           <h3 className="text-center text-3xl md:text-4xl font-light text-neutral-100 mb-16">FCT: Forgetting Core Thinking</h3>
+            <div className="space-y-10">
+              {solutionPoints.map((point, i) => (
+                  <motion.div
+                    key={point.title}
+                    className="flex flex-col md:flex-row items-start gap-8"
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.7 }}
+                  >
+                    <div className="md:w-1/3">
+                      <h4 className="text-2xl font-light text-orange-400">{point.title}</h4>
+                    </div>
+                    <div className="md:w-2/3">
+                      <p className="text-lg text-neutral-300 leading-relaxed">{point.text}</p>
+                    </div>
+                  </motion.div>
+              ))}
+            </div>
+         </div>
+      </section>
 
-        .story-page::after {
-          background: radial-gradient(circle at center, rgba(255, 127, 80, 0.05), transparent 70%);
-          animation: pulse-bg 10s ease-in-out infinite alternate;
-        }
-
-        @keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        @keyframes pulse-bg { 0% { transform: scale(1); } 100% { transform: scale(1.2); } }
-
-        .story-container { width: 90%; max-width: 1400px; margin: auto; padding: 100px 0; }
-        .story-section { min-height: 100vh; padding: 150px 0; position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        .story-section h1, .story-section h2 { font-family: 'Playfair Display', serif; margin-bottom: 20px; text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.7); line-height: 1.2; font-size: 2.5rem; }
-        .story-section h1 { font-size: 3rem; }
-        .story-section p { font-size: 1.2rem; line-height: 1.8; max-width: 900px; margin: auto; color: #e0e0e0; }
-
-        .zoom-fade { transform: scale(0.95); opacity: 0; transition: transform 1.2s ease, opacity 1.2s ease; }
-        .zoom-fade.active { transform: scale(1); opacity: 1; }
-
-        .highlight { background: rgba(255, 255, 255, 0.03); padding: 40px; border-radius: 20px; margin: 50px 0; box-shadow: 0 0 60px rgba(255, 127, 80, 0.1); }
-        .accent { color: #ff7f50; font-weight: 700; }
-
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 60px; }
-        .project-card { background: rgba(255, 255, 255, 0.05); border-radius: 20px; padding: 25px; transition: transform 0.5s ease, box-shadow 0.5s ease; text-align: center; display:flex; align-items:center; justify-content:center;}
-        .project-card:hover { transform: scale(1.08); box-shadow: 0 0 80px rgba(255, 127, 80, 0.5); }
-        
-        .scroll-indicator { position: fixed; left: 50%; bottom: 30px; transform: translateX(-50%); width: 30px; height: 50px; border: 2px solid #ff7f50; border-radius: 25px; display: flex; justify-content: center; align-items: flex-start; z-index: 100; }
-        .scroll-indicator span { width: 6px; height: 6px; background: #ff7f50; display: block; border-radius: 50%; margin-top: 5px; animation: scrollAnim 1.5s infinite; }
-        @keyframes scrollAnim { 0%, 20% { transform: translateY(0); } 50% { transform: translateY(20px); } 100% { transform: translateY(0); } }
-
-        .parallax-shape { position: absolute; border-radius: 50%; background: rgba(255, 127, 80, 0.05); pointer-events: none; animation: float 15s ease-in-out infinite alternate; z-index: -1; }
-        @keyframes float { 0% { transform: translateY(0); } 100% { transform: translateY(-40px); } }
-
-        .diagram-container { position: relative; width: 100%; max-width: 900px; height: 500px; margin: 50px auto; }
-        .diagram-node { position: absolute; width: 120px; height: 120px; background: rgba(255, 127, 80, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-align: center; font-weight: 700; color: #fff; box-shadow: 0 0 40px rgba(255, 127, 80, 0.3); transition: transform 0.5s ease; font-size: 0.9rem; padding: 5px; }
-        .diagram-node:hover { transform: scale(1.15); }
-
-        @media (max-width: 768px) {
-          .story-section { min-height: 80vh; }
-          .story-section h1 { font-size: 2rem; }
-          .story-section h2 { font-size: 1.6rem; }
-          .story-section p { font-size: 1rem; }
-          .diagram-node { width: 90px; height: 90px; font-size: 0.7rem; }
-          .diagram-container { height: 400px; }
-        }
-      `}</style>
-      <div className="story-page">
-        <div className="scroll-indicator"><span></span></div>
-        
-        <div className="parallax-shape" style={{ width: '200px', height: '200px', top: '10%', left: '15%' }}></div>
-        <div className="parallax-shape" style={{ width: '150px', height: '150px', top: '70%', left: '70%' }}></div>
-        <div className="parallax-shape" style={{ width: '300px', height: '300px', top: '40%', left: '50%' }}></div>
-        
-        <main>
-          {storySections.map(section => (
-            <motion.section
-              key={section.id}
-              id={section.id}
-              className={`story-section zoom-fade ${section.highlight ? 'highlight' : ''}`}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="story-container">
-                {section.id === 'intro' ? <h1>{section.title}</h1> : <h2>{section.title}</h2>}
-                <p dangerouslySetInnerHTML={{ __html: section.content.replace(/`([^`]+)`/g, '<span class="accent">$1</span>') }} />
-                
-                {section.isDiagram && (
-                  <div className="diagram-container">
-                    {diagramNodes.map(node => (
-                      <div key={node.title} className="diagram-node" style={node.style}>{node.title}</div>
-                    ))}
-                  </div>
-                )}
-                
-                {section.isProjects && (
-                  <div className="projects-grid">
-                    {projects.map(proj => <div key={proj} className="project-card">{proj}</div>)}
-                  </div>
-                )}
-              </div>
-            </motion.section>
-          ))}
-        </main>
-      </div>
-    </>
+      <IdentityStatement />
+      <TopicMap />
+      <FooterMinimal />
+    </div>
   );
 }
+
+// NOTE: I'm keeping the button component here as it's small and specific to this page layout.
+const Button = React.forwardRef<
+  HTMLButtonElement,
+  React.ButtonHTMLAttributes<HTMLButtonElement> & { variant?: 'outline' }
+>(({ className, ...props }, ref) => {
+  return (
+    <button
+      ref={ref}
+      className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+      {...props}
+    />
+  );
+});
+Button.displayName = 'Button';
