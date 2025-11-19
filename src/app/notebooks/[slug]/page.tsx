@@ -27,7 +27,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: NotebookPageProps): Promise<Metadata> {
-  const { slug } = params;
+  const slug = params.slug;
 
   if (!isNotebookId(slug)) {
     notFound();
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: NotebookPageProps): Promise<M
 
 
 export default function NotebookPage({ params }: NotebookPageProps) {
-  const { slug } = params;
+  const slug = params.slug;
 
   if (!isNotebookId(slug)) {
     notFound();

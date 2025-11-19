@@ -1,7 +1,6 @@
 
 'use client';
 
-import type { Metadata } from 'next';
 import FooterMinimal from '@/components/FooterMinimal';
 import { Button } from '@/components/ui/button';
 import { Copy } from 'lucide-react';
