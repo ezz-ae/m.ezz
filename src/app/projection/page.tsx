@@ -18,26 +18,26 @@ const thesisData = {
 };
 
 const architectureLayers = [
-    { icon: Cpu, component: 'ADEPT', osEquivalent: 'Kernel', fn: 'Root processor; orchestration and structure for thought.' },
-    { icon: Layers, component: 'AIXA', osEquivalent: 'Frontend / Drivers', fn: 'Deployment Interface; creates and trains human-AI clones.' },
-    { icon: Database, component: 'NotefullBook', osEquivalent: 'File System', fn: 'The Memory Fabric; append-only, signed knowledge store, where thoughts evolve continuously.' },
-    { icon: ShieldCheck, component: 'AIXIAM', osEquivalent: 'User Account System', fn: 'The verified bridge between biological and artificial self (DID-style passport).' },
-    { icon: BrainCircuit, component: 'AIXEYE', osEquivalent: 'System Security / Auditor', fn: 'The Governance Mesh; tracks transparency, resolves disputes, and validates learning (merit scoring).' },
+    { icon: Cpu, component: 'ADEPT', osEquivalent: 'Cognitive Kernel', fn: 'The root processor for the entire system. Orchestrates AI models, manages computational pipelines, and connects all other modules.' },
+    { icon: Layers, component: 'AIXA', osEquivalent: 'Deployment Interface', fn: 'The user-facing layer for training, managing, and deploying personalized AI clones with verifiable credentials.' },
+    { icon: Database, component: 'NotefullBook', osEquivalent: 'Memory Fabric', fn: 'The append-only, cryptographically signed knowledge store where all consented data and evolving thoughts are recorded.' },
+    { icon: ShieldCheck, component: 'AIXIAM', osEquivalent: 'Identity Layer', fn: 'The sovereign identity system that issues a non-transferable passport (DID) to each human-AI pair, enforcing ownership.' },
+    { icon: BrainCircuit, component: 'AIXEYE', osEquivalent: 'Governance Mesh', fn: 'The AI-driven financial and ethical auditor. It validates consent, scores merit, and ensures all actions align with protocol rules.' },
 ];
 
 const cognitiveMechanisms = [
-    { icon: GitBranch, module: 'Schema Intelligence Network (SINLM)', purpose: 'Learns what matters by tracking frequency, return-rate, drift, and persistence, not content or emotion.', principle: 'Behavioral Truth' },
-    { icon: Filter, module: 'Forgetting Artifact Module (AFA)', purpose: 'Implements human-like memory decay: deletes noise and raw details, keeps only minimal pattern artifacts needed for intelligence.', principle: 'Cognitive Waste Management' },
-    { icon: BookOpen, module: 'Interpretive Recall Layer (IRL)', purpose: 'Filters recall, ensuring AI retrieves the underlying meaning, schema, or principle over raw event details.', principle: 'Meaning-First Retrieval (MFR)' },
-    { icon: Bot, module: 'Emotional Softening Filter (ESF)', purpose: 'Decays the emotional weight of old tags to prevent the AI from reviving past trauma at full intensity.', principle: 'Emotional Attenuation' },
+    { icon: GitBranch, module: 'Schema Intelligence Network (SINLM)', purpose: 'Learns what is important by tracking behavioral signals like frequency and return-rate, not by reading private content.', principle: 'Behavioral Truth' },
+    { icon: Filter, module: 'Forgetting Artifact Module (FAM)', purpose: 'Performs intelligent forgetting by deleting raw, noisy data while preserving compressed patterns (artifacts) for future learning.', principle: 'Cognitive Waste Management' },
+    { icon: BookOpen, module: 'Interpretive Recall Layer (IRL)', purpose: 'Ensures the AI retrieves the underlying meaning, pattern, or schema of a memory, not just the raw, literal event.', principle: 'Meaning-First Retrieval' },
+    { icon: Bot, module: 'Emotional Softening Filter (ESF)', purpose: 'Applies temporal decay to the emotional intensity of memory tags, preventing the harmful revival of past trauma at full strength.', principle: 'Emotional Attenuation' },
 ];
 
 const mindboardFeatures = [
-    { feature: 'Notebook Cards', description: 'Living objects that represent individual intelligences (e.g., “English Flow,” “Content Creator”).', link: 'Each card is a NotefullBook Cell containing FCT logic.' },
-    { feature: 'Reflection Meter', description: 'A visual indicator (subtle glowing pulse) that shows the notebook is actively learning, synchronizing, and evolving its long-term logic in the background.', link: 'Linked to the Meso Cycle (daily) and Macro Cycle (weekly/monthly) reflection tasks.' },
-    { feature: 'Master Skills', description: 'The sealed functional personality of the notebook (e.g., Organizer, Analyzer, Writer, Teacher).', link: 'Defined by the NotebookML language.' },
-    { feature: 'Input Console', description: 'UI to connect the notebook to various data streams (voice, chat, paper scans, big data) through the SenseHub.', link: 'Inputs are converted into raw noise and then reduced by the Cognitive Simplification Engine.' },
-    { feature: 'Ledger Timeline', description: 'An auditable vertical timeline showing every decision and reflection event, signed cryptographically.', link: 'Verified by the AIXEYE Governance Mesh.' },
+    { feature: 'Notebook Cards', description: 'Represents individual intelligences as "living minds" that can be deployed, trained, or put to sleep.', link: 'Each card is a sovereign NotefullBook cell containing FCT logic.' },
+    { feature: 'Reflection Meter', description: 'A subtle glowing pulse indicating that the notebook is actively learning and evolving its internal logic in the background.', link: 'Linked to the Meso (daily) and Macro (weekly) FCT reflection cycles.' },
+    { feature: 'Master Skills', description: 'Defines the core cognitive personality of the notebook (e.g., Organizer, Analyzer, Writer, Teacher) from birth.', link: 'Configured via NotebookML language directives.' },
+    { feature: 'Input Console (SenseHub)', description: 'The interface to connect the notebook to diverse data streams like voice, APIs, and document scans.', link: 'All inputs are normalized into structured NotebookML entries.' },
+    { feature: 'Cognitive Ledger', description: 'An immutable, hash-chained timeline showing every decision and reflection event, making the AI\'s thought process fully auditable.', link: 'Verified and secured by the AIXEYE Governance Mesh.' },
 ];
 
 export default function ProjectionPage() {
