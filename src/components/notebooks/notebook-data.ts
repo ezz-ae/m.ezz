@@ -51,7 +51,7 @@ export const NOTEBOOKS: NotebookRegistry = {
     aixself: {
         id: 'aixself',
         title: 'AIXSELF Universe',
-        description: 'Modeling AI identity through digital clones like AIXA, AIXIAM, and AIXEYE.',
+        description: 'The protocol for a decentralized, sovereign, and fair intelligence civilization.',
         tag: 'Identity · AI Clones',
         body: 'The AIXSELF Universe explores AI identity through clones like AIXA, AIXIAM, and AIXEYE. It models how digital identities can form and evolve.',
         component: AIXSELFNotebook,

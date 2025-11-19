@@ -20,7 +20,7 @@ export default function SiteHeader() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors"
+              className="text-sm text-neutral-600 hover:text-neutral-900 transition-colors"
             >
               {link.label}
             </Link>
