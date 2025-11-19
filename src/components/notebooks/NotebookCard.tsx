@@ -1,3 +1,4 @@
+
 // src/components/notebooks/NotebookCard.tsx
 "use client";
 
@@ -16,7 +17,7 @@ type NotebookCardProps = {
 export function NotebookCard({ id, name, description, tag }: NotebookCardProps) {
 
   return (
-    <div className="relative group flex flex-col justify-between p-5 h-48 rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent shadow-lg transition-all duration-300 hover:border-white/20 hover:shadow-2xl hover:-translate-y-1">
+    <div className="relative group flex flex-col justify-between p-5 h-48 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:border-primary/20 hover:shadow-lg hover:-translate-y-1">
       {/* Reflection Meter (Pulse) */}
       <motion.div
         className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none"
@@ -41,10 +42,10 @@ export function NotebookCard({ id, name, description, tag }: NotebookCardProps) 
         <Link href={`/notebooks/${id}`} className="block h-full">
           <div className="flex flex-col h-full">
             <div className="mb-2">
-                <p className="text-xs uppercase tracking-widest text-neutral-400">{tag}</p>
-                <h3 className="font-light text-neutral-50 text-lg leading-tight mt-1">{name}</h3>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">{tag}</p>
+                <h3 className="font-light text-foreground text-lg leading-tight mt-1">{name}</h3>
             </div>
-            <p className="text-xs text-neutral-500 flex-grow leading-snug">{description}</p>
+            <p className="text-xs text-muted-foreground flex-grow leading-snug">{description}</p>
           </div>
         </Link>
       </div>

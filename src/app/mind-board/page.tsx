@@ -4,12 +4,10 @@ import React from 'react';
 import { NotebookCard } from '@/components/notebooks/NotebookCard';
 import { DeployWizard } from '@/components/notebooks/DeployWizard';
 import { Button } from '@/components/ui/button';
-import { Plus, Home } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { NOTEBOOKS } from '@/components/notebooks/notebook-data';
 import FooterMinimal from "@/components/FooterMinimal";
-import Link from 'next/link';
 
-// Map over the NOTEBOOKS object to get an array of notebook data
 const notebooks = Object.values(NOTEBOOKS);
 
 export default function MindBoardPage() {
@@ -17,21 +15,16 @@ export default function MindBoardPage() {
 
   return (
     <>
-      <main className="min-h-screen bg-black text-neutral-100 overflow-x-hidden pt-24 md:pt-32">
+      <main className="min-h-screen bg-background text-foreground overflow-x-hidden pt-24 md:pt-32">
         <section id="mind-board" className="px-6 md:px-16">
           <div className="w-full max-w-7xl mx-auto p-4 md:p-8">
             <div className="flex items-center justify-between mb-8">
-              <div className='flex items-center gap-4'>
-                <Link href="/" className="text-neutral-400 hover:text-white">
-                  <Home />
-                </Link>
-                <h1 className="text-2xl md:text-3xl font-light text-neutral-100">Mind Board</h1>
-              </div>
+              <h1 className="text-2xl md:text-3xl font-light text-foreground">Mind Board</h1>
               <DeployWizard
                 open={showDeployWizard}
                 onOpenChange={setShowDeployWizard}
               >
-                <Button onClick={() => setShowDeployWizard(true)} variant="outline" className="text-neutral-100 border-neutral-700 hover:bg-neutral-800 hover:text-neutral-50">
+                <Button onClick={() => setShowDeployWizard(true)} variant="default">
                   <Plus className="mr-2 h-4 w-4" /> Deploy New Mind
                 </Button>
               </DeployWizard>

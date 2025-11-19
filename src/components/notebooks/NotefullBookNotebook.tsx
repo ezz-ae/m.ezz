@@ -26,9 +26,9 @@ const notebookMLDirectives = [
 
 export function NotefullBookNotebook() {
   return (
-    <article className="prose prose-invert max-w-3xl mx-auto py-16 space-y-12">
+    <article className="prose prose-neutral dark:prose-invert max-w-3xl mx-auto py-16 space-y-12">
       <Section>
-        <ScrollHeading as="h1" className="text-3xl md:text-4xl font-light text-neutral-50 mt-4 !mb-6">
+        <ScrollHeading as="h1" className="text-3xl md:text-4xl font-light text-foreground mt-4 !mb-6">
           NotebookML: The Language of Transparent Machine Reasoning
         </ScrollHeading>
       </Section>
@@ -100,8 +100,8 @@ export function NotefullBookNotebook() {
                 <TableBody>
                     {competingVsCompleting.map((row, i) => (
                         <TableRow key={i}>
-                            <TableCell className="text-neutral-400">{row.competing}</TableCell>
-                            <TableCell className="font-medium text-neutral-100">{row.completing}</TableCell>
+                            <TableCell>{row.competing}</TableCell>
+                            <TableCell className="font-medium">{row.completing}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
@@ -117,22 +117,22 @@ export function NotefullBookNotebook() {
         <ScrollHeading as="h3">4.1 The Three Cognitive Layers</ScrollHeading>
         <ScrollParagraph>Inspired by the structure of the human brain, the "Corporate Mind" architecture within NotefullOS is organized into three distinct but interconnected layers. This design separates reasoning, memory, and values into modular components, ensuring clarity and accountability. Crucially, each notebook chooses which layers to activate, allowing for a flexible and context-aware intelligence.</ScrollParagraph>
         <ol className="list-decimal space-y-2 pl-5">
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200">Logic Layer:</strong> Analogous to the cerebral cortex, this layer is responsible for applying reasoning, conditional flow, and rules. It is the engine that executes the logic defined within a NotebookML file.</ScrollParagraph></li>
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200">Memory Layer:</strong> Functioning like the hippocampus, this layer stores all cause-and-effect traces from decisions and reflections. It is not an archive of raw events but a structured repository of reasoning pathways.</ScrollParagraph></li>
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200">Ethic Layer:</strong> Mirroring the prefrontal cortex, this layer defines the system's values, bias limits, and ethical boundaries. Directives in this layer act as non-negotiable constraints on the Logic and Memory layers, ensuring that all operations remain within a pre-defined moral framework.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground">Logic Layer:</strong> Analogous to the cerebral cortex, this layer is responsible for applying reasoning, conditional flow, and rules. It is the engine that executes the logic defined within a NotebookML file.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground">Memory Layer:</strong> Functioning like the hippocampus, this layer stores all cause-and-effect traces from decisions and reflections. It is not an archive of raw events but a structured repository of reasoning pathways.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground">Ethic Layer:</strong> Mirroring the prefrontal cortex, this layer defines the system's values, bias limits, and ethical boundaries. Directives in this layer act as non-negotiable constraints on the Logic and Memory layers, ensuring that all operations remain within a pre-defined moral framework.</ScrollParagraph></li>
         </ol>
 
         <ScrollHeading as="h3">4.2 The Closed Cognitive Loop</ScrollHeading>
         <ScrollParagraph>The core operational cycle of NotefullOS is the "Closed Cognitive Loop." This is a deterministic feedback engine that ensures the system is self-refining and its intelligence density increases over time. Instead of simply processing inputs and producing outputs, the system learns from its own operations and feeds those learnings back into its reasoning graph.</ScrollParagraph>
-        <ScrollParagraph className="text-center font-mono tracking-widest text-sm text-neutral-400">Input → Reason → Decision → Trace → Learn → Re-Input</ScrollParagraph>
+        <ScrollParagraph className="text-center font-mono tracking-widest text-sm text-muted-foreground">Input → Reason → Decision → Trace → Learn → Re-Input</ScrollParagraph>
         <ScrollParagraph>This loop makes the system's evolution transparent and auditable. Each cycle tightens the notebook's logic, allowing it to become more coherent and aligned with its purpose over time without requiring external model retraining.</ScrollParagraph>
         
         <ScrollHeading as="h3">4.3 Key Engine Components</ScrollHeading>
         <ScrollParagraph>Within the NotefullOS architecture, several key modules work together to enable its unique cognitive functions.</ScrollParagraph>
         <ul className="list-disc space-y-2 pl-5">
-          <li><ScrollParagraph as="span"><strong className="text-neutral-200">Forgetting Artifact Module (AFA):</strong> This module is the heart of the forgetting mechanism. When raw events or data are marked for decay, the AFA does not simply delete them. It converts them into neutral "learning artifacts"—compressed, depersonalized patterns or schemas. This ensures that the noisy details die while the essential patterns survive for future learning, perfectly embodying the principle that knowledge is what remains after forgetting.</ScrollParagraph></li>
-          <li><ScrollParagraph as="span"><strong className="text-neutral-200">Interpretive Recall Layer (IRL):</strong> The IRL is the primary intelligence layer responsible for safe and relevant memory retrieval. Its core function is to identify the "caller" of a memory—distinguishing between a user's direct experience, a past self, a hypothetical, or an example. By understanding the meaning behind a recall request, not just its vector similarity, the IRL retrieves the correct cognitive pattern and suppresses irrelevant or harmful related memories.</ScrollParagraph></li>
-          <li><ScrollParagraph as="span"><strong className="text-neutral-200">Cognitive Ledger:</strong> This component functions as an immutable, hash-chained journal that stores the reasoning trace of every decision and state transition within the system. Every time a notebook reflects, decides, or updates its logic, an entry is written to the ledger. This provides a complete, verifiable audit trail, making the system's thought process entirely transparent and legally accountable.</ScrollParagraph></li>
+          <li><ScrollParagraph as="span"><strong className="text-foreground">Forgetting Artifact Module (AFA):</strong> This module is the heart of the forgetting mechanism. When raw events or data are marked for decay, the AFA does not simply delete them. It converts them into neutral "learning artifacts"—compressed, depersonalized patterns or schemas. This ensures that the noisy details die while the essential patterns survive for future learning, perfectly embodying the principle that knowledge is what remains after forgetting.</ScrollParagraph></li>
+          <li><ScrollParagraph as="span"><strong className="text-foreground">Interpretive Recall Layer (IRL):</strong> The IRL is the primary intelligence layer responsible for safe and relevant memory retrieval. Its core function is to identify the "caller" of a memory—distinguishing between a user's direct experience, a past self, a hypothetical, or an example. By understanding the meaning behind a recall request, not just its vector similarity, the IRL retrieves the correct cognitive pattern and suppresses irrelevant or harmful related memories.</ScrollParagraph></li>
+          <li><ScrollParagraph as="span"><strong className="text-foreground">Cognitive Ledger:</strong> This component functions as an immutable, hash-chained journal that stores the reasoning trace of every decision and state transition within the system. Every time a notebook reflects, decides, or updates its logic, an entry is written to the ledger. This provides a complete, verifiable audit trail, making the system's thought process entirely transparent and legally accountable.</ScrollParagraph></li>
         </ul>
         <ScrollParagraph>This architecture provides the foundation for a new class of AI. The next section will detail NotebookML, the specific language that powers it.</ScrollParagraph>
       </Section>
@@ -143,10 +143,10 @@ export function NotefullBookNotebook() {
         
         <ScrollHeading as="h3">5.1 Design Principles</ScrollHeading>
         <ul className="list-disc space-y-2 pl-5">
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200">One Truth:</strong> The declarative text of the contract and the executable code are the same artifact. There is no separation between what the document says and what the system does.</ScrollParagraph></li>
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200">Deterministic:</strong> All variables that can cause ambiguity, such as time, money, and events, are explicit and strongly typed. The system's behavior is predictable and repeatable.</ScrollParagraph></li>
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200">Auditable:</strong> Every state transition and decision made by the NotebookML engine writes a proof to an evidence ledger, ensuring complete transparency and accountability.</ScrollParagraph></li>
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200">Portable:</strong> The syntax is plain-text and designed to run anywhere—online, offline, and is even human-readable when printed. This ensures data sovereignty and prevents lock-in.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground">One Truth:</strong> The declarative text of the contract and the executable code are the same artifact. There is no separation between what the document says and what the system does.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground">Deterministic:</strong> All variables that can cause ambiguity, such as time, money, and events, are explicit and strongly typed. The system's behavior is predictable and repeatable.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground">Auditable:</strong> Every state transition and decision made by the NotebookML engine writes a proof to an evidence ledger, ensuring complete transparency and accountability.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground">Portable:</strong> The syntax is plain-text and designed to run anywhere—online, offline, and is even human-readable when printed. This ensures data sovereignty and prevents lock-in.</ScrollParagraph></li>
         </ul>
 
         <ScrollHeading as="h3">5.2 Core Syntax and Directives</ScrollHeading>
@@ -162,8 +162,8 @@ export function NotefullBookNotebook() {
                 <TableBody>
                     {notebookMLDirectives.map((d) => (
                         <TableRow key={d.directive}>
-                            <TableCell className="font-mono text-sm text-neutral-100">{d.directive}</TableCell>
-                            <TableCell className="text-neutral-400">{d.func}</TableCell>
+                            <TableCell className="font-mono text-sm">{d.directive}</TableCell>
+                            <TableCell>{d.func}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
@@ -172,7 +172,7 @@ export function NotefullBookNotebook() {
 
         <ScrollHeading as="h3">5.3 Example of a NotebookML Snippet</ScrollHeading>
         <ScrollParagraph>The following code block demonstrates how these directives are combined to create an intelligent, interactive Standard Operating Procedure (SOP).</ScrollParagraph>
-        <pre className="!bg-neutral-900 !border !border-neutral-800 !text-neutral-300 !p-4 !rounded-lg !text-sm">
+        <pre className="!bg-secondary !text-secondary-foreground !p-4 !rounded-lg !text-sm">
           <code>
 {`# SOP: Incident Response (P1)
 
@@ -196,8 +196,8 @@ export function NotefullBookNotebook() {
         </pre>
         <ScrollParagraph>In this example, the notebook defines a type, roles, and a sequence of steps. The simple, human-readable format embeds logic and interactivity directly into the document, making it a living piece of organizational knowledge.</ScrollParagraph>
         <ul className="list-disc space-y-2 pl-5">
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200 font-mono">{`>coach:`}</strong> This directive embeds contextual guidance directly into a procedure, making the SOP a teaching tool rather than just a checklist.</ScrollParagraph></li>
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200 font-mono">{`>ask:`}</strong> This provides a conversational query layer, allowing users to ask for deeper understanding ("Explain the 'why'") directly from the source of truth.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground font-mono">{`>coach:`}</strong> This directive embeds contextual guidance directly into a procedure, making the SOP a teaching tool rather than just a checklist.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground font-mono">{`>ask:`}</strong> This provides a conversational query layer, allowing users to ask for deeper understanding ("Explain the 'why'") directly from the source of truth.</ScrollParagraph></li>
         </ul>
         <ScrollParagraph>This declarative language serves as the bridge between human intent and machine reasoning. The next section details the technical data models and APIs that bring it to life.</ScrollParagraph>
       </Section>
@@ -208,32 +208,32 @@ export function NotefullBookNotebook() {
         
         <ScrollHeading as="h3">6.1 Monorepo Architecture</ScrollHeading>
         <ul className="list-disc space-y-2 pl-5">
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200 font-mono">apps/web:</strong> The frontend application for the dashboard, editor, and viewer.</ScrollParagraph></li>
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200 font-mono">apps/api:</strong> The server providing the core system functions.</ScrollParagraph></li>
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200 font-mono">packages/notebookml:</strong> The grammar, parser, and serializer for the NotebookML syntax.</ScrollParagraph></li>
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200 font-mono">packages/engine:</strong> The core execution engine for rules, decisions, and reflections.</ScrollParagraph></li>
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200 font-mono">packages/ledger:</strong> The module for managing the hash-chained Cognitive Ledger.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground font-mono">apps/web:</strong> The frontend application for the dashboard, editor, and viewer.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground font-mono">apps/api:</strong> The server providing the core system functions.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground font-mono">packages/notebookml:</strong> The grammar, parser, and serializer for the NotebookML syntax.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground font-mono">packages/engine:</strong> The core execution engine for rules, decisions, and reflections.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground font-mono">packages/ledger:</strong> The module for managing the hash-chained Cognitive Ledger.</ScrollParagraph></li>
         </ul>
 
         <ScrollHeading as="h3">6.2 Core Data Models and Jobs</ScrollHeading>
         <ScrollParagraph>The system operates on a set of core objects that represent the flow of information from raw input to stable knowledge, processed by a suite of ML jobs.</ScrollParagraph>
-        <ScrollParagraph><strong className="text-neutral-200">Core Objects:</strong></ScrollParagraph>
+        <ScrollParagraph><strong className="text-foreground">Core Objects:</strong></ScrollParagraph>
         <ul className="list-disc space-y-2 pl-5">
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200">Note:</strong> Raw input (e.g., text, voice transcript, screenshot text). The most granular piece of information.</ScrollParagraph></li>
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200">Concept:</strong> A normalized idea or piece of knowledge extracted from one or more notes.</ScrollParagraph></li>
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200">Project:</strong> A container of related concepts organized around a specific purpose or goal.</ScrollParagraph></li>
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200">Pattern:</strong> A recurring theme or idea that appears across different projects (e.g., "governance," "OS," "trap simulation").</ScrollParagraph></li>
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200">Session:</strong> A time-bounded log of a thinking period, capturing a sequence of related notes and interactions.</ScrollParagraph></li>
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200">Map:</strong> A graph representing the relationships between Projects, Concepts, and Patterns.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground">Note:</strong> Raw input (e.g., text, voice transcript, screenshot text). The most granular piece of information.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground">Concept:</strong> A normalized idea or piece of knowledge extracted from one or more notes.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground">Project:</strong> A container of related concepts organized around a specific purpose or goal.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground">Pattern:</strong> A recurring theme or idea that appears across different projects (e.g., "governance," "OS," "trap simulation").</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground">Session:</strong> A time-bounded log of a thinking period, capturing a sequence of related notes and interactions.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground">Map:</strong> A graph representing the relationships between Projects, Concepts, and Patterns.</ScrollParagraph></li>
         </ul>
-        <ScrollParagraph><strong className="text-neutral-200">Core ML Jobs ("Bench" Tasks):</strong></ScrollParagraph>
+        <ScrollParagraph><strong className="text-foreground">Core ML Jobs ("Bench" Tasks):</strong></ScrollParagraph>
         <ScrollParagraph>These are repeatable machine learning tasks that continuously study the notebook's content to build structure and intelligence.</ScrollParagraph>
         <ul className="list-disc space-y-2 pl-5">
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200">Classifier:</strong> Determines the topic, project, and theme of a new Note.</ScrollParagraph></li>
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200">Grouper:</strong> Clusters related Notes and Concepts, identifying potential duplicates or thematic connections.</ScrollParagraph></li>
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200">Summarizer:</strong> Generates concise summaries of a Project or Session.</ScrollParagraph></li>
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200">Roadmapper:</strong> Proposes concrete next steps for a Project based on its current state.</ScrollParagraph></li>
-            <li><ScrollParagraph as="span"><strong className="text-neutral-200">Signal detector:</strong> Identifies which Patterns are recurring most frequently over time, highlighting core user interests.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground">Classifier:</strong> Determines the topic, project, and theme of a new Note.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground">Grouper:</strong> Clusters related Notes and Concepts, identifying potential duplicates or thematic connections.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground">Summarizer:</strong> Generates concise summaries of a Project or Session.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground">Roadmapper:</strong> Proposes concrete next steps for a Project based on its current state.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-foreground">Signal detector:</strong> Identifies which Patterns are recurring most frequently over time, highlighting core user interests.</ScrollParagraph></li>
         </ul>
         
         <ScrollHeading as="h3">6.3 Core System Functions</ScrollHeading>

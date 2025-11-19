@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
+import { Logo } from './icons';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -13,9 +13,10 @@ const navLinks = [
 
 export default function SiteHeader() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 p-6 md:p-8 bg-transparent">
-      <div className="max-w-7xl mx-auto flex items-center justify-center">
-        <nav className="flex items-center space-x-6 bg-background/80 backdrop-blur-sm border border-black/5 rounded-full px-6 py-2 shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 p-4 bg-background/80 backdrop-blur-sm border-b border-black/5">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <Logo />
+        <nav className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
             <Link
               key={link.href}
