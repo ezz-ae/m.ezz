@@ -1,3 +1,4 @@
+
 // src/components/notebooks/SmartNotebook.tsx
 'use client';
 
@@ -8,7 +9,7 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 
-// A separate component for the canvas simulation
+// --- Canvas Simulation Component ---
 const SimulationCanvas = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -21,21 +22,23 @@ const SimulationCanvas = () => {
         let animationFrameId: number;
 
         const resizeCanvas = () => {
-             if (canvas) {
-                canvas.width = canvas.offsetWidth;
-                canvas.height = canvas.offsetHeight;
+             if (canvas.parentElement) {
+                canvas.width = canvas.parentElement.offsetWidth;
+                canvas.height = canvas.parentElement.offsetHeight;
             }
         };
-        resizeCanvas();
 
         let points: any[] = [];
-        for (let i = 0; i < 15; i++) {
-            points.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 2,
-                vy: (Math.random() - 0.5) * 2,
-            });
+        const initPoints = () => {
+            points = [];
+            for (let i = 0; i < 15; i++) {
+                points.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 1.5,
+                    vy: (Math.random() - 0.5) * 1.5,
+                });
+            }
         }
 
         const drawSim = () => {
@@ -47,18 +50,27 @@ const SimulationCanvas = () => {
                 if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
                 if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, 10, 0, Math.PI * 2);
+                ctx.arc(p.x, p.y, 8, 0, Math.PI * 2);
                 ctx.fillStyle = 'rgba(255,127,80,0.6)';
                 ctx.fill();
             });
             animationFrameId = requestAnimationFrame(drawSim);
         };
         
-        drawSim();
+        const init = () => {
+            resizeCanvas();
+            initPoints();
+            if (animationFrameId) cancelAnimationFrame(animationFrameId);
+            drawSim();
+        }
+        
+        // Use a timeout to ensure parent dimensions are settled
+        const timeoutId = setTimeout(init, 100);
 
-        window.addEventListener('resize', resizeCanvas);
+        window.addEventListener('resize', init);
         return () => {
-            window.removeEventListener('resize', resizeCanvas);
+            clearTimeout(timeoutId);
+            window.removeEventListener('resize', init);
             cancelAnimationFrame(animationFrameId);
         };
     }, []);
@@ -67,7 +79,7 @@ const SimulationCanvas = () => {
 };
 
 
-// Localization data
+// --- Localization Data ---
 const translations = {
   EN:{title:"Go-One Autonomous AI Notebook – Autothinker",summaryTitle:"Project Summary",wordTitle:"Directional Words",
       wordDesc:"These words guide AI focus and notebook evolution:",simTitle:"Simulation Panel",
@@ -79,7 +91,7 @@ const translations = {
       deepTitle:"التفكير العميق والتعاون",deepDesc:"شارك أفكارك واطلب التحقق أو تبادل الأفكار:",submitDeep:"إرسال الفكرة"}
 };
 
-// Initial state for directional words
+// --- Main SmartNotebook Component ---
 const initialWords = ["Simulation","Resource","Decision","Market","AI","Strategy","Innovation","Risk","Learning","Flow"];
 
 export const SmartNotebook = ({ slug }: { slug: string }) => {
@@ -97,9 +109,10 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
     const [deepInput, setDeepInput] = useState('');
     const [suggestions, setSuggestions] = useState<string[]>([]);
     
+    // Panel State
     const [panel, setPanel] = useState({ active: false, title: '', content: '' });
 
-    // Autothinker core logic
+    // --- Autothinker Engine Logic ---
     const autothinkerUpdate = useCallback(() => {
         const allContent = [...notes, ...deepThoughts];
         
@@ -111,27 +124,25 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
         });
         scoredNotes.sort((a, b) => b.score - a.score);
         
-        // Update Summary with top ideas
         const newSummary = scoredNotes.length > 0 ? scoredNotes.slice(0, 5).map(s => s.text) : ["The notebook is awaiting your thoughts to begin its evolution."];
         setSummary(newSummary);
 
-        // Update Word Cloud sizes and opacity based on relevance
         const wordRelevance: {[key: string]: { size: number; opacity: number } } = {};
         const totalNotes = allContent.length || 1;
         initialWords.forEach(w => {
             const relevanceCount = scoredNotes.filter(n => n.text.toLowerCase().includes(w.toLowerCase())).length;
-            const relevanceRatio = relevanceCount / totalNotes;
+            const relevanceRatio = relevanceCount / Math.max(totalNotes, 5); // Avoid division by zero and normalize
             
             wordRelevance[w] = {
-                size: 16 + relevanceCount * 4 + Math.random() * 8,
-                opacity: 0.1 + Math.min(relevanceRatio * 2, 0.9) // Opacity from 0.1 to 1.0
+                size: 16 + relevanceCount * 4 + Math.random() * 6,
+                opacity: 0.1 + Math.min(relevanceRatio * 2.5, 0.9)
             };
         });
         setDirectionalWords(wordRelevance);
 
     }, [notes, deepThoughts]);
     
-    // --- Effects ---
+    // --- Effects for Initialization and Updates ---
     useEffect(() => {
         const savedLang = localStorage.getItem(`lang_${slug}`) || 'EN';
         setLanguage(savedLang);
@@ -142,17 +153,15 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
         const savedDeepThoughts = localStorage.getItem(`deepThoughts_${slug}`);
         setDeepThoughts(savedDeepThoughts ? JSON.parse(savedDeepThoughts) : []);
         
-        // Initial run
-        autothinkerUpdate();
-
         const intervalId = setInterval(autothinkerUpdate, 10000);
         return () => clearInterval(intervalId);
-    }, [slug, autothinkerUpdate]);
+    }, [slug]);
 
     useEffect(() => {
         autothinkerUpdate();
     }, [notes, deepThoughts, autothinkerUpdate]);
 
+    // --- Handlers ---
     const setLanguage = (lang: string) => {
         setLang(lang);
         setT(translations[lang as keyof typeof translations]);
@@ -186,9 +195,19 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
             setSuggestions([]);
             return;
         }
-        const inputWords = value.split(' ').filter(w => w.length > 2);
-        const newSuggestions = inputWords.slice(-5).filter(w => !value.endsWith(w + ' '));
-        setSuggestions(newSuggestions);
+        const inputWords = value.split(/\s+/).filter(w => w.length > 2);
+        const lastWord = inputWords[inputWords.length - 1];
+        
+        const newSuggestions = initialWords.filter(w => w.toLowerCase().startsWith(lastWord.toLowerCase()) && w.toLowerCase() !== lastWord.toLowerCase());
+        setSuggestions(newSuggestions.slice(0, 5));
+    };
+    
+    const applySuggestion = (suggestion: string) => {
+        const words = noteInput.split(/\s+/);
+        words.pop();
+        setNoteInput([...words, suggestion, ''].join(' '));
+        setSuggestions([]);
+        noteInputRef.current?.focus();
     };
 
     const handleWordClick = (word: string) => {
@@ -199,24 +218,25 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
         });
     };
 
+    const noteInputRef = useRef<HTMLTextAreaElement>(null);
+
     return (
         <>
             <style jsx>{`
-                .section { background: rgba(255,127,80,0.05); padding:30px; border-radius:20px; margin-bottom:40px; box-shadow:0 0 50px rgba(255,127,80,0.1); transition: transform 0.4s ease; }
+                .section { background: rgba(255,127,80,0.05); padding: 2rem; border-radius: 20px; margin-bottom: 40px; box-shadow:0 0 50px rgba(255,127,80,0.1); transition: transform 0.4s ease; }
                 .section:hover { transform: scale(1.02); }
                 .block { margin:20px 0; }
                 .block p { line-height:1.6; }
                 #wordCloud { width:100%; min-height:220px; position:relative; border-radius:20px; background:#111; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; padding:20px; gap:15px; }
-                .word { color: #ff7f50; border: 1px solid #ff7f50; padding:8px 15px; border-radius:10px; cursor:pointer; user-select:none; transition: all 0.3s ease; position:relative; }
+                .word { border: 1px solid #ff7f50; padding:8px 15px; border-radius:10px; cursor:pointer; user-select:none; transition: all 0.3s ease; position:relative; }
                 .word:hover { transform:scale(1.2); z-index: 10; box-shadow: 0 0 20px #ff7f50; color: #fff; }
-                .dragging { opacity: 0.5; transform: scale(1.1); background: #ff7f50 !important; color: #fff !important; }
                 #simulation { background:#111; padding:20px; border-radius:20px; box-shadow:0 0 80px rgba(255,127,80,0.3); }
                 .notes-list > div, .deep-list > div { background:#1f1f1f; padding:10px 15px; border-radius:10px; margin:8px 0; border: 1px solid #2a2a2a; }
                 .suggestion { display:inline-block; margin:5px; padding:5px 10px; background:#ff9060; border-radius:8px; cursor:pointer; transition:0.2s; }
                 .suggestion:hover { background:#ff7f50; transform:scale(1.1); }
             `}</style>
             
-            <div className="language-selector fixed top-4 right-5 z-50 cursor-pointer rounded-lg bg-[#ff7f50] px-3 py-2 font-bold text-white" onClick={() => setLanguage(lang === 'EN' ? 'AR' : 'EN')}>
+            <div className="fixed top-4 right-5 z-50 cursor-pointer rounded-lg bg-[#ff7f50] px-3 py-2 font-bold text-white" onClick={() => setLanguage(lang === 'EN' ? 'AR' : 'EN')}>
                  🌐 {lang}
             </div>
 
@@ -225,14 +245,14 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
 
                 <motion.div className="section" id="summary" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
                     <h2>{t.summaryTitle}</h2>
-                    <div className="block" id="summaryBlock">
+                    <div className="block prose prose-invert max-w-none text-neutral-300">
                         {summary.map((line, i) => <p key={`summary-${i}`}>{line}</p>)}
                     </div>
                 </motion.div>
                 
                 <motion.div className="section" id="wordSection" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
                     <h2>{t.wordTitle}</h2>
-                    <p className="text-center text-sm text-neutral-400">{t.wordDesc}</p>
+                    <p className="text-sm text-neutral-400 mb-4">{t.wordDesc}</p>
                     <div id="wordCloud">
                        {Object.entries(directionalWords).map(([word, { size, opacity }]) => (
                             <div 
@@ -262,6 +282,7 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
                     <h2>{t.contribTitle}</h2>
                     <p className="text-sm text-neutral-400">{t.contribDesc}</p>
                     <Textarea 
+                        ref={noteInputRef}
                         value={noteInput}
                         onChange={handleNoteInputChange}
                         placeholder="Write your note or insight here..." 
@@ -269,7 +290,7 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
                     />
                     <div id="suggestions" className="mt-2">
                         {suggestions.map(s => (
-                            <span key={s} className="suggestion" onClick={() => {setNoteInput(prev => prev + s + ' '); setSuggestions([]); }}>{s}</span>
+                            <span key={s} className="suggestion" onClick={() => applySuggestion(s)}>{s}</span>
                         ))}
                     </div>
                     <Button onClick={handleAddNote} className="mt-2">{t.addNote}</Button>
