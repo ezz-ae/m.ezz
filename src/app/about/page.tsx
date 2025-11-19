@@ -1,24 +1,26 @@
 
 import type { Metadata } from 'next';
 import FooterMinimal from "@/components/FooterMinimal";
-import HeroPulse from '@/components/HeroPulse';
-import IdentityStatement from '@/components/IdentityStatement';
-import TopicMap from '@/components/TopicMap';
+import AboutSection from '@/components/AboutSection';
+import NowSection from '@/components/NowSection';
+import { Section } from '@/components/ScrollTypography';
 
 export const metadata: Metadata = {
-  title: 'About Mahmoud Ezz & The Notebook Map',
-  description: "Mahmoud Ezz is an Intelligence System Architect, designing architectures for AI, memory, forgetting, ecosystems, and traps. Explore the map of his living intelligence systems.",
+  title: 'About Mahmoud Ezz',
+  description: "Mahmoud Ezz's work lives where cognition, markets, and infrastructure meet: real estate intelligence, security traps, AI memory models, and learning systems.",
 };
-
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-black text-neutral-100 overflow-x-hidden pt-12 md:pt-24">
-        <HeroPulse />
-        <IdentityStatement />
-        <section id="map" className="py-16 md:py-24">
-          <TopicMap />
-        </section>
+    <main className="min-h-screen bg-black text-neutral-100 overflow-x-hidden pt-24 md:pt-32">
+        <div className="container mx-auto px-6 space-y-24">
+            <Section>
+                <AboutSection />
+            </Section>
+            <Section>
+                <NowSection />
+            </Section>
+        </div>
         <FooterMinimal />
     </main>
   );

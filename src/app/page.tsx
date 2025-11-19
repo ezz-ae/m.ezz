@@ -146,7 +146,9 @@ export default function HomePage() {
         <section id="intro" className="zoom-fade">
           <div className="container">
             <h1>from limitation import elevation</h1>
-            <p>Where <span className="accent">human cognition</span> meets <span className="accent">AI evolution</span>. Witness the story of Mahmoud Ezz and <span className="accent">AIXSELF</span>: a two-year journey of collaboration, augmentation, and limitless generative intelligence.</p>
+            <p>
+                A living system of thought where human intelligence and AI co-create. Explore the architecture of <span className="accent">Forgetence</span>, <span className="accent">AIXSELF</span>, and the <span className="accent">Omega</span> laws.
+            </p>
           </div>
         </section>
 
