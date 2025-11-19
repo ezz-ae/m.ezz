@@ -14,7 +14,7 @@ const navLinks = [
 
 export default function SiteHeader() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 p-4 bg-transparent">
+    <header className="fixed top-0 left-0 right-0 z-50 p-4 bg-black/50 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link href="/">
           <Logo />
