@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { Logo } from './icons';
+import { AixaLogo } from './icons';
 
 const navLinks = [
   { href: '/mind-board', label: 'Mind Board' },
@@ -18,7 +18,7 @@ export default function SiteHeader() {
     <header className="fixed top-0 left-0 right-0 z-50 p-4 bg-black/50 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link href="/">
-          <Logo />
+          <AixaLogo />
         </Link>
         <nav className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
