@@ -5,8 +5,7 @@ import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import AnalyticsListener from '@/components/AnalyticsListener';
-import { SidebarProvider } from '@/components/ui/sidebar';
-import AppSidebar from '@/components/AppSidebar';
+import SiteHeader from '@/components/SiteHeader';
 
 const ptSans = PT_Sans({
   subsets: ['latin'],
@@ -53,16 +52,10 @@ export default function RootLayout({
           playfairDisplay.variable
         )}
       >
-        <SidebarProvider>
-          <div className="flex">
-            <AppSidebar />
-            <main className="flex-1">
-              <AnalyticsListener />
-              {children}
-              <Toaster />
-            </main>
-          </div>
-        </SidebarProvider>
+        <SiteHeader />
+        <AnalyticsListener />
+        {children}
+        <Toaster />
       </body>
     </html>
   );

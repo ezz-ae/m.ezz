@@ -1,13 +1,14 @@
-// This component is no longer used and will be removed in a future cleanup.
-// The navigation has been moved to AppSidebar.tsx
+
 import Link from 'next/link';
 import { Logo } from './icons';
+import { Briefcase, DraftingCompass, Milestone, Rss, Presentation } from 'lucide-react';
 
 const navLinks = [
-    { href: '/', label: 'Mind Board' },
-    { href: '/about', label: 'Map & About' },
-    { href: '/timeline', label: 'Timeline' },
-    { href: '/contact', label: 'Contact' },
+  { href: '/', label: 'Mind Board', icon: <Briefcase /> },
+  { href: '/about', label: 'Map & About', icon: <DraftingCompass /> },
+  { href: '/projection', label: 'Projection', icon: <Presentation /> },
+  { href: '/timeline', label: 'Timeline', icon: <Milestone /> },
+  { href: '/contact', label: 'Contact', icon: <Rss /> },
 ];
 
 export default function SiteHeader() {
