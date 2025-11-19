@@ -3,7 +3,7 @@ import React from 'react';
 import { ForgetenceNotebook } from './ForgetenceNotebook';
 import { NotefullBookNotebook } from './NotefullBookNotebook';
 import { AIXSELFNotebook } from './AIXSELFNotebook';
-import { RealEstateNotebook } from './RealEstateNotebook';
+import { DLDChainNotebook } from './DLDChainNotebook';
 import { SecurityNotebook } from './SecurityNotebook';
 import { PuzzlesNotebook } from './PuzzlesNotebook';
 import { MarketingNotebook } from './MarketingNotebook';
@@ -14,10 +14,10 @@ import { PlaceholderNotebook } from './PlaceholderNotebook';
 import { StormstanNotebook } from './StormstanNotebook';
 
 
-export type NotebookId = 'forgetence' | 'notefullbook' | 'aixself' | 'realestate' | 'security' | 'puzzles' | 'marketing' | 'sound' | 'scroll-lesson' | 'omega' | 'stormstan';
+export type NotebookId = 'forgetence' | 'notefullbook' | 'aixself' | 'dldchain' | 'security' | 'puzzles' | 'marketing' | 'sound' | 'scroll-lesson' | 'omega' | 'stormstan';
 
 export const isNotebookId = (id: string): id is NotebookId => {
-  return ['forgetence', 'notefullbook', 'aixself', 'realestate', 'security', 'puzzles', 'marketing', 'sound', 'scroll-lesson', 'omega', 'stormstan'].includes(id);
+  return ['forgetence', 'notefullbook', 'aixself', 'dldchain', 'security', 'puzzles', 'marketing', 'sound', 'scroll-lesson', 'omega', 'stormstan'].includes(id);
 };
 
 type NotebookData = {
@@ -72,13 +72,13 @@ export const NOTEBOOKS: NotebookRegistry = {
         body: 'Stormstan is a non-AI platform, an "Ideas Recycling Hub" or "GitHub for human thinking." It is built on the philosophy of the "Ideas Giveup Event," where intellectual property is released upon submission to foster open collaboration and development.',
         component: StormstanNotebook,
     },
-    realestate: {
-        id: 'realestate',
-        title: 'Real Estate Intelligence',
-        description: 'Using AI for tokenization and building sovereign real estate infrastructure.',
-        tag: 'DLDCHAIN · Mashroi',
+    dldchain: {
+        id: 'dldchain',
+        title: 'DLDCHAIN',
+        description: 'A sovereign blockchain architecture for a national-scale real estate intelligence OS.',
+        tag: 'Blockchain · Real Estate',
         body: 'Using AI for real estate intelligence with systems like DLDCHAIN, Mashroi, and EBRAM. Focuses on tokenization and sovereign real estate infrastructure.',
-        component: RealEstateNotebook,
+        component: DLDChainNotebook,
     },
     security: {
         id: 'security',
