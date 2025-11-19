@@ -44,7 +44,6 @@ export default function HomePage() {
     <>
       <Head>
         <title>Ezz.ae — Human & AI Storypaper</title>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
       </Head>
       <style jsx global>{`
         /* Base Reset */
@@ -56,18 +55,26 @@ export default function HomePage() {
           content:'';
           position:fixed;
           top:0;left:0;width:100%;height:100%;z-index:-2;
+          pointer-events: none;
         }
         body::before {
           background: linear-gradient(135deg, #0a0a0a, #1f1f1f, #0a0a0a, #121212);
           background-size: 400% 400%;
-          animation: gradientMove 40s ease infinite;
+          animation: gradientMove 60s ease infinite;
         }
         body::after {
           background: radial-gradient(circle at center, rgba(255,127,80,0.05), transparent 70%);
-          animation: pulse 10s ease-in-out infinite alternate;
+          animation: pulse 12s ease-in-out infinite alternate;
         }
-        @keyframes gradientMove { 0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;} }
-        @keyframes pulse { 0%{transform:scale(1);}100%{transform:scale(1.2);} }
+        @keyframes gradientMove { 
+          0%{background-position:0% 50%;}
+          50%{background-position:100% 50%;}
+          100%{background-position:0% 50%;} 
+        }
+        @keyframes pulse { 
+          0%{transform:scale(0.9);}
+          100%{transform:scale(1.3);} 
+        }
 
         /* Container */
         .container { width:90%; max-width:1400px; margin:auto; padding:100px 0; }
@@ -114,11 +121,14 @@ export default function HomePage() {
 
         /* Responsive Typography */
         @media (max-width:768px){
-          section p{font-size:1rem;}
-          h1{font-size:2rem;}
-          h2{font-size:1.6rem;}
-          .node{width:90px;height:90px;font-size:0.7rem;}
-          .diagram{height:400px;}
+          section { padding: 100px 0; }
+          section p {font-size:1rem;}
+          h1{font-size:2.2rem;}
+          h2{font-size:1.8rem;}
+          .node{width:90px;height:90px;font-size:0.7rem; padding: 5px;}
+          .diagram{height:450px;}
+          .container { padding: 50px 0; }
+          .parallax-shape { display: none; }
         }
       `}</style>
 
