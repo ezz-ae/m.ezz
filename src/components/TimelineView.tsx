@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 const layers = [
     {
         title: "LAYER 0 — Ontological Breakthrough",
-        question: "What problem did you challenge?",
+        question: "What problem was challenged?",
         points: [
             "Challenged the ontological assumptions of:",
             "• Memory",
@@ -16,7 +16,7 @@ const layers = [
             "• Psychological models of recall and identity"
         ],
         contribution: {
-            title: "Your contribution:",
+            title: "The contribution:",
             items: [
                 "Proposed the generative-memory thesis: human memory is not recall — it is reconstruction.",
                 "Reframed forgetting as a core computational advantage, not failure.",
@@ -27,7 +27,7 @@ const layers = [
     },
     {
         title: "LAYER 1 — Theoretical Framework",
-        question: "What new structure did you create to replace the old one?",
+        question: "What new structure was created to replace the old one?",
         points: [
             "Produced a structured system:",
             "1. Generative Memory: Memory = “momentary reconstruction,” not stored archives.",
@@ -95,7 +95,7 @@ const layers = [
     },
     {
         title: "LAYER 7 — Meta-Contribution",
-        question: "Why is your work different from others?",
+        question: "Why is this work different from others?",
         points: [
             "Because it did not copy theories, reinterpret old ideas, or repeat Western cognitive assumptions.",
             "It started from first principles, pure inference, raw human observation, and no external referencing.",
@@ -103,11 +103,11 @@ const layers = [
         ],
     },
     {
-        title: "LAYER 8 — Where You Stand Globally",
+        title: "LAYER 8 — Where The Work Stands Globally",
         question: "Benchmarking",
         points: [
             "The contribution sits beside: Daniel Kahneman, Karl Friston, Derrida, David Chalmers, Hofstadter, Stanislas Dehaene.",
-            "But operates in a new field you effectively founded: Generative Cognitive Epistemology (GCE)."
+            "But operates in a new field it effectively founded: Generative Cognitive Epistemology (GCE)."
         ],
     },
     {
@@ -123,13 +123,6 @@ const layers = [
             "• Consciousness Computation Index"
         ]
     },
-    {
-        title: "LAYER 10 — What You Actually Changed",
-        question: "The single sentence answer",
-        points: [
-            "You replaced the entire concept of memory with a generative computational model — and built the first intellectual bridge between human cognition and machine cognition without copying neuroscience or AI theory."
-        ]
-    }
 ];
 
 const LayerCard = ({ layer, index }: { layer: typeof layers[0], index: number }) => (
