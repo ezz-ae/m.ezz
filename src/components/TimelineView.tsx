@@ -38,7 +38,7 @@ const timelinePhases = [
         phase: 5,
         tag: "Language & OS Architect",
         title: "AI OS Layer",
-        description: "Stopped seeing AI as a tool and started seeing it as a language of organization."
+        description: "Moving from seeing AI as a 'tool' to seeing it as a language of organization."
     },
     {
         phase: 6,

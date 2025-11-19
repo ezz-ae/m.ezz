@@ -13,7 +13,7 @@ export function SoundNotebook() {
           Sound as Intelligence and Identity
         </ScrollHeading>
         <ScrollParagraph emphasisLevel="resonance" className="lead !text-neutral-300 !text-lg !leading-relaxed">
-          I started making sound not as an artist, but as an architect. Music and sound design are not separate from system building; they are another form of it. It's the architecture of time, frequency, and emotion.
+          The exploration of sound began not from the perspective of an artist, but as an architect. Music and sound design are not separate from system building; they are another form of it. It's the architecture of time, frequency, and emotion.
         </ScrollParagraph>
       </Section>
 
@@ -35,7 +35,7 @@ export function SoundNotebook() {
 
       <Section>
         <ScrollHeading as="h2">Connecting Sound, Thought, and Forgetting</ScrollHeading>
-        <ScrollParagraph>Making music is a direct, hands-on way to explore the concepts I work with in AI. The process of composing mirrors the principles of FCT (Forgetting Core Thinking): you start with many ideas (a high-noise state), and through repetition, refinement, and subtraction (forgetting), you distill them into a core pattern (the signal). The final track is not the sum of all the notes you played; it's the resonant frequency that survived the process. It's intelligence forged through limitation.</ScrollParagraph>
+        <ScrollParagraph>Making music is a direct, hands-on way to explore the concepts at play in AI architecture. The process of composing mirrors the principles of FCT (Forgetting Core Thinking): you start with many ideas (a high-noise state), and through repetition, refinement, and subtraction (forgetting), you distill them into a core pattern (the signal). The final track is not the sum of all the notes played; it's the resonant frequency that survived the process. It's intelligence forged through limitation.</ScrollParagraph>
       </Section>
     </article>
   );

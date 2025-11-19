@@ -13,7 +13,7 @@ export function SecurityNotebook() {
           Security as a Cognitive Design Problem
         </ScrollHeading>
         <ScrollParagraph emphasisLevel="resonance" className="lead !text-neutral-300 !text-lg !leading-relaxed">
-          To understand how to protect people from exploits, you must first understand how and why they fall for them. So, I started building traps. Not to cause harm, but to create high-fidelity simulations of real-world attacks. Security is not a technical problem; it is a cognitive design problem.
+          To understand how to protect people from exploits, one must first understand how and why they fall for them. This led to building traps. Not to cause harm, but to create high-fidelity simulations of real-world attacks. Security is not a technical problem; it is a cognitive design problem.
         </ScrollParagraph>
       </Section>
 
@@ -43,8 +43,8 @@ export function SecurityNotebook() {
         <ScrollHeading as="h2">Case Studies: Cracked Software & The Jupiter NFT Trap</ScrollHeading>
         <ScrollParagraph>Two brief cases illustrate the principle:</ScrollParagraph>
         <ul className="!list-none !pl-0">
-          <ScrollParagraph as="li"><strong>The Cracked Software Trap:</strong> We bundled a harmless payload with a highly sought-after piece of "cracked" software. The download rate revealed how willing people are to compromise their security for perceived value, even when they know the risks.</ScrollParagraph>
-          <ScrollParagraph as="li" className="mt-4"><strong>The Jupiter NFT Trap:</strong> We simulated a high-profile, "exclusive" NFT mint with hidden clauses in the smart contract. It demonstrated how urgency and FOMO (Fear Of Missing Out) can lead even experienced users to bypass standard due diligence, like reading the contract they are signing.</ScrollParagraph>
+          <ScrollParagraph as="li"><strong>The Cracked Software Trap:</strong> A harmless payload was bundled with a highly sought-after piece of "cracked" software. The download rate revealed how willing people are to compromise their security for perceived value, even when they know the risks.</ScrollParagraph>
+          <ScrollParagraph as="li" className="mt-4"><strong>The Jupiter NFT Trap:</strong> A high-profile, "exclusive" NFT mint was simulated with hidden clauses in the smart contract. It demonstrated how urgency and FOMO (Fear Of Missing Out) can lead even experienced users to bypass standard due diligence, like reading the contract they are signing.</ScrollParagraph>
         </ul>
         <ScrollParagraph>Each trap is a research instrument. The results are not just data points; they are deep insights into human behavior under pressure.</ScrollParagraph>
       </Section>

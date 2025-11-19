@@ -13,7 +13,7 @@ export function RealEstateNotebook() {
           The Real Estate Intelligence OS
         </ScrollHeading>
         <ScrollParagraph emphasisLevel="resonance" className="lead !text-neutral-300 !text-lg !leading-relaxed">
-          Real estate is not a collection of assets to be marketed. It is a city's primary legal, financial, and human system. My work in this field focuses on building a sovereign <span className="text-neutral-50">Real Estate Intelligence Operating System</span>—an institutional architecture for a city or country, not a startup pitch.
+          Real estate is not a collection of assets to be marketed. It is a city's primary legal, financial, and human system. The work in this field focuses on building a sovereign <span className="text-neutral-50">Real Estate Intelligence Operating System</span>—an institutional architecture for a city or country, not a startup pitch.
         </ScrollParagraph>
       </Section>
 
