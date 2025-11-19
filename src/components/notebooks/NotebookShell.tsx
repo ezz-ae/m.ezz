@@ -14,13 +14,20 @@ type NotebookShellProps = {
 
 export function NotebookShell({ title, description, children }: NotebookShellProps) {
   const contentMap: { [key: string]: React.ReactNode } = {};
+  
+  // Correctly iterate over children and assign them to the map
   React.Children.forEach(children, (child) => {
     if (React.isValidElement(child) && typeof child.type !== 'string') {
+      // Use the displayName or name of the component type to identify it
       const displayName = (child.type as any).displayName || child.type.name;
       if (displayName === 'NotebookRenderer') {
         contentMap.theory = child;
       } else if (displayName === 'NotebookQueryInterface') {
         contentMap.conversation = child;
+      } else if (displayName === 'AudioOverview') {
+        contentMap.audio = child;
+      } else if (displayName === 'MindmapView') {
+          contentMap.mindmap = child;
       }
     }
   });
@@ -55,6 +62,8 @@ export function NotebookShell({ title, description, children }: NotebookShellPro
       {/* Main content flow */}
       <div>
         {contentMap.theory}
+        {contentMap.audio}
+        {contentMap.mindmap}
         {contentMap.conversation}
       </div>
 
