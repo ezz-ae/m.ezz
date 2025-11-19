@@ -1,3 +1,4 @@
+
 // src/components/notebooks/MarketingNotebook.tsx
 import { Section, ScrollHeading, ScrollParagraph } from '../ScrollTypography';
 

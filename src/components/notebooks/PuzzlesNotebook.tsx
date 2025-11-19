@@ -1,3 +1,4 @@
+
 // src/components/notebooks/PuzzlesNotebook.tsx
 import { Section, ScrollHeading, ScrollParagraph } from '../ScrollTypography';
 

@@ -1,3 +1,4 @@
+
 // src/components/notebooks/ScrollLessonNotebook.tsx
 import { Section, ScrollHeading, ScrollParagraph } from '../ScrollTypography';
 

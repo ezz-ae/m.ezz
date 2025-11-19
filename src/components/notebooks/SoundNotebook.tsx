@@ -1,3 +1,4 @@
+
 // src/components/notebooks/SoundNotebook.tsx
 import { Section, ScrollHeading, ScrollParagraph } from '../ScrollTypography';
 

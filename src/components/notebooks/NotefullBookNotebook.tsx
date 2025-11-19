@@ -1,3 +1,4 @@
+
 // src/components/notebooks/NotefullBookNotebook.tsx
 import { Section, ScrollHeading, ScrollParagraph, ScrollCallout } from '../ScrollTypography';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';

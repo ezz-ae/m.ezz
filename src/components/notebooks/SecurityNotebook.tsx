@@ -1,3 +1,4 @@
+
 // src/components/notebooks/SecurityNotebook.tsx
 import { Section, ScrollHeading, ScrollParagraph } from '../ScrollTypography';
 
