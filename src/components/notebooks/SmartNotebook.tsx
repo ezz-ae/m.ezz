@@ -90,7 +90,7 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
     const [summary, setSummary] = useState<string[]>([]);
     const [notes, setNotes] = useState<string[]>([]);
     const [deepThoughts, setDeepThoughts] = useState<string[]>([]);
-    const [directionalWords, setDirectionalWords] = useState<{[key: string]: number}>({});
+    const [directionalWords, setDirectionalWords] = useState<{[key: string]: { size: number; opacity: number } }>({});
     
     // Input state
     const [noteInput, setNoteInput] = useState('');
@@ -102,15 +102,7 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
     // Autothinker core logic
     const autothinkerUpdate = useCallback(() => {
         const allContent = [...notes, ...deepThoughts];
-        if (allContent.length === 0) {
-            setSummary(["The notebook is awaiting your thoughts to begin its evolution."]);
-            const initialWordState: {[key: string]: number} = {};
-            initialWords.forEach(w => initialWordState[w] = 16);
-            setDirectionalWords(initialWordState);
-            return;
-        };
-
-        // Simple semantic scoring: length + keyword presence + random factor
+        
         const scoredNotes = allContent.map(n => {
             let score = n.length;
             initialWords.forEach(w => { if (n.toLowerCase().includes(w.toLowerCase())) score += 20; });
@@ -120,52 +112,56 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
         scoredNotes.sort((a, b) => b.score - a.score);
         
         // Update Summary with top ideas
-        setSummary(scoredNotes.slice(0, 5).map(s => s.text));
+        const newSummary = scoredNotes.length > 0 ? scoredNotes.slice(0, 5).map(s => s.text) : ["The notebook is awaiting your thoughts to begin its evolution."];
+        setSummary(newSummary);
 
-        // Update Word Cloud sizes based on relevance
-        const wordRelevance: {[key: string]: number} = {};
+        // Update Word Cloud sizes and opacity based on relevance
+        const wordRelevance: {[key: string]: { size: number; opacity: number } } = {};
+        const totalNotes = allContent.length || 1;
         initialWords.forEach(w => {
-            const relevance = scoredNotes.filter(n => n.text.toLowerCase().includes(w.toLowerCase())).length;
-            wordRelevance[w] = 16 + relevance * 6 + Math.random() * 10;
+            const relevanceCount = scoredNotes.filter(n => n.text.toLowerCase().includes(w.toLowerCase())).length;
+            const relevanceRatio = relevanceCount / totalNotes;
+            
+            wordRelevance[w] = {
+                size: 16 + relevanceCount * 4 + Math.random() * 8,
+                opacity: 0.1 + Math.min(relevanceRatio * 2, 0.9) // Opacity from 0.1 to 1.0
+            };
         });
         setDirectionalWords(wordRelevance);
+
     }, [notes, deepThoughts]);
     
     // --- Effects ---
     useEffect(() => {
-        // Load persisted data
         const savedLang = localStorage.getItem(`lang_${slug}`) || 'EN';
         setLanguage(savedLang);
         
         const savedNotes = localStorage.getItem(`notes_${slug}`);
-        const loadedNotes = savedNotes ? JSON.parse(savedNotes) : [];
-        setNotes(loadedNotes);
+        setNotes(savedNotes ? JSON.parse(savedNotes) : []);
 
         const savedDeepThoughts = localStorage.getItem(`deepThoughts_${slug}`);
-        const loadedDeepThoughts = savedDeepThoughts ? JSON.parse(savedDeepThoughts) : [];
-        setDeepThoughts(loadedDeepThoughts);
+        setDeepThoughts(savedDeepThoughts ? JSON.parse(savedDeepThoughts) : []);
         
         // Initial run
         autothinkerUpdate();
 
-        // Run Autothinker update every 10s
         const intervalId = setInterval(autothinkerUpdate, 10000);
-
         return () => clearInterval(intervalId);
     }, [slug, autothinkerUpdate]);
+
+    useEffect(() => {
+        autothinkerUpdate();
+    }, [notes, deepThoughts, autothinkerUpdate]);
 
     const setLanguage = (lang: string) => {
         setLang(lang);
         setT(translations[lang as keyof typeof translations]);
         localStorage.setItem(`lang_${slug}`, lang);
-        document.documentElement.dir = lang === 'AR' ? 'rtl' : 'ltr';
+        if (typeof window !== 'undefined') {
+            document.documentElement.dir = lang === 'AR' ? 'rtl' : 'ltr';
+        }
     };
 
-    // --- Render Functions for Notes ---
-    const renderNotes = () => notes.map((note, i) => <div key={`note-${i}`}>{note}</div>);
-    const renderDeepNotes = () => deepThoughts.map((thought, i) => <div key={`deep-${i}`}>{thought}</div>);
-
-    // --- Event Handlers ---
     const handleAddNote = () => {
         if (noteInput.trim() === '') return;
         const newNotes = [...notes, noteInput];
@@ -173,7 +169,6 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
         localStorage.setItem(`notes_${slug}`, JSON.stringify(newNotes));
         setNoteInput('');
         setSuggestions([]);
-        autothinkerUpdate();
     };
 
     const handleSubmitDeepThought = () => {
@@ -182,7 +177,6 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
         setDeepThoughts(newDeepThoughts);
         localStorage.setItem(`deepThoughts_${slug}`, JSON.stringify(newDeepThoughts));
         setDeepInput('');
-        autothinkerUpdate();
     };
     
     const handleNoteInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -213,8 +207,9 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
                 .block { margin:20px 0; }
                 .block p { line-height:1.6; }
                 #wordCloud { width:100%; min-height:220px; position:relative; border-radius:20px; background:#111; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; padding:20px; gap:15px; }
-                .word { background:#ff7f50; padding:8px 15px; border-radius:10px; cursor:pointer; user-select:none; transition: all 0.5s ease; position:relative; }
-                .word:hover { transform:scale(1.2); z-index: 10; box-shadow: 0 0 20px #ff7f50; }
+                .word { color: #ff7f50; border: 1px solid #ff7f50; padding:8px 15px; border-radius:10px; cursor:pointer; user-select:none; transition: all 0.3s ease; position:relative; }
+                .word:hover { transform:scale(1.2); z-index: 10; box-shadow: 0 0 20px #ff7f50; color: #fff; }
+                .dragging { opacity: 0.5; transform: scale(1.1); background: #ff7f50 !important; color: #fff !important; }
                 #simulation { background:#111; padding:20px; border-radius:20px; box-shadow:0 0 80px rgba(255,127,80,0.3); }
                 .notes-list > div, .deep-list > div { background:#1f1f1f; padding:10px 15px; border-radius:10px; margin:8px 0; border: 1px solid #2a2a2a; }
                 .suggestion { display:inline-block; margin:5px; padding:5px 10px; background:#ff9060; border-radius:8px; cursor:pointer; transition:0.2s; }
@@ -231,7 +226,7 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
                 <motion.div className="section" id="summary" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
                     <h2>{t.summaryTitle}</h2>
                     <div className="block" id="summaryBlock">
-                        {summary.map((line, i) => <p key={i}>{line}</p>)}
+                        {summary.map((line, i) => <p key={`summary-${i}`}>{line}</p>)}
                     </div>
                 </motion.div>
                 
@@ -239,11 +234,15 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
                     <h2>{t.wordTitle}</h2>
                     <p className="text-center text-sm text-neutral-400">{t.wordDesc}</p>
                     <div id="wordCloud">
-                       {Object.entries(directionalWords).map(([word, size]) => (
+                       {Object.entries(directionalWords).map(([word, { size, opacity }]) => (
                             <div 
                                 key={word} 
                                 className="word" 
-                                style={{ fontSize: `${size}px`}}
+                                style={{ 
+                                    fontSize: `${size}px`,
+                                    backgroundColor: `rgba(255, 127, 80, ${opacity})`,
+                                    color: opacity > 0.5 ? '#fff' : '#ff7f50'
+                                }}
                                 onClick={() => handleWordClick(word)}
                             >
                                 {word}
@@ -274,7 +273,9 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
                         ))}
                     </div>
                     <Button onClick={handleAddNote} className="mt-2">{t.addNote}</Button>
-                    <div className="notes-list">{renderNotes()}</div>
+                    <div className="notes-list mt-4">
+                        {notes.map((note, i) => <div key={`note-${i}`}>{note}</div>)}
+                    </div>
                 </motion.div>
 
                 <motion.div className="section" id="deepThinking" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
@@ -287,7 +288,9 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
                         className="mt-2 bg-neutral-800 border-neutral-700"
                     />
                     <Button onClick={handleSubmitDeepThought} className="mt-2">{t.submitDeep}</Button>
-                    <div className="deep-list">{renderDeepNotes()}</div>
+                     <div className="deep-list mt-4">
+                        {deepThoughts.map((thought, i) => <div key={`deep-${i}`}>{thought}</div>)}
+                    </div>
                 </motion.div>
             </div>
 
