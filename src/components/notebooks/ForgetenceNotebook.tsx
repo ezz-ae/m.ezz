@@ -1,13 +1,10 @@
-
 // src/components/notebooks/ForgetenceNotebook.tsx
 import { Section, ScrollHeading, ScrollParagraph, ScrollCallout } from '../ScrollTypography';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
-
 export function ForgetenceNotebook() {
   return (
-    <>
-      <article className="prose prose-invert max-w-3xl mx-auto py-16 space-y-12">
+    <article className="prose prose-invert max-w-3xl mx-auto py-16 space-y-12">
         <Section>
             <ScrollHeading as="h1" className="text-3xl md:text-4xl font-light text-neutral-50 mt-4 !mb-6">
                 Forgetting Core Thinking (FCT)
@@ -46,7 +43,6 @@ export function ForgetenceNotebook() {
 
         <Section>
           <ScrollHeading as="h2">3. Foundations of Human Cognition in FCT</ScrollHeading>
-
           <div className="space-y-8">
             <div>
               <ScrollHeading as="h3">3.1 Tags: The Chemical State at Encoding</ScrollHeading>
@@ -97,7 +93,7 @@ export function ForgetenceNotebook() {
             <ScrollParagraph>Humans do not simply "think and act." The real cognitive sequence is Think → Resonate → Act. Resonance is the true decision layer where memory patterns are aligned with the present context to prepare an action. You can think something without resonating (no action), but you can resonate without thinking (instant action).</ScrollParagraph>
 
             <ScrollHeading as="h3" className="mt-8">5.2 Resonance as the Imagination Lab</ScrollHeading>
-            <ScrollParagraph>Resonance is also where ideas are formed, not just retrieved. In this "imagination lap," the mind simulates possibilities, connects distant patterns, and generates new insights. Creativity is the output of resonance.</ScrollParagraph>
+            <ScrollParagraph>Resonance is also where ideas are formed, not just retrieved. In this "imagination lab," the mind simulates possibilities, connects distant patterns, and generates new insights. Creativity is the output of resonance.</ScrollParagraph>
         </Section>
 
         <Section>
@@ -139,9 +135,6 @@ export function ForgetenceNotebook() {
                   The goal of FCT is not to build AI that replaces humans (Competing AI), but to build AI that fills the cognitive gaps humans have (Completing AI). A Completing AI understands and respects human memory rules, acting as a stable, protective partner that organizes thought and prevents cognitive overload. It is AI that is psychologically safe by design.
               </ScrollParagraph>
           </Section>
-      </article>
-    </>
+    </article>
   );
 }
-
-    
