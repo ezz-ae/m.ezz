@@ -234,10 +234,12 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
             <div className="space-y-12">
 
                 <motion.div className="rounded-2xl p-8 bg-neutral-900/50" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
+                    <h2 className="text-lg font-light text-orange-400 mb-4">Evolving Summary</h2>
                     {summary.map((line, i) => <p key={`summary-${i}`} className="text-neutral-300 text-base leading-relaxed">{line}</p>)}
                 </motion.div>
                 
                 <motion.div className="rounded-2xl p-8 bg-neutral-900/50" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+                    <h2 className="text-lg font-light text-orange-400 mb-2">Directional Words</h2>
                     <p className="text-sm text-neutral-400 mb-4">{t.wordDesc}</p>
                     <div className="flex flex-wrap gap-4 justify-center min-h-[12rem] items-center p-4 rounded-xl bg-black/30">
                        {Object.entries(directionalWords).map(([word, { size, opacity }]) => (
@@ -260,12 +262,14 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
                 </motion.div>
 
                 <motion.div className="rounded-2xl p-8 bg-neutral-900/50" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+                    <h2 className="text-lg font-light text-orange-400 mb-4">Live Simulation</h2>
                     <div className="h-64 w-full md:h-80 bg-black/30 rounded-xl">
                         <SimulationCanvas />
                     </div>
                 </motion.div>
 
                 <motion.div className="rounded-2xl p-8 bg-neutral-900/50" id="contribution" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+                    <h2 className="text-lg font-light text-orange-400 mb-2">Smart Contribution</h2>
                     <p className="text-sm text-neutral-400">{t.contribDesc}</p>
                     <Textarea 
                         ref={noteInputRef}
@@ -286,6 +290,7 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
                 </motion.div>
 
                 <motion.div className="rounded-2xl p-8 bg-neutral-900/50" id="deepThinking" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
+                    <h2 className="text-lg font-light text-orange-400 mb-2">Deep Thinking & Collaboration</h2>
                     <p className="text-sm text-neutral-400">{t.deepDesc}</p>
                     <Textarea 
                         value={deepInput}
