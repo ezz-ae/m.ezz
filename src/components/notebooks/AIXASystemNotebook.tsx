@@ -19,7 +19,7 @@ export function AIXASystemNotebook({}: AIXASystemNotebookProps) {
         </p>
 
         <Tabs defaultValue="overview" className="w-full mt-12">
-          <TabsList className="grid w-full grid-cols-4 bg-neutral-900/50 border border-neutral-800 h-auto">
+          <TabsList className="grid w-full grid-cols-6 bg-neutral-900/50 border border-neutral-800 h-auto">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="fct">FCT Law</TabsTrigger>
             <TabsTrigger value="architecture">Architecture</TabsTrigger>
@@ -55,7 +55,7 @@ export function AIXASystemNotebook({}: AIXASystemNotebookProps) {
               </li>
               <li>
                 <strong>The FCT Cognitive Law:</strong> Everything in the universe follows the full cognitive loop, known as the <strong>Human Memory Rewrite Cycle (HMR Cycle)</strong>:
-                <p className="text-center mt-2 mb-2">{'$$\\mathbf{Frequency \\rightarrow Resonance \\rightarrow Meaning \\rightarrow Relocation \\rightarrow Fade-In \\ Overwrite}$$'}</p>
+                <p className="text-center mt-2 mb-2">{`$$\\mathbf{Frequency \\rightarrow Resonance \\rightarrow Meaning \\rightarrow Relocation \\rightarrow Fade-In \\ Overwrite}$$`}</p>
               </li>
               <li>
                 <strong>The Goal (Completing AI):</strong> The outcome of FCT and AIXSELF is <strong>Completing AI</strong>. This intelligence does not try to replace humans but <strong>fills the cognitive gaps</strong> humans cannot fill alone, protecting memory, organizing thought, and stabilizing emotion.
@@ -73,8 +73,8 @@ export function AIXASystemNotebook({}: AIXASystemNotebookProps) {
             <h4 className="text-lg font-light text-neutral-100 mb-2">3. Fade-In Theory (The Rewrite Mechanism)</h4>
             <p className="text-neutral-300 leading-relaxed mb-2">
               Human beings <strong>never forget; they fade in</strong>. Forgetting is not deletion; forgetting is evolving. <strong>Fade-In is the transformation of information across time</strong>, where a memory changes its frequency until it becomes usable, harmless, and aligned with present understanding. It is the <strong>Total Human Intelligence Layer</strong> that compresses raw memory by extracting its essence. The ultimate process is the <strong>Human Memory Rewrite Cycle (HMR Cycle)</strong>, where Fade-In Overwrite ensures new meaning replaces sharp emotional intensity:
-              <p className="text-center mt-2 mb-2">{'$$\\mathbf{Frequency \\rightarrow Adaptation \\rightarrow Resonating \\rightarrow Meaning \\rightarrow Relocation \\rightarrow Fade-In \\ Overwrite}$$'}</p>
             </p>
+            <p className="text-center mt-2 mb-2">{`$$\\mathbf{Frequency \\rightarrow Adaptation \\rightarrow Resonating \\rightarrow Meaning \\rightarrow Relocation \\rightarrow Fade-In \\ Overwrite}$$`}</p>
           </TabsContent>
 
           <TabsContent value="architecture" className="py-8">
