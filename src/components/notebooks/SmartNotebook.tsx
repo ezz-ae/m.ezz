@@ -30,12 +30,13 @@ const SimulationCanvas = () => {
         let points: any[] = [];
         const initPoints = () => {
             points = [];
+            if (!canvas) return;
             for (let i = 0; i < 15; i++) {
                 points.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 1,
-                    vy: (Math.random() - 0.5) * 1,
+                    vx: (Math.random() - 0.5) * 0.2, // Slowed down velocity
+                    vy: (Math.random() - 0.5) * 0.2, // Slowed down velocity
                 });
             }
         }
@@ -49,8 +50,8 @@ const SimulationCanvas = () => {
                 if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
                 if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, 8, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(255,127,80,0.4)';
+                ctx.arc(p.x, p.y, 6, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255,127,80,0.3)';
                 ctx.fill();
             });
             animationFrameId = requestAnimationFrame(drawSim);
@@ -115,21 +116,25 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
     const autothinkerUpdate = useCallback(() => {
         const allContent = [...notes, ...deepThoughts];
         
-        const scoredNotes = allContent.map(n => {
-            let score = n.length;
-            initialWords.forEach(w => { if (n.toLowerCase().includes(w.toLowerCase())) score += 20; });
-            score += Math.random() * 10;
-            return { text: n, score };
-        });
-        scoredNotes.sort((a, b) => b.score - a.score);
-        
-        const newSummary = scoredNotes.length > 0 ? scoredNotes.slice(0, 3).map(s => s.text) : ["The notebook is awaiting your thoughts to begin its evolution."];
-        setSummary(newSummary);
+        if (allContent.length > 0) {
+            const scoredNotes = allContent.map(n => {
+                let score = n.length;
+                initialWords.forEach(w => { if (n.toLowerCase().includes(w.toLowerCase())) score += 20; });
+                score += Math.random() * 10;
+                return { text: n, score };
+            });
+            scoredNotes.sort((a, b) => b.score - a.score);
+            
+            const newSummary = scoredNotes.slice(0, 3).map(s => s.text);
+            setSummary(newSummary);
+        } else {
+             setSummary(["The notebook is awaiting your thoughts to begin its evolution."]);
+        }
 
         const wordRelevance: {[key: string]: { size: number; opacity: number } } = {};
         const totalNotes = allContent.length || 1;
         initialWords.forEach(w => {
-            const relevanceCount = scoredNotes.filter(n => n.text.toLowerCase().includes(w.toLowerCase())).length;
+            const relevanceCount = allContent.filter(n => n.toLowerCase().includes(w.toLowerCase())).length;
             const relevanceRatio = relevanceCount / Math.max(totalNotes, 5);
             
             wordRelevance[w] = {
@@ -151,13 +156,16 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
         const savedDeepThoughts = localStorage.getItem(`deepThoughts_${slug}`);
         setDeepThoughts(savedDeepThoughts ? JSON.parse(savedDeepThoughts) : []);
         
+        autothinkerUpdate();
         const intervalId = setInterval(autothinkerUpdate, 10000);
         
-        // Initial run
-        setTimeout(autothinkerUpdate, 100);
-
         return () => clearInterval(intervalId);
     }, [slug, autothinkerUpdate]);
+
+    useEffect(() => {
+        autothinkerUpdate();
+    }, [notes, deepThoughts, autothinkerUpdate]);
+
 
     const setLanguage = (lang: string) => {
         setLang(lang);
@@ -172,10 +180,9 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
         if (noteInput.trim() === '') return;
         const newNotes = [...notes, noteInput];
         setNotes(newNotes);
-        localStorage.setItem(`notes_${slug}`, JSON.stringify(newNotes));
+        localStorage.setItem(`slug_${slug}`, JSON.stringify(newNotes));
         setNoteInput('');
         setSuggestions([]);
-        autothinkerUpdate();
     };
 
     const handleSubmitDeepThought = () => {
@@ -184,7 +191,6 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
         setDeepThoughts(newDeepThoughts);
         localStorage.setItem(`deepThoughts_${slug}`, JSON.stringify(newDeepThoughts));
         setDeepInput('');
-        autothinkerUpdate();
     };
     
     const handleNoteInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -276,7 +282,7 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
                         value={noteInput}
                         onChange={handleNoteInputChange}
                         placeholder="Write your note or insight here..." 
-                        className="mt-2 bg-neutral-800 border-neutral-700"
+                        className="mt-2 bg-neutral-800 border-neutral-700 text-base"
                     />
                     <div className="mt-2 flex flex-wrap gap-2">
                         {suggestions.map(s => (
@@ -284,8 +290,18 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
                         ))}
                     </div>
                     <Button onClick={handleAddNote} className="mt-2">{t.addNote}</Button>
-                    <div className="notes-list mt-4 space-y-2">
-                        {notes.map((note, i) => <div key={`note-${i}`} className="p-3 rounded-lg bg-black/20 text-sm text-neutral-300">{note}</div>)}
+                    <div className="notes-list mt-6 space-y-4">
+                        {notes.map((note, i) => (
+                            <motion.div 
+                                key={`note-${i}`}
+                                className="p-4 rounded-lg bg-neutral-800/60 border border-neutral-700/80 text-sm text-neutral-200"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: i * 0.05 }}
+                            >
+                                {note}
+                            </motion.div>
+                        ))}
                     </div>
                 </motion.div>
 
@@ -296,11 +312,21 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
                         value={deepInput}
                         onChange={(e) => setDeepInput(e.target.value)}
                         placeholder="Think deeply and write here..."
-                        className="mt-2 bg-neutral-800 border-neutral-700"
+                        className="mt-2 bg-neutral-800 border-neutral-700 text-base"
                     />
                     <Button onClick={handleSubmitDeepThought} className="mt-2">{t.submitDeep}</Button>
-                     <div className="deep-list mt-4 space-y-2">
-                        {deepThoughts.map((thought, i) => <div key={`deep-${i}`} className="p-3 rounded-lg bg-black/20 text-sm text-neutral-300">{thought}</div>)}
+                     <div className="deep-list mt-6 space-y-4">
+                        {deepThoughts.map((thought, i) => (
+                            <motion.div 
+                                key={`deep-${i}`} 
+                                className="p-4 rounded-lg bg-neutral-800/80 border border-neutral-700 text-sm text-neutral-100"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: i * 0.05 }}
+                            >
+                                {thought}
+                            </motion.div>
+                        ))}
                     </div>
                 </motion.div>
             </div>
