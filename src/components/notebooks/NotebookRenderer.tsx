@@ -10,6 +10,7 @@ import { SecurityNotebook } from './SecurityNotebook';
 import { PuzzlesNotebook } from './PuzzlesNotebook';
 import { MarketingNotebook } from './MarketingNotebook';
 import { SoundNotebook } from './SoundNotebook';
+import { ScrollLessonNotebook } from './ScrollLessonNotebook';
 
 type NotebookRendererProps = {
   slug: string;
@@ -24,6 +25,7 @@ const notebookComponents: { [key: string]: React.ComponentType<any> } = {
     puzzles: PuzzlesNotebook,
     marketing: MarketingNotebook,
     sound: SoundNotebook,
+    'scroll-lesson': ScrollLessonNotebook,
 };
 
 export default function NotebookRenderer({ slug }: NotebookRendererProps) {

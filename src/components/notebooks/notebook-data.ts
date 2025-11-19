@@ -9,13 +9,14 @@ import { SecurityNotebook } from './SecurityNotebook';
 import { PuzzlesNotebook } from './PuzzlesNotebook';
 import { MarketingNotebook } from './MarketingNotebook';
 import { SoundNotebook } from './SoundNotebook';
+import { ScrollLessonNotebook } from './ScrollLessonNotebook';
 import { PlaceholderNotebook } from './PlaceholderNotebook';
 
 
-export type NotebookId = 'forgetence' | 'notefullbook' | 'aixself' | 'realestate' | 'security' | 'puzzles' | 'marketing' | 'sound';
+export type NotebookId = 'forgetence' | 'notefullbook' | 'aixself' | 'realestate' | 'security' | 'puzzles' | 'marketing' | 'sound' | 'scroll-lesson';
 
 export const isNotebookId = (id: string): id is NotebookId => {
-  return ['forgetence', 'notefullbook', 'aixself', 'realestate', 'security', 'puzzles', 'marketing', 'sound'].includes(id);
+  return ['forgetence', 'notefullbook', 'aixself', 'realestate', 'security', 'puzzles', 'marketing', 'sound', 'scroll-lesson'].includes(id);
 };
 
 type NotebookData = {
@@ -93,5 +94,13 @@ export const NOTEBOOKS: NotebookRegistry = {
         tag: 'Ezzton · Setup',
         body: 'Exploring the connection between sound, identity, and environment through projects like Ezzton and personal setup design.',
         component: SoundNotebook,
+    },
+    'scroll-lesson': {
+        id: 'scroll-lesson',
+        title: 'Scroll Lesson: On Language',
+        description: 'A philosophical exploration of the relationship between language, thought, and reality.',
+        tag: 'Philosophy · Language',
+        body: 'A philosophical exploration of the relationship between language, thought, and reality. Language is not knowledge, but a vehicle. Meaning is born raw, and language is a tool to sculpt it. Understanding the limits of language is understanding the limits of self.',
+        component: ScrollLessonNotebook,
     }
 };
