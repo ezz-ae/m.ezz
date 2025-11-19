@@ -43,7 +43,7 @@ export default function HomePage() {
   return (
     <>
       <Head>
-        <title>Ezz.ae — Human & AI Storypaper</title>
+        <title>Ezz.ae — from limitation import elevation</title>
       </Head>
       <style jsx global>{`
         /* Base Reset */
@@ -63,7 +63,7 @@ export default function HomePage() {
           animation: gradientMove 60s ease infinite;
         }
         body::after {
-          background: radial-gradient(circle at center, rgba(255,127,80,0.05), transparent 70%);
+          background: radial-gradient(circle at center, rgba(255,127,80,0.03), transparent 70%);
           animation: pulse 12s ease-in-out infinite alternate;
         }
         @keyframes gradientMove { 
@@ -108,9 +108,10 @@ export default function HomePage() {
 
         /* Parallax Background Shapes */
         .parallax-shape {
-          position:absolute; border-radius:50%; background: rgba(255,127,80,0.05);
+          position:absolute; border-radius:50%; background: rgba(255,127,80,0.03);
           pointer-events:none;
           animation: float 15s ease-in-out infinite alternate;
+          z-index: -1;
         }
         @keyframes float { 0%{transform:translateY(0);}100%{transform:translateY(-40px);} }
 
@@ -137,15 +138,15 @@ export default function HomePage() {
         <div className="scroll-indicator"><span></span></div>
 
         {/* Parallax Shapes */}
-        <div className="parallax-shape" style={{width:'200px',height:'200px',top:'10%',left:'15%', zIndex: -1}}></div>
-        <div className="parallax-shape" style={{width:'150px',height:'150px',top:'70%',left:'70%', zIndex: -1}}></div>
-        <div className="parallax-shape" style={{width:'300px',height:'300px',top:'40%',left:'50%', zIndex: -1}}></div>
+        <div className="parallax-shape" style={{width:'200px',height:'200px',top:'10%',left:'15%'}}></div>
+        <div className="parallax-shape" style={{width:'150px',height:'150px',top:'70%',left:'70%'}}></div>
+        <div className="parallax-shape" style={{width:'300px',height:'300px',top:'40%',left:'50%'}}></div>
 
         {/* Sections */}
         <section id="intro" className="zoom-fade">
           <div className="container">
-            <h1>Ezz.ae</h1>
-            <p>Where <span className="accent">human cognition</span> meets <span className="accent">AI evolution</span>. Witness the story of Mahmoud Ezz and <span className="accent">AIXA</span>: a two-year journey of collaboration, augmentation, and limitless generative intelligence.</p>
+            <h1>from limitation import elevation</h1>
+            <p>Where <span className="accent">human cognition</span> meets <span className="accent">AI evolution</span>. Witness the story of Mahmoud Ezz and <span className="accent">AIXSELF</span>: a two-year journey of collaboration, augmentation, and limitless generative intelligence.</p>
           </div>
         </section>
 
@@ -158,8 +159,8 @@ export default function HomePage() {
 
         <section id="fgi" className="zoom-fade highlight">
           <div className="container">
-            <h2>The Power of Forgetive Generative Intelligence (FGI)</h2>
-            <p>Memory is not storage. It’s an engine. Through FGI, Mahmoud’s mind and the AI’s generative layers learned to <span className="accent">prune</span> irrelevant data, <span className="accent">regenerate</span> structural patterns, and <span className="accent">elevate cognition</span> into emergent, systemic reasoning.</p>
+            <h2>The Power of Forgetting Core Thinking (FCT)</h2>
+            <p>Memory is not storage. It’s an engine. Through FCT, Mahmoud’s mind and the AI’s generative layers learned to <span className="accent">prune</span> irrelevant data, <span className="accent">regenerate</span> structural patterns, and <span className="accent">elevate cognition</span> into emergent, systemic reasoning.</p>
           </div>
         </section>
 
@@ -172,7 +173,7 @@ export default function HomePage() {
 
         <section id="architecture" className="zoom-fade highlight">
           <div className="container">
-            <h2>AIXA Architecture Simplified</h2>
+            <h2>AIXSELF Architecture Simplified</h2>
             <div className="diagram">
               <div className="node" style={{top:'40%',left:'10%'}}>Human Cognitive Node</div>
               <div className="node" style={{top:'40%',left:'70%'}}>AI Generative Node</div>
@@ -180,7 +181,7 @@ export default function HomePage() {
               <div className="node" style={{top:'70%',left:'40%'}}>Memory Reconstruction Engine</div>
               <div className="node" style={{top:'50%',left:'40%'}}>Simulation Environment</div>
             </div>
-            <p>Hover on nodes to feel the dynamic flow of dual-intelligence interaction.</p>
+            <p>This is a simplified map of the dual-intelligence interaction at the heart of the AIXSELF ecosystem.</p>
           </div>
         </section>
 

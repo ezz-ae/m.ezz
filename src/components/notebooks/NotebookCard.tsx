@@ -17,26 +17,25 @@ type NotebookCardProps = {
 export function NotebookCard({ id, name, description, tag }: NotebookCardProps) {
 
   return (
-    <div className="relative group flex flex-col justify-between p-5 h-48 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:border-primary/20 hover:shadow-lg hover:-translate-y-1">
+    <motion.div 
+        className="relative group flex flex-col justify-between p-5 h-48 rounded-2xl border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:border-primary/20 hover:shadow-lg hover:-translate-y-1"
+        whileHover={{ scale: 1.03 }}
+    >
       {/* Reflection Meter (Pulse) */}
-      <motion.div
-        className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none"
-        initial={{ opacity: 0 }}
-        whileHover={{ opacity: 1 }}
-      >
+      <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
            <motion.div
-            className="absolute inset-0 bg-radial from-green-400/20 via-transparent to-transparent"
+            className="absolute inset-0 bg-radial from-orange-400/10 via-transparent to-transparent"
             animate={{
-              opacity: [0, 0.4, 0],
-              scale: [1, 1.3, 1],
+              opacity: [0, 0.3, 0],
+              scale: [1, 1.4, 1],
             }}
             transition={{
-              duration: 4,
+              duration: 5,
               repeat: Infinity,
               ease: 'easeInOut',
             }}
           />
-      </motion.div>
+      </div>
 
       <div className="relative z-10 flex-grow">
         <Link href={`/notebooks/${id}`} className="block h-full">
@@ -61,6 +60,6 @@ export function NotebookCard({ id, name, description, tag }: NotebookCardProps) 
             <Edit size={14} />
         </Button>
       </div>
-    </div>
+    </motion.div>
   );
 }
