@@ -1,3 +1,4 @@
+
 // src/components/notebooks/NotebookShell.tsx
 'use client';
 import React from 'react';
@@ -5,6 +6,10 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ScrollHeading, ScrollParagraph } from '../ScrollTypography';
+import NotebookRenderer from './NotebookRenderer';
+import { NotebookQueryInterface } from './NotebookQueryInterface';
+import { AudioOverview } from './AudioOverview';
+import { MindmapView } from './MindmapView';
 
 type NotebookShellProps = {
   title: string;
@@ -13,12 +18,11 @@ type NotebookShellProps = {
 };
 
 export function NotebookShell({ title, description, children }: NotebookShellProps) {
+  
   const contentMap: { [key: string]: React.ReactNode } = {};
   
-  // Correctly iterate over children and assign them to the map
   React.Children.forEach(children, (child) => {
     if (React.isValidElement(child) && typeof child.type !== 'string') {
-      // Use the displayName or name of the component type to identify it
       const displayName = (child.type as any).displayName || child.type.name;
       if (displayName === 'NotebookRenderer') {
         contentMap.theory = child;

@@ -1,6 +1,6 @@
 
 // src/components/notebooks/NotebookRenderer.tsx
-import { NOTEBOOKS } from './notebook-data';
+import { NOTEBOOKS, NotebookId, isNotebookId } from './notebook-data';
 import { ForgetenceNotebook } from './ForgetenceNotebook';
 import { PlaceholderNotebook } from './PlaceholderNotebook';
 import { NotefullBookNotebook } from './NotefullBookNotebook';
@@ -16,32 +16,33 @@ type NotebookRendererProps = {
   slug: string;
 };
 
-const notebookComponents: { [key: string]: React.ComponentType<any> } = {
-    forgetence: ForgetenceNotebook,
-    notefullbook: NotefullBookNotebook,
-    aixself: AIXSELFNotebook,
-    realestate: RealEstateNotebook,
-    security: SecurityNotebook,
-    puzzles: PuzzlesNotebook,
-    marketing: MarketingNotebook,
-    sound: SoundNotebook,
+const notebookComponents: { [key in NotebookId]: React.ComponentType<any> } = {
+    'forgetence': ForgetenceNotebook,
+    'notefullbook': NotefullBookNotebook,
+    'aixself': AIXSELFNotebook,
+    'realestate': RealEstateNotebook,
+    'security': SecurityNotebook,
+    'puzzles': PuzzlesNotebook,
+    'marketing': MarketingNotebook,
+    'sound': SoundNotebook,
     'scroll-lesson': ScrollLessonNotebook,
 };
 
 export default function NotebookRenderer({ slug }: NotebookRendererProps) {
   NotebookRenderer.displayName = 'NotebookRenderer';
-  const notebook = NOTEBOOKS[slug as keyof typeof NOTEBOOKS];
+  
+  if (!isNotebookId(slug)) {
+    return <PlaceholderNotebook topic="Unknown Notebook" />;
+  }
+
+  const notebook = NOTEBOOKS[slug];
 
   if (!notebook) {
-    // This case should be handled by the page's notFound()
+    // This case should be handled by the page's notFound() but is a good fallback
     return <p>Notebook not found.</p>;
   }
 
-  const Component = notebookComponents[slug] || PlaceholderNotebook;
+  const Component = notebookComponents[slug];
   
-  if (Component === PlaceholderNotebook) {
-    return <PlaceholderNotebook topic={notebook.title} />;
-  }
-
   return <Component />;
 }
