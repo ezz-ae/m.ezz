@@ -3,7 +3,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Section, ScrollHeading, ScrollParagraph, ScrollCallout } from '@/components/ScrollTypography';
-import { ArrowRight, BrainCircuit, GitBranch, Filter, ShieldCheck, Layers, BookOpen, Cookie, FileText, Bot, KeySquare, HardDrive } from 'lucide-react';
+import { ArrowRight, BrainCircuit, GitBranch, ShieldCheck, Layers, BookOpen, FileText, Bot, KeySquare, HardDrive } from 'lucide-react';
 import FooterMinimal from '@/components/FooterMinimal';
 import { useRef } from 'react';
 
@@ -25,7 +25,7 @@ const principles = [
     },
 ];
 
-const cookies = [
+const rows = [
     { title: "Memory is a Simulation", text: "Human recall is a simulation, not a recording. There is no guarantee it ever happened that way." },
     { title: "Frequency is the Rule", text: "What repeats becomes recognized. What is recognized becomes real. The brain does not store events; it stores frequencies." },
     { title: "The Tag is the Chemistry", text: "A memory's emotional power comes from the chemical state at the moment of encoding, not the event itself." },
@@ -127,12 +127,12 @@ export default function HomePage() {
         <Section>
             <div className="py-20 text-white">
                 <div className="max-w-4xl mx-auto text-center px-6">
-                    <ScrollHeading as="h2" className="!text-3xl md:!text-4xl">The Foundational "Cookies"</ScrollHeading>
+                    <ScrollHeading as="h2" className="!text-3xl md:!text-4xl">The Foundational "Row"</ScrollHeading>
                     <ScrollParagraph className="text-lg text-neutral-400 mt-4">
                         These are the core, un-decorated truths of the FCT framework. The simple laws that govern how intelligence forms.
                     </ScrollParagraph>
                      <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 text-left">
-                        {cookies.map((cookie, i) => (
+                        {rows.map((row, i) => (
                              <motion.div 
                                 key={i} 
                                 className="p-6 rounded-2xl bg-neutral-900/70 border border-neutral-800"
@@ -141,9 +141,9 @@ export default function HomePage() {
                                 viewport={{ once: true, amount: 0.5 }}
                                 transition={{ duration: 0.7, delay: i * 0.15, ease: 'easeOut' }}
                             >
-                                <Cookie className="w-7 h-7 mb-3 text-neutral-500"/>
-                                <h4 className="font-semibold text-neutral-100">{cookie.title}</h4>
-                                <p className="text-neutral-400 mt-1 text-sm">{cookie.text}</p>
+                                <BookOpen className="w-7 h-7 mb-3 text-neutral-500"/>
+                                <h4 className="font-semibold text-neutral-100">{row.title}</h4>
+                                <p className="text-neutral-400 mt-1 text-sm">{row.text}</p>
                             </motion.div>
                         ))}
                     </div>
