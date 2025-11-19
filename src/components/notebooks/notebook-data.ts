@@ -11,12 +11,13 @@ import { SoundNotebook } from './SoundNotebook';
 import { ScrollLessonNotebook } from './ScrollLessonNotebook';
 import { OmegaNotebook } from './OmegaNotebook';
 import { PlaceholderNotebook } from './PlaceholderNotebook';
+import { StormstanNotebook } from './StormstanNotebook';
 
 
-export type NotebookId = 'forgetence' | 'notefullbook' | 'aixself' | 'realestate' | 'security' | 'puzzles' | 'marketing' | 'sound' | 'scroll-lesson' | 'omega';
+export type NotebookId = 'forgetence' | 'notefullbook' | 'aixself' | 'realestate' | 'security' | 'puzzles' | 'marketing' | 'sound' | 'scroll-lesson' | 'omega' | 'stormstan';
 
 export const isNotebookId = (id: string): id is NotebookId => {
-  return ['forgetence', 'notefullbook', 'aixself', 'realestate', 'security', 'puzzles', 'marketing', 'sound', 'scroll-lesson', 'omega'].includes(id);
+  return ['forgetence', 'notefullbook', 'aixself', 'realestate', 'security', 'puzzles', 'marketing', 'sound', 'scroll-lesson', 'omega', 'stormstan'].includes(id);
 };
 
 type NotebookData = {
@@ -63,6 +64,14 @@ export const NOTEBOOKS: NotebookRegistry = {
         body: 'The Omega Law is a prototype for a physics-based intelligence model. It posits that intelligence is born from a physical "hit" that forces energy to move, creating oscillations that cohere into patterns.',
         component: OmegaNotebook,
     },
+    stormstan: {
+        id: 'stormstan',
+        title: 'Stormstan',
+        description: 'An "Ideas Recycling Hub" where IP is released to accelerate collaborative creation.',
+        tag: 'Ideation Platform',
+        body: 'Stormstan is a non-AI platform, an "Ideas Recycling Hub" or "GitHub for human thinking." It is built on the philosophy of the "Ideas Giveup Event," where intellectual property is released upon submission to foster open collaboration and development.',
+        component: StormstanNotebook,
+    },
     realestate: {
         id: 'realestate',
         title: 'Real Estate Intelligence',
@@ -90,7 +99,7 @@ export const NOTEBOOKS: NotebookRegistry = {
     marketing: {
         id: 'marketing',
         title: 'Marketing Ecosystems',
-        description: 'Building market systems and ecosystems, not just single campaigns.',
+        description: 'Architecting self-sustaining market systems.',
         tag: 'MTC · Marketinum',
         body: 'Building marketing systems and ecosystems, not just campaigns. Includes MTC, Marketinum, and Willionnaire.',
         component: MarketingNotebook,

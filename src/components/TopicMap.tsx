@@ -1,4 +1,3 @@
-
 // components/TopicMap.tsx
 "use client";
 import Link from 'next/link';
@@ -6,8 +5,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { NOTEBOOKS, NotebookId } from '@/components/notebooks/notebook-data';
 
-const topics = Object.keys(NOTEBOOKS).map(key => {
-    const notebook = NOTEBOOKS[key as NotebookId];
+const topics = Object.values(NOTEBOOKS).map(notebook => {
     return {
         id: notebook.id,
         label: notebook.title,
