@@ -1,4 +1,3 @@
-
 // src/components/TimelineView.tsx
 "use client";
 import { motion } from 'framer-motion';
@@ -38,13 +37,13 @@ const timelinePhases = [
         phase: 5,
         tag: "Language & OS Architect",
         title: "AI OS Layer",
-        description: "Moving from seeing AI as a 'tool' to seeing it as a language of organization."
+        description: "The point of seeing AI not as a 'tool' but as a language of organization."
     },
     {
         phase: 6,
         tag: "Cognitive Safety Architect",
         title: "Forgetting Layer",
-        description: "The realization of the missing piece: forgetting. The development of FCT and Forgetence. AI storing everything is structurally misaligned with how humans stay sane."
+        description: "The realization of the missing piece: forgetting. The development of FCT and Forgetence. An AI that stores everything is structurally misaligned with how humans stay sane."
     },
     {
         phase: 7,
@@ -57,8 +56,7 @@ const timelinePhases = [
 export default function TimelineView() {
     return (
         <div className="max-w-4xl mx-auto py-16">
-            <h1 className="text-3xl md:text-4xl font-light text-neutral-50 mb-4">Intelligence Timeline</h1>
-            <p className="text-neutral-400 mb-12">A cognitive evolution, not a CV.</p>
+            <h1 className="text-3xl md:text-4xl font-light text-neutral-50 mb-12">Contribution Layers</h1>
 
             <div className="relative space-y-12">
                 <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-white/10">

@@ -4,7 +4,7 @@ import TimelineView from "@/components/TimelineView";
 import FooterMinimal from "@/components/FooterMinimal";
 
 export const metadata: Metadata = {
-    title: 'Intelligence Timeline',
+    title: 'Contribution Layers',
     description: 'A map of how marketing, traps, puzzles, AI, and real estate converge into one intelligence system.',
 };
 
