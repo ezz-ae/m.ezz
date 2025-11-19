@@ -1,4 +1,3 @@
-
 // components/HeroPulse.tsx
 "use client";
 

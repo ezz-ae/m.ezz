@@ -1,5 +1,4 @@
-// src/components/TimelineView.tsx
-"use client";
+'use client';
 
 import { motion } from 'framer-motion';
 
@@ -129,20 +128,22 @@ const LayerCard = ({ layer, index }: { layer: typeof layers[0], index: number })
     <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.5, delay: index * 0.05 }}
-        className="border-b border-neutral-800 pb-8 mb-8"
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6, delay: index * 0.05 }}
+        className="border-b border-neutral-800 pb-8 mb-8 last:border-b-0 last:mb-0"
     >
         <h2 className="text-xl font-light text-neutral-100 mb-1">{layer.title}</h2>
         <p className="text-sm text-neutral-500 italic mb-4">{layer.question}</p>
         
-        <div className="prose prose-invert prose-sm max-w-none text-neutral-300 space-y-2">
+        <div className="prose prose-sm prose-invert max-w-none text-neutral-300 space-y-2">
             {layer.points.map((point, i) => {
-                const isListItem = point.startsWith('•');
-                const content = isListItem ? point.substring(1).trim() : point;
+                const isListItem = point.startsWith('•') || /^\d+\./.test(point);
+                const content = point.replace(/^• |^\d+\. /, '').trim();
+                const listItemChar = point.startsWith('•') ? '•' : (point.match(/^\d+\./)?.[0] ?? '');
+                
                 return (
                     <p key={i} className={isListItem ? "ml-4" : ""}>
-                        {isListItem && <span className="mr-2">•</span>}
+                        {isListItem && <span className="mr-2 select-none">{listItemChar}</span>}
                         {content}
                     </p>
                 )
@@ -151,7 +152,12 @@ const LayerCard = ({ layer, index }: { layer: typeof layers[0], index: number })
             {layer.contribution && (
                 <div className="pt-2">
                     <p className="font-semibold text-neutral-200">{layer.contribution.title}</p>
-                     {layer.contribution.items.map((item, i) => <p key={i}><span className="ml-4">• {item}</span></p>)}
+                     {layer.contribution.items.map((item, i) => (
+                        <p key={i} className="ml-4">
+                            <span className="mr-2 select-none">•</span>
+                            {item}
+                        </p>
+                    ))}
                 </div>
             )}
 
@@ -169,7 +175,7 @@ export default function TimelineView() {
     return (
         <div className="max-w-4xl mx-auto py-8">
             <div className="text-center mb-16">
-                <h1 className="text-2xl md:text-3xl font-light text-neutral-50">FORGAIN SYSTEM – Contribution Layers Map</h1>
+                <h1 className="text-2xl md:text-3xl font-light text-neutral-50">Contribution Layers Map</h1>
                 <p className="text-neutral-400 mt-2">A unified model of where the work contributes, how it contributes, and what domain it transforms.</p>
             </div>
 

@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import { MindBoard } from '@/components/notebooks/MindBoard';
 import FooterMinimal from "@/components/FooterMinimal";
@@ -7,7 +6,6 @@ export const metadata: Metadata = {
   title: 'EZZ.AE — Mind Board',
   description: 'The Mind Board for the NotefullBook Intelligence OS. Manage, deploy, and interact with your sovereign intelligences.',
 };
-
 
 export default function HomePage() {
   return (

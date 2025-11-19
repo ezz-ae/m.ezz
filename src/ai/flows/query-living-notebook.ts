@@ -34,8 +34,8 @@ Content: ${p.body}
 }
 
 const QueryLivingNotebookInputSchema = z.object({
-  query: z.string().describe("The user's question about the AIXSELF universe."),
-  slug: z.string().optional().describe('The slug of a specific notebook to scope the context.'),
+  query: z.string().describe("The user's question about a specific notebook or the AIXSELF universe in general."),
+  slug: z.string().optional().describe('The slug of a specific notebook to scope the context. If omitted, context from all notebooks will be used.'),
 });
 export type QueryLivingNotebookInput = z.infer<
   typeof QueryLivingNotebookInputSchema
