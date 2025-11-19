@@ -1,4 +1,3 @@
-
 // src/components/notebooks/PuzzlesNotebook.tsx
 import { Section, ScrollHeading, ScrollParagraph } from '../ScrollTypography';
 
@@ -13,13 +12,13 @@ export function PuzzlesNotebook() {
           Puzzles as a Laboratory for Intelligence
         </ScrollHeading>
         <ScrollParagraph emphasisLevel="resonance" className="lead !text-neutral-300 !text-lg !leading-relaxed">
-          Puzzles are not a game. They are a controlled environment for studying search, risk, and cognitive bias. By attempting to solve complex, well-defined problems like finding a specific Bitcoin address, you can observe the mechanics of intelligence, pattern recognition, and failure in their purest form.
+          Puzzles are not a game. They are a controlled environment for studying search, risk, and cognitive bias. By attempting to solve complex, well-defined problems like finding a specific Bitcoin address, one can observe the mechanics of intelligence, pattern recognition, and failure in their purest form.
         </ScrollParagraph>
       </Section>
 
       <Section>
         <ScrollHeading as="h2">Bitcoin Puzzles: Vanity, Structure, and Bias</ScrollHeading>
-        <ScrollParagraph>The search for specific Bitcoin addresses—so-called "vanity" addresses or those within structured ranges—is a perfect testbed. It's a search for a needle in a cosmic haystack. This work revealed how human creator bias imprints itself even on supposedly random data. We look for patterns, and in doing so, we leave them behind for others to find.</ScrollParagraph>
+        <ScrollParagraph>The search for specific Bitcoin addresses—so-called "vanity" addresses or those within structured ranges—is a perfect testbed. It's a search for a needle in a cosmic haystack. This work revealed how human creator bias imprints itself even on supposedly random data. We look for patterns, and in doing so, leave them behind for others to find.</ScrollParagraph>
       </Section>
 
       <Section>
@@ -39,7 +38,7 @@ export function PuzzlesNotebook() {
           <ScrollParagraph as="li"><strong>Intelligence is Search:</strong> At its core, all problem-solving is a search through a possibility space.</ScrollParagraph>
           <ScrollParagraph as="li"><strong>Bias is a Signal:</strong> Human bias, which we try to eliminate, is also a signal that can be exploited or understood.</ScrollParagraph>
           <ScrollParagraph as="li"><strong>Failure is Information:</strong> Every failed attempt to solve a puzzle refines the search space. Failure is not wasted effort; it is negative information that guides the next step.</ScrollParagraph>
-          <ScrollParagraph as="li"><strong>The Map is Not the Territory:</strong> Our models of a problem are always simpler than the problem itself. Puzzles force you to confront that gap.</ScrollParagraph>
+          <ScrollParagraph as="li"><strong>The Map is Not the Territory:</strong> Our models of a problem are always simpler than the problem itself. Puzzles force a confrontation with that gap.</ScrollParagraph>
         </ul>
       </Section>
     </article>

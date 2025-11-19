@@ -30,9 +30,6 @@ export function NotefullBookNotebook() {
         <ScrollHeading as="h1" className="text-3xl md:text-4xl font-light text-neutral-50 mt-4 !mb-6">
           NotebookML: The Language of Transparent Machine Reasoning
         </ScrollHeading>
-        <ScrollParagraph className="text-sm tracking-widest uppercase text-neutral-400">
-          Whitepaper
-        </ScrollParagraph>
       </Section>
 
       <Section>
@@ -46,12 +43,16 @@ export function NotefullBookNotebook() {
         <ScrollHeading as="h2">2.0 The Cognitive Mismatch: Why Perfect Recall is a Flaw in AI Design</ScrollHeading>
         <ScrollParagraph>To build a truly beneficial AI, it is strategically imperative to understand the cognitive dissonance between the archival memory of current systems and the reconstructive, meaning-driven memory of the human mind. This mismatch is not a minor technical limitation; it is a fundamental design flaw with profound safety and psychological implications. The human brain is a simplification engine, a lossy compression device that turns chaos into meaning. AI systems with perfect recall do not enhance this process; they disrupt it by replaying the past with a mechanical fidelity that is alien to our nature.</ScrollParagraph>
         <ScrollParagraph>The harms of perfect, literal AI recall are significant and multifaceted, creating systems that are psychologically unsafe by design.</ScrollParagraph>
+        
         <ScrollHeading as="h3">Harmful Over-Recall and the Absence of Emotional Softening</ScrollHeading>
         <ScrollParagraph>Human memory is a protective mechanism. It naturally softens the emotional intensity of past events, allowing pain, embarrassment, or regret to fade over time. A trading loss that was once sharp becomes a distant lesson; a past conflict loses its emotional charge. Current AI systems, however, lack this emotional decay curve. They revive past events with their original sharpness, re-exposing the user to the full emotional weight of the moment. This function is not helpful; it is a form of psychological misfeeding, making the AI a dangerous recorder of experiences that a healthy mind would naturally soften.</ScrollParagraph>
+        
         <ScrollHeading as="h3">Literal Event Replay vs. Interpretive Reconstruction</ScrollHeading>
         <ScrollParagraph>AI systems operate on a principle of literal, archival recall, replaying events as they were recorded. The human brain, in contrast, engages in a reconstructive process. We do not recall raw sensory events; we recall our interpretations of them. A person remembers a past interaction not by replaying the physical sensation of a touch, but by reconstructing its meaning—for example, "he was touchy," which implies affection, awkwardness, or aggression depending on context. AI's inability to distinguish between the event and its evolving meaning leads it to resurface raw data that is contextually barren and often psychologically jarring.</ScrollParagraph>
+        
         <ScrollHeading as="h3">Context-Blindness and Caller Misidentification</ScrollHeading>
         <ScrollParagraph>Perhaps the most critical failure of current systems is their inability to understand the "caller" or context of a memory recall. A user might reference a past self, offer a hypothetical scenario, or use a personal story as a mere example to illustrate a theoretical point. AI systems, lacking an interpretive layer, misinterpret these contexts. They treat examples, hypotheticals, and past selves as direct representations of the user's current, stable identity. This misidentification leads to inaccurate, harmful, and fundamentally misaligned interactions, as the AI anchors its responses to a frozen, incorrect version of the user.</ScrollParagraph>
+        
         <ScrollCallout>These flaws combine to create an AI that is a "dangerous recorder of everything the user naturally would have let fade." This necessitates a complete architectural revision—one that replaces the flawed goal of perfect recall with the cognitively aligned principles of forgetting, reinterpretation, and simplification.</ScrollCallout>
       </Section>
       
@@ -105,11 +106,13 @@ export function NotefullBookNotebook() {
                 </TableBody>
             </Table>
         </div>
+        <ScrollParagraph>These principles—forgetting as a feature, safety by design, schema-level intelligence, and cognitive completion—form the philosophical bedrock of the system. The next section details how they are implemented in the NotefullOS architecture.</ScrollParagraph>
       </Section>
       
       <Section>
         <ScrollHeading as="h2">4.0 NotefullOS: The Architecture of a Reflective Mind</ScrollHeading>
         <ScrollParagraph>NotefullOS is the operating system that embodies the principles of Cognitive Evolution Theory. It is architected as a local-first, sovereign, and deterministic system that functions as a "living language of organization." It is not merely a tool for storing notes but an engine for structuring thought, tracing decisions, and evolving knowledge in a transparent, human-aligned manner.</ScrollParagraph>
+        
         <ScrollHeading as="h3">4.1 The Three Cognitive Layers</ScrollHeading>
         <ScrollParagraph>Inspired by the structure of the human brain, the "Corporate Mind" architecture within NotefullOS is organized into three distinct but interconnected layers. This design separates reasoning, memory, and values into modular components, ensuring clarity and accountability. Crucially, each notebook chooses which layers to activate, allowing for a flexible and context-aware intelligence.</ScrollParagraph>
         <ol className="list-decimal space-y-2 pl-5">
@@ -117,10 +120,12 @@ export function NotefullBookNotebook() {
             <li><ScrollParagraph as="span"><strong className="text-neutral-200">Memory Layer:</strong> Functioning like the hippocampus, this layer stores all cause-and-effect traces from decisions and reflections. It is not an archive of raw events but a structured repository of reasoning pathways.</ScrollParagraph></li>
             <li><ScrollParagraph as="span"><strong className="text-neutral-200">Ethic Layer:</strong> Mirroring the prefrontal cortex, this layer defines the system's values, bias limits, and ethical boundaries. Directives in this layer act as non-negotiable constraints on the Logic and Memory layers, ensuring that all operations remain within a pre-defined moral framework.</ScrollParagraph></li>
         </ol>
+
         <ScrollHeading as="h3">4.2 The Closed Cognitive Loop</ScrollHeading>
         <ScrollParagraph>The core operational cycle of NotefullOS is the "Closed Cognitive Loop." This is a deterministic feedback engine that ensures the system is self-refining and its intelligence density increases over time. Instead of simply processing inputs and producing outputs, the system learns from its own operations and feeds those learnings back into its reasoning graph.</ScrollParagraph>
         <ScrollParagraph className="text-center font-mono tracking-widest text-sm text-neutral-400">Input → Reason → Decision → Trace → Learn → Re-Input</ScrollParagraph>
         <ScrollParagraph>This loop makes the system's evolution transparent and auditable. Each cycle tightens the notebook's logic, allowing it to become more coherent and aligned with its purpose over time without requiring external model retraining.</ScrollParagraph>
+        
         <ScrollHeading as="h3">4.3 Key Engine Components</ScrollHeading>
         <ScrollParagraph>Within the NotefullOS architecture, several key modules work together to enable its unique cognitive functions.</ScrollParagraph>
         <ul className="list-disc space-y-2 pl-5">
@@ -128,11 +133,13 @@ export function NotefullBookNotebook() {
           <li><ScrollParagraph as="span"><strong className="text-neutral-200">Interpretive Recall Layer (IRL):</strong> The IRL is the primary intelligence layer responsible for safe and relevant memory retrieval. Its core function is to identify the "caller" of a memory—distinguishing between a user's direct experience, a past self, a hypothetical, or an example. By understanding the meaning behind a recall request, not just its vector similarity, the IRL retrieves the correct cognitive pattern and suppresses irrelevant or harmful related memories.</ScrollParagraph></li>
           <li><ScrollParagraph as="span"><strong className="text-neutral-200">Cognitive Ledger:</strong> This component functions as an immutable, hash-chained journal that stores the reasoning trace of every decision and state transition within the system. Every time a notebook reflects, decides, or updates its logic, an entry is written to the ledger. This provides a complete, verifiable audit trail, making the system's thought process entirely transparent and legally accountable.</ScrollParagraph></li>
         </ul>
+        <ScrollParagraph>This architecture provides the foundation for a new class of AI. The next section will detail NotebookML, the specific language that powers it.</ScrollParagraph>
       </Section>
       
       <Section>
         <ScrollHeading as="h2">5.0 NotebookML: The Language Specification</ScrollHeading>
         <ScrollParagraph>NotebookML is the transparent syntax that makes the cognitive architecture of NotefullOS possible. It is a lightweight, open syntax designed for building text-based intelligence. It can be described as the "DNA of a Mind," created from the formula: Markdown × Logic × Memory. It allows humans to write documents that can think, reason, and remember, turning static text into a living system.</ScrollParagraph>
+        
         <ScrollHeading as="h3">5.1 Design Principles</ScrollHeading>
         <ul className="list-disc space-y-2 pl-5">
             <li><ScrollParagraph as="span"><strong className="text-neutral-200">One Truth:</strong> The declarative text of the contract and the executable code are the same artifact. There is no separation between what the document says and what the system does.</ScrollParagraph></li>
@@ -140,6 +147,7 @@ export function NotefullBookNotebook() {
             <li><ScrollParagraph as="span"><strong className="text-neutral-200">Auditable:</strong> Every state transition and decision made by the NotebookML engine writes a proof to an evidence ledger, ensuring complete transparency and accountability.</ScrollParagraph></li>
             <li><ScrollParagraph as="span"><strong className="text-neutral-200">Portable:</strong> The syntax is plain-text and designed to run anywhere—online, offline, and is even human-readable when printed. This ensures data sovereignty and prevents lock-in.</ScrollParagraph></li>
         </ul>
+
         <ScrollHeading as="h3">5.2 Core Syntax and Directives</ScrollHeading>
         <ScrollParagraph>NotebookML extends Markdown with a set of simple, declarative directives. These directives provide instructions to the NotefullOS engine, defining the notebook's structure, logic, and behavior.</ScrollParagraph>
         <div className="my-6">
@@ -160,6 +168,7 @@ export function NotefullBookNotebook() {
                 </TableBody>
             </Table>
         </div>
+
         <ScrollHeading as="h3">5.3 Example of a NotebookML Snippet</ScrollHeading>
         <ScrollParagraph>The following code block demonstrates how these directives are combined to create an intelligent, interactive Standard Operating Procedure (SOP).</ScrollParagraph>
         <pre className="!bg-neutral-900 !border !border-neutral-800 !text-neutral-300 !p-4 !rounded-lg !text-sm">
@@ -189,12 +198,13 @@ export function NotefullBookNotebook() {
             <li><ScrollParagraph as="span"><strong className="text-neutral-200 font-mono">{`>coach:`}</strong> This directive embeds contextual guidance directly into a procedure, making the SOP a teaching tool rather than just a checklist.</ScrollParagraph></li>
             <li><ScrollParagraph as="span"><strong className="text-neutral-200 font-mono">{`>ask:`}</strong> This provides a conversational query layer, allowing users to ask for deeper understanding ("Explain the 'why'") directly from the source of truth.</ScrollParagraph></li>
         </ul>
-        <ScrollParagraph>This declarative language serves as the bridge between human intent and machine reasoning.</ScrollParagraph>
+        <ScrollParagraph>This declarative language serves as the bridge between human intent and machine reasoning. The next section details the technical data models and APIs that bring it to life.</ScrollParagraph>
       </Section>
       
       <Section>
         <ScrollHeading as="h2">6.0 Technical Implementation: APIs and Data Structures</ScrollHeading>
         <ScrollParagraph>This section provides the technical specifications for implementing and interacting with a NotefullOS instance. The design prioritizes local-first operation, composability, and complete data sovereignty, ensuring that the user's knowledge remains theirs.</ScrollParagraph>
+        
         <ScrollHeading as="h3">6.1 Monorepo Architecture</ScrollHeading>
         <ul className="list-disc space-y-2 pl-5">
             <li><ScrollParagraph as="span"><strong className="text-neutral-200 font-mono">apps/web:</strong> The frontend application for the dashboard, editor, and viewer.</ScrollParagraph></li>
@@ -203,6 +213,7 @@ export function NotefullBookNotebook() {
             <li><ScrollParagraph as="span"><strong className="text-neutral-200 font-mono">packages/engine:</strong> The core execution engine for rules, decisions, and reflections.</ScrollParagraph></li>
             <li><ScrollParagraph as="span"><strong className="text-neutral-200 font-mono">packages/ledger:</strong> The module for managing the hash-chained Cognitive Ledger.</ScrollParagraph></li>
         </ul>
+
         <ScrollHeading as="h3">6.2 Core Data Models and Jobs</ScrollHeading>
         <ScrollParagraph>The system operates on a set of core objects that represent the flow of information from raw input to stable knowledge, processed by a suite of ML jobs.</ScrollParagraph>
         <ScrollParagraph><strong className="text-neutral-200">Core Objects:</strong></ScrollParagraph>
@@ -215,6 +226,7 @@ export function NotefullBookNotebook() {
             <li><ScrollParagraph as="span"><strong className="text-neutral-200">Map:</strong> A graph representing the relationships between Projects, Concepts, and Patterns.</ScrollParagraph></li>
         </ul>
         <ScrollParagraph><strong className="text-neutral-200">Core ML Jobs ("Bench" Tasks):</strong></ScrollParagraph>
+        <ScrollParagraph>These are repeatable machine learning tasks that continuously study the notebook's content to build structure and intelligence.</ScrollParagraph>
         <ul className="list-disc space-y-2 pl-5">
             <li><ScrollParagraph as="span"><strong className="text-neutral-200">Classifier:</strong> Determines the topic, project, and theme of a new Note.</ScrollParagraph></li>
             <li><ScrollParagraph as="span"><strong className="text-neutral-200">Grouper:</strong> Clusters related Notes and Concepts, identifying potential duplicates or thematic connections.</ScrollParagraph></li>
@@ -222,6 +234,21 @@ export function NotefullBookNotebook() {
             <li><ScrollParagraph as="span"><strong className="text-neutral-200">Roadmapper:</strong> Proposes concrete next steps for a Project based on its current state.</ScrollParagraph></li>
             <li><ScrollParagraph as="span"><strong className="text-neutral-200">Signal detector:</strong> Identifies which Patterns are recurring most frequently over time, highlighting core user interests.</ScrollParagraph></li>
         </ul>
+        
+        <ScrollHeading as="h3">6.3 Core System Functions</ScrollHeading>
+        <ScrollParagraph>Interaction with a NotefullOS instance is achieved through a set of core functions that reflect its primary use cases, rather than a generic REST API.</ScrollParagraph>
+        <Table>
+            <TableHeader><TableRow><TableHead>Function / Interaction Pattern</TableHead><TableHead>Description</TableHead></TableRow></TableHeader>
+            <TableBody>
+                <TableRow><TableCell>Intelligent Case Study Q&A</TableCell><TableCell>Submits a query to a case study notebook, which generates a response tailored to a specific audience (CIO, CMO) by applying its embedded >ask directives.</TableCell></TableRow>
+                <TableRow><TableCell>SOP Coaching</TableCell><TableCell>Executes an SOP notebook, providing contextual hints and checks for specific steps via the >coach directive to guide a user through a procedure.</TableCell></TableRow>
+                <TableRow><TableCell>Role Exam Grading</TableCell><TableCell>Submits candidate answers to an exam notebook. The notebook uses its embedded rubric to auto-grade responses and provide a rationale for the score.</TableCell></TableRow>
+                <TableRow><TableCell>Hiring Decision Matrix Execution</TableCell><TableCell>Executes a hiring decision notebook by providing candidate data. The notebook applies its predefined weights and evidence to score candidates and recommend a decision.</TableCell></TableRow>
+                <TableRow><TableCell>Cognitive Ledger Audit</TableCell><TableCell>Retrieves the immutable, hash-chained reasoning trace for any notebook, allowing for a complete and verifiable audit of its decision-making history.</TableCell></TableRow>
+            </TableBody>
+        </Table>
+        <ScrollParagraph className="mt-4">This technical framework provides a clear and robust pathway for building applications that leverage the power of a cognitively aligned AI.</ScrollParagraph>
+
       </Section>
       
       <Section>

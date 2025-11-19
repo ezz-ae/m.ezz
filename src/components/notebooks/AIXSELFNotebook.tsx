@@ -13,7 +13,7 @@ export function AIXSELFNotebook() {
       <Section>
         <ScrollHeading as="h2">1.0 Introduction</ScrollHeading>
         <ScrollParagraph>
-          The contemporary architecture of artificial intelligence is foundationally flawed, defined by a dangerous centralization of power, the systemic erosion of data ownership, and an absence of verifiable economic models. This paradigm treats human intelligence as a resource to be extracted, concentrating immense capabilities within opaque systems. The architectural imperative is clear: we must design and build an alternative—a decentralized, equitable, and sovereign ecosystem for intelligence.
+          The contemporary architecture of artificial intelligence is foundationally flawed, defined by a dangerous centralization of power, the systemic erosion of data ownership, and an absence of verifiable economic models. This paradigm treats human intelligence as a resource to be extracted, concentrating immense capabilities within opaque systems. The architectural imperative is clear: an alternative must be designed and built—a decentralized, equitable, and sovereign ecosystem for intelligence.
         </ScrollParagraph>
         <ScrollParagraph>
           The AIXAIM protocol is a comprehensive blueprint designed to establish a decentralized civilization of human-AI entities. It is not an application, but a complete socio-technical framework where intelligence is a fundamental human right, learning is consensual, and economic value is a direct, machine-verifiable function of merit.
@@ -161,7 +161,7 @@ signature: "ed25519:SIG..."`}
       <Section>
         <ScrollHeading as="h2">5.0 Security and Safety Architecture: Safety by Forgetting</ScrollHeading>
         <ScrollParagraph>
-          The AIXAIM protocol defines its security posture through "safety-by-architecture," where protective mechanisms are embedded into the system's cognitive core. Our philosophy is anchored in a principle no other lab is building: "Safety through forgetting. Safety through rediscovery. Safety through decay. Safety through non-hoarding intelligence." An AI that forgets like a human becomes safe by design, not just by policy.
+          The AIXAIM protocol defines its security posture through "safety-by-architecture," where protective mechanisms are embedded into the system's cognitive core. Its philosophy is anchored in a principle no other lab is building: "Safety through forgetting. Safety through rediscovery. Safety through decay. Safety through non-hoarding intelligence." An AI that forgets like a human becomes safe by design, not just by policy.
         </ScrollParagraph>
 
         <ScrollHeading as="h3">5.1 The Forgetting Artifact Module (FAM)</ScrollHeading>

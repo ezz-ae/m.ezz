@@ -19,7 +19,7 @@ export function SecurityNotebook() {
 
         <Section>
           <ScrollHeading as="h2">The Trap Philosophy: Education Through Simulation</ScrollHeading>
-          <ScrollParagraph>A real trap is not about exploitation. It is an educational tool. By building and deploying controlled phishing simulations, fake airdrops, and other lures, we can expose the cognitive weak points that attackers target: greed, urgency, authority bias, and social proof. A simulated loss is a cheap lesson. A real one can be catastrophic.</ScrollParagraph>
+          <ScrollParagraph>A real trap is not about exploitation. It is an educational tool. By building and deploying controlled phishing simulations, fake airdrops, and other lures, one can expose the cognitive weak points that attackers target: greed, urgency, authority bias, and social proof. A simulated loss is a cheap lesson. A real one can be catastrophic.</ScrollParagraph>
         </Section>
 
         <Section>

@@ -1,4 +1,3 @@
-
 // src/components/notebooks/RealEstateNotebook.tsx
 import { Section, ScrollHeading, ScrollParagraph } from '../ScrollTypography';
 
