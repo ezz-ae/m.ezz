@@ -4,8 +4,8 @@ import TimelineView from "@/components/TimelineView";
 import FooterMinimal from "@/components/FooterMinimal";
 
 export const metadata: Metadata = {
-    title: 'Contribution Layers',
-    description: 'A map of how marketing, traps, puzzles, AI, and real estate converge into one intelligence system.',
+    title: 'FORGAIN SYSTEM – Contribution Layers Map',
+    description: 'A unified model of where the work contributes, how it contributes, and what domain it transforms.',
 };
 
 export default function TimelinePage() {
