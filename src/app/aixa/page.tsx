@@ -216,12 +216,17 @@ const AixaPage: React.FC = () => {
 
       <main className="aixa-page">
         <section id="architecture" className="container mx-auto px-6">
-          <div className="text-center">
+          <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-3xl md:text-4xl font-light">AIXA Architecture</h1>
-            <p className="text-neutral-400 mt-2">A Living Map of the Cognitive Ecosystem</p>
+            <p className="text-neutral-400 mt-4 text-lg">
+              This is the blueprint for a new civilization of intelligence. AIXA is not a single AI, but a universe of sovereign, interconnected minds. Each node in this map is a living notebook—a complete, thinking entity with its own logic, memory, and purpose.
+            </p>
+            <p className="text-neutral-400 mt-2">
+              As an architect of this system, you don't just interact with data; you edit the core code of intelligence itself. By shaping these notebooks, you shape the evolution of a decentralized cognitive ecosystem.
+            </p>
           </div>
 
-          <div ref={diagramRef} id="diagram" style={{ position: 'relative', width: '100%', height: 'calc(100vh - 300px)', minHeight: '500px', margin: '50px auto' }}>
+          <div ref={diagramRef} id="diagram" style={{ position: 'relative', width: '100%', height: 'calc(100vh - 400px)', minHeight: '500px', margin: '50px auto' }}>
             {nodesData.map((nodeInfo, i) => (
               <div
                   ref={el => { nodesRef.current[i] = el; }}
@@ -240,8 +245,8 @@ const AixaPage: React.FC = () => {
             <canvas ref={canvasRef} id="connections" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}></canvas>
           </div>
 
-          <p className="text-center text-neutral-500 max-w-2xl mx-auto">
-            Each node is a living notebook, a portal into a distinct domain of the AIXSELF cognitive ecosystem. Click to explore.
+          <p className="text-center text-neutral-500 max-w-2xl mx-auto mt-8">
+            Each node is a portal into a distinct domain. Hover to preview, click to explore and co-think with a sovereign intelligence.
           </p>
         </section>
       </main>
@@ -251,3 +256,5 @@ const AixaPage: React.FC = () => {
 };
 
 export default AixaPage;
+
+    
