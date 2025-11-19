@@ -1,3 +1,4 @@
+
 // components/AboutSection.tsx
 import { ScrollHeading, ScrollParagraph } from './ScrollTypography';
 
@@ -8,16 +9,16 @@ export default function AboutSection() {
         About
       </ScrollHeading>
       <ScrollParagraph className="text-lg md:text-xl text-neutral-100 leading-relaxed">
-        I started in advertising and behaviour-driven campaigns, moved into
+        The work began in advertising and behaviour-driven campaigns, moved into
         medical awareness and personalised communication, and then into
-        architecting AI-native ecosystems. My work now lives where cognition,
+        architecting AI-native ecosystems. This work now lives where cognition,
         markets, and infrastructure meet: real estate intelligence, security
         traps, AI memory models, and learning systems.
       </ScrollParagraph>
       <ScrollParagraph className="text-sm md:text-base text-neutral-400 leading-relaxed">
-        I don’t chase products. I chase structures. If a system can’t explain
+        This is not a chase for products, but for structures. If a system can’t explain
         itself, it’s not finished. ezz.ae is the beginning of turning everything
-        I’ve been building — Forgetence, NotefullBook, AIXSELF, DLDCHAIN,
+        that has been built — Forgetence, NotefullBook, AIXSELF, DLDCHAIN,
         Luredoor, BruteBrains, and more — into a coherent, teachable,
         open-intelligence field.
       </ScrollParagraph>

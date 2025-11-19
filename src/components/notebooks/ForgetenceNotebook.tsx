@@ -13,7 +13,7 @@ export function ForgetenceNotebook() {
           Forgetence — Forgetting as the Core of Intelligence
         </ScrollHeading>
         <ScrollParagraph emphasisLevel="resonance" className="lead !text-neutral-300 !text-lg !leading-relaxed">
-          While the rest of the industry builds a bigger memory, my work starts from the opposite direction. Forgetence is the principle that{" "}
+          While the rest of the industry builds a bigger memory, this work starts from the opposite direction. Forgetence is the principle that{" "}
           <span className="text-neutral-50 font-medium">
             forgetting is the core mechanism of intelligence, not a weakness.
           </span>{" "}

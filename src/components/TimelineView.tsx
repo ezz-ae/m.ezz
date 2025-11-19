@@ -8,43 +8,43 @@ const timelinePhases = [
         phase: 0,
         tag: "Attention Architect",
         title: "Instinct Layer",
-        description: "Watching people, campaigns, reactions. Obsessed with personalization and behaviour change. Realized value is in what people notice and what they ignore."
+        description: "Observing people, campaigns, reactions. A focus on personalization and behaviour change. Realization that value is in what people notice and what they ignore."
     },
     {
         phase: 1,
         tag: "Market System Builder",
         title: "Structure Layer",
-        description: "Stopped caring about single ads and started caring about systems. Built marketing engines and saw patterns in ecosystems instead of just tactics."
+        description: "A shift from caring about single ads to caring about systems. The construction of marketing engines and seeing patterns in ecosystems instead of just tactics."
     },
     {
         phase: 2,
         tag: "Infrastructure Mind",
         title: "OS Layer",
-        description: "Moved from marketing real estate to redesigning how real estate works. Vision of sovereign real estate infrastructure, not just listings."
+        description: "A move from marketing real estate to redesigning how real estate works. A vision of sovereign real estate infrastructure, not just listings."
     },
     {
         phase: 3,
         tag: "Defensive Intelligence Architect",
         title: "Trap & Security Layer",
-        description: "Started attacking systems to protect them. Designed phishing traps and scam simulators. Realized security is a cognitive design problem."
+        description: "Attacking systems to protect them. The design of phishing traps and scam simulators. The insight that security is a cognitive design problem."
     },
     {
         phase: 4,
         tag: "Pattern Hunter",
         title: "Puzzle & Cryptic Layer",
-        description: "Used puzzles (Bitcoin, chain analysis) as a lab for studying search, bias, pattern, and failure. Hunted for patterns in complex systems."
+        description: "Using puzzles (Bitcoin, chain analysis) as a lab for studying search, bias, pattern, and failure. Hunting for patterns in complex systems."
     },
     {
         phase: 5,
         tag: "Language & OS Architect",
         title: "AI OS Layer",
-        description: "Stopped seeing AI as a tool and started seeing it as a language of organization. Built concepts for AI as an OS, not a chat box."
+        description: "Stopped seeing AI as a tool and started seeing it as a language of organization."
     },
     {
         phase: 6,
         tag: "Cognitive Safety Architect",
         title: "Forgetting Layer",
-        description: "Realized the missing piece: forgetting. Developed FCT and Forgetence. AI storing everything is structurally misaligned with how humans stay sane."
+        description: "The realization of the missing piece: forgetting. The development of FCT and Forgetence. AI storing everything is structurally misaligned with how humans stay sane."
     },
     {
         phase: 7,

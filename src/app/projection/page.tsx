@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const thesisData = {
     title: 'FCT: The Missing Cognitive Safety Layer in AI',
     problem: 'Current AI systems rely on perfect, archival memory, which is psychologically unsafe and leads to harmful over-recall.',
-    solution: 'We designed Completing AI that stabilizes, supports, and amplifies human intelligence rather than competing with it.',
+    solution: 'The solution is a design for Completing AI that stabilizes, supports, and amplifies human intelligence rather than competing with it.',
 };
 
 const architectureLayers = [

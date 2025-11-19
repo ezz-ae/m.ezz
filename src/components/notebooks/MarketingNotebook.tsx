@@ -13,18 +13,18 @@ export function MarketingNotebook() {
           Marketing as Behavioural Architecture
         </ScrollHeading>
         <ScrollParagraph emphasisLevel="resonance" className="lead !text-neutral-300 !text-lg !leading-relaxed">
-          I started in advertising. I learned quickly that marketing is not about ads, impressions, or clicks. It is behavioural architecture. You are not selling a product; you are designing a cognitive pathway for a human being to decide to change themselves. The product is just a token of that change.
+          The starting point was advertising. It became clear that marketing is not about ads, impressions, or clicks. It is behavioural architecture. You are not selling a product; you are designing a cognitive pathway for a human being to decide to change themselves. The product is just a token of that change.
         </ScrollParagraph>
       </Section>
 
       <Section>
         <ScrollHeading as="h2">Personalisation as a Trigger for Self-Change</ScrollHeading>
-        <ScrollParagraph>My work in medical awareness campaigns was formative. We weren't just "raising awareness" for a condition; we were building systems to help individuals recognize a pattern in their own lives and seek help. The content was a mirror. The goal was not a sale, but a decision. This taught me that the most powerful marketing doesn't create desire for an object, but creates a recognition of a need within the self.</ScrollParagraph>
+        <ScrollParagraph>Work in medical awareness campaigns was formative. It wasn't just "raising awareness" for a condition; it was building systems to help individuals recognize a pattern in their own lives and seek help. The content was a mirror. The goal was not a sale, but a decision. This led to the insight that the most powerful marketing doesn't create desire for an object, but creates a recognition of a need within the self.</ScrollParagraph>
       </Section>
 
       <Section>
         <ScrollHeading as="h2">From Campaigns to Market Systems</ScrollHeading>
-        <ScrollParagraph>A campaign is a temporary spike. A system is a sustainable current. My focus shifted from single-shot advertising to building self-sustaining ecosystems. In real estate, this meant moving beyond "selling a unit" to architecting the entire market of developers, brokers, buyers, and financiers. The goal became to design a system where value flows naturally, rather than being pushed through ads.</ScrollParagraph>
+        <ScrollParagraph>A campaign is a temporary spike. A system is a sustainable current. The focus shifted from single-shot advertising to building self-sustaining ecosystems. In real estate, this meant moving beyond "selling a unit" to architecting the entire market of developers, brokers, buyers, and financiers. The goal became to design a system where value flows naturally, rather than being pushed through ads.</ScrollParagraph>
       </Section>
       
       <Section>
