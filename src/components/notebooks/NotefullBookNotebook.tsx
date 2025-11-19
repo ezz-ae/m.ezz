@@ -8,7 +8,30 @@ const notebookMLDirectives = [
     { directive: '>schema', description: 'Defines the expected data structure for inputs and outputs, ensuring data integrity.' },
     { directive: '>reflect', description: 'Triggers the FCT Reflection Engine, telling the AI to review, simplify, and evolve its own patterns.' },
     { directive: '>output', description: 'Specifies the desired output format, from a simple text summary to a structured JSON object or API call.' },
-    { directive: '>coach', description: 'Executes an SOP notebook, providing contextual hints and checks for specific steps to guide a user through a procedure.' },
+    { directive: '>coach', description: 'Executes an SOP notebook, providing contextual hints and checks for specific steps via the &gt;coach directive to guide a user through a procedure.' },
+];
+
+const notefullbookFeatures = [
+  {
+    title: "Notebook Cards: Sovereign Intelligence Cells",
+    description: "Represents individual intelligences as \"living minds\" that can be deployed, trained, or put to sleep. Each card is a sovereign NotefullBook cell containing FCT logic, functioning as a portable and self-contained cognitive entity within the AIXSELF Universe."
+  },
+  {
+    title: "Reflection Meter: The Pulse of Evolution",
+    description: "A subtle glowing pulse indicating that the notebook is actively learning and evolving its internal logic in the background. This directly links to the Meso (daily) and Macro (weekly) FCT reflection cycles, showcasing continuous cognitive growth and adaptation."
+  },
+  {
+    title: "Master Skills: Innate Cognitive Personalities",
+    description: "Defines the core cognitive personality of the notebook from birth (e.g., Organizer, Analyzer, Writer, Teacher). These fundamental capabilities are configured via NotebookML language directives, shaping the notebook's default mode of interaction and information processing."
+  },
+  {
+    title: "Input Console (SenseHub): The Data Ingestion Pipeline",
+    description: "The unified interface to connect the notebook to diverse data streams like voice, APIs, and document scans. All inputs are normalized into structured NotebookML entries, which are then processed by the ADEPT Cognitive Kernel and stored in the Notefull Memory Fabric, ensuring data integrity and FCT compliance."
+  },
+  {
+    title: "Cognitive Ledger: Verifiable Thought History",
+    description: "An immutable, hash-chained timeline showing every decision, reflection event, and state change the notebook makes. This makes the AI's thought process fully auditable and transparent, with each entry verified and secured by the AIXEYE Governance Mesh, enforcing accountability within the AIXSELF framework."
+  },
 ];
 
 export function NotefullBookNotebook() {
@@ -36,7 +59,7 @@ export function NotefullBookNotebook() {
       <Section>
         <ScrollHeading as="h2">NotebookML: The Language of Thought</ScrollHeading>
         <ScrollParagraph>
-          NotebookML is the core innovation that makes this possible. It is a simple, human-readable syntax that turns plain text into deterministic, verifiable instructions for the AI. It is designed to be the HTML of reasoning. By using simple `{'>'}` directives, you can embed logic directly into your notes.
+          NotebookML is the core innovation that makes this possible. It is a simple, human-readable syntax that turns plain text into deterministic, verifiable instructions for the AI. It is designed to be the HTML of reasoning. By using simple `&gt;` directives, you can embed logic directly into your notes.
         </ScrollParagraph>
         <Table>
             <TableHeader>
@@ -56,6 +79,18 @@ export function NotefullBookNotebook() {
         </Table>
       </Section>
       
+      <Section>
+        <ScrollHeading as="h2">Core Features: Building a Living Mind</ScrollHeading>
+        <div className="space-y-6">
+          {notefullbookFeatures.map((feature, index) => (
+            <div key={index}>
+              <ScrollHeading as="h3" className="!text-xl !font-medium">{feature.title}</ScrollHeading>
+              <ScrollParagraph>{feature.description}</ScrollParagraph>
+            </div>
+          ))}
+        </div>
+      </Section>
+
       <Section>
         <ScrollCallout label="Core Principle">
           Intelligence in a File. With NotebookML, the entire logic, memory, and purpose of an AI can be contained within a single `.notebookml` file. This makes intelligence portable, shareable, and verifiable, without needing complex APIs or server infrastructure.

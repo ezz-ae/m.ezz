@@ -43,15 +43,19 @@ export function ForgetenceNotebook() {
           </Section>
 
           <Section>
-            <ScrollHeading as="h2">3. Foundations of Human Cognition in FCT</ScrollHeading>
+            <ScrollHeading as="h2">3. Foundational Physics of Cognition in FCT</ScrollHeading>
             <div className="space-y-8">
               <div>
-                <ScrollHeading as="h3">3.1 Tags: The Chemical State at Encoding</ScrollHeading>
-                <ScrollParagraph>A "tag" is the chemical state of the body at the moment of encoding. It's the literal chemical fingerprint of an event (e.g., cortisol for threat, dopamine for reward). This chemical state determines a memory's initial power, its fade rate, and how it feels when recalled. The brain stores the chemistry, not just the data.</ScrollParagraph>
+                <ScrollHeading as="h3">3.1 The Law of Frequency</ScrollHeading>
+                <ScrollParagraph>
+                    Frequency is the <strong>rule of everything</strong> in cognition, the <strong>first language of the survival OS</strong>. It is defined as the <strong>count of repeated signals, events, stimuli, or changes</strong> within any human-measurable time, representing <strong>Familiarity Measured by Repetition</strong>. The cognitive process begins when repetition creates frequency, which creates recognition, and ultimately, meaning. Intelligence is not built on infinite information; it is built on **limitation that forces frequencies to form**.
+                </ScrollParagraph>
               </div>
               <div>
-                <ScrollHeading as="h3">3.2 Frequency: The Familiarity Engine</ScrollHeading>
-                <ScrollParagraph>Frequency is the level of familiarity produced by quantifiable repetition. It is the primary survival mechanism of the mind. What repeats becomes familiar; what is familiar feels safe; what feels safe shapes behavior. Frequency is the lifeblood of a memory tag.</ScrollParagraph>
+                <ScrollHeading as="h3">3.2 Emotional Tags: The Chemical State at Encoding</ScrollHeading>
+                <ScrollParagraph>
+                    Emotion is not a category, but a <strong>tag</strong>: the <strong>chemical state at encoding</strong> that operates below conscious thought. This tag is a directional force with strength; a stronger tag means less fade-in over time. It is governed by three dimensions: <strong>Frequency</strong> (reactivation rate), <strong>Amplitude/Power</strong> (intensity of shaping response), and <strong>Resonance</strong> (connection with schemas).
+                </ScrollParagraph>
               </div>
               <div>
                   <ScrollHeading as="h3">3.3 Frequency ID: The Identity of a Memory</ScrollHeading>
