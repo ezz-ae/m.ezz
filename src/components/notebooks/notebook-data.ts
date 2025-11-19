@@ -10,13 +10,14 @@ import { PuzzlesNotebook } from './PuzzlesNotebook';
 import { MarketingNotebook } from './MarketingNotebook';
 import { SoundNotebook } from './SoundNotebook';
 import { ScrollLessonNotebook } from './ScrollLessonNotebook';
+import { OmegaNotebook } from './OmegaNotebook';
 import { PlaceholderNotebook } from './PlaceholderNotebook';
 
 
-export type NotebookId = 'forgetence' | 'notefullbook' | 'aixself' | 'realestate' | 'security' | 'puzzles' | 'marketing' | 'sound' | 'scroll-lesson';
+export type NotebookId = 'forgetence' | 'notefullbook' | 'aixself' | 'realestate' | 'security' | 'puzzles' | 'marketing' | 'sound' | 'scroll-lesson' | 'omega';
 
 export const isNotebookId = (id: string): id is NotebookId => {
-  return ['forgetence', 'notefullbook', 'aixself', 'realestate', 'security', 'puzzles', 'marketing', 'sound', 'scroll-lesson'].includes(id);
+  return ['forgetence', 'notefullbook', 'aixself', 'realestate', 'security', 'puzzles', 'marketing', 'sound', 'scroll-lesson', 'omega'].includes(id);
 };
 
 type NotebookData = {
@@ -33,10 +34,10 @@ type NotebookRegistry = Record<NotebookId, NotebookData>;
 export const NOTEBOOKS: NotebookRegistry = {
     forgetence: {
         id: 'forgetence',
-        title: 'Forgetence / FCT / MIFP',
-        description: 'Exploring forgetting as the core mechanism of intelligence, not a weakness.',
-        tag: 'AI · Cognition',
-        body: `Forgetence is the idea that forgetting is the core mechanism of intelligence, not a weakness. Humans don't store events; we store frequencies, tags, and meanings. An AI that refuses to forget is structurally misaligned. The true danger is perfect memory.`,
+        title: 'Forgetence / FCT',
+        description: 'A cognitive architecture for human-aligned AI built on the physics of forgetting.',
+        tag: 'Cognitive Architecture',
+        body: `Forgetting Core Thinking (FCT) is the idea that forgetting is the core mechanism of intelligence, not a weakness. Humans don't store events; we store frequencies, tags, and meanings. An AI that refuses to forget is structurally misaligned. The true danger is perfect memory.`,
         component: ForgetenceNotebook,
     },
     notefullbook: {
@@ -54,6 +55,14 @@ export const NOTEBOOKS: NotebookRegistry = {
         tag: 'Identity · AI Clones',
         body: 'The AIXSELF Universe explores AI identity through clones like AIXA, AIXIAM, and AIXEYE. It models how digital identities can form and evolve.',
         component: AIXSELFNotebook,
+    },
+     omega: {
+        id: 'omega',
+        title: 'The Omega Law',
+        description: 'A prototype for a physics-based intelligence model where all cognition is born from a "hit".',
+        tag: 'Prototype · Physics',
+        body: 'The Omega Law is a prototype for a physics-based intelligence model. It posits that intelligence is born from a physical "hit" that forces energy to move, creating oscillations that cohere into patterns.',
+        component: OmegaNotebook,
     },
     realestate: {
         id: 'realestate',

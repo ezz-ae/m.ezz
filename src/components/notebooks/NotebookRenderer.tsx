@@ -1,3 +1,4 @@
+
 // src/components/notebooks/NotebookRenderer.tsx
 import { isNotebookId, NotebookId } from './notebook-data';
 import { PlaceholderNotebook } from './PlaceholderNotebook';
@@ -10,6 +11,7 @@ import { PuzzlesNotebook } from './PuzzlesNotebook';
 import { MarketingNotebook } from './MarketingNotebook';
 import { SoundNotebook } from './SoundNotebook';
 import { ScrollLessonNotebook } from './ScrollLessonNotebook';
+import { OmegaNotebook } from './OmegaNotebook';
 
 // A simple, direct mapping from notebook ID to its component.
 // This avoids the complexity of React.lazy for server components in this context.
@@ -23,6 +25,7 @@ const notebookComponents: Record<NotebookId, React.ComponentType<any>> = {
   'marketing': MarketingNotebook,
   'sound': SoundNotebook,
   'scroll-lesson': ScrollLessonNotebook,
+  'omega': OmegaNotebook,
 };
 
 type NotebookRendererProps = {
