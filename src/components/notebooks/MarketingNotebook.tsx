@@ -13,13 +13,13 @@ export function MarketingNotebook() {
           Marketing as Behavioural Architecture
         </ScrollHeading>
         <ScrollParagraph emphasisLevel="resonance" className="lead !text-neutral-300 !text-lg !leading-relaxed">
-          The starting point was advertising. It became clear that marketing is not about ads, impressions, or clicks. It is behavioural architecture. You are not selling a product; you are designing a cognitive pathway for a human being to decide to change themselves. The product is just a token of that change.
+          The work in marketing evolved from a simple observation: marketing is not about ads, impressions, or clicks. It is behavioural architecture. You are not selling a product; you are designing a cognitive pathway for a human being to decide to change themselves. The product is just a token of that change.
         </ScrollParagraph>
       </Section>
 
       <Section>
         <ScrollHeading as="h2">Personalisation as a Trigger for Self-Change</ScrollHeading>
-        <ScrollParagraph>Work in medical awareness campaigns was formative. It wasn't just "raising awareness" for a condition; it was building systems to help individuals recognize a pattern in their own lives and seek help. The content was a mirror. The goal was not a sale, but a decision. This led to the insight that the most powerful marketing doesn't create desire for an object, but creates a recognition of a need within the self.</ScrollParagraph>
+        <ScrollParagraph>Work in medical awareness campaigns was formative. It was not just "raising awareness" for a condition; it was building systems to help individuals recognize a pattern in their own lives and seek help. The content was a mirror. The goal was not a sale, but a decision. This led to the insight that the most powerful marketing does not create desire for an object, but creates a recognition of a need within the self.</ScrollParagraph>
       </Section>
 
       <Section>

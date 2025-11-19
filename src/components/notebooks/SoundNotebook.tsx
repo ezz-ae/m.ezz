@@ -20,7 +20,7 @@ export function SoundNotebook() {
       <Section>
         <ScrollHeading as="h2">Sound as an Intelligence System</ScrollHeading>
         <ScrollParagraph>A piece of music is an intelligence system with its own rules. It uses fundamental components that are deeply connected to cognition:</ScrollParagraph>
-        <ul>
+        <ul className="list-disc pl-5 space-y-2">
             <ScrollParagraph as="li"><strong>Rhythm & Repetition:</strong> Establishes a predictable pattern, the baseline frequency.</ScrollParagraph>
             <ScrollParagraph as="li"><strong>Frequency & Harmony:</strong> The layering of signals to create resonance or dissonance.</ScrollParagraph>
             <ScrollParagraph as="li"><strong>Emotional Tagging:</strong> The way a melody or chord progression attaches itself to a feeling or memory.</ScrollParagraph>

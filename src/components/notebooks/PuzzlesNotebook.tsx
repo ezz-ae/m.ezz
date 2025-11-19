@@ -34,8 +34,8 @@ export function PuzzlesNotebook() {
 
       <Section>
         <ScrollHeading as="h2">Lessons from the Search</ScrollHeading>
-        <ScrollParagraph>This work with puzzles has taught critical lessons that apply to all intelligence systems:</ScrollParagraph>
-        <ul>
+        <ScrollParagraph>The work with puzzles has taught critical lessons that apply to all intelligence systems:</ScrollParagraph>
+        <ul className="list-disc pl-5 space-y-2">
           <ScrollParagraph as="li"><strong>Intelligence is Search:</strong> At its core, all problem-solving is a search through a possibility space.</ScrollParagraph>
           <ScrollParagraph as="li"><strong>Bias is a Signal:</strong> Human bias, which we try to eliminate, is also a signal that can be exploited or understood.</ScrollParagraph>
           <ScrollParagraph as="li"><strong>Failure is Information:</strong> Every failed attempt to solve a puzzle refines the search space. Failure is not wasted effort; it is negative information that guides the next step.</ScrollParagraph>
