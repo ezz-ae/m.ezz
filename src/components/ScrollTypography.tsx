@@ -43,9 +43,9 @@ export const ScrollParagraph: React.FC<ScrollParagraphProps> = ({
   };
 
   const emphasisClasses = {
-    base: 'text-neutral-600',
-    resonance: 'text-neutral-800 font-medium',
-    whisper: 'text-neutral-500 italic',
+    base: '', // Will inherit color from parent
+    resonance: 'font-medium',
+    whisper: 'italic',
   };
 
   return (
@@ -86,11 +86,11 @@ export const ScrollHeading: React.FC<ScrollHeadingProps> = ({
   };
   
   const emphasisClasses = {
-    base: 'text-neutral-900',
-    resonance: 'text-black font-medium tracking-tight',
+    base: '', // Will inherit color from parent
+    resonance: 'font-medium tracking-tight',
   }
 
-  const glowStyle = glow ? { textShadow: '0 0 30px rgba(0,0,0,0.15)' } : {};
+  const glowStyle = glow ? { textShadow: '0 0 40px hsla(var(--foreground), 0.25)' } : {};
 
   return (
     <Component
@@ -126,7 +126,7 @@ export const ScrollCallout: React.FC<ScrollCalloutProps> = ({
                 {label && (
                     <p className="text-xs font-semibold tracking-widest uppercase text-neutral-500 mb-3">{label}</p>
                 )}
-                <p className="text-neutral-800 text-lg md:text-xl font-headline tracking-tight leading-relaxed">{children}</p>
+                <p className="text-lg md:text-xl font-headline tracking-tight leading-relaxed">{children}</p>
             </div>
         </Section>
     )
