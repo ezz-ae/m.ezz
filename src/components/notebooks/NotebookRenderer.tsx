@@ -1,4 +1,3 @@
-
 // src/components/notebooks/NotebookRenderer.tsx
 import { isNotebookId, NotebookId } from './notebook-data';
 import { PlaceholderNotebook } from './PlaceholderNotebook';

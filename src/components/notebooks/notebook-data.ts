@@ -1,4 +1,3 @@
-
 // src/components/notebooks/notebook-data.ts
 import React from 'react';
 import { ForgetenceNotebook } from './ForgetenceNotebook';

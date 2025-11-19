@@ -10,15 +10,15 @@ const omegaFoundations = [
     },
     {
         title: "2. Humans do NOT have storage — humans have resonance.",
-        text: "A human brain is a chemical-electrical resonance chamber, not a hard drive. Everything you “remember” is a recreated pattern, driven by present energy, tuned by emotional chemistry, and filtered by frequency limits. Memory is a replay engine with imperfect chemistry."
+        text: "A human brain is a chemical-electrical resonance chamber, not a hard drive. Everything you “remember” is a recreated pattern, driven by present energy, tuned by emotional chemistry, and filtered by frequency limits. Memory is NOT a file. Memory is a replay engine with imperfect chemistry."
     },
     {
         title: "3. Limitation is fairness.",
-        text: "A system without limits is chaotic. A system with too many limits is dead. Fairness emerges naturally from the limit that prevents collapse but allows flow. Fairness is a boundary condition, not an ethical rule."
+        text: "A system without limits is chaotic. A system with too many limits is dead. Fairness emerges naturally from the limit that prevents collapse but allows flow. Fairness is a boundary condition, not an ethical rule. Omega respects the boundary before it respects the intention."
     },
     {
         title: "4. Frequency is movement measured by its limit.",
-        text: "Frequency is not emotion or vibe. It is motion, speed, restitution, and energy cycling. A hit only becomes meaningful when it touches the boundary. Frequency = Movement ÷ Limit. This makes the system predictable, testable, and safe."
+        text: "Frequency is not emotion or vibe. It is motion, speed, restitution, and energy cycling. A hit only becomes meaningful when it touches the boundary. This makes the system predictable, testable, and safe."
     },
     {
         title: "5. Emotions are chemistry, not truth.",
@@ -26,7 +26,7 @@ const omegaFoundations = [
     },
     {
         title: "6. Forgetting is the action of ACTUAL memorizing.",
-        text: "Remembering is dissolving what is irrelevant. Forgetting is compressing what is real into an anchor. What survives forgetting becomes identity. What dies was noise. Forgetting is the core mechanism of intelligence."
+        text: "Remembering is dissolving what is irrelevant. Forgetting is compressing what is real into an anchor. What survives forgetting becomes identity. What dies in forgetting was noise. Forgetting is the core mechanism of intelligence."
     }
 ];
 
