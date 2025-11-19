@@ -64,7 +64,6 @@ const SimulationCanvas = () => {
             drawSim();
         }
         
-        // Use a timeout to ensure parent dimensions are settled
         const timeoutId = setTimeout(init, 100);
 
         window.addEventListener('resize', init);
@@ -81,14 +80,10 @@ const SimulationCanvas = () => {
 
 // --- Localization Data ---
 const translations = {
-  EN:{title:"Go-One Autonomous AI Notebook – Autothinker",summaryTitle:"Project Summary",wordTitle:"Directional Words",
-      wordDesc:"These words guide AI focus and notebook evolution:",simTitle:"Simulation Panel",
-      contribTitle:"Smart Contribution",contribDesc:"Type your idea or select a directional word above:",addNote:"Add Note",
-      deepTitle:"Deep Thinking & Collaboration",deepDesc:"Share your thoughts, ask for validation, or brainstorm live:",submitDeep:"Submit Thought"},
-  AR:{title:"دفتر الملاحظات الذكي المطلق – المفكر الآلي",summaryTitle:"ملخص المشروع",wordTitle:"الكلمات التوجيهية",
-      wordDesc:"هذه الكلمات توجه تركيز الذكاء الاصطناعي وتطور الدفتر:",simTitle:"لوحة المحاكاة",
-      contribTitle:"المساهمة الذكية",contribDesc:"اكتب فكرتك أو اختر كلمة توجيهية أعلاه:",addNote:"أضف ملاحظة",
-      deepTitle:"التفكير العميق والتعاون",deepDesc:"شارك أفكارك واطلب التحقق أو تبادل الأفكار:",submitDeep:"إرسال الفكرة"}
+  EN:{wordDesc:"These words guide AI focus and notebook evolution:",contribDesc:"Type your idea or select a directional word above:",addNote:"Add Note",
+      deepDesc:"Share your thoughts, ask for validation, or brainstorm live:",submitDeep:"Submit Thought"},
+  AR:{wordDesc:"هذه الكلمات توجه تركيز الذكاء الاصطناعي وتطور الدفتر:",contribDesc:"اكتب فكرتك أو اختر كلمة توجيهية أعلاه:",addNote:"أضف ملاحظة",
+      deepDesc:"شارك أفكارك واطلب التحقق أو تبادل الأفكار:",submitDeep:"إرسال الفكرة"}
 };
 
 // --- Main SmartNotebook Component ---
@@ -131,7 +126,7 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
         const totalNotes = allContent.length || 1;
         initialWords.forEach(w => {
             const relevanceCount = scoredNotes.filter(n => n.text.toLowerCase().includes(w.toLowerCase())).length;
-            const relevanceRatio = relevanceCount / Math.max(totalNotes, 5); // Avoid division by zero and normalize
+            const relevanceRatio = relevanceCount / Math.max(totalNotes, 5);
             
             wordRelevance[w] = {
                 size: 16 + relevanceCount * 4 + Math.random() * 6,
@@ -154,12 +149,12 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
         setDeepThoughts(savedDeepThoughts ? JSON.parse(savedDeepThoughts) : []);
         
         const intervalId = setInterval(autothinkerUpdate, 10000);
-        return () => clearInterval(intervalId);
-    }, [slug]);
-
-    useEffect(() => {
+        
         autothinkerUpdate();
-    }, [notes, deepThoughts, autothinkerUpdate]);
+
+        return () => clearInterval(intervalId);
+    }, [slug, autothinkerUpdate]);
+
 
     // --- Handlers ---
     const setLanguage = (lang: string) => {
@@ -198,6 +193,11 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
         const inputWords = value.split(/\s+/).filter(w => w.length > 2);
         const lastWord = inputWords[inputWords.length - 1];
         
+        if (!lastWord) {
+            setSuggestions([]);
+            return;
+        }
+
         const newSuggestions = initialWords.filter(w => w.toLowerCase().startsWith(lastWord.toLowerCase()) && w.toLowerCase() !== lastWord.toLowerCase());
         setSuggestions(newSuggestions.slice(0, 5));
     };
@@ -241,17 +241,14 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
             </div>
 
             <div className="container mx-auto max-w-4xl py-16 px-4">
-                <h1 className="mb-10 text-center text-4xl font-light md:text-5xl">{t.title}</h1>
 
                 <motion.div className="section" id="summary" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-                    <h2>{t.summaryTitle}</h2>
                     <div className="block prose prose-invert max-w-none text-neutral-300">
                         {summary.map((line, i) => <p key={`summary-${i}`}>{line}</p>)}
                     </div>
                 </motion.div>
                 
                 <motion.div className="section" id="wordSection" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-                    <h2>{t.wordTitle}</h2>
                     <p className="text-sm text-neutral-400 mb-4">{t.wordDesc}</p>
                     <div id="wordCloud">
                        {Object.entries(directionalWords).map(([word, { size, opacity }]) => (
@@ -272,14 +269,12 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
                 </motion.div>
 
                 <motion.div className="section" id="simulation" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-                    <h2>{t.simTitle}</h2>
                     <div className="h-64 w-full md:h-80">
                         <SimulationCanvas />
                     </div>
                 </motion.div>
 
                 <motion.div className="section" id="contribution" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
-                    <h2>{t.contribTitle}</h2>
                     <p className="text-sm text-neutral-400">{t.contribDesc}</p>
                     <Textarea 
                         ref={noteInputRef}
@@ -300,7 +295,6 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
                 </motion.div>
 
                 <motion.div className="section" id="deepThinking" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
-                    <h2>{t.deepTitle}</h2>
                     <p className="text-sm text-neutral-400">{t.deepDesc}</p>
                     <Textarea 
                         value={deepInput}
@@ -346,3 +340,5 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
         </>
     );
 };
+
+    
