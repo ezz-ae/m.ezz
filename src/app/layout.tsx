@@ -1,6 +1,6 @@
 
 import type { Metadata } from 'next';
-import { PT_Sans, Playfair_Display } from 'next/font/google';
+import { Montserrat, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
@@ -8,7 +8,7 @@ import AnalyticsListener from '@/components/AnalyticsListener';
 import SiteHeader from '@/components/SiteHeader';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
 
-const ptSans = PT_Sans({
+const montserrat = Montserrat({
   subsets: ['latin'],
   weight: ['400', '700'],
   variable: '--font-body',
@@ -49,7 +49,7 @@ export default function RootLayout({
       <body
         className={cn(
           'min-h-screen bg-background font-body text-foreground antialiased overflow-x-hidden',
-          ptSans.variable,
+          montserrat.variable,
           playfairDisplay.variable
         )}
       >
