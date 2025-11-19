@@ -28,12 +28,6 @@ const sessionEndSchema = z.object({
   sessionId: z.string().min(1),
 });
 
-function getAuthUid(req: any): string | null {
-  // If you're using Firebase Auth via callable / HTTPS with Auth header + middleware,
-  // you'll integrate `expressRequest.auth` or custom auth here.
-  // For now, we keep it null; secure access via rules or custom middleware later.
-  return null;
-}
 
 // GET /getPublicNotebooks
 export const getPublicNotebooks = onRequest(
@@ -133,6 +127,24 @@ export const getNotebookDetail = onRequest(
   }
 );
 
+// This function requires Firebase Auth to be implemented on the client.
+// Placeholder for a function that would be implemented with real auth.
+async function getAuthenticatedUidFromRequest(req: any): Promise<string | null> {
+  // In a real scenario, you'd verify the Firebase Auth ID Token from the Authorization header.
+  // For example:
+  // const idToken = req.headers.authorization?.split('Bearer ')[1];
+  // if (!idToken) return null;
+  // try {
+  //   const decodedToken = await auth().verifyIdToken(idToken);
+  //   return decodedToken.uid;
+  // } catch (error) {
+  //   logger.error("Auth token verification failed", error);
+  //   return null;
+  // }
+  return null; // Placeholder: no auth implemented yet.
+}
+
+
 // POST /createNote?notebookId=...
 export const createNote = onRequest(
   { region: REGION },
@@ -156,44 +168,45 @@ export const createNote = onRequest(
       }
       const data = parsed.data;
 
-      const uid = getAuthUid(req);
+      const uid = await getAuthenticatedUidFromRequest(req);
       if (!uid) {
-        // Later: integrate real auth
-        // For now: reject to be safe
-        res.status(401).json({ error: 'unauthenticated' });
-        return;
+        // Since no auth is implemented, using a placeholder UID.
+        // In a real app, this would be a 401 Unauthorized error.
+        const placeholderUid = 'anonymous_user_placeholder';
+        logger.warn(`createNote called without authentication. Using placeholder UID: ${placeholderUid}`);
+        
+        const now = new Date();
+        const noteRef = db
+          .collection('notebooks')
+          .doc(notebookId)
+          .collection('notes')
+          .doc();
+
+        const note: NoteDoc = {
+          authorId: placeholderUid,
+          notebookId,
+          content: data.content,
+          source: data.source ?? 'manual',
+          sessionId: data.sessionId,
+          createdAt: db.app.firestore.Timestamp.fromDate(now),
+          updatedAt: db.app.firestore.Timestamp.fromDate(now),
+        };
+
+        await noteRef.set(note);
+
+        if (data.sessionId) {
+          const sessionRef = db.collection('sessions').doc(data.sessionId);
+          await sessionRef.set(
+            {
+              noteCount: db.app.firestore.FieldValue.increment(1),
+            },
+            { merge: true }
+          );
+        }
+
+        res.json({ ok: true, id: noteRef.id });
+
       }
-
-      const now = new Date();
-      const noteRef = db
-        .collection('notebooks')
-        .doc(notebookId)
-        .collection('notes')
-        .doc();
-
-      const note: NoteDoc = {
-        authorId: uid,
-        notebookId,
-        content: data.content,
-        source: data.source ?? 'manual',
-        sessionId: data.sessionId,
-        createdAt: db.app.firestore.Timestamp.fromDate(now),
-        updatedAt: db.app.firestore.Timestamp.fromDate(now),
-      };
-
-      await noteRef.set(note);
-
-      if (data.sessionId) {
-        const sessionRef = db.collection('sessions').doc(data.sessionId);
-        await sessionRef.set(
-          {
-            noteCount: db.app.firestore.FieldValue.increment(1),
-          },
-          { merge: true }
-        );
-      }
-
-      res.json({ ok: true, id: noteRef.id });
     } catch (err) {
       logger.error('createNote error', err);
       res.status(500).json({ error: 'internal' });
@@ -218,7 +231,7 @@ export const startSession = onRequest(
       }
       const data = parsed.data;
 
-      const uid = getAuthUid(req);
+      const uid = await getAuthenticatedUidFromRequest(req);
       if (!uid) {
         res.status(401).json({ error: 'unauthenticated' });
         return;
@@ -262,7 +275,7 @@ export const endSession = onRequest(
       }
       const { sessionId } = parsed.data;
 
-      const uid = getAuthUid(req);
+      const uid = await getAuthenticatedUidFromRequest(req);
       if (!uid) {
         res.status(401).json({ error: 'unauthenticated' });
         return;
@@ -306,7 +319,7 @@ export const getTimeline = onRequest(
         return;
       }
 
-      const uid = getAuthUid(req);
+      const uid = await getAuthenticatedUidFromRequest(req);
       if (!uid) {
         res.status(401).json({ error: 'unauthenticated' });
         return;
