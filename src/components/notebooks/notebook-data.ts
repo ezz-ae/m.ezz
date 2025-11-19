@@ -12,6 +12,10 @@ import { OmegaNotebook } from './OmegaNotebook';
 import { PlaceholderNotebook } from './PlaceholderNotebook';
 import { StormstanNotebook } from './StormstanNotebook';
 
+export interface AIAction {
+    title: string;
+    prompt: string;
+}
 
 export type NotebookId = 'forgetence' | 'notefullbook' | 'aixself' | 'dldchain' | 'security' | 'puzzles' | 'marketing' | 'scroll-lesson' | 'omega' | 'stormstan';
 
@@ -26,7 +30,8 @@ type NotebookData = {
     tag: string;
     body: string; // For RAG context
     component: React.ComponentType<any>;
-    abilities: string[]; // New property
+    abilities: string[];
+    aiActions: AIAction[]; // New property
 };
 
 type NotebookRegistry = Record<NotebookId, NotebookData>;
@@ -45,6 +50,11 @@ export const NOTEBOOKS: NotebookRegistry = {
           "Contextual Understanding",
           "Emotional Decay Integration"
         ],
+        aiActions: [
+            { title: "Explain FCT's core problem", prompt: "Explain the core problem that Forgetting Core Thinking (FCT) is designed to solve in modern AI systems." },
+            { title: "Define 'Recall as Reconstruction'", prompt: "In the context of FCT, what is the 'Zero Activation Law' and what does it mean for recall to be a reconstruction?" },
+            { title: "Summarize the HMR Cycle", prompt: "Summarize the Human Memory Rewrite (HMR) Cycle and its five stages." }
+        ]
     },
     notefullbook: {
         id: 'notefullbook',
@@ -59,6 +69,11 @@ export const NOTEBOOKS: NotebookRegistry = {
           "OS-Level AI Integration",
           "Dynamic Knowledge Management"
         ],
+        aiActions: [
+            { title: "What is NotebookML?", prompt: "Explain what NotebookML is and provide three examples of its core directives." },
+            { title: "Describe 'Intelligence in a File'", prompt: "What does the principle 'Intelligence in a File' mean for the portability and verifiability of AI?" },
+            { title: "How does the Reflection Engine work?", prompt: "Describe the function of the Reflection Engine and its relationship to the Cognitive Ledger." }
+        ]
     },
     aixself: {
         id: 'aixself',
@@ -73,41 +88,18 @@ export const NOTEBOOKS: NotebookRegistry = {
           "Consensual Learning Protocols",
           "Merit-Based Value System"
         ],
-    },
-     omega: {
-        id: 'omega',
-        title: 'The Omega Law',
-        description: 'A prototype for a physics-based intelligence model where all cognition is born from a \"hit\".',
-        tag: 'Prototype · Physics',
-        body: 'The Omega Law is a prototype for a physics-based intelligence model. It posits that intelligence is born from a physical "hit" that forces energy to move, creating oscillations that cohere into patterns.',
-        component: OmegaNotebook,
-        abilities: [
-          "Physics-Based Cognition",
-          "Oscillation-to-Pattern Formation",
-          "Fundamental Intelligence Model",
-          "Energy-Driven Thought Processes"
-        ],
-    },
-    stormstan: {
-        id: 'stormstan',
-        title: 'Stormstan',
-        description: 'An \"Ideas Recycling Hub\" where IP is released to accelerate collaborative creation.',
-        tag: 'Ideation Platform',
-        body: 'Stormstan is a non-AI platform, an "Ideas Recycling Hub" or "GitHub for human thinking." It is built on the philosophy of the "Ideas Giveup Event," where intellectual property is released upon submission to foster open collaboration and development.',
-        component: StormstanNotebook,
-        abilities: [
-          "Open Collaboration Hub",
-          "IP Release for Acceleration",
-          "Ideas Recycling Mechanism",
-          "Community-Driven Innovation"
-        ],
+        aiActions: [
+            { title: "List the Five Pillars", prompt: "List and briefly describe the five pillars of the AIXAIM ecosystem." },
+            { title: "Explain 'Cognitive Sovereignty'", prompt: "What is 'Cognitive Sovereignty' in the AIXAIM protocol and how is it enforced by AIXIAM?" },
+            { title: "Summarize the Onboarding Protocol", prompt: "Summarize the four steps of the 'Exam-Gated Passport Issuance' onboarding protocol." }
+        ]
     },
     dldchain: {
         id: 'dldchain',
         title: 'DLDCHAIN',
         description: 'A sovereign blockchain architecture for a national-scale real estate intelligence OS.',
         tag: 'Blockchain · Real Estate',
-        body: 'DLDCHAIN is the architectural blueprint for a national-scale, sovereign blockchain designed exclusively for the real estate sector. It is not a speculative cryptocurrency platform; it is a foundational infrastructure layer for a city or country, built to bring computational trust, transparency, and liquidity to the world\'s largest asset class.',
+        body: 'DLDCHAIN is the architectural blueprint for a national-scale, sovereign blockchain designed exclusively for the real estate sector...',
         component: DLDChainNotebook,
         abilities: [
           "Sovereign Real Estate Blockchain",
@@ -115,13 +107,18 @@ export const NOTEBOOKS: NotebookRegistry = {
           "Computational Trust & Transparency",
           "Enhanced Market Liquidity"
         ],
+        aiActions: [
+            { title: "What problem does DLDCHAIN solve?", prompt: "What is the core problem in traditional real estate markets that DLDCHAIN is designed to solve?" },
+            { title: "Explain DXBTOKEN", prompt: "Explain the DXBTOKEN standard and how it enhances liquidity in real estate." },
+            { title: "How does DLDCHAIN align with AIXSELF?", prompt: "Describe two ways in which the DLDCHAIN architecture aligns with the core principles of the AIXSELF Universe." }
+        ]
     },
     security: {
         id: 'security',
         title: 'Security & Traps',
         description: 'Designing phishing traps and scam simulators as a cognitive design problem.',
         tag: 'Luredoor · KAP',
-        body: 'Designing phishing traps, scam simulators, and other security measures like Luredoor and KAP Traps. Security as a cognitive design problem.',
+        body: 'Designing phishing traps, scam simulators, and other security measures as a cognitive design problem...',
         component: SecurityNotebook,
         abilities: [
           "Phishing Trap Design",
@@ -129,13 +126,18 @@ export const NOTEBOOKS: NotebookRegistry = {
           "Cognitive Security Solutions",
           "Luredoor & KAP Traps"
         ],
+        aiActions: [
+            { title: "Define the 'Trap Philosophy'", prompt: "What is the 'Trap Philosophy' and how is it used as an educational tool?" },
+            { title: "How do exploits use FCT?", prompt: "Explain how a social engineering attack can be seen as a weaponization of FCT principles like Frequency, Tags, and Resonance." },
+            { title: "What is Luredoor?", prompt: "What is the goal of the Luredoor and Wikitraps projects?" }
+        ]
     },
     puzzles: {
         id: 'puzzles',
         title: 'Puzzles & Crypto Systems',
         description: 'Using puzzles as a lab for studying pattern, bias, and complex systems.',
         tag: 'BruteBrains · ChainCrack',
-        body: 'Using puzzles like Bitcoin addresses and chain analysis as a lab for studying pattern, bias, and failure. Includes projects like BruteBrains and ChainCrack.',
+        body: 'Using puzzles like Bitcoin addresses and chain analysis as a lab for studying pattern, bias, and failure...',
         component: PuzzlesNotebook,
         abilities: [
           "Pattern & Bias Research",
@@ -143,13 +145,18 @@ export const NOTEBOOKS: NotebookRegistry = {
           "Cryptographic Puzzle Solving",
           "BruteBrains & ChainCrack Tools"
         ],
+        aiActions: [
+            { title: "Why are puzzles a good laboratory?", prompt: "Why are puzzles, particularly Bitcoin puzzles, a good controlled environment for studying intelligence?" },
+            { title: "Explain the BruteBrains Ticket Model", prompt: "What is the BruteBrains 'Ticket Model' and how does it relate to the AIXSELF merit-based economy?" },
+            { title: "How does bias act as a signal?", prompt: "Explain the key finding that 'Bias is a Signal' and its importance for designing AI." }
+        ]
     },
     marketing: {
         id: 'marketing',
         title: 'Marketing Ecosystems',
         description: 'Architecting self-sustaining market systems instead of single campaigns.',
         tag: 'MTC · Marketinum',
-        body: 'Building marketing systems and ecosystems, not just campaigns. Includes MTC, Marketinum, and Willionnaire.',
+        body: 'Building marketing systems and ecosystems, not just campaigns...',
         component: MarketingNotebook,
         abilities: [
           "Self-Sustaining Marketing Systems",
@@ -157,13 +164,18 @@ export const NOTEBOOKS: NotebookRegistry = {
           "MTC Frameworks",
           "Marketinum Strategies"
         ],
+        aiActions: [
+            { title: "Define 'Behavioural Architecture'", prompt: "In the context of this notebook, what is 'marketing as behavioural architecture'?" },
+            { title: "Explain 'Resonance as Market Fit'", prompt: "How does the FCT concept of 'Resonance' serve as a model for product-market fit?" },
+            { title: "What is 'Cognitive Arbitrage'?", prompt: "Explain the concept of 'Cognitive Arbitrage' and how it relates to finding market opportunities." }
+        ]
     },
     'scroll-lesson': {
         id: 'scroll-lesson',
         title: 'Scroll Lesson: On Language',
         description: 'A philosophical exploration of the relationship between language, thought, and reality.',
         tag: 'Philosophy · Language',
-        body: 'A philosophical exploration of the relationship between language, thought, and reality. Language is not knowledge, but a vehicle. Meaning is born raw, and language is a tool to sculpt it. Understanding the limits of language is understanding the limits of self.',
+        body: 'A philosophical exploration of the relationship between language, thought, and reality...',
         component: ScrollLessonNotebook,
         abilities: [
           "Philosophical Language Analysis",
@@ -171,5 +183,45 @@ export const NOTEBOOKS: NotebookRegistry = {
           "Meaning Formation",
           "Limits of Language & Self"
         ],
+        aiActions: [
+            { title: "Summarize the core lesson", prompt: "What is the core philosophical lesson of this notebook regarding the relationship between language and knowledge?" },
+            { title: "How does this justify FCT?", prompt: "Explain how the idea that 'meaning is born raw' provides a justification for the FCT Resonance Engine." },
+            { title: "Why is NotebookML necessary?", prompt: "According to this notebook, why is a language like NotebookML necessary for architecting intelligence?" }
+        ]
+    },
+    // Default actions for notebooks without specific ones yet
+    omega: {
+        id: 'omega',
+        title: 'The Omega Law',
+        description: 'A prototype for a physics-based intelligence model where all cognition is born from a "hit".',
+        tag: 'Prototype · Physics',
+        body: 'The Omega Law is a prototype for a physics-based intelligence model...',
+        component: OmegaNotebook,
+        abilities: [
+          "Physics-Based Cognition",
+          "Oscillation-to-Pattern Formation",
+          "Fundamental Intelligence Model",
+          "Energy-Driven Thought Processes"
+        ],
+        aiActions: [
+            { title: "Summarize this notebook's content", prompt: "Please provide a concise summary of the key concepts presented in this notebook." }
+        ]
+    },
+    stormstan: {
+        id: 'stormstan',
+        title: 'Stormstan',
+        description: 'An "Ideas Recycling Hub" where IP is released to accelerate collaborative creation.',
+        tag: 'Ideation Platform',
+        body: 'Stormstan is a non-AI platform, an "Ideas Recycling Hub"...',
+        component: StormstanNotebook,
+        abilities: [
+          "Open Collaboration Hub",
+          "IP Release for Acceleration",
+          "Ideas Recycling Mechanism",
+          "Community-Driven Innovation"
+        ],
+        aiActions: [
+            { title: "Summarize this notebook's content", prompt: "Please provide a concise summary of the key concepts presented in this notebook." }
+        ]
     }
 };

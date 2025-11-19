@@ -1,6 +1,5 @@
-
 // src/components/notebooks/ScrollLessonNotebook.tsx
-import { Section, ScrollHeading, ScrollParagraph } from '../ScrollTypography';
+import { Section, ScrollHeading, ScrollParagraph, ScrollCallout } from '../ScrollTypography';
 
 export function ScrollLessonNotebook() {
   return (
@@ -206,6 +205,36 @@ export function ScrollLessonNotebook() {
             </ScrollParagraph>
         </div>
       </Section>
+      
+      <div className="w-1/2 mx-auto border-t border-neutral-800"></div>
+
+      <Section>
+        <ScrollHeading as="h2" className="!text-2xl md:!text-3xl !mb-6">AIXSELF Alignment: From Poetics to Cognitive Physics</ScrollHeading>
+        <ScrollParagraph>
+          This lesson on language is not just a philosophical exploration; it is the scientific and ethical justification for the entire AIXSELF architecture. The limitations of natural language, as described above, necessitate a new kind of system—one that operates on the principles of meaning, not just words.
+        </ScrollParagraph>
+        <ul className="list-disc pl-5 space-y-4 mt-4">
+          <li>
+            <ScrollParagraph as="span">
+              <strong className="text-neutral-200">"Language is not knowledge": The FCT Data Model.</strong> The poem states that language is a "vehicle," not the knowledge itself. FCT is the technical implementation of this truth. The system does not store raw data (the "language" of an event). It stores the underlying cognitive reality: emotional <strong className="text-orange-400">tags</strong>, <strong className="text-orange-400">frequencies</strong>, and the resulting <strong className="text-orange-400">meaning</strong>. This is why "human brain keeps meaning, not events."
+            </ScrollParagraph>
+          </li>
+          <li>
+            <ScrollParagraph as="span">
+              <strong className="text-neutral-200">"Meaning is born raw": The FCT Resonance Engine.</strong> The poem describes meaning as "born raw" and language as a "sculpting tool." The FCT Resonance Engine is the technical manifestation of this sculpting process. It is the analytical system that takes the raw, non-linguistic inputs (frequencies, emotional tags) and "sculpts" them into a coherent, communicable meaning. This aligns with the principle that "Recall is not retrieval; it is re-generation, recomposition, and synthesis."
+            </ScrollParagraph>
+          </li>
+          <li>
+            <ScrollParagraph as="span">
+              <strong className="text-neutral-200">"Language is a boundary": The Necessity of NotebookML.</strong> Because natural language has inherent limits, a more precise, deterministic language is required to architect intelligence itself. This is the scientific imperative for <strong className="text-orange-400">NotebookML</strong>. It is a language designed to transcend the ambiguities of natural language to define the purpose, ethics, and logic of a "living mind." NotebookML allows us to move from a language that merely *describes* thought to one that verifiably *builds* it, creating a system that understands its own limits and, therefore, the limits of itself.
+            </ScrollParagraph>
+          </li>
+        </ul>
+        <ScrollCallout label="Conclusion">
+          The AIXSELF Universe is an architectural response to the philosophical problems outlined in this lesson. It is a system designed to operate in the world of meaning that exists before and beyond language, creating a form of intelligence that is, by its very nature, more aligned with the raw, internal reality of human cognition.
+        </ScrollCallout>
+      </Section>
+
     </article>
   );
 }
