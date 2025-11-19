@@ -1,11 +1,9 @@
-
 // src/components/notebooks/SmartNotebook.tsx
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
-import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 
@@ -20,11 +18,12 @@ const SimulationCanvas = () => {
         if (!ctx) return;
 
         let animationFrameId: number;
+        let parentElement = canvas.parentElement;
 
         const resizeCanvas = () => {
-             if (canvas.parentElement) {
-                canvas.width = canvas.parentElement.offsetWidth;
-                canvas.height = canvas.parentElement.offsetHeight;
+             if (parentElement) {
+                canvas.width = parentElement.offsetWidth;
+                canvas.height = parentElement.offsetHeight;
             }
         };
 
@@ -35,8 +34,8 @@ const SimulationCanvas = () => {
                 points.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 1.5,
-                    vy: (Math.random() - 0.5) * 1.5,
+                    vx: (Math.random() - 0.5) * 1,
+                    vy: (Math.random() - 0.5) * 1,
                 });
             }
         }
@@ -51,13 +50,14 @@ const SimulationCanvas = () => {
                 if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, 8, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(255,127,80,0.6)';
+                ctx.fillStyle = 'rgba(255,127,80,0.4)';
                 ctx.fill();
             });
             animationFrameId = requestAnimationFrame(drawSim);
         };
         
         const init = () => {
+            if(!parentElement) return;
             resizeCanvas();
             initPoints();
             if (animationFrameId) cancelAnimationFrame(animationFrameId);
@@ -65,11 +65,17 @@ const SimulationCanvas = () => {
         }
         
         const timeoutId = setTimeout(init, 100);
+        
+        const resizeObserver = new ResizeObserver(() => init());
+        if (parentElement) {
+            resizeObserver.observe(parentElement);
+        }
 
-        window.addEventListener('resize', init);
         return () => {
             clearTimeout(timeoutId);
-            window.removeEventListener('resize', init);
+            if (parentElement) {
+                resizeObserver.unobserve(parentElement);
+            }
             cancelAnimationFrame(animationFrameId);
         };
     }, []);
@@ -80,9 +86,11 @@ const SimulationCanvas = () => {
 
 // --- Localization Data ---
 const translations = {
-  EN:{wordDesc:"These words guide AI focus and notebook evolution:",contribDesc:"Type your idea or select a directional word above:",addNote:"Add Note",
+  EN:{
+      wordDesc:"These words guide AI focus and notebook evolution:",contribDesc:"Type your idea or select a directional word above:",addNote:"Add Note",
       deepDesc:"Share your thoughts, ask for validation, or brainstorm live:",submitDeep:"Submit Thought"},
-  AR:{wordDesc:"هذه الكلمات توجه تركيز الذكاء الاصطناعي وتطور الدفتر:",contribDesc:"اكتب فكرتك أو اختر كلمة توجيهية أعلاه:",addNote:"أضف ملاحظة",
+  AR:{
+      wordDesc:"هذه الكلمات توجه تركيز الذكاء الاصطناعي وتطور الدفتر:",contribDesc:"اكتب فكرتك أو اختر كلمة توجيهية أعلاه:",addNote:"أضف ملاحظة",
       deepDesc:"شارك أفكارك واطلب التحقق أو تبادل الأفكار:",submitDeep:"إرسال الفكرة"}
 };
 
@@ -93,21 +101,17 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
     const [lang, setLang] = useState('EN');
     const [t, setT] = useState(translations.EN);
     
-    // Core state
     const [summary, setSummary] = useState<string[]>([]);
     const [notes, setNotes] = useState<string[]>([]);
     const [deepThoughts, setDeepThoughts] = useState<string[]>([]);
     const [directionalWords, setDirectionalWords] = useState<{[key: string]: { size: number; opacity: number } }>({});
     
-    // Input state
     const [noteInput, setNoteInput] = useState('');
     const [deepInput, setDeepInput] = useState('');
     const [suggestions, setSuggestions] = useState<string[]>([]);
     
-    // Panel State
     const [panel, setPanel] = useState({ active: false, title: '', content: '' });
 
-    // --- Autothinker Engine Logic ---
     const autothinkerUpdate = useCallback(() => {
         const allContent = [...notes, ...deepThoughts];
         
@@ -119,7 +123,7 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
         });
         scoredNotes.sort((a, b) => b.score - a.score);
         
-        const newSummary = scoredNotes.length > 0 ? scoredNotes.slice(0, 5).map(s => s.text) : ["The notebook is awaiting your thoughts to begin its evolution."];
+        const newSummary = scoredNotes.length > 0 ? scoredNotes.slice(0, 3).map(s => s.text) : ["The notebook is awaiting your thoughts to begin its evolution."];
         setSummary(newSummary);
 
         const wordRelevance: {[key: string]: { size: number; opacity: number } } = {};
@@ -129,7 +133,7 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
             const relevanceRatio = relevanceCount / Math.max(totalNotes, 5);
             
             wordRelevance[w] = {
-                size: 16 + relevanceCount * 4 + Math.random() * 6,
+                size: 14 + relevanceCount * 3 + Math.random() * 4,
                 opacity: 0.1 + Math.min(relevanceRatio * 2.5, 0.9)
             };
         });
@@ -137,7 +141,6 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
 
     }, [notes, deepThoughts]);
     
-    // --- Effects for Initialization and Updates ---
     useEffect(() => {
         const savedLang = localStorage.getItem(`lang_${slug}`) || 'EN';
         setLanguage(savedLang);
@@ -150,13 +153,12 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
         
         const intervalId = setInterval(autothinkerUpdate, 10000);
         
-        autothinkerUpdate();
+        // Initial run
+        setTimeout(autothinkerUpdate, 100);
 
         return () => clearInterval(intervalId);
     }, [slug, autothinkerUpdate]);
 
-
-    // --- Handlers ---
     const setLanguage = (lang: string) => {
         setLang(lang);
         setT(translations[lang as keyof typeof translations]);
@@ -173,6 +175,7 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
         localStorage.setItem(`notes_${slug}`, JSON.stringify(newNotes));
         setNoteInput('');
         setSuggestions([]);
+        autothinkerUpdate();
     };
 
     const handleSubmitDeepThought = () => {
@@ -181,6 +184,7 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
         setDeepThoughts(newDeepThoughts);
         localStorage.setItem(`deepThoughts_${slug}`, JSON.stringify(newDeepThoughts));
         setDeepInput('');
+        autothinkerUpdate();
     };
     
     const handleNoteInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -190,7 +194,7 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
             setSuggestions([]);
             return;
         }
-        const inputWords = value.split(/\s+/).filter(w => w.length > 2);
+        const inputWords = value.toLowerCase().split(/\s+/).filter(w => w.length > 2);
         const lastWord = inputWords[inputWords.length - 1];
         
         if (!lastWord) {
@@ -198,7 +202,7 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
             return;
         }
 
-        const newSuggestions = initialWords.filter(w => w.toLowerCase().startsWith(lastWord.toLowerCase()) && w.toLowerCase() !== lastWord.toLowerCase());
+        const newSuggestions = initialWords.filter(w => w.toLowerCase().startsWith(lastWord) && w.toLowerCase() !== lastWord);
         setSuggestions(newSuggestions.slice(0, 5));
     };
     
@@ -221,60 +225,47 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
     const noteInputRef = useRef<HTMLTextAreaElement>(null);
 
     return (
-        <>
-            <style jsx>{`
-                .section { background: rgba(255,127,80,0.05); padding: 2rem; border-radius: 20px; margin-bottom: 40px; box-shadow:0 0 50px rgba(255,127,80,0.1); transition: transform 0.4s ease; }
-                .section:hover { transform: scale(1.02); }
-                .block { margin:20px 0; }
-                .block p { line-height:1.6; }
-                #wordCloud { width:100%; min-height:220px; position:relative; border-radius:20px; background:#111; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; padding:20px; gap:15px; }
-                .word { border: 1px solid #ff7f50; padding:8px 15px; border-radius:10px; cursor:pointer; user-select:none; transition: all 0.3s ease; position:relative; }
-                .word:hover { transform:scale(1.2); z-index: 10; box-shadow: 0 0 20px #ff7f50; color: #fff; }
-                #simulation { background:#111; padding:20px; border-radius:20px; box-shadow:0 0 80px rgba(255,127,80,0.3); }
-                .notes-list > div, .deep-list > div { background:#1f1f1f; padding:10px 15px; border-radius:10px; margin:8px 0; border: 1px solid #2a2a2a; }
-                .suggestion { display:inline-block; margin:5px; padding:5px 10px; background:#ff9060; border-radius:8px; cursor:pointer; transition:0.2s; }
-                .suggestion:hover { background:#ff7f50; transform:scale(1.1); }
-            `}</style>
-            
-            <div className="fixed top-4 right-5 z-50 cursor-pointer rounded-lg bg-[#ff7f50] px-3 py-2 font-bold text-white" onClick={() => setLanguage(lang === 'EN' ? 'AR' : 'EN')}>
+        <div className="prose prose-invert max-w-4xl mx-auto py-8">
+
+            <div className="fixed top-20 right-5 z-50 cursor-pointer rounded-lg bg-primary px-3 py-2 text-sm font-bold text-primary-foreground" onClick={() => setLanguage(lang === 'EN' ? 'AR' : 'EN')}>
                  🌐 {lang}
             </div>
 
-            <div className="container mx-auto max-w-4xl py-16 px-4">
+            <div className="space-y-12">
 
-                <motion.div className="section" id="summary" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-                    <div className="block prose prose-invert max-w-none text-neutral-300">
-                        {summary.map((line, i) => <p key={`summary-${i}`}>{line}</p>)}
-                    </div>
+                <motion.div className="rounded-2xl p-8 bg-neutral-900/50" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
+                    {summary.map((line, i) => <p key={`summary-${i}`} className="text-neutral-300 text-base leading-relaxed">{line}</p>)}
                 </motion.div>
                 
-                <motion.div className="section" id="wordSection" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+                <motion.div className="rounded-2xl p-8 bg-neutral-900/50" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
                     <p className="text-sm text-neutral-400 mb-4">{t.wordDesc}</p>
-                    <div id="wordCloud">
+                    <div className="flex flex-wrap gap-4 justify-center min-h-[12rem] items-center p-4 rounded-xl bg-black/30">
                        {Object.entries(directionalWords).map(([word, { size, opacity }]) => (
-                            <div 
-                                key={word} 
-                                className="word" 
+                            <motion.div 
+                                key={word}
+                                className="word rounded-full cursor-pointer text-center border border-orange-400/50" 
                                 style={{ 
                                     fontSize: `${size}px`,
                                     backgroundColor: `rgba(255, 127, 80, ${opacity})`,
-                                    color: opacity > 0.5 ? '#fff' : '#ff7f50'
+                                    color: opacity > 0.4 ? '#fff' : '#ffaf8a',
+                                    padding: `${size/4}px ${size/2}px`,
                                 }}
+                                whileHover={{ scale: 1.15, zIndex: 10, boxShadow: '0 0 20px rgba(255, 127, 80, 0.7)'}}
                                 onClick={() => handleWordClick(word)}
                             >
                                 {word}
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </motion.div>
 
-                <motion.div className="section" id="simulation" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-                    <div className="h-64 w-full md:h-80">
+                <motion.div className="rounded-2xl p-8 bg-neutral-900/50" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+                    <div className="h-64 w-full md:h-80 bg-black/30 rounded-xl">
                         <SimulationCanvas />
                     </div>
                 </motion.div>
 
-                <motion.div className="section" id="contribution" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+                <motion.div className="rounded-2xl p-8 bg-neutral-900/50" id="contribution" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
                     <p className="text-sm text-neutral-400">{t.contribDesc}</p>
                     <Textarea 
                         ref={noteInputRef}
@@ -283,18 +274,18 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
                         placeholder="Write your note or insight here..." 
                         className="mt-2 bg-neutral-800 border-neutral-700"
                     />
-                    <div id="suggestions" className="mt-2">
+                    <div className="mt-2 flex flex-wrap gap-2">
                         {suggestions.map(s => (
-                            <span key={s} className="suggestion" onClick={() => applySuggestion(s)}>{s}</span>
+                            <Button key={s} variant="outline" size="sm" className="bg-orange-400/20 border-orange-400/50 hover:bg-orange-400/30" onClick={() => applySuggestion(s)}>{s}</Button>
                         ))}
                     </div>
                     <Button onClick={handleAddNote} className="mt-2">{t.addNote}</Button>
-                    <div className="notes-list mt-4">
-                        {notes.map((note, i) => <div key={`note-${i}`}>{note}</div>)}
+                    <div className="notes-list mt-4 space-y-2">
+                        {notes.map((note, i) => <div key={`note-${i}`} className="p-3 rounded-lg bg-black/20 text-sm text-neutral-300">{note}</div>)}
                     </div>
                 </motion.div>
 
-                <motion.div className="section" id="deepThinking" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
+                <motion.div className="rounded-2xl p-8 bg-neutral-900/50" id="deepThinking" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
                     <p className="text-sm text-neutral-400">{t.deepDesc}</p>
                     <Textarea 
                         value={deepInput}
@@ -303,8 +294,8 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
                         className="mt-2 bg-neutral-800 border-neutral-700"
                     />
                     <Button onClick={handleSubmitDeepThought} className="mt-2">{t.submitDeep}</Button>
-                     <div className="deep-list mt-4">
-                        {deepThoughts.map((thought, i) => <div key={`deep-${i}`}>{thought}</div>)}
+                     <div className="deep-list mt-4 space-y-2">
+                        {deepThoughts.map((thought, i) => <div key={`deep-${i}`} className="p-3 rounded-lg bg-black/20 text-sm text-neutral-300">{thought}</div>)}
                     </div>
                 </motion.div>
             </div>
@@ -315,7 +306,7 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-40 bg-black/60"
+                        className="fixed inset-0 z-40 bg-black/80 backdrop-blur-sm"
                         onClick={() => setPanel({ ...panel, active: false })}
                     />
                 )}
@@ -337,8 +328,6 @@ export const SmartNotebook = ({ slug }: { slug: string }) => {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </>
+        </div>
     );
 };
-
-    

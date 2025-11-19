@@ -34,7 +34,7 @@ export default function NotebookRenderer({ slug }: NotebookRendererProps) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="absolute top-0 right-0">
+            <div className="absolute top-0 right-0 z-10">
               <Button onClick={() => setIsInteractive(true)} variant="outline">
                 <BrainCircuit className="mr-2 h-4 w-4" />
                 Activate Living Notebook
