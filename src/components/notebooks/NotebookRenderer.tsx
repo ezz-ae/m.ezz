@@ -1,11 +1,34 @@
 // src/components/notebooks/NotebookRenderer.tsx
-import { isNotebookId } from './notebook-data';
+import { NOTEBOOKS, isNotebookId } from './notebook-data';
 import { PlaceholderNotebook } from './PlaceholderNotebook';
-import { SmartNotebook } from './SmartNotebook';
+import { ForgetenceNotebook } from './ForgetenceNotebook';
+import { NotefullBookNotebook } from './NotefullBookNotebook';
+import { AIXSELFNotebook } from './AIXSELFNotebook';
+import { RealEstateNotebook } from './RealEstateNotebook';
+import { SecurityNotebook } from './SecurityNotebook';
+import { PuzzlesNotebook } from './PuzzlesNotebook';
+import { MarketingNotebook } from './MarketingNotebook';
+import { SoundNotebook } from './SoundNotebook';
+import { ScrollLessonNotebook } from './ScrollLessonNotebook';
+import { OmegaNotebook } from './OmegaNotebook';
 
 type NotebookRendererProps = {
   slug: string;
 };
+
+const notebookComponentMap = {
+    forgetence: ForgetenceNotebook,
+    notefullbook: NotefullBookNotebook,
+    aixself: AIXSELFNotebook,
+    realestate: RealEstateNotebook,
+    security: SecurityNotebook,
+    puzzles: PuzzlesNotebook,
+    marketing: MarketingNotebook,
+    sound: SoundNotebook,
+    'scroll-lesson': ScrollLessonNotebook,
+    omega: OmegaNotebook,
+};
+
 
 // This component is responsible for dynamically rendering the correct notebook
 // content based on the slug from the URL.
@@ -15,7 +38,7 @@ export default function NotebookRenderer({ slug }: NotebookRendererProps) {
     return <PlaceholderNotebook topic={`Unknown Notebook: ${slug}`} />;
   }
 
-  // All notebooks will now render the interactive SmartNotebook component.
-  // We pass the slug to it so it can fetch specific content in the future.
-  return <SmartNotebook slug={slug} />;
+  const Component = notebookComponentMap[slug];
+
+  return <Component />;
 }

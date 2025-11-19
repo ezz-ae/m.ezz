@@ -6,6 +6,8 @@ import FooterMinimal from '@/components/FooterMinimal';
 import { NotebookShell } from '@/components/notebooks/NotebookShell';
 import type { Metadata } from 'next';
 import { NotebookQueryInterface } from '@/components/notebooks/NotebookQueryInterface';
+import { AudioOverview } from '@/components/notebooks/AudioOverview';
+import { MindmapView } from '@/components/notebooks/MindmapView';
 
 type NotebookPageProps = {
   params: {
@@ -68,6 +70,8 @@ export default function NotebookPage({ params }: NotebookPageProps) {
         <main className="pb-16">
             <NotebookShell title={notebook.title} description={notebook.description}>
                 <NotebookRenderer slug={slug} />
+                <AudioOverview />
+                <MindmapView />
                 <NotebookQueryInterface slug={slug} />
             </NotebookShell>
         </main>
