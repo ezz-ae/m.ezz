@@ -38,7 +38,7 @@ export const ScrollParagraph: React.FC<ScrollParagraphProps> = ({
   const isInView = useInView(ref, { once: true, amount: 0.5 });
 
   const variants = {
-    hidden: { opacity: 0, y: 12 },
+    hidden: { opacity: 0, y: 15 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
   };
 
@@ -74,14 +74,14 @@ export const ScrollHeading: React.FC<ScrollHeadingProps> = ({
   children,
   className,
   emphasisLevel = 'base',
-  glow = false,
+  glow = true,
   as: Component = 'h2',
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
 
   const variants = {
-    hidden: { opacity: 0, y: 20, filter: 'blur(4px)' },
+    hidden: { opacity: 0, y: 20, filter: 'blur(5px)' },
     visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.8, ease: 'easeOut' } },
   };
   
@@ -93,10 +93,10 @@ export const ScrollHeading: React.FC<ScrollHeadingProps> = ({
   return (
     <Component
       ref={ref}
-      className={cn('!mb-4', emphasisClasses[emphasisLevel], className, glow && 'text-shadow-[0_0_12px_rgba(255,255,255,0.5)]')}
+      className={cn('font-headline !mb-4', emphasisClasses[emphasisLevel], className)}
     >
       <motion.span 
-        className="inline-block"
+        className={cn("inline-block", glow && '[text-shadow:0_0_12px_rgba(255,255,255,0.3)]')}
         variants={variants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
