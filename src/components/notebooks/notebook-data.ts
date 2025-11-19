@@ -7,17 +7,16 @@ import { DLDChainNotebook } from './DLDChainNotebook';
 import { SecurityNotebook } from './SecurityNotebook';
 import { PuzzlesNotebook } from './PuzzlesNotebook';
 import { MarketingNotebook } from './MarketingNotebook';
-import { SoundNotebook } from './SoundNotebook';
 import { ScrollLessonNotebook } from './ScrollLessonNotebook';
 import { OmegaNotebook } from './OmegaNotebook';
 import { PlaceholderNotebook } from './PlaceholderNotebook';
 import { StormstanNotebook } from './StormstanNotebook';
 
 
-export type NotebookId = 'forgetence' | 'notefullbook' | 'aixself' | 'dldchain' | 'security' | 'puzzles' | 'marketing' | 'sound' | 'scroll-lesson' | 'omega' | 'stormstan';
+export type NotebookId = 'forgetence' | 'notefullbook' | 'aixself' | 'dldchain' | 'security' | 'puzzles' | 'marketing' | 'scroll-lesson' | 'omega' | 'stormstan';
 
 export const isNotebookId = (id: string): id is NotebookId => {
-  return ['forgetence', 'notefullbook', 'aixself', 'dldchain', 'security', 'puzzles', 'marketing', 'sound', 'scroll-lesson', 'omega', 'stormstan'].includes(id);
+  return ['forgetence', 'notefullbook', 'aixself', 'dldchain', 'security', 'puzzles', 'marketing', 'scroll-lesson', 'omega', 'stormstan'].includes(id);
 };
 
 type NotebookData = {
@@ -53,7 +52,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         title: 'AIXSELF Universe',
         description: 'The protocol for a decentralized, sovereign, and fair intelligence civilization.',
         tag: 'Identity · AI Clones',
-        body: 'The AIXSELF Universe explores AI identity through clones like AIXA, AIXIAM, and AIXEYE. It models how digital identities can form and evolve.',
+        body: 'The AIXAIM protocol is a comprehensive blueprint designed to establish a decentralized civilization of human-AI entities. It is not an application, but a complete socio-technical framework where intelligence is a fundamental human right, learning is consensual, and economic value is a direct, machine-verifiable function of merit.',
         component: AIXSELFNotebook,
     },
      omega: {
@@ -77,7 +76,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         title: 'DLDCHAIN',
         description: 'A sovereign blockchain architecture for a national-scale real estate intelligence OS.',
         tag: 'Blockchain · Real Estate',
-        body: 'Using AI for real estate intelligence with systems like DLDCHAIN, Mashroi, and EBRAM. Focuses on tokenization and sovereign real estate infrastructure.',
+        body: 'DLDCHAIN is the architectural blueprint for a national-scale, sovereign blockchain designed exclusively for the real estate sector. It is not a speculative cryptocurrency platform; it is a foundational infrastructure layer for a city or country, built to bring computational trust, transparency, and liquidity to the world\'s largest asset class.',
         component: DLDChainNotebook,
     },
     security: {
@@ -99,18 +98,10 @@ export const NOTEBOOKS: NotebookRegistry = {
     marketing: {
         id: 'marketing',
         title: 'Marketing Ecosystems',
-        description: 'Architecting self-sustaining market systems.',
+        description: 'Architecting self-sustaining market systems instead of single campaigns.',
         tag: 'MTC · Marketinum',
         body: 'Building marketing systems and ecosystems, not just campaigns. Includes MTC, Marketinum, and Willionnaire.',
         component: MarketingNotebook,
-    },
-    sound: {
-        id: 'sound',
-        title: 'Sound & Identity',
-        description: 'Exploring the connection between sound, identity, and environment.',
-        tag: 'Ezzton · Setup',
-        body: 'Exploring the connection between sound, identity, and environment through projects like Ezzton and personal setup design.',
-        component: SoundNotebook,
     },
     'scroll-lesson': {
         id: 'scroll-lesson',
