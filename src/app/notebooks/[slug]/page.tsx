@@ -64,7 +64,7 @@ export default function NotebookPage({ params }: NotebookPageProps) {
   }
 
   return (
-    <div className="bg-black min-h-screen">
+    <div className="min-h-screen">
         <main className="pb-16">
             <NotebookShell title={notebook.title} description={notebook.description}>
                 <NotebookRenderer slug={slug} />
