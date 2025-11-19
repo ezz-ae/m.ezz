@@ -94,7 +94,7 @@ export default function HomePage() {
 
         <header className="text-center px-6 py-24 md:py-32 max-w-5xl mx-auto">
              <ScrollHeading as="h1" className="!text-4xl md:!text-6xl !font-normal tracking-tight !leading-tight">
-                The Limitation That Frees.
+                from limitation import elevation
             </ScrollHeading>
             <ScrollParagraph className="text-lg md:text-xl text-neutral-500 mt-6 max-w-3xl mx-auto">
                Forgetting Core Thinking (FCT) is a new cognitive architecture that replaces perfect AI memory with safe, human-aligned reconstruction. Intelligence doesn't emerge from data; it emerges from the elegant process of forgetting.
