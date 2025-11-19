@@ -13,10 +13,12 @@ type NotebookShellProps = {
 
 export function NotebookShell({ title, description, children }: NotebookShellProps) {
   const { scrollY } = useScroll();
+  
+  // Start with coral, fade to black more quickly
   const backgroundColor = useTransform(
     scrollY,
-    [0, 300],
-    ['#FF7F50', '#000000']
+    [0, 200],
+    ['#ff7f50', '#000000']
   );
 
   return (

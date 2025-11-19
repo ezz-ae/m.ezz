@@ -40,8 +40,8 @@ export function NotebookQueryInterface({ slug }: NotebookQueryInterfaceProps) {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-12">
-      <div className="relative border-t pt-10">
+    <div className="max-w-3xl mx-auto">
+      <div className="relative">
         <h2 className="text-sm tracking-[0.3em] uppercase text-muted-foreground mb-6 flex items-center gap-3">
           <BrainCircuit size={16} />
           Query This Notebook
@@ -72,7 +72,7 @@ export function NotebookQueryInterface({ slug }: NotebookQueryInterfaceProps) {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Ask a question..."
+            placeholder="Ask about use cases, applications, or concepts..."
             className="bg-background border-input h-12 text-base flex-grow"
             disabled={isLoading}
           />
