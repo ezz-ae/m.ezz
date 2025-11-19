@@ -1,4 +1,3 @@
-
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -7,6 +6,8 @@ import Link from 'next/link';
 import IdentityStatement from '@/components/IdentityStatement';
 import TopicMap from '@/components/TopicMap';
 import FooterMinimal from '@/components/FooterMinimal';
+import { FeaturedNotebookCard } from '@/components/FeaturedNotebookCard'; // New import
+import { NOTEBOOKS } from '@/components/notebooks/notebook-data'; // New import
 
 const problemPoints = [
     {
@@ -42,6 +43,9 @@ const solutionPoints = [
 ];
 
 export default function FCTHome() {
+  // Convert NOTEBOOKS object to an array for mapping
+  const featuredNotebooks = Object.values(NOTEBOOKS).slice(0, 3); // Displaying first 3 as featured
+
   return (
     <div className="min-h-screen bg-black text-neutral-100 overflow-x-hidden">
       {/* Hero Section */}
@@ -133,6 +137,38 @@ export default function FCTHome() {
               ))}
             </div>
          </div>
+      </section>
+
+      {/* Featured Notebooks Section - NEW */}
+      <section className="py-24 px-6 bg-neutral-900/50">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-center text-sm tracking-[0.35em] uppercase text-neutral-500 mb-4">Our Projects</h2>
+          <h3 className="text-center text-3xl md:text-4xl font-light text-neutral-100 mb-16">Explore Our Cognitive Architectures & Platforms</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {featuredNotebooks.map((notebook) => (
+              <FeaturedNotebookCard
+                key={notebook.id}
+                id={notebook.id}
+                title={notebook.title}
+                description={notebook.description}
+                tag={notebook.tag}
+              />
+            ))}
+          </div>
+          <motion.div
+            className="mt-16 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <Link href="/notebooks/forgetence"> {/* Assuming a main notebooks page or a default one */}
+              <Button variant="outline" className="text-lg py-6 px-8 rounded-full border-neutral-600 hover:bg-neutral-800 hover:text-white transition-all duration-300">
+                View All Notebooks <ArrowRight className="ml-2" />
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
       </section>
 
       <IdentityStatement />

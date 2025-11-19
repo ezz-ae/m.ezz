@@ -26,6 +26,7 @@ type NotebookData = {
     tag: string;
     body: string; // For RAG context
     component: React.ComponentType<any>;
+    abilities: string[]; // New property
 };
 
 type NotebookRegistry = Record<NotebookId, NotebookData>;
@@ -38,6 +39,12 @@ export const NOTEBOOKS: NotebookRegistry = {
         tag: 'Cognitive Architecture',
         body: `Forgetting Core Thinking (FCT) is the idea that forgetting is the core mechanism of intelligence, not a weakness. Humans don't store events; we store frequencies, tags, and meanings. An AI that refuses to forget is structurally misaligned. The true danger is perfect memory.`,
         component: ForgetenceNotebook,
+        abilities: [
+          "Human-Aligned Forgetting",
+          "Frequency-Based Memory",
+          "Contextual Understanding",
+          "Emotional Decay Integration"
+        ],
     },
     notefullbook: {
         id: 'notefullbook',
@@ -46,6 +53,12 @@ export const NOTEBOOKS: NotebookRegistry = {
         tag: 'OS · Language',
         body: 'NotefullBook is an OS where notebooks are living minds. NotebookML is a format merging Markdown, logic, and memory. It treats AI as an OS layer.',
         component: NotefullBookNotebook,
+        abilities: [
+          "Living Notebook Minds",
+          "NotebookML for Logic & Memory",
+          "OS-Level AI Integration",
+          "Dynamic Knowledge Management"
+        ],
     },
     aixself: {
         id: 'aixself',
@@ -54,22 +67,40 @@ export const NOTEBOOKS: NotebookRegistry = {
         tag: 'Identity · AI Clones',
         body: 'The AIXAIM protocol is a comprehensive blueprint designed to establish a decentralized civilization of human-AI entities. It is not an application, but a complete socio-technical framework where intelligence is a fundamental human right, learning is consensual, and economic value is a direct, machine-verifiable function of merit.',
         component: AIXSELFNotebook,
+        abilities: [
+          "Decentralized AI Civilization",
+          "Sovereign AI Identities",
+          "Consensual Learning Protocols",
+          "Merit-Based Value System"
+        ],
     },
      omega: {
         id: 'omega',
         title: 'The Omega Law',
-        description: 'A prototype for a physics-based intelligence model where all cognition is born from a "hit".',
+        description: 'A prototype for a physics-based intelligence model where all cognition is born from a \"hit\".',
         tag: 'Prototype · Physics',
         body: 'The Omega Law is a prototype for a physics-based intelligence model. It posits that intelligence is born from a physical "hit" that forces energy to move, creating oscillations that cohere into patterns.',
         component: OmegaNotebook,
+        abilities: [
+          "Physics-Based Cognition",
+          "Oscillation-to-Pattern Formation",
+          "Fundamental Intelligence Model",
+          "Energy-Driven Thought Processes"
+        ],
     },
     stormstan: {
         id: 'stormstan',
         title: 'Stormstan',
-        description: 'An "Ideas Recycling Hub" where IP is released to accelerate collaborative creation.',
+        description: 'An \"Ideas Recycling Hub\" where IP is released to accelerate collaborative creation.',
         tag: 'Ideation Platform',
         body: 'Stormstan is a non-AI platform, an "Ideas Recycling Hub" or "GitHub for human thinking." It is built on the philosophy of the "Ideas Giveup Event," where intellectual property is released upon submission to foster open collaboration and development.',
         component: StormstanNotebook,
+        abilities: [
+          "Open Collaboration Hub",
+          "IP Release for Acceleration",
+          "Ideas Recycling Mechanism",
+          "Community-Driven Innovation"
+        ],
     },
     dldchain: {
         id: 'dldchain',
@@ -78,6 +109,12 @@ export const NOTEBOOKS: NotebookRegistry = {
         tag: 'Blockchain · Real Estate',
         body: 'DLDCHAIN is the architectural blueprint for a national-scale, sovereign blockchain designed exclusively for the real estate sector. It is not a speculative cryptocurrency platform; it is a foundational infrastructure layer for a city or country, built to bring computational trust, transparency, and liquidity to the world\'s largest asset class.',
         component: DLDChainNotebook,
+        abilities: [
+          "Sovereign Real Estate Blockchain",
+          "National-Scale Infrastructure",
+          "Computational Trust & Transparency",
+          "Enhanced Market Liquidity"
+        ],
     },
     security: {
         id: 'security',
@@ -86,6 +123,12 @@ export const NOTEBOOKS: NotebookRegistry = {
         tag: 'Luredoor · KAP',
         body: 'Designing phishing traps, scam simulators, and other security measures like Luredoor and KAP Traps. Security as a cognitive design problem.',
         component: SecurityNotebook,
+        abilities: [
+          "Phishing Trap Design",
+          "Scam Simulation",
+          "Cognitive Security Solutions",
+          "Luredoor & KAP Traps"
+        ],
     },
     puzzles: {
         id: 'puzzles',
@@ -94,6 +137,12 @@ export const NOTEBOOKS: NotebookRegistry = {
         tag: 'BruteBrains · ChainCrack',
         body: 'Using puzzles like Bitcoin addresses and chain analysis as a lab for studying pattern, bias, and failure. Includes projects like BruteBrains and ChainCrack.',
         component: PuzzlesNotebook,
+        abilities: [
+          "Pattern & Bias Research",
+          "Complex Systems Analysis",
+          "Cryptographic Puzzle Solving",
+          "BruteBrains & ChainCrack Tools"
+        ],
     },
     marketing: {
         id: 'marketing',
@@ -102,6 +151,12 @@ export const NOTEBOOKS: NotebookRegistry = {
         tag: 'MTC · Marketinum',
         body: 'Building marketing systems and ecosystems, not just campaigns. Includes MTC, Marketinum, and Willionnaire.',
         component: MarketingNotebook,
+        abilities: [
+          "Self-Sustaining Marketing Systems",
+          "Ecosystem-Centric Campaigns",
+          "MTC Frameworks",
+          "Marketinum Strategies"
+        ],
     },
     'scroll-lesson': {
         id: 'scroll-lesson',
@@ -110,5 +165,11 @@ export const NOTEBOOKS: NotebookRegistry = {
         tag: 'Philosophy · Language',
         body: 'A philosophical exploration of the relationship between language, thought, and reality. Language is not knowledge, but a vehicle. Meaning is born raw, and language is a tool to sculpt it. Understanding the limits of language is understanding the limits of self.',
         component: ScrollLessonNotebook,
+        abilities: [
+          "Philosophical Language Analysis",
+          "Thought-Reality Relationship",
+          "Meaning Formation",
+          "Limits of Language & Self"
+        ],
     }
 };
