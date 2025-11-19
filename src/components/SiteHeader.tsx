@@ -5,6 +5,7 @@ import { Logo } from './icons';
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/mind-board', label: 'Mind Board' },
+  { href: '/aixa', label: 'AIXA' },
   { href: '/about', label: 'Map & About' },
   { href: '/projection', label: 'Projection' },
   { href: '/timeline', label: 'Timeline' },
