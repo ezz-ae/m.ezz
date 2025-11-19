@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import AnalyticsListener from '@/components/AnalyticsListener';
 import SiteHeader from '@/components/SiteHeader';
+import { FirebaseClientProvider } from '@/firebase/client-provider';
 
 const ptSans = PT_Sans({
   subsets: ['latin'],
@@ -52,10 +53,12 @@ export default function RootLayout({
           playfairDisplay.variable
         )}
       >
-        <SiteHeader />
-        <AnalyticsListener />
-        {children}
-        <Toaster />
+        <FirebaseClientProvider>
+          <SiteHeader />
+          <AnalyticsListener />
+          {children}
+          <Toaster />
+        </FirebaseClientProvider>
       </body>
     </html>
   );

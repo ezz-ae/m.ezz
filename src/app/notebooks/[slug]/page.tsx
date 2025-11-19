@@ -1,4 +1,5 @@
 
+import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { NOTEBOOKS, isNotebookId } from '@/components/notebooks/notebook-data';
 import NotebookRenderer from '@/components/notebooks/NotebookRenderer';
@@ -6,7 +7,7 @@ import FooterMinimal from '@/components/FooterMinimal';
 import { NotebookShell } from '@/components/notebooks/NotebookShell';
 import type { Metadata } from 'next';
 import { NotebookQueryInterface } from '@/components/notebooks/NotebookQueryInterface';
-
+import { Skeleton } from '@/components/ui/skeleton';
 
 type NotebookPageProps = {
   params: {
@@ -68,7 +69,9 @@ export default function NotebookPage({ params }: NotebookPageProps) {
     <div className="bg-black min-h-screen">
         <main className="pb-16">
             <NotebookShell title={notebook.title} description={notebook.description}>
-                <NotebookRenderer slug={slug} />
+                <Suspense fallback={<Skeleton className="h-96 w-full" />}>
+                  <NotebookRenderer slug={slug} />
+                </Suspense>
                 <NotebookQueryInterface slug={slug} />
             </NotebookShell>
         </main>
