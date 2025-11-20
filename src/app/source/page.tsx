@@ -3,8 +3,8 @@
 
 import React from 'react';
 import { Section } from '@/components/ScrollTypography';
-import { Book, Code, GitBranch, Puzzle } from 'lucide-react';
-import Link from 'next/link';
+import { Book, Code, GitBranch, Puzzle, Mail, MessageSquare } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const sourceComponents = [
     {
@@ -41,7 +41,7 @@ export default function SourcePage() {
           <Book className="mx-auto h-12 w-12 text-orange-400 mb-4" />
           <h1 className="text-4xl font-light text-neutral-100">The Source Library</h1>
           <p className="text-lg text-neutral-400 mt-4">
-            This project is offered as an open scientific contribution. The source code is provided not just as a repository, but as a library of cognitive primitives and living intelligence components, ready for research, adaptation, and implementation.
+            This project is an open scientific contribution. The components are provided for research and adaptation. For academic or commercial implementation, a formal request is invited.
           </p>
         </Section>
 
@@ -50,7 +50,6 @@ export default function SourcePage() {
                 <Section key={lib.title}>
                     <div className="bg-neutral-900/50 border border-neutral-800 rounded-lg p-6">
                         <div className="flex items-start gap-4">
-                            <lib.icon className="h-8 w-8 text-orange-400/80 flex-shrink-0 mt-1" />
                             <div>
                                 <p className="text-sm font-semibold text-neutral-500">{lib.category}</p>
                                 <h2 className="text-xl font-light text-neutral-200">{lib.title}</h2>
@@ -71,6 +70,27 @@ export default function SourcePage() {
                 </Section>
             ))}
         </div>
+
+        <Section className="mt-24 text-center max-w-2xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-light text-neutral-200 mb-4">Formal Request for Source & Collaboration</h2>
+            <p className="text-base text-neutral-400 mb-8">
+                For academic partnerships, commercial licensing, or a private presentation of the full technical and philosophical architecture, please make a formal inquiry.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a href="https://wa.me/971552981884" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                <Button variant="outline" className="w-full border-neutral-600 hover:bg-neutral-800 hover:text-white transition-all duration-300">
+                  <MessageSquare className="mr-2 h-4 w-4" />
+                  Request via WhatsApp
+                </Button>
+              </a>
+              <a href="mailto:m@ezz.ae" className="w-full sm:w-auto">
+                <Button variant="outline" className="w-full border-neutral-600 hover:bg-neutral-800 hover:text-white transition-all duration-300">
+                  <Mail className="mr-2 h-4 w-4" />
+                  Request via Email
+                </Button>
+              </a>
+            </div>
+        </Section>
       </div>
     </div>
   );

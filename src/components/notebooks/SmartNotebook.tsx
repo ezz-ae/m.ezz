@@ -1,364 +1,105 @@
 // src/components/notebooks/SmartNotebook.tsx
 'use client';
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 
-// --- Canvas Simulation Component ---
-const SimulationCanvas = () => {
-    const canvasRef = useRef<HTMLCanvasElement>(null);
+const directionalWords = ["Simulation", "Resource", "Decision", "Market", "AI", "Strategy", "Innovation", "Risk", "Learning", "Flow"];
 
+// A more sophisticated state for each word, including position and velocity
+const createWordState = (word, container) => {
+    return {
+        id: word,
+        text: word,
+        x: Math.random() * (container.width - 100),
+        y: Math.random() * (container.height - 50),
+        vx: (Math.random() - 0.5) * 0.2, // Slower velocity
+        vy: (Math.random() - 0.5) * 0.2, // Slower velocity
+        size: 16 + Math.random() * 10,
+    };
+};
+
+export function SmartNotebook() {
+    const containerRef = useRef(null);
+    const [words, setWords] = useState([]);
+
+    // Initialize words once the container is available
     useEffect(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
-
-        let animationFrameId: number;
-        let parentElement = canvas.parentElement;
-
-        const resizeCanvas = () => {
-             if (parentElement) {
-                canvas.width = parentElement.offsetWidth;
-                canvas.height = parentElement.offsetHeight;
-            }
-        };
-
-        let points: any[] = [];
-        const initPoints = () => {
-            points = [];
-            if (!canvas) return;
-            for (let i = 0; i < 15; i++) {
-                points.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.2, // Slowed down velocity
-                    vy: (Math.random() - 0.5) * 0.2, // Slowed down velocity
-                });
-            }
+        if (containerRef.current) {
+            const containerSize = {
+                width: containerRef.current.offsetWidth,
+                height: containerRef.current.offsetHeight
+            };
+            setWords(directionalWords.map(word => createWordState(word, containerSize)));
         }
-
-        const drawSim = () => {
-            if (!ctx || !canvas) return;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            points.forEach(p => {
-                p.x += p.vx;
-                p.y += p.vy;
-                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, 6, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(255,127,80,0.3)';
-                ctx.fill();
-            });
-            animationFrameId = requestAnimationFrame(drawSim);
-        };
-        
-        const init = () => {
-            if(!parentElement) return;
-            resizeCanvas();
-            initPoints();
-            if (animationFrameId) cancelAnimationFrame(animationFrameId);
-            drawSim();
-        }
-        
-        const timeoutId = setTimeout(init, 100);
-        
-        const resizeObserver = new ResizeObserver(() => init());
-        if (parentElement) {
-            resizeObserver.observe(parentElement);
-        }
-
-        return () => {
-            clearTimeout(timeoutId);
-            if (parentElement) {
-                resizeObserver.unobserve(parentElement);
-            }
-            cancelAnimationFrame(animationFrameId);
-        };
     }, []);
 
-    return <canvas ref={canvasRef} className="w-full h-full rounded-xl" />;
-};
-
-
-// --- Localization Data ---
-const translations = {
-  EN:{
-      wordDesc:"These words guide AI focus and notebook evolution:",contribDesc:"Type your idea or select a directional word above:",addNote:"Add Note",
-      deepDesc:"Share your thoughts, ask for validation, or brainstorm live:",submitDeep:"Submit Thought"},
-  AR:{
-      wordDesc:"هذه الكلمات توجه تركيز الذكاء الاصطناعي وتطور الدفتر:",contribDesc:"اكتب فكرتك أو اختر كلمة توجيهية أعلاه:",addNote:"أضف ملاحظة",
-      deepDesc:"شارك أفكارك واطلب التحقق أو تبادل الأفكار:",submitDeep:"إرسال الفكرة"}
-};
-
-// --- Main SmartNotebook Component ---
-const initialWords = ["Simulation","Resource","Decision","Market","AI","Strategy","Innovation","Risk","Learning","Flow"];
-
-export const SmartNotebook = ({ slug }: { slug: string }) => {
-    const [lang, setLang] = useState('EN');
-    const [t, setT] = useState(translations.EN);
-    
-    const [summary, setSummary] = useState<string[]>([]);
-    const [notes, setNotes] = useState<string[]>([]);
-    const [deepThoughts, setDeepThoughts] = useState<string[]>([]);
-    const [directionalWords, setDirectionalWords] = useState<{[key: string]: { size: number; opacity: number } }>({});
-    
-    const [noteInput, setNoteInput] = useState('');
-    const [deepInput, setDeepInput] = useState('');
-    const [suggestions, setSuggestions] = useState<string[]>([]);
-    
-    const [panel, setPanel] = useState({ active: false, title: '', content: '' });
-
-    const autothinkerUpdate = useCallback(() => {
-        const allContent = [...notes, ...deepThoughts];
-        
-        if (allContent.length > 0) {
-            const scoredNotes = allContent.map(n => {
-                let score = n.length;
-                initialWords.forEach(w => { if (n.toLowerCase().includes(w.toLowerCase())) score += 20; });
-                score += Math.random() * 10;
-                return { text: n, score };
-            });
-            scoredNotes.sort((a, b) => b.score - a.score);
-            
-            const newSummary = scoredNotes.slice(0, 3).map(s => s.text);
-            setSummary(newSummary);
-        } else {
-             setSummary(["The notebook is awaiting your thoughts to begin its evolution."]);
-        }
-
-        const wordRelevance: {[key: string]: { size: number; opacity: number } } = {};
-        const totalNotes = allContent.length || 1;
-        initialWords.forEach(w => {
-            const relevanceCount = allContent.filter(n => n.toLowerCase().includes(w.toLowerCase())).length;
-            const relevanceRatio = relevanceCount / Math.max(totalNotes, 5);
-            
-            wordRelevance[w] = {
-                size: 14 + relevanceCount * 3 + Math.random() * 4,
-                opacity: 0.1 + Math.min(relevanceRatio * 2.5, 0.9)
-            };
-        });
-        setDirectionalWords(wordRelevance);
-
-    }, [notes, deepThoughts]);
-    
+    // The main animation loop
     useEffect(() => {
-        const savedLang = localStorage.getItem(`lang_${slug}`) || 'EN';
-        setLanguage(savedLang);
+        const container = containerRef.current;
+        if (!container || words.length === 0) return;
+
+        let animationFrameId;
+
+        const animate = () => {
+            setWords(prevWords => 
+                prevWords.map(word => {
+                    let { x, y, vx, vy } = word;
+
+                    // Update position
+                    x += vx;
+                    y += vy;
+
+                    // Wall collision detection
+                    if (x <= 0 || x >= container.offsetWidth - 100) vx *= -1;
+                    if (y <= 0 || y >= container.offsetHeight - 40) vy *= -1;
+                    
+                    // Add a very subtle, slow change to velocity for organic movement
+                    vx += (Math.random() - 0.5) * 0.01;
+                    vy += (Math.random() - 0.5) * 0.01;
+
+                    // Clamp velocity to prevent it from getting too fast
+                    vx = Math.max(-0.3, Math.min(0.3, vx));
+                    vy = Math.max(-0.3, Math.min(0.3, vy));
+
+                    return { ...word, x, y, vx, vy };
+                })
+            );
+            animationFrameId = requestAnimationFrame(animate);
+        };
         
-        const savedNotes = localStorage.getItem(`notes_${slug}`);
-        setNotes(savedNotes ? JSON.parse(savedNotes) : []);
-
-        const savedDeepThoughts = localStorage.getItem(`deepThoughts_${slug}`);
-        setDeepThoughts(savedDeepThoughts ? JSON.parse(savedDeepThoughts) : []);
+        animationFrameId = requestAnimationFrame(animate);
         
-        autothinkerUpdate();
-        const intervalId = setInterval(autothinkerUpdate, 10000);
-        
-        return () => clearInterval(intervalId);
-    }, [slug, autothinkerUpdate]);
+        return () => cancelAnimationFrame(animationFrameId);
+    }, [words.length]);
 
-    useEffect(() => {
-        autothinkerUpdate();
-    }, [notes, deepThoughts, autothinkerUpdate]);
-
-
-    const setLanguage = (lang: string) => {
-        setLang(lang);
-        setT(translations[lang as keyof typeof translations]);
-        localStorage.setItem(`lang_${slug}`, lang);
-        if (typeof window !== 'undefined') {
-            document.documentElement.dir = lang === 'AR' ? 'rtl' : 'ltr';
-        }
-    };
-
-    const handleAddNote = () => {
-        if (noteInput.trim() === '') return;
-        const newNotes = [...notes, noteInput];
-        setNotes(newNotes);
-        localStorage.setItem(`slug_${slug}`, JSON.stringify(newNotes));
-        setNoteInput('');
-        setSuggestions([]);
-    };
-
-    const handleSubmitDeepThought = () => {
-        if (deepInput.trim() === '') return;
-        const newDeepThoughts = [...deepThoughts, deepInput];
-        setDeepThoughts(newDeepThoughts);
-        localStorage.setItem(`deepThoughts_${slug}`, JSON.stringify(newDeepThoughts));
-        setDeepInput('');
-    };
-    
-    const handleNoteInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        const value = e.target.value;
-        setNoteInput(value);
-        if(!value.trim()){
-            setSuggestions([]);
-            return;
-        }
-        const inputWords = value.toLowerCase().split(/\s+/).filter(w => w.length > 2);
-        const lastWord = inputWords[inputWords.length - 1];
-        
-        if (!lastWord) {
-            setSuggestions([]);
-            return;
-        }
-
-        const newSuggestions = initialWords.filter(w => w.toLowerCase().startsWith(lastWord) && w.toLowerCase() !== lastWord);
-        setSuggestions(newSuggestions.slice(0, 5));
-    };
-    
-    const applySuggestion = (suggestion: string) => {
-        const words = noteInput.split(/\s+/);
-        words.pop();
-        setNoteInput([...words, suggestion, ''].join(' '));
-        setSuggestions([]);
-        noteInputRef.current?.focus();
-    };
-
-    const handleWordClick = (word: string) => {
-        setPanel({
-            active: true,
-            title: `Focus: ${word}`,
-            content: `The Autothinker is now prioritizing concepts related to "${word}". Future summaries and insights will be weighted towards this theme.`
-        });
-    };
-
-    const noteInputRef = useRef<HTMLTextAreaElement>(null);
 
     return (
-        <div className="prose prose-invert max-w-4xl mx-auto py-8">
-
-            <div className="fixed top-20 right-5 z-50 cursor-pointer rounded-lg bg-primary px-3 py-2 text-sm font-bold text-primary-foreground" onClick={() => setLanguage(lang === 'EN' ? 'AR' : 'EN')}>
-                 🌐 {lang}
+        <div className="max-w-4xl mx-auto py-16 px-4">
+            <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-6 md:p-8 space-y-8">
+                 <div className="text-center border-b border-neutral-800 pb-6">
+                    <h1 className="text-2xl md:text-3xl font-light text-neutral-100">Smart Notebook</h1>
+                    <p className="text-sm text-neutral-500 max-w-xl mx-auto mt-2">
+                       An interactive simulation of a self-organizing thought space.
+                    </p>
+                </div>
+                <div 
+                    ref={containerRef}
+                    className="h-[300px] w-full bg-neutral-900/50 rounded-lg p-4 relative overflow-hidden border border-neutral-800"
+                >
+                    {words.map(word => (
+                        <motion.div
+                            key={word.id}
+                            className="absolute bg-orange-500/80 text-white text-xs px-3 py-1 rounded-full cursor-pointer"
+                            animate={{ x: word.x, y: word.y }}
+                            transition={{ type: 'spring', stiffness: 5, damping: 5 }} // Smoother spring physics
+                            style={{ fontSize: `${word.size}px` }}
+                        >
+                            {word.text}
+                        </motion.div>
+                    ))}
+                </div>
             </div>
-
-            <div className="space-y-12">
-
-                <motion.div className="rounded-2xl p-8 bg-neutral-900/50" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-                    <h2 className="text-lg font-light text-orange-400 mb-4">Evolving Summary</h2>
-                    {summary.map((line, i) => <p key={`summary-${i}`} className="text-neutral-300 text-base leading-relaxed">{line}</p>)}
-                </motion.div>
-                
-                <motion.div className="rounded-2xl p-8 bg-neutral-900/50" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-                    <h2 className="text-lg font-light text-orange-400 mb-2">Directional Words</h2>
-                    <p className="text-sm text-neutral-400 mb-4">{t.wordDesc}</p>
-                    <div className="flex flex-wrap gap-4 justify-center min-h-[12rem] items-center p-4 rounded-xl bg-black/30">
-                       {Object.entries(directionalWords).map(([word, { size, opacity }]) => (
-                            <motion.div 
-                                key={word}
-                                className="word rounded-full cursor-pointer text-center border border-orange-400/50" 
-                                style={{ 
-                                    fontSize: `${size}px`,
-                                    backgroundColor: `rgba(255, 127, 80, ${opacity})`,
-                                    color: opacity > 0.4 ? '#fff' : '#ffaf8a',
-                                    padding: `${size/4}px ${size/2}px`,
-                                }}
-                                whileHover={{ scale: 1.15, zIndex: 10, boxShadow: '0 0 20px rgba(255, 127, 80, 0.7)'}}
-                                onClick={() => handleWordClick(word)}
-                            >
-                                {word}
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
-
-                <motion.div className="rounded-2xl p-8 bg-neutral-900/50" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-                    <h2 className="text-lg font-light text-orange-400 mb-4">Live Simulation</h2>
-                    <div className="h-64 w-full md:h-80 bg-black/30 rounded-xl">
-                        <SimulationCanvas />
-                    </div>
-                </motion.div>
-
-                <motion.div className="rounded-2xl p-8 bg-neutral-900/50" id="contribution" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
-                    <h2 className="text-lg font-light text-orange-400 mb-2">Smart Contribution</h2>
-                    <p className="text-sm text-neutral-400">{t.contribDesc}</p>
-                    <Textarea 
-                        ref={noteInputRef}
-                        value={noteInput}
-                        onChange={handleNoteInputChange}
-                        placeholder="Write your note or insight here..." 
-                        className="mt-2 bg-neutral-800 border-neutral-700 text-base"
-                    />
-                    <div className="mt-2 flex flex-wrap gap-2">
-                        {suggestions.map(s => (
-                            <Button key={s} variant="outline" size="sm" className="bg-orange-400/20 border-orange-400/50 hover:bg-orange-400/30" onClick={() => applySuggestion(s)}>{s}</Button>
-                        ))}
-                    </div>
-                    <Button onClick={handleAddNote} className="mt-2">{t.addNote}</Button>
-                    <div className="notes-list mt-6 space-y-4">
-                        {notes.map((note, i) => (
-                            <motion.div 
-                                key={`note-${i}`}
-                                className="p-4 rounded-lg bg-neutral-800/60 border border-neutral-700/80 text-sm text-neutral-200"
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: i * 0.05 }}
-                            >
-                                {note}
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
-
-                <motion.div className="rounded-2xl p-8 bg-neutral-900/50" id="deepThinking" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
-                    <h2 className="text-lg font-light text-orange-400 mb-2">Deep Thinking & Collaboration</h2>
-                    <p className="text-sm text-neutral-400">{t.deepDesc}</p>
-                    <Textarea 
-                        value={deepInput}
-                        onChange={(e) => setDeepInput(e.target.value)}
-                        placeholder="Think deeply and write here..."
-                        className="mt-2 bg-neutral-800 border-neutral-700 text-base"
-                    />
-                    <Button onClick={handleSubmitDeepThought} className="mt-2">{t.submitDeep}</Button>
-                     <div className="deep-list mt-6 space-y-4">
-                        {deepThoughts.map((thought, i) => (
-                            <motion.div 
-                                key={`deep-${i}`} 
-                                className="p-4 rounded-lg bg-neutral-800/80 border border-neutral-700 text-sm text-neutral-100"
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: i * 0.05 }}
-                            >
-                                {thought}
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
-            </div>
-
-            <AnimatePresence>
-                {panel.active && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-40 bg-black/80 backdrop-blur-sm"
-                        onClick={() => setPanel({ ...panel, active: false })}
-                    />
-                )}
-            </AnimatePresence>
-             <AnimatePresence>
-                {panel.active && (
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95, y: '-50%', x: '-50%' }}
-                        animate={{ opacity: 1, scale: 1, y: '-50%', x: '-50%' }}
-                        exit={{ opacity: 0, scale: 0.95, y: '-50%', x: '-50%' }}
-                        transition={{ duration: 0.3, ease: 'easeOut' }}
-                        className="fixed top-1/2 left-1/2 z-50 w-[90%] max-w-2xl rounded-2xl border border-neutral-700 bg-neutral-900 p-8 shadow-2xl"
-                    >
-                        <button onClick={() => setPanel({ ...panel, active: false })} className="absolute top-4 right-4 text-neutral-400 hover:text-white">
-                            <X size={20} />
-                        </button>
-                        <h2 className="mb-4 text-xl font-light text-orange-400">{panel.title}</h2>
-                        <p className="text-neutral-300">{panel.content}</p>
-                    </motion.div>
-                )}
-            </AnimatePresence>
         </div>
     );
-};
+}

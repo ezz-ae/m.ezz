@@ -2,7 +2,6 @@
 import { notFound } from 'next/navigation';
 import { NOTEBOOKS, isNotebookId } from '@/components/notebooks/notebook-data';
 import NotebookRenderer from '@/components/notebooks/NotebookRenderer';
-// import FooterMinimal from '@/components/FooterMinimal'; // This was causing the build error
 import type { Metadata } from 'next';
 import { NotebookQueryInterface } from '@/components/notebooks/NotebookQueryInterface';
 import { NotebookResources } from '@/components/notebooks/NotebookResources';
@@ -12,19 +11,23 @@ import { Button } from '@/components/ui/button';
 import { NotebookLayout } from '@/components/notebooks/NotebookLayout';
 import { Code2 } from 'lucide-react';
 
-/**
- * This is the primary template for rendering a single notebook page.
- * It dynamically fetches notebook data based on the URL slug, generates
- * metadata, and renders the appropriate notebook component within a
- * consistent layout. It also serves as the hub for the tabbed interface,
- * including "The Mind," "Query AI," and the open-source link.
- */
-
 type NotebookPageProps = {
   params: {
     slug: string;
   };
 };
+
+// These are the notebooks with bespoke, interactive UIs.
+// For these, the UI *is* the mind, so we will not show the tabbed interface.
+const interactiveNotebookSlugs: NotebookId[] = [
+    'puzzles',
+    'security',
+    'dldchain',
+    'marketing',
+    'imagination-lab',
+    'brain-games',
+    'notefullbook'
+];
 
 export async function generateStaticParams() {
   return Object.keys(NOTEBOOKS).map((slug) => ({
@@ -34,28 +37,21 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: NotebookPageProps): Promise<Metadata> {
   const slug = params.slug;
-  if (!isNotebookId(slug)) {
-    notFound();
-  }
+  if (!isNotebookId(slug)) notFound();
   
   const notebook = NOTEBOOKS[slug];
-  if (!notebook) {
-    return {};
-  }
-
-  const title = `Notebook · ${notebook.title}`;
-  const description = notebook.description;
+  if (!notebook) return {};
 
   return {
-    title,
-    description,
+    title: `Notebook · ${notebook.title}`,
+    description: notebook.description,
     openGraph: {
-        title: `${title} — EZZ.AE`,
-        description: description,
+        title: `${notebook.title} | EZZ.AE`,
+        description: notebook.description,
     },
     twitter: {
-        title: `${title} — EZZ.AE`,
-        description: description,
+        title: `${notebook.title} | EZZ.AE`,
+        description: notebook.description,
     }
   };
 }
@@ -63,15 +59,12 @@ export async function generateMetadata({ params }: NotebookPageProps): Promise<M
 export default function NotebookPage({ params }: NotebookPageProps) {
   const slug = params.slug;
 
-  if (!isNotebookId(slug)) {
-    notFound();
-  }
+  if (!isNotebookId(slug)) notFound();
   const notebook = NOTEBOOKS[slug];
-  if (!notebook) {
-    notFound();
-  }
+  if (!notebook) notFound();
 
   const componentName = notebook.component.name;
+  const isInteractive = interactiveNotebookSlugs.includes(slug);
 
   return (
     <NotebookLayout 
@@ -81,44 +74,53 @@ export default function NotebookPage({ params }: NotebookPageProps) {
       abilities={notebook.abilities}
     >
         <main className="pb-16">
-            <Tabs defaultValue="mind" className="w-full max-w-4xl mx-auto px-6 py-8 bg-neutral-950 rounded-lg shadow-xl border border-neutral-800">
-                <TabsList className="grid w-full grid-cols-4 bg-neutral-900/50 border border-neutral-800 h-auto">
-                    <TabsTrigger value="mind">The Mind</TabsTrigger>
-                    <TabsTrigger value="resources">Resources</TabsTrigger>
-                    <TabsTrigger value="discussion">Discussion</TabsTrigger>
-                    <TabsTrigger value="query">Query AI</TabsTrigger>
-                </TabsList>
-                
-                <TabsContent value="mind" className="py-8">
+            {isInteractive ? (
+                // For interactive notebooks, render the component directly.
+                // The UI is the mind.
+                <div className="w-full max-w-5xl mx-auto">
                     <NotebookRenderer slug={slug} />
-                </TabsContent>
-                
-                <TabsContent value="resources" className="py-8">
-                    <NotebookResources />
-                </TabsContent>
-                
-                <TabsContent value="discussion" className="py-8 text-center">
-                    <div className="prose prose-invert mx-auto">
-                        <h3 className="text-xl font-light">Join the Conversation</h3>
-                        <p className="text-neutral-400">
-                            Open discussions for this notebook are active.
-                        </p>
-                        <Link href="/discussions">
-                            <Button variant="outline" className="mt-4">
-                                Go to Discussions
-                            </Button>
-                        </Link>
-                    </div>
-                </TabsContent>
+                </div>
+            ) : (
+                // For text-based notebooks, render the tabbed interface.
+                <Tabs defaultValue="mind" className="w-full max-w-4xl mx-auto px-4 md:px-6 py-8 bg-neutral-950 rounded-lg shadow-xl border border-neutral-800">
+                    <TabsList className="grid w-full grid-cols-4 bg-neutral-900/50 border border-neutral-800 h-auto">
+                        <TabsTrigger value="mind">The Mind</TabsTrigger>
+                        <TabsTrigger value="resources">Resources</TabsTrigger>
+                        <TabsTrigger value="discussion">Discussion</TabsTrigger>
+                        <TabsTrigger value="query">Query AI</TabsTrigger>
+                    </TabsList>
+                    
+                    <TabsContent value="mind" className="py-8">
+                        <NotebookRenderer slug={slug} />
+                    </TabsContent>
+                    
+                    <TabsContent value="resources" className="py-8">
+                        <NotebookResources />
+                    </TabsContent>
+                    
+                    <TabsContent value="discussion" className="py-8 text-center">
+                        <div className="prose prose-invert mx-auto">
+                            <h3 className="text-xl font-light">Join the Conversation</h3>
+                            <p className="text-neutral-400">
+                                Open discussions for this notebook are active.
+                            </p>
+                            <Link href="/discussions">
+                                <Button variant="outline" className="mt-4">
+                                    Go to Discussions
+                                </Button>
+                            </Link>
+                        </div>
+                    </TabsContent>
 
-                <TabsContent value="query" className="py-8">
-                    <NotebookQueryInterface 
-                        slug={slug} 
-                        aiActions={notebook.aiActions} 
-                        autothinkerActions={notebook.autothinkerActions} 
-                    />
-                </TabsContent>
-            </Tabs>
+                    <TabsContent value="query" className="py-8">
+                        <NotebookQueryInterface 
+                            slug={slug} 
+                            aiActions={notebook.aiActions} 
+                            autothinkerActions={notebook.autothinkerActions} 
+                        />
+                    </TabsContent>
+                </Tabs>
+            )}
 
             <div className="text-center mt-12 px-6">
                 <a 
@@ -131,9 +133,7 @@ export default function NotebookPage({ params }: NotebookPageProps) {
                     <span>This notebook is an open-source component. View the source.</span>
                 </a>
             </div>
-
         </main>
-        {/* The global SiteFooter in layout.tsx handles the footer now */}
     </NotebookLayout>
   );
 }

@@ -16,6 +16,8 @@ export function SiteFooter() {
           <Link href="/cookies" className="text-orange-400/80 hover:text-orange-300 transition-colors">Cookies Policy</Link>
           <span className="text-neutral-600">|</span>
           <Link href="/legal" className="text-orange-400/80 hover:text-orange-300 transition-colors">Legal Disclaimer</Link>
+          <span className="text-neutral-600">|</span>
+          <Link href="/contribution" className="text-orange-400/80 hover:text-orange-300 transition-colors">Contribution</Link>
         </div>
         <p className="text-neutral-500">
           All content, code, designs, and intellectual property on this site are protected by international copyright law and applicable intellectual property regulations.
