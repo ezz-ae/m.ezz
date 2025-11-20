@@ -5,44 +5,45 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { cn } from '@/lib/utils'; // --- FIX: Import cn utility function ---
+import { cn } from '@/lib/utils'; 
 
 interface NotebookCardProps {
   id: string;
   title: string;
   description: string;
   tag: string;
-  abilities: string[]; // Ensure abilities is still passed for dynamic content
+  abilities: string[]; 
 }
 
-// Determine accent based on tag (now only for dark mode or specific highlights)
+// Helper to determine theme-aware styling based on tag
 const getTagTheme = (tag: string) => {
   switch (tag) {
     case 'Cognitive Architecture':
     case 'OS · Language':
     case 'Identity · AI Clones':
-      return { accentClass: 'dark:text-purple-400/80' }; // Specific dark mode accent
+      return { accentTextClass: 'dark:text-purple-400/80', bgAccentClass: 'dark:bg-purple-900/10' }; 
     case 'Science Gaming · FCT Proof':
     case 'Creative AI · FCT in Practice':
     case 'Prototype · Physics':
-      return { accentClass: 'dark:text-green-400/80' };
+      return { accentTextClass: 'dark:text-green-400/80', bgAccentClass: 'dark:bg-green-900/10' };
     case 'Blockchain · Real Estate':
     case 'Ideation Platform':
     case 'Luredoor · KAP':
-      return { accentClass: 'dark:text-blue-400/80' };
+      return { accentTextClass: 'dark:text-blue-400/80', bgAccentClass: 'dark:bg-blue-900/10' };
     case 'Philosophy · Language':
     case 'MTC · Marketinum':
-      return { accentClass: 'dark:text-yellow-400/80' };
+      return { accentTextClass: 'dark:text-yellow-400/80', bgAccentClass: 'dark:bg-yellow-900/10' };
     default:
-      return { accentClass: 'dark:text-orange-400/80' };
+      return { accentTextClass: 'dark:text-primary dark:text-orange-400/80', bgAccentClass: 'dark:bg-primary/10' }; 
   }
 };
 
 export function NotebookCard({ id, title, description, tag, abilities }: NotebookCardProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const { accentClass } = getTagTheme(tag);
+  const { accentTextClass, bgAccentClass } = getTagTheme(tag);
 
-  const contentVariants = {
+  // Animation variants for the description fading out and abilities fading in
+  const descriptionVariants = {
     initial: { opacity: 1, y: 0 },
     hover: { opacity: 0, y: -10, transition: { duration: 0.2, ease: 'easeOut' } },
   };
@@ -58,23 +59,26 @@ export function NotebookCard({ id, title, description, tag, abilities }: Noteboo
   };
 
   return (
-    <Link href={`/notebooks/${id}`} className="block group h-full">
+    <Link href={`/notebooks/${id}`} className="block group h-full" aria-label={`Explore ${title} Notebook`}>
       <motion.div
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(false)}
-        whileHover={{ y: -6, scale: 1.02, boxShadow: '0 0 25px rgba(255, 255, 255, 0.4)' }} // White glow on hover for light theme
+        whileHover={{ y: -6, scale: 1.02, boxShadow: '0 0 25px hsla(0, 0%, 0%, 0.1)' }} 
         transition={{ type: 'spring', stiffness: 300, damping: 20 }}
         className={cn(
-          "h-full bg-card border border-border rounded-lg shadow-md transition-shadow duration-300 flex flex-col p-6 relative overflow-hidden",
-          "group-hover:border-primary/50", // Common hover border
-          "dark:shadow-orange-500/10 dark:group-hover:shadow-orange-500/20" // Dark theme orange glow
+          "h-full bg-card border border-border rounded-lg shadow-md transition-shadow duration-300 flex flex-col p-6 relative overflow-hidden min-h-[250px]",
+          "group-hover:border-primary/50", 
+          "group-hover:shadow-lg dark:group-hover:shadow-orange-glow-md light:group-hover:shadow-white-glow-md" 
         )}
       >
-        {/* Tag and Intelligence Pulse */}
+        {/* Subtle background element based on tag theme, for dark mode distinction */}
+        <div className={cn("absolute inset-0 z-0 opacity-0 dark:opacity-10", bgAccentClass)}></div>
+
+        {/* Card Header: Tag and Intelligence Pulse Indicator */}
         <div className="relative z-10 flex items-center justify-between">
-          <p className={cn("text-xs font-mono tracking-wider mb-2 text-primary", accentClass)}>{tag}</p>
+          <p className={cn("text-xs font-mono tracking-wider mb-2 text-primary", accentTextClass)}>{tag}</p>
           <motion.div
-            className={cn("h-2 w-2 rounded-full", accentClass)}
+            className="h-2 w-2 rounded-full bg-primary"
             animate={{
               scale: [1, 1.5, 1],
               opacity: [0.7, 1, 0.7],
@@ -83,20 +87,23 @@ export function NotebookCard({ id, title, description, tag, abilities }: Noteboo
               duration: 2,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: Math.random() * 0.5 // Stagger pulse slightly
+              delay: Math.random() * 0.5 
             }}
+            role="status" 
+            aria-label="Notebook active status indicator"
           />
         </div>
 
         {/* Title */}
         <h3 className="text-lg font-semibold text-foreground relative z-10 mt-1">{title}</h3>
         
+        {/* Dynamic Content Area: Description or Abilities on Hover */}
         <div className="mt-4 flex-grow flex flex-col justify-between relative z-10">
             <AnimatePresence mode="wait">
                 {!isHovered ? (
                     <motion.p
                         key="description"
-                        variants={contentVariants}
+                        variants={descriptionVariants}
                         initial="initial"
                         animate="initial"
                         exit="hover"
@@ -133,7 +140,7 @@ export function NotebookCard({ id, title, description, tag, abilities }: Noteboo
                         exit="initial"
                         className="mt-4 flex items-center text-primary font-semibold"
                     >
-                        Explore Intelligence <ArrowRight className="h-4 w-4 ml-2" />
+                        Explore Intelligence <ArrowRight className="h-4 w-4 ml-2" aria-hidden="true" />
                     </motion.div>
                 )}
             </AnimatePresence>

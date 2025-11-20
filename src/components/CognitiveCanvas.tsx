@@ -3,19 +3,17 @@
 
 import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
 
-// Defines the properties for our animated glowing blobs
-// This function now expects the theme as an argument for consistency
-const createBlob = (theme: string) => {
+const createBlob = (theme: string | undefined) => {
     const isDark = theme === 'dark';
     const baseColor = isDark ? `hsl(25, 100%, 50%)` : `hsl(0, 0%, 100%)`; // Orange for dark, white for light
     const accentColor = isDark ? `hsl(270, 70%, 50%)` : `hsl(0, 0%, 95%)`; // Purple for dark, very light grey for light
 
-    const randomSize = 200 + Math.random() * 400; // Blobs can be 200px to 600px
-    const randomDuration = 20 + Math.random() * 15; // Animation duration 20s-35s
+    const randomSize = 200 + Math.random() * 400;
+    const randomDuration = 20 + Math.random() * 15;
     const randomDelay = Math.random() * 5;
 
     return {
@@ -31,7 +29,7 @@ const createBlob = (theme: string) => {
 
 export function CognitiveCanvas() {
     const pathname = usePathname();
-    const { theme, resolvedTheme } = useTheme(); // Use resolvedTheme for client-side theme
+    const { resolvedTheme } = useTheme();
     const [blobs, setBlobs] = useState<any[]>([]);
     const [isMounted, setIsMounted] = useState(false);
 
@@ -39,29 +37,15 @@ export function CognitiveCanvas() {
       setIsMounted(true);
     }, []);
 
-    // Regenerate blobs on theme or path change, but only after mount
     useEffect(() => {
-        if (!isMounted || !resolvedTheme) return;
+        if (!isMounted) return;
         const newBlobs = Array.from({ length: 5 }).map(() => createBlob(resolvedTheme));
         setBlobs(newBlobs);
     }, [isMounted, resolvedTheme, pathname]); 
 
-    // Animation loop for blobs
-    useEffect(() => {
-        if (blobs.length === 0) return;
-        let animationFrameId;
-        const animateBlobs = () => {
-            // Update blob positions (optional, if you want more dynamic movement not just CSS transitions)
-            // For now, let's rely on CSS transitions defined in motion.div
-            animationFrameId = requestAnimationFrame(animateBlobs);
-        };
-        animationFrameId = requestAnimationFrame(animateBlobs);
-        return () => cancelAnimationFrame(animationFrameId);
-    }, [blobs]);
-
-    if (!isMounted || blobs.length === 0) {
-        // Render a static background on the server to prevent hydration mismatch
-        return <div className={cn("fixed inset-0 w-full h-full z-[-1]", resolvedTheme === 'dark' ? "bg-black" : "bg-white")}></div>;
+    if (!isMounted) {
+        // Return null on the server and during the initial client render to prevent hydration mismatch.
+        return null;
     }
 
     return (
