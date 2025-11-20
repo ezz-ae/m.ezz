@@ -20,9 +20,9 @@ function CognitiveArchitectureModel() {
     const activePrinciple = fctPrinciples[selectedPrinciple];
 
     return (
-        <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-6 md:p-8 space-y-8">
+        <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-4 md:p-8 space-y-8">
             <div className="text-center border-b border-neutral-800 pb-6">
-                <h1 className="text-2xl font-light text-neutral-100">Marketing as Behavioural Architecture</h1>
+                <h1 className="text-2xl md:text-3xl font-light text-neutral-100">Marketing as Behavioural Architecture</h1>
                 <p className="text-sm text-neutral-500 max-w-xl mx-auto mt-2">
                     An analytical model demonstrating that marketing is a form of applied cognitive science, based on the foundational laws of FCT.
                 </p>
@@ -46,7 +46,7 @@ function CognitiveArchitectureModel() {
                             </div>
                             <AnimatePresence mode="wait">
                                 <motion.div key={selectedPrinciple} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }}
-                                    className="bg-neutral-950/50 p-4 rounded-md border border-neutral-800/50">
+                                    className="bg-neutral-950/50 p-3 rounded-md border border-neutral-800/50">
                                     <h4 className="text-sm font-medium text-neutral-200 mb-1">{activePrinciple.name}</h4>
                                     <p className="text-xs text-neutral-400">{activePrinciple.description}</p>
                                 </motion.div>
@@ -75,7 +75,7 @@ function CognitiveArchitectureModel() {
 
 export function MarketingNotebook() {
   return (
-    <div className="max-w-4xl mx-auto py-16">
+    <div className="max-w-4xl mx-auto py-16 px-4">
         <CognitiveArchitectureModel />
     </div>
   );

@@ -5,10 +5,12 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import { MobileNav } from './MobileNav';
 
 const mainNav = [
   { href: '/', label: 'Home' },
   { href: '/aixa', label: 'AIXA Protocol' },
+  { href: '/thesis', label: 'The Thesis' },
   { href: '/journal', label: 'Journal' },
   { href: '/implementation', label: 'Implementation' },
   { href: '/source', label: 'Source' },
@@ -48,6 +50,7 @@ export function SiteHeader() {
               </Link>
             ))}
           </nav>
+          <MobileNav />
         </div>
       </div>
     </header>

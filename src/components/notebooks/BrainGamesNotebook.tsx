@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Loader2 } from 'lucide-react';
+import { Loader2, Send } from 'lucide-react';
 
 async function getFctResponse(meaningState, newMessage) {
     const lowerCaseMessage = newMessage.toLowerCase();
@@ -82,7 +82,7 @@ function NoMemoryChatExperiment() {
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2 bg-neutral-900 p-4 rounded-md border border-neutral-800 flex flex-col h-[450px]">
+            <div className="lg:col-span-2 bg-neutral-900 p-3 md:p-4 rounded-md border border-neutral-800 flex flex-col h-[400px] md:h-[450px]">
                 <div className="flex-grow overflow-y-auto pr-2">
                     {messages.map((msg, index) => (
                         <div key={index} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} mb-2`}>
@@ -102,13 +102,13 @@ function NoMemoryChatExperiment() {
             <div className="space-y-4">
                 <div className="bg-neutral-900 p-3 rounded-md border border-neutral-800">
                     <h3 className="text-sm font-semibold text-neutral-300 mb-2">Traditional Memory (Discarded)</h3>
-                    <div className="text-xs text-neutral-500 font-mono bg-neutral-800/50 p-2 rounded-sm h-24 overflow-y-auto">
+                    <div className="text-xs text-neutral-500 font-mono bg-neutral-800/50 p-2 rounded-sm h-20 md:h-24 overflow-y-auto">
                         {messages.map((msg, i) => <div key={i} className="truncate">{`[${msg.sender.toUpperCase()}] ${msg.text}`}</div>)}
                     </div>
                 </div>
                 <div className="bg-neutral-900 p-3 rounded-md border border-orange-500/30">
                     <h3 className="text-sm font-semibold text-orange-400 mb-2">FCT Meaning Synthesis</h3>
-                    <div className="text-xs text-orange-300/90 font-mono bg-orange-500/10 p-2 rounded-sm h-24 overflow-y-auto">{meaningState}</div>
+                    <div className="text-xs text-orange-300/90 font-mono bg-orange-500/10 p-2 rounded-sm h-20 md:h-24 overflow-y-auto">{meaningState}</div>
                 </div>
             </div>
         </div>
@@ -129,15 +129,15 @@ function GameProposerExperiment() {
 
     return (
         <div className="max-w-3xl mx-auto text-center">
-            <p className="text-neutral-400 mb-6">This experiment demonstrates the AI's self-awareness. By analyzing its own foundational FCT principles, it can propose new methods to test its cognitive architecture.</p>
+            <p className="text-sm text-neutral-400 mb-6">This experiment demonstrates the AI's self-awareness. By analyzing its own foundational FCT principles, it can propose new methods to test its cognitive architecture.</p>
             <Button onClick={handlePropose} disabled={isLoading}>
-                {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+                {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 {isLoading ? 'Synthesizing...' : 'Generate New Brain Game'}
             </Button>
 
             <AnimatePresence>
             {proposal && (
-                <motion.div className="mt-8 text-left bg-neutral-900 border border-neutral-800 p-6 rounded-lg space-y-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+                <motion.div className="mt-8 text-left bg-neutral-900 border border-neutral-800 p-4 md:p-6 rounded-lg space-y-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
                     <h3 className="text-lg font-semibold text-orange-400">{proposal.title}</h3>
                     <div><h4 className="text-sm font-semibold text-neutral-200">Objective:</h4><p className="text-xs text-neutral-400">{proposal.objective}</p></div>
                     <div><h4 className="text-sm font-semibold text-neutral-200">Hypothesis:</h4><p className="text-xs text-neutral-400 italic">{proposal.hypothesis}</p></div>
@@ -151,12 +151,12 @@ function GameProposerExperiment() {
 
 export function BrainGamesNotebook() {
   return (
-    <div className="max-w-5xl mx-auto py-16">
-        <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-6 md:p-8 space-y-8">
+    <div className="max-w-5xl mx-auto py-16 px-4">
+        <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-4 md:p-8 space-y-8">
             <div className="text-center border-b border-neutral-800 pb-6">
-                <h1 className="text-2xl font-light text-neutral-100">Brain Games: The FCT Proving Ground</h1>
+                <h1 className="text-2xl md:text-3xl font-light text-neutral-100">Brain Games: The FCT Proving Ground</h1>
                 <p className="text-sm text-neutral-500 max-w-2xl mx-auto mt-2">
-                    An interactive research environment to prove the core principles of the AIXSELF cognitive architecture for a technical audience.
+                    An interactive research environment to prove the core principles of the AIXSELF cognitive architecture.
                 </p>
             </div>
             

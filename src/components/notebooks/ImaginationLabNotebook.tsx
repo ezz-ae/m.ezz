@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Loader2 } from 'lucide-react';
 
 const simulatedResponse = {
     principles: [
@@ -43,9 +44,9 @@ function ImaginationLab() {
     const itemVariants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
 
     return (
-        <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-6 md:p-8 space-y-8">
+        <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-4 md:p-8 space-y-8">
             <div className="text-center border-b border-neutral-800 pb-6">
-                <h1 className="text-2xl font-light text-neutral-100">The Imagination Lab</h1>
+                <h1 className="text-2xl md:text-3xl font-light text-neutral-100">The Imagination Lab</h1>
                 <p className="text-sm text-neutral-500 max-w-xl mx-auto mt-2">
                     A functional demonstration of the FCT Resonance Engine for lateral thinking and novel idea generation.
                 </p>
@@ -54,6 +55,7 @@ function ImaginationLab() {
             <div className="flex w-full max-w-lg mx-auto items-center space-x-2">
                 <Input type="text" value={concept} onChange={(e) => setConcept(e.target.value)} placeholder="Enter a concept..." className="bg-neutral-900 border-neutral-700 h-10" />
                 <Button onClick={handleResonate} disabled={isLoading} className="bg-orange-600 hover:bg-orange-700 text-white">
+                    {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
                     {isLoading ? 'Resonating...' : 'Resonate'}
                 </Button>
             </div>
@@ -62,17 +64,17 @@ function ImaginationLab() {
                 {response && (
                     <motion.div className="space-y-6" variants={containerVariants} initial="hidden" animate="visible">
                         <motion.div variants={itemVariants}>
-                            <h3 className="text-sm font-semibold text-neutral-300 mb-2">Core Architectural Principles</h3>
-                            <ul className="list-disc list-inside text-xs text-neutral-400 space-y-1">
+                            <h3 className="text-base font-semibold text-neutral-300 mb-2">Core Architectural Principles</h3>
+                            <ul className="list-disc list-inside text-sm text-neutral-400 space-y-1">
                                 {response.principles.map((item, i) => <li key={i}>{item}</li>)}
                             </ul>
                         </motion.div>
 
                         <motion.div variants={itemVariants}>
-                            <h3 className="text-sm font-semibold text-neutral-300 mb-2">Distant Pattern Connections</h3>
+                            <h3 className="text-base font-semibold text-neutral-300 mb-2">Distant Pattern Connections</h3>
                              <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                                 {response.connections.map((item, i) => (
-                                    <div key={i} className="text-xs bg-neutral-900 border border-neutral-800 p-2 rounded-sm">
+                                    <div key={i} className="text-sm bg-neutral-900 border border-neutral-800 p-3 rounded-md">
                                         <strong className="text-orange-400">{item.field}:</strong>
                                         <span className="text-neutral-400"> {item.insight}</span>
                                     </div>
@@ -81,13 +83,13 @@ function ImaginationLab() {
                         </motion.div>
 
                         <motion.div variants={itemVariants}>
-                             <h3 className="text-sm font-semibold text-neutral-300 mb-2">Recycled Idea Injection</h3>
-                             <p className="text-xs text-neutral-400 italic">"{response.injection}"</p>
+                             <h3 className="text-base font-semibold text-neutral-300 mb-2">Recycled Idea Injection</h3>
+                             <p className="text-sm text-neutral-400 italic">"{response.injection}"</p>
                         </motion.div>
                         
                         <motion.div variants={itemVariants}>
-                            <h3 className="text-sm font-semibold text-neutral-300 mb-2">Generated Design Insights</h3>
-                            <ul className="list-disc list-inside text-xs text-neutral-400 space-y-1">
+                            <h3 className="text-base font-semibold text-neutral-300 mb-2">Generated Design Insights</h3>
+                            <ul className="list-disc list-inside text-sm text-neutral-400 space-y-1">
                                 {response.insights.map((item, i) => <li key={i}>{item}</li>)}
                             </ul>
                         </motion.div>
@@ -100,7 +102,7 @@ function ImaginationLab() {
 
 export function ImaginationLabNotebook() {
   return (
-    <div className="max-w-4xl mx-auto py-16">
+    <div className="max-w-4xl mx-auto py-16 px-4">
         <ImaginationLab />
     </div>
   );

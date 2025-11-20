@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const trapData = {
     'fake-airdrop': {
@@ -30,9 +31,9 @@ function ThreatAnalysisLab() {
     const activeTrap = trapData[selectedTrap];
 
     return (
-        <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-6 md:p-8 space-y-8">
+        <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-4 md:p-8 space-y-8">
             <div className="text-center border-b border-neutral-800 pb-6">
-                <h1 className="text-2xl font-light text-neutral-100">Cognitive Threat Analysis Lab</h1>
+                <h1 className="text-2xl md:text-3xl font-light text-neutral-100">Cognitive Threat Analysis Lab</h1>
                 <p className="text-sm text-neutral-500 max-w-xl mx-auto mt-2">
                     A research environment for studying security as a cognitive design problem by simulating and deconstructing attack vectors.
                 </p>
@@ -41,11 +42,7 @@ function ThreatAnalysisLab() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div className="lg:col-span-2">
                     <Card className="bg-neutral-900 border-neutral-800 h-full">
-                        <CardHeader>
-                            <CardTitle className="text-base font-semibold text-neutral-300">
-                                KAP Trap Simulator
-                            </CardTitle>
-                        </CardHeader>
+                        <CardHeader><CardTitle className="text-base font-semibold text-neutral-300">KAP Trap Simulator</CardTitle></CardHeader>
                         <CardContent>
                             <p className="text-xs text-neutral-500 mb-3">Select a simulated attack vector to analyze its cognitive triggers.</p>
                             <Select onValueChange={setSelectedTrap} defaultValue={selectedTrap}>
@@ -59,8 +56,9 @@ function ThreatAnalysisLab() {
                                 </SelectContent>
                             </Select>
 
-                            {activeTrap && (
-                                <div className="mt-4 bg-neutral-950/50 p-3 rounded-md border border-neutral-800/50">
+                            <AnimatePresence mode="wait">
+                                <motion.div key={selectedTrap} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }}
+                                    className="mt-4 bg-neutral-950/50 p-3 rounded-md border border-neutral-800/50">
                                     <h4 className="text-sm font-medium text-neutral-200 mb-2">Analysis Readout</h4>
                                     <p className="text-xs text-neutral-400 mb-3">{activeTrap.description}</p>
                                     <div className="flex flex-wrap gap-2">
@@ -71,43 +69,38 @@ function ThreatAnalysisLab() {
                                             </div>
                                         ))}
                                     </div>
-                                </div>
-                            )}
+                                </motion.div>
+                            </AnimatePresence>
                         </CardContent>
                     </Card>
                 </div>
 
                 <div className="space-y-4">
                      <h3 className="text-sm font-semibold text-neutral-300">Luredoor Case Files</h3>
-                     <Card className="bg-neutral-900 border-neutral-800">
-                        <CardContent className="p-4">
+                     <Card className="bg-neutral-900 border-neutral-800"><CardContent className="p-4">
                            <h4 className="text-xs font-semibold text-neutral-200">Case #001: Cracked Software</h4>
                            <p className="text-xs text-neutral-400 mt-1">Demonstrated willingness to bypass security for perceived value, quantifying the cognitive override of the "free" tag.</p>
-                        </CardContent>
-                     </Card>
-                     <Card className="bg-neutral-900 border-neutral-800">
-                        <CardContent className="p-4">
+                     </CardContent></Card>
+                     <Card className="bg-neutral-900 border-neutral-800"><CardContent className="p-4">
                            <h4 className="text-xs font-semibold text-neutral-200">Case #002: Jupiter NFT</h4>
-                           <p className="text-xs text-neutral-400 mt-1">Demonstrated that urgency (FOMO) and social proof can disrupt rational due diligence, even in experienced users.</p>
-                        </CardContent>
-                     </Card>
+                           <p className="text-xs text-neutral-400 mt-1">Demonstrated that urgency (FOMO) and social proof can disrupt rational due diligence.</p>
+                     </CardContent></Card>
                 </div>
             </div>
 
             <div className="bg-neutral-900 p-4 rounded-md border border-neutral-800">
                 <h3 className="text-sm font-semibold text-neutral-300 mb-2">System Readout: AIXSELF Alignment</h3>
                 <p className="text-xs text-neutral-400">
-                    This adversarial research directly informs the AIXSELF safety architecture. By studying cognitive <strong className="text-white">misalignment</strong>, we gather ground-truth data to build systems that are architecturally <strong className="text-white">aligned</strong>. An exploit is a weaponization of FCT principles. This lab's findings provide the behavioral data necessary to train defensive mechanisms like the <strong className="text-white">Schema Intelligence Network (SIN)</strong>.
+                    This adversarial research directly informs the AIXSELF safety architecture. By studying cognitive <strong className="text-white">misalignment</strong>, we gather ground-truth data to build systems that are architecturally <strong className="text-white">aligned</strong>.
                 </p>
             </div>
         </div>
     );
 }
 
-
 export function SecurityNotebook() {
   return (
-    <div className="max-w-4xl mx-auto py-16">
+    <div className="max-w-4xl mx-auto py-16 px-4">
         <ThreatAnalysisLab />
     </div>
   );

@@ -22,17 +22,17 @@ function ArchitecturalBlueprint() {
     const activeComponent = systemComponents[selectedComponent];
 
     return (
-        <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-6 md:p-8 space-y-8">
+        <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-4 md:p-8 space-y-8">
             <div className="text-center border-b border-neutral-800 pb-6">
-                <h1 className="text-2xl font-light text-neutral-100">Real Estate Intelligence OS</h1>
+                <h1 className="text-2xl md:text-3xl font-light text-neutral-100">Real Estate Intelligence OS</h1>
                 <p className="text-sm text-neutral-500 max-w-xl mx-auto mt-2">
-                    An architectural blueprint for a national-scale, sovereign blockchain designed to bring computational trust, transparency, and liquidity to the real estate sector.
+                    An architectural blueprint for a national-scale, sovereign blockchain for the real estate sector.
                 </p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                 <div className="lg:col-span-4 flex flex-col items-center justify-center bg-neutral-900 p-4 rounded-md border border-neutral-800">
-                    <div className="text-center">
+                     <div className="text-center">
                         <h3 className="text-sm font-semibold mt-2 text-neutral-300">Traditional Market State</h3>
                         <p className="text-xs text-neutral-500 mt-1">Opaque, slow, and illiquid. Value is locked.</p>
                     </div>
@@ -74,7 +74,7 @@ function ArchitecturalBlueprint() {
             <div className="bg-neutral-900 p-4 rounded-md border border-neutral-800">
                 <h3 className="text-sm font-semibold text-neutral-300 mb-2">Protocol Readout: AIXSELF Alignment</h3>
                 <p className="text-xs text-neutral-400">
-                    DLDCHAIN is a domain-specific implementation of the AIXSELF Universe. It establishes <strong className="text-white">Computational Trust</strong> via an immutable ledger, ensures <strong className="text-white">Transparency & Auditability</strong>, enhances <strong className="text-white">Liquidity</strong>, and secures <strong className="text-white">Sovereign Asset Ownership</strong>.
+                    DLDCHAIN is a domain-specific implementation of the AIXSELF Universe. It establishes <strong className="text-white">Computational Trust</strong>, ensures <strong className="text-white">Transparency & Auditability</strong>, enhances <strong className="text-white">Liquidity</strong>, and secures <strong className="text-white">Sovereign Asset Ownership</strong>.
                 </p>
             </div>
         </div>
@@ -83,7 +83,7 @@ function ArchitecturalBlueprint() {
 
 export function DLDChainNotebook() {
   return (
-    <div className="max-w-4xl mx-auto py-16">
+    <div className="max-w-4xl mx-auto py-16 px-4">
         <ArchitecturalBlueprint />
     </div>
   );
