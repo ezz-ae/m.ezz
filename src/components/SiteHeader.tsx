@@ -1,36 +1,54 @@
+// src/components/SiteHeader.tsx
+'use client';
 
 import Link from 'next/link';
-import { AixaLogo } from './icons';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 
-const navLinks = [
-  { href: '/mind-board', label: 'Mind Board' },
-  { href: '/aixa', label: 'AIXA' },
-  { href: '/discussions', label: 'Discussions' },
-  { href: '/projection', label: 'Projection' },
-  { href: '/timeline', label: 'Timeline' },
-  { href: '/press', label: 'Press' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
+const mainNav = [
+  { href: '/', label: 'Home' },
+  { href: '/aixa', label: 'AIXA Protocol' },
+  { href: '/journal', label: 'Journal' },
+  { href: '/implementation', label: 'Implementation' },
+  { href: '/source', label: 'Source' },
+  { href: '/contribution', label: 'Contribution' },
 ];
 
-export default function SiteHeader() {
+export function SiteHeader() {
+  const pathname = usePathname();
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 p-4 bg-black/50 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link href="/">
-          <AixaLogo />
-        </Link>
-        <nav className="hidden md:flex items-center space-x-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm text-neutral-400 hover:text-white transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          <Link href="/" className="text-lg font-semibold text-neutral-100">
+            EZZ.AE
+          </Link>
+          <nav className="hidden md:flex items-center space-x-6">
+            {mainNav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  'text-sm font-medium text-neutral-400 hover:text-orange-400 transition-colors relative',
+                  pathname === item.href && 'text-orange-400'
+                )}
+              >
+                {item.label}
+                {pathname === item.href && (
+                  <motion.div
+                    className="absolute bottom-[-4px] left-0 right-0 h-[1px] bg-orange-400"
+                    layoutId="underline"
+                    initial={false}
+                    animate={{ opacity: 1 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                  />
+                )}
+              </Link>
+            ))}
+          </nav>
+        </div>
       </div>
     </header>
   );

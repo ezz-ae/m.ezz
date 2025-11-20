@@ -1,108 +1,90 @@
 // src/components/notebooks/DLDChainNotebook.tsx
-import { Section, ScrollHeading, ScrollParagraph, ScrollCallout } from '../ScrollTypography';
+'use client';
+
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { motion, AnimatePresence } from 'framer-motion';
+import { cn } from '@/lib/utils';
+
+const systemComponents = {
+    'dldchain': { name: 'DLDCHAIN', role: 'Foundational Ledger', description: 'The sovereign, immutable blockchain that serves as the single source of truth for all real estate data and transactions.' },
+    'ebram': { name: 'EBRAM', role: 'Judicial Programming Language', description: 'A formal language for encoding property laws and contracts, ensuring they are transparent, immutable, and machine-executable.' },
+    'dxbtoken': { name: 'DXBTOKEN', role: 'Sovereign Tokenization Standard', description: 'A national standard where 1 token equals 1 sq. ft. of property, unlocking fractional ownership and enhancing liquidity.' },
+    'make': { name: 'MAKE', role: 'Decentralized Market Maker', description: 'A liquidity engine for the automated, trustless trading of tokenized real estate assets without centralized intermediaries.' },
+    'one-wallet': { name: 'One Wallet', role: 'Unified Operating Wallet', description: 'The secure, unified interface for managing all digital real estate assets and contract interactions within the ecosystem.' }
+};
+
+type ComponentKey = keyof typeof systemComponents;
+
+function ArchitecturalBlueprint() {
+    const [selectedComponent, setSelectedComponent] = useState<ComponentKey>('dldchain');
+    const activeComponent = systemComponents[selectedComponent];
+
+    return (
+        <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-6 md:p-8 space-y-8">
+            <div className="text-center border-b border-neutral-800 pb-6">
+                <h1 className="text-2xl font-light text-neutral-100">Real Estate Intelligence OS</h1>
+                <p className="text-sm text-neutral-500 max-w-xl mx-auto mt-2">
+                    An architectural blueprint for a national-scale, sovereign blockchain designed to bring computational trust, transparency, and liquidity to the real estate sector.
+                </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div className="lg:col-span-4 flex flex-col items-center justify-center bg-neutral-900 p-4 rounded-md border border-neutral-800">
+                    <div className="text-center">
+                        <h3 className="text-sm font-semibold mt-2 text-neutral-300">Traditional Market State</h3>
+                        <p className="text-xs text-neutral-500 mt-1">Opaque, slow, and illiquid. Value is locked.</p>
+                    </div>
+                    <div className="h-8 w-px bg-neutral-700 my-4"></div>
+                    <div className="text-center">
+                        <h3 className="text-sm font-semibold mt-2 text-neutral-300">DLDCHAIN Market State</h3>
+                        <p className="text-xs text-neutral-500 mt-1">Transparent, fluid, and liquid. Value is programmable.</p>
+                    </div>
+                </div>
+
+                <div className="lg:col-span-8">
+                    <Card className="bg-neutral-900 border-neutral-800 h-full">
+                        <CardHeader><CardTitle className="text-base font-semibold text-neutral-300">System Explorer</CardTitle></CardHeader>
+                        <CardContent>
+                            <div className="flex flex-wrap gap-2 mb-4">
+                                {Object.keys(systemComponents).map((key) => {
+                                    const component = systemComponents[key as ComponentKey];
+                                    return (
+                                        <Button key={key} variant="outline" size="sm" onClick={() => setSelectedComponent(key as ComponentKey)}
+                                            className={cn("text-xs h-8", selectedComponent === key ? "bg-orange-500/10 border-orange-500/30 text-orange-300" : "text-neutral-300")}>
+                                            {component.name}
+                                        </Button>
+                                    );
+                                })}
+                            </div>
+                            <AnimatePresence mode="wait">
+                                <motion.div key={selectedComponent} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }}
+                                    className="bg-neutral-950/50 p-3 rounded-md border border-neutral-800/50">
+                                    <h4 className="text-sm font-medium text-neutral-200 mb-1">{activeComponent.name}</h4>
+                                    <p className="text-xs font-semibold text-orange-400/80 mb-2">{activeComponent.role}</p>
+                                    <p className="text-xs text-neutral-400">{activeComponent.description}</p>
+                                </motion.div>
+                            </AnimatePresence>
+                        </CardContent>
+                    </Card>
+                </div>
+            </div>
+
+            <div className="bg-neutral-900 p-4 rounded-md border border-neutral-800">
+                <h3 className="text-sm font-semibold text-neutral-300 mb-2">Protocol Readout: AIXSELF Alignment</h3>
+                <p className="text-xs text-neutral-400">
+                    DLDCHAIN is a domain-specific implementation of the AIXSELF Universe. It establishes <strong className="text-white">Computational Trust</strong> via an immutable ledger, ensures <strong className="text-white">Transparency & Auditability</strong>, enhances <strong className="text-white">Liquidity</strong>, and secures <strong className="text-white">Sovereign Asset Ownership</strong>.
+                </p>
+            </div>
+        </div>
+    );
+}
 
 export function DLDChainNotebook() {
   return (
-    <article className="prose prose-invert max-w-3xl mx-auto py-16 space-y-12">
-      <Section>
-        <ScrollParagraph className="text-xs tracking-[0.3em] uppercase text-neutral-500">
-          Notebook · DLDCHAIN
-        </ScrollParagraph>
-        <ScrollHeading as="h1" className="text-3xl md:text-4xl font-light text-neutral-50 mt-4 !mb-6">
-          DLDCHAIN: The Sovereign Blockchain for Real Estate
-        </ScrollHeading>
-        <ScrollParagraph emphasisLevel="resonance" className="lead !text-neutral-300 !text-lg !leading-relaxed">
-          DLDCHAIN is the architectural blueprint for a national-scale, sovereign blockchain designed exclusively for the real estate sector. It is not a speculative cryptocurrency platform; it is a foundational infrastructure layer for a city or country, built to bring computational trust, transparency, and liquidity to the world's largest asset class.
-        </ScrollParagraph>
-      </Section>
-
-      <Section>
-        <ScrollHeading as="h2">1. The Core Problem: Illiquidity and Opacity in Real Estate</ScrollHeading>
-        <ScrollParagraph>
-          Traditional real estate markets are notoriously inefficient. They are plagued by opaque processes, slow and expensive transactions, fragmented data, and a fundamental lack of liquidity. A property, one of the most significant stores of value, remains a locked asset, difficult to divide, trade, or leverage. DLDCHAIN was designed to solve this by creating a single, unified, and computationally trustable source of truth.
-        </ScrollParagraph>
-        <ScrollCallout label="Economic and Systemic Impact">
-          The current paradigm of real estate restricts economic growth and hinders efficient capital allocation. DLDCHAIN addresses this by transforming illiquid assets into dynamic, verifiable, and programmable entities.
-        </ScrollCallout>
-      </Section>
-
-      <Section>
-        <ScrollHeading as="h2">2. Architectural Vision: A Real Estate Intelligence Operating System</ScrollHeading>
-        <ScrollParagraph>
-          DLDCHAIN is not merely a blockchain; it is the foundational layer of a complete Real Estate Intelligence Operating System. It is the base protocol upon which other specialized, interconnected systems are built, each handling a different aspect of the market ecosystem. These pillars work in concert to establish a new paradigm for real estate interaction:
-        </ScrollParagraph>
-        <ul className="list-disc pl-5 space-y-4 mt-6">
-          <li>
-            <ScrollHeading as="h3">2.1 EBRAM: The Judicial Programming Language</ScrollHeading>
-            <ScrollParagraph>
-              EBRAM is a specialized, formal programming language designed for encoding complex property laws, contracts, and legal frameworks directly onto the blockchain. This ensures that legal stipulations are immutable, transparent, and machine-executable, automating compliance and reducing legal friction in transactions. It acts as the legal intelligence layer, bringing computational rigor to jurisprudence.
-            </ScrollParagraph>
-          </li>
-          <li>
-            <ScrollHeading as="h3">2.2 DXBTOKEN: Sovereign Tokenization Standard</ScrollHeading>
-            <ScrollParagraph>
-              DXBTOKEN defines a national-scale standard for tokenizing real estate assets, where 1 token precisely equals 1 square foot of property. This granular tokenization unlocks fractional ownership, enhances liquidity by allowing divisible assets, and provides a standardized, verifiable measure of property value on the blockchain. It transforms physical assets into digital, tradable units.
-            </ScrollParagraph>
-          </li>
-          <li>
-            <ScrollHeading as="h3">2.3 MAKE: Decentralized Market Maker and Liquidity Engine</ScrollHeading>
-            <ScrollParagraph>
-              MAKE is a decentralized protocol designed to facilitate automated, trustless trading and exchange of tokenized real estate assets. It acts as a liquidity engine, providing mechanisms for instant price discovery and order execution without reliance on centralized exchanges. MAKE uses algorithmic approaches to ensure fair market value and efficient asset transfer, significantly reducing transaction times and costs.
-            </ScrollParagraph>
-          </li>
-          <li>
-            <ScrollHeading as="h3">2.4 Mashroi: Transparent Governance for Market Participants</ScrollHeading>
-            <ScrollParagraph>
-              Mashroi establishes a transparent and auditable governance ecosystem specifically for real estate brokers, agents, and other market intermediaries. It uses reputation-based mechanisms and verifiable transaction histories to foster trust and accountability among participants, creating a self-regulating professional environment that aligns with DLDCHAIN's broader principles of transparency.
-            </ScrollParagraph>
-          </li>
-          <li>
-            <ScrollHeading as="h3">2.5 One Wallet: Unified Operating Wallet</ScrollHeading>
-            <ScrollParagraph>
-              One Wallet serves as the unified, secure operating interface for all real estate transactions within the DLDCHAIN ecosystem. It manages DXBTOKEN assets, facilitates EBRAM-encoded contract interactions, and provides a clear, auditable history of all property-related activities. It is designed for seamless user experience while upholding the highest standards of security and transparency, acting as the primary point of interaction for sovereign real estate assets.
-            </ScrollParagraph>
-          </li>
-        </ul>
-        <ScrollParagraph className="mt-6">
-            DLDCHAIN provides the secure, immutable ledger that allows all these components to interact seamlessly and and contributes to the overall computational trust and transparency required for a national-scale real estate intelligence OS.
-        </ScrollParagraph>
-      </Section>
-
-      <Section>
-        <ScrollHeading as="h2">3. AIXSELF Alignment: Computational Trust, Transparency, and Liquidity</ScrollHeading>
-        <ScrollParagraph>
-          DLDCHAIN is a direct manifestation of the AIXSELF Universe's principles within the critical domain of real estate. It leverages several core AIXSELF tenets to redefine how property is managed and transacted:
-        </ScrollParagraph>
-        <ul className="list-disc pl-5 space-y-2 mt-4">
-          <li>
-            <ScrollParagraph as="span"><strong className="text-neutral-200">Computational Trust:</strong> By integrating a sovereign blockchain and formal legal language (EBRAM), DLDCHAIN ensures that all property records and contracts are verifiable and immutable, eliminating reliance on intermediaries and establishing trust at the computational layer, akin to AIXEYE's role in auditing intelligence.</ScrollParagraph>
-          </li>
-          <li>
-            <ScrollParagraph as="span"><strong className="text-neutral-200">Transparency and Auditability:</strong> Every transaction and property status change is recorded on a public, cryptographically secured ledger. This provides unparalleled transparency, mirroring the Cognitive Ledger in AIXSELF, where every AI decision is auditable, fostering accountability in the real estate market.</ScrollParagraph>
-          </li>
-          <li>
-            <ScrollParagraph as="span"><strong className="text-neutral-200">Enhanced Liquidity:</strong> Through DXBTOKEN's fractional ownership and MAKE's decentralized market-making, DLDCHAIN transforms illiquid real estate into a fluid, tradable asset class. This reflects the AIXSELF economic model where value is dynamic and based on verifiable merit, not static ownership.
-            </ScrollParagraph>
-          </li>
-          <li>
-            <ScrollParagraph as="span"><strong className="text-neutral-200">Sovereign Asset Ownership:</strong> Just as AIXIAM grants sovereign identity to human-AI pairs, DLDCHAIN ensures sovereign ownership of property assets. The integration of digital identity with real-world assets creates a robust framework for individual control and verifiable rights.
-            </ScrollParagraph>
-          </li>
-        </ul>
-      </Section>
-
-      <Section>
-        <ScrollCallout label="The DLDCHAIN Vision: A Paradigm Shift">
-          DLDCHAIN represents a paradigm shift from traditional, opaque real estate markets to a transparent, liquid, and computationally verifiable ecosystem. It is an institutional-grade infrastructure designed for national-scale impact, aligning with the AIXSELF vision of decentralized, equitable, and sovereign systems.
-        </ScrollCallout>
-      </Section>
-
-      <Section>
-        <ScrollHeading as="h2">Conclusion: An Architecture for Nations and the Future of Property</ScrollHeading>
-        <ScrollParagraph>
-          DLDCHAIN is more than a technology; it is a governance model. It provides a framework for nations to modernize their most critical market, unlocking immense value, improving efficiency, and creating a more transparent and equitable system for all participants. It is institutional-grade infrastructure designed for societal-scale impact, aligning seamlessly with the broader AIXSELF Universe's goals for decentralized intelligence and sovereign control.
-        </ScrollParagraph>
-      </Section>
-    </article>
+    <div className="max-w-4xl mx-auto py-16">
+        <ArchitecturalBlueprint />
+    </div>
   );
 }

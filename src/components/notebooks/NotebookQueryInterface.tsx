@@ -3,33 +3,36 @@
 'use client';
 
 import { useState } from 'react';
-import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { Send, Loader2, BrainCircuit } from 'lucide-react';
+import { Send, Loader2, BrainCircuit, Wand2, Sparkles } from 'lucide-react';
 import { queryLivingNotebook } from '@/lib/actions';
 import { useStudioStore } from '@/lib/store';
 import { motion } from 'framer-motion';
+import { AIAction } from './notebook-data';
 
 type NotebookQueryInterfaceProps = {
   slug: string;
+  aiActions: AIAction[];
+  autothinkerActions: AIAction[];
 };
 
-export function NotebookQueryInterface({ slug }: NotebookQueryInterfaceProps) {
+export function NotebookQueryInterface({ slug, aiActions, autothinkerActions }: NotebookQueryInterfaceProps) {
   NotebookQueryInterface.displayName = 'NotebookQueryInterface';
   const { query, setQuery } = useStudioStore();
   const [answer, setAnswer] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!query.trim()) return;
+  const executeQuery = async (currentQuery: string) => {
+    if (!currentQuery.trim()) return;
 
     setIsLoading(true);
     setAnswer('');
     setError(null);
+    setQuery(currentQuery); // Update the input field for user visibility
 
-    const result = await queryLivingNotebook({ query, slug });
+    const result = await queryLivingNotebook({ query: currentQuery, slug });
 
     if (result.error) {
       setError(result.error);
@@ -37,6 +40,15 @@ export function NotebookQueryInterface({ slug }: NotebookQueryInterfaceProps) {
       setAnswer(result.data || 'No answer was returned.');
     }
     setIsLoading(false);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    executeQuery(query);
+  };
+
+  const handleActionClick = (prompt: string) => {
+    executeQuery(prompt);
   };
 
   return (
@@ -65,23 +77,67 @@ export function NotebookQueryInterface({ slug }: NotebookQueryInterfaceProps) {
             {answer && <p>{answer}</p>}
             </motion.div>
         )}
+        
+        {/* Autothinker Actions */}
+        <div className="mb-6 bg-gradient-to-br from-orange-500/10 to-transparent p-4 rounded-lg border border-orange-500/20">
+            <h3 className="text-xs tracking-widest uppercase text-orange-400 mb-3 flex items-center gap-2">
+                <Sparkles size={14}/>
+                Autothinker Actions
+            </h3>
+            <div className="flex flex-wrap gap-2">
+                {autothinkerActions.map((action, index) => (
+                    <Button
+                        key={index}
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleActionClick(action.prompt)}
+                        disabled={isLoading}
+                        className="text-orange-300 border-orange-500/30 hover:bg-orange-500/10 hover:text-orange-200"
+                    >
+                        {action.title}
+                    </Button>
+                ))}
+            </div>
+        </div>
+
+        {/* Default AI Actions */}
+        <div className="mb-4">
+            <h3 className="text-xs tracking-widest uppercase text-muted-foreground mb-3 flex items-center gap-2">
+                <Wand2 size={14}/>
+                Standard Queries
+            </h3>
+            <div className="flex flex-wrap gap-2">
+                {aiActions.map((action, index) => (
+                    <Button
+                        key={index}
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleActionClick(action.prompt)}
+                        disabled={isLoading}
+                        className="text-neutral-300"
+                    >
+                        {action.title}
+                    </Button>
+                ))}
+            </div>
+        </div>
 
         {/* Input Form */}
-        <form onSubmit={handleSubmit} className="flex items-center gap-3">
-          <Input
-            type="text"
+        <form onSubmit={handleSubmit} className="flex items-start gap-3 mt-6">
+          <Textarea
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Ask about use cases, applications, or concepts..."
-            className="bg-background border-input h-12 text-base flex-grow"
+            placeholder="Ask a custom question or select an action above..."
+            className="bg-background border-input text-base flex-grow min-h-[50px] resize-none"
             disabled={isLoading}
+            rows={2}
           />
-          <Button type="submit" size="icon" className="h-12 w-12" disabled={isLoading}>
+          <Button type="submit" size="icon" className="h-12 w-12 flex-shrink-0" disabled={isLoading}>
             <Send size={18} />
           </Button>
         </form>
          <p className="text-xs text-muted-foreground mt-3">
-            Ask a question to query the memory fabric of this specific notebook. The AI will answer based only on its core knowledge.
+            Engage with this notebook's memory fabric. The Autothinker actions prompt the AI to perform self-analysis, while standard queries retrieve foundational knowledge.
         </p>
       </div>
     </div>

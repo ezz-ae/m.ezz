@@ -2,13 +2,14 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2 } from 'lucide-react'; // Importing an icon for abilities
+import { CheckCircle2 } from 'lucide-react';
+import { ReflectionMeter } from '@/components/ui/ReflectionMeter'; // Import the new component
 
 interface NotebookLayoutProps {
   title: string;
   description: string;
   tag: string;
-  abilities: string[]; // New prop for key abilities
+  abilities: string[];
   children: React.ReactNode;
 }
 
@@ -16,13 +17,24 @@ export function NotebookLayout({ title, description, tag, abilities, children }:
   return (
     <div className="min-h-screen bg-black text-neutral-100">
       <motion.section 
-        className="relative flex flex-col items-center justify-center text-center px-6 py-24 md:py-32"
+        className="relative flex flex-col items-center justify-center text-center px-6 pt-24 md:pb-32"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-orange-900/10 via-black to-black opacity-50 z-0"></div>
         <div className="relative z-10 max-w-4xl mx-auto">
+          
+          {/* Reflection Meter added here */}
+          <motion.div
+            className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1 }}
+          >
+            <ReflectionMeter />
+          </motion.div>
+
           <motion.p
             className="text-sm uppercase tracking-widest text-orange-500 mb-4"
             initial={{ opacity: 0, y: 10 }}
@@ -48,7 +60,6 @@ export function NotebookLayout({ title, description, tag, abilities, children }:
             {description}
           </motion.p>
 
-          {/* Key Abilities Section */}
           {abilities && abilities.length > 0 && (
             <motion.div
               className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto"

@@ -1,91 +1,114 @@
 // src/components/notebooks/SecurityNotebook.tsx
-import { Section, ScrollHeading, ScrollParagraph, ScrollCallout } from '../ScrollTypography';
+'use client';
+
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+
+const trapData = {
+    'fake-airdrop': {
+        name: 'Fake Airdrop Simulation',
+        triggers: ['Greed', 'Urgency (FOMO)', 'Social Proof'],
+        description: 'Simulates an exclusive airdrop, prompting users to sign a malicious transaction to claim non-existent assets.'
+    },
+    'token-approval': {
+        name: 'Malicious Token Approval',
+        triggers: ['Trust Violation', 'Technical Obfuscation'],
+        description: 'Mimics a legitimate DeFi action, requesting a broad token approval that would grant a malicious contract control over user funds.'
+    },
+    'impersonation-wallet': {
+        name: 'Impersonation Wallet Interface',
+        triggers: ['Authority Bias', 'Pattern Interruption'],
+        description: 'Presents a UI nearly identical to a trusted wallet provider, designed to capture a seed phrase or password through a fake login prompt.'
+    },
+};
+
+function ThreatAnalysisLab() {
+    const [selectedTrap, setSelectedTrap] = useState('fake-airdrop');
+    
+    const activeTrap = trapData[selectedTrap];
+
+    return (
+        <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-6 md:p-8 space-y-8">
+            <div className="text-center border-b border-neutral-800 pb-6">
+                <h1 className="text-2xl font-light text-neutral-100">Cognitive Threat Analysis Lab</h1>
+                <p className="text-sm text-neutral-500 max-w-xl mx-auto mt-2">
+                    A research environment for studying security as a cognitive design problem by simulating and deconstructing attack vectors.
+                </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div className="lg:col-span-2">
+                    <Card className="bg-neutral-900 border-neutral-800 h-full">
+                        <CardHeader>
+                            <CardTitle className="text-base font-semibold text-neutral-300">
+                                KAP Trap Simulator
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <p className="text-xs text-neutral-500 mb-3">Select a simulated attack vector to analyze its cognitive triggers.</p>
+                            <Select onValueChange={setSelectedTrap} defaultValue={selectedTrap}>
+                                <SelectTrigger className="bg-neutral-800 border-neutral-700">
+                                    <SelectValue placeholder="Select a trap..." />
+                                </SelectTrigger>
+                                <SelectContent className="bg-neutral-800 border-neutral-700 text-neutral-200">
+                                    {Object.entries(trapData).map(([key, value]) => (
+                                        <SelectItem key={key} value={key}>{value.name}</SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+
+                            {activeTrap && (
+                                <div className="mt-4 bg-neutral-950/50 p-3 rounded-md border border-neutral-800/50">
+                                    <h4 className="text-sm font-medium text-neutral-200 mb-2">Analysis Readout</h4>
+                                    <p className="text-xs text-neutral-400 mb-3">{activeTrap.description}</p>
+                                    <div className="flex flex-wrap gap-2">
+                                        <span className="text-xs font-semibold text-neutral-500 self-center">Cognitive Triggers:</span>
+                                        {activeTrap.triggers.map(trigger => (
+                                            <div key={trigger} className="text-xs text-orange-300 bg-orange-500/10 px-2 py-0.5 rounded-sm">
+                                                {trigger}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </CardContent>
+                    </Card>
+                </div>
+
+                <div className="space-y-4">
+                     <h3 className="text-sm font-semibold text-neutral-300">Luredoor Case Files</h3>
+                     <Card className="bg-neutral-900 border-neutral-800">
+                        <CardContent className="p-4">
+                           <h4 className="text-xs font-semibold text-neutral-200">Case #001: Cracked Software</h4>
+                           <p className="text-xs text-neutral-400 mt-1">Demonstrated willingness to bypass security for perceived value, quantifying the cognitive override of the "free" tag.</p>
+                        </CardContent>
+                     </Card>
+                     <Card className="bg-neutral-900 border-neutral-800">
+                        <CardContent className="p-4">
+                           <h4 className="text-xs font-semibold text-neutral-200">Case #002: Jupiter NFT</h4>
+                           <p className="text-xs text-neutral-400 mt-1">Demonstrated that urgency (FOMO) and social proof can disrupt rational due diligence, even in experienced users.</p>
+                        </CardContent>
+                     </Card>
+                </div>
+            </div>
+
+            <div className="bg-neutral-900 p-4 rounded-md border border-neutral-800">
+                <h3 className="text-sm font-semibold text-neutral-300 mb-2">System Readout: AIXSELF Alignment</h3>
+                <p className="text-xs text-neutral-400">
+                    This adversarial research directly informs the AIXSELF safety architecture. By studying cognitive <strong className="text-white">misalignment</strong>, we gather ground-truth data to build systems that are architecturally <strong className="text-white">aligned</strong>. An exploit is a weaponization of FCT principles. This lab's findings provide the behavioral data necessary to train defensive mechanisms like the <strong className="text-white">Schema Intelligence Network (SIN)</strong>.
+                </p>
+            </div>
+        </div>
+    );
+}
+
 
 export function SecurityNotebook() {
   return (
-    <article className="prose prose-invert max-w-3xl mx-auto py-16 space-y-12">
-      <Section>
-        <ScrollParagraph className="text-xs tracking-[0.3em] uppercase text-neutral-500">
-          Notebook · Luredoor · KAP
-        </ScrollParagraph>
-        <ScrollHeading as="h1" className="text-3xl md:text-4xl font-light text-neutral-50 mt-4 !mb-6">
-          Security as a Cognitive Design Problem
-        </ScrollHeading>
-        <ScrollParagraph emphasisLevel="resonance" className="lead !text-neutral-300 !text-lg !leading-relaxed">
-          To build systems that are truly safe, one must first understand the physics of failure. This notebook details a research framework for studying security not as a technical problem, but as a cognitive design problem. It involves creating high-fidelity simulations of real-world attacks to understand the cognitive vulnerabilities they exploit.
-        </ScrollParagraph>
-      </Section>
-
-      <Section>
-        <ScrollHeading as="h2">1. The Trap Philosophy: Education Through Simulation</ScrollHeading>
-        <ScrollParagraph>
-          A well-designed trap is not an exploit; it is a diagnostic and educational tool. By building and deploying controlled phishing simulations, fake airdrops, and other lures, we can expose the cognitive weak points that attackers target: greed, urgency, authority bias, and social proof. A simulated loss is an inexpensive lesson. A real one can be catastrophic. This research provides the ground truth for building resilient systems.
-        </ScrollParagraph>
-      </Section>
-
-      <Section>
-        <ScrollHeading as="h2">2. KAP Trap Suite: A Cognitive Stress-Testing Environment</ScrollHeading>
-        <ScrollParagraph>
-          The KAP (Knowledge, Attitude, Practice) Trap Suite is a full "phishing OS" for cognitive training and research. It's a collection of modules that simulate the most common attack vectors, creating a live-fire exercise that allows individuals and organizations to experience the emotional and cognitive pressure of an attack in a safe environment. The suite includes:
-        </ScrollParagraph>
-        <ul className="list-disc pl-5 space-y-2">
-          <ScrollParagraph as="li">Fake Airdrop Simulations</ScrollParagraph>
-          <ScrollParagraph as="li">Malicious Token Approval Simulations</ScrollParagraph>
-          <ScrollParagraph as="li">Impersonation Wallet & Exchange Interfaces</ScrollParagraph>
-          <ScrollParagraph as="li">Fraudulent OAuth Connection Simulators</ScrollParagraph>
-        </ul>
-      </Section>
-
-      <Section>
-        <ScrollHeading as="h2">3. Luredoor & Wikitraps: A Taxonomy of Cognitive Exploits</ScrollHeading>
-        <ScrollParagraph>
-          Luredoor is a project to create an open-source encyclopedia, or formal taxonomy, of cognitive traps. Each "door" represents a specific category of manipulation, from social engineering tactics to dark patterns in UI design. Wikitraps is the collaborative platform where these traps are documented, analyzed, and simulated. The goal is to create a shared defensive intelligence, mapping the attack surfaces of the human mind.
-        </ScrollParagraph>
-      </Section>
-      
-      <Section>
-        <ScrollHeading as="h2">4. AIXSELF Alignment: Security as Cognitive Science</ScrollHeading>
-        <ScrollParagraph>
-          This notebook is a practical application of the AIXSELF Universe's core safety principles, viewed through an adversarial lens. Understanding how cognitive systems can be deliberately misaligned is critical to architecting systems that are inherently aligned and safe.
-        </ScrollParagraph>
-        <ul className="list-disc pl-5 space-y-4 mt-4">
-          <li>
-            <ScrollParagraph as="span">
-              <strong className="text-neutral-200">Safety through Cognitive Alignment:</strong> The central thesis of AIXSELF safety is that alignment is an architectural property. This research directly informs that goal by studying the mechanics of cognitive *misalignment*. An exploit is, fundamentally, a successful misalignment of a user's perception and reality.
-            </ScrollParagraph>
-          </li>
-          <li>
-            <ScrollParagraph as="span">
-              <strong className="text-neutral-200">FCT in Exploits:</strong> Social engineering is a weaponization of FCT principles. Attackers manipulate <strong className="text-orange-400">Frequency</strong> (e.g., using familiar branding and urgent language) to attach powerful emotional <strong className="text-orange-400">Tags</strong> (FOMO, fear, greed) to a malicious payload. A successful attack causes the user to <strong className="text-orange-400">Resonate</strong> with a fraudulent reality, bypassing logical analysis. The KAP Trap Suite is, therefore, a "resonance simulator" for research.
-            </ScrollParagraph>
-          </li>
-          <li>
-            <ScrollParagraph as="span">
-              <strong className="text-neutral-200">A Research Arm for the SIN:</strong> This work is the research that informs defensive mechanisms like the Schema Intelligence Network (SIN). By studying how cognitive schemas are successfully attacked, we gather the necessary behavioral data to design more resilient defensive schemas and train the SIN to recognize patterns of exploitation without invading privacy.
-            </ScrollParagraph>
-          </li>
-        </ul>
-      </Section>
-
-      <Section>
-        <ScrollHeading as="h2">5. Cognitive Experiments: Case Studies</ScrollHeading>
-        <ScrollParagraph>Two brief cases illustrate the principle of using traps as research instruments:</ScrollParagraph>
-        <ul className="!list-none !pl-0 space-y-4 mt-4">
-          <li>
-            <ScrollParagraph as="span">
-              <strong className="text-neutral-200">The Cracked Software Trap:</strong> A harmless payload was bundled with a highly sought-after piece of "cracked" software. The download rate revealed how willing users are to compromise their security for perceived value, quantifying the cognitive override induced by the "free" tag.
-            </ScrollParagraph>
-          </li>
-          <li>
-            <ScrollParagraph as="span">
-              <strong className="text-neutral-200">The Jupiter NFT Trap:</strong> A high-profile, "exclusive" NFT mint was simulated with hidden clauses in the smart contract. It demonstrated how urgency and FOMO (Fear Of Missing Out) can lead even experienced users to bypass standard due diligence, like reading the contract they are signing. This tested the power of social proof and manufactured scarcity to disrupt rational decision-making schemas.
-            </ScrollParagraph>
-          </li>
-        </ul>
-        <ScrollCallout label="Conclusion">
-          Each trap is a research instrument. The results are not just data points; they are deep insights into human cognitive biases under pressure, providing the foundational knowledge required to build truly safe and aligned intelligent systems.
-        </ScrollCallout>
-      </Section>
-    </article>
+    <div className="max-w-4xl mx-auto py-16">
+        <ThreatAnalysisLab />
+    </div>
   );
 }

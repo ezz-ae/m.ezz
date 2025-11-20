@@ -1,133 +1,51 @@
+// src/components/ScrollTypography.tsx
+'use client';
 
-"use client";
-
+import React from 'react';
 import { motion, useInView } from 'framer-motion';
-import { useRef, ElementType } from 'react';
 import { cn } from '@/lib/utils';
 
-type BaseScrollProps = {
-  children: React.ReactNode;
-  className?: string;
-  as?: ElementType;
-};
+// Reusable Section component with scroll-triggered animation
+export function Section({ children, className }: { children: React.ReactNode, className?: string }) {
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-// Generic Section with a consistent animation
-export const Section: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  return (
     <motion.section
-        initial={{ opacity: 0.8, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+      ref={ref}
+      className={className}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
     >
-        {children}
+      {children}
     </motion.section>
-);
-
-
-type ScrollParagraphProps = BaseScrollProps & {
-  emphasisLevel?: 'base' | 'resonance' | 'whisper';
-};
-
-export const ScrollParagraph: React.FC<ScrollParagraphProps> = ({
-  children,
-  emphasisLevel = 'base',
-  className,
-  as: Component = 'p',
-}) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
-
-  const variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.17, 0.55, 0.55, 1] } },
-  };
-
-  const emphasisClasses = {
-    base: '', // Will inherit color from parent
-    resonance: 'font-medium',
-    whisper: 'italic',
-  };
-
-  return (
-    <Component
-      ref={ref}
-      className={cn(emphasisClasses[emphasisLevel], className)}
-    >
-        <motion.span
-            className="inline-block"
-            variants={variants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-        >
-            {children}
-        </motion.span>
-    </Component>
   );
-};
+}
 
-type ScrollHeadingProps = BaseScrollProps & {
-  emphasisLevel?: 'base' | 'resonance';
-  glow?: boolean;
-};
+// Reusable Heading with scroll-triggered animation
+export function ScrollHeading({ as: Component = 'h2', children, className }: { as?: React.ElementType, children: React.ReactNode, className?: string }) {
+  return <Component className={cn("text-2xl font-light text-neutral-100 mb-4", className)}>{children}</Component>;
+}
 
-export const ScrollHeading: React.FC<ScrollHeadingProps> = ({
-  children,
-  className,
-  emphasisLevel = 'base',
-  glow = true,
-  as: Component = 'h2',
-}) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
+// Reusable Paragraph with scroll-triggered animation
+export function ScrollParagraph({ as: Component = 'p', children, className, emphasisLevel }: { as?: React.ElementType, children: React.ReactNode, className?: string, emphasisLevel?: 'low' | 'medium' | 'high' | 'resonance' }) {
+    const emphasisClasses = {
+        low: 'text-neutral-500',
+        medium: 'text-neutral-400',
+        high: 'text-neutral-200',
+        resonance: 'text-green-300/90'
+    };
+    const classes = cn('text-base leading-relaxed', emphasisLevel ? emphasisClasses[emphasisLevel] : 'text-neutral-400', className);
+  return <Component className={classes}>{children}</Component>;
+}
 
-  const variants = {
-    hidden: { opacity: 0, y: 25, filter: 'blur(8px)' },
-    visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.9, delay: 0.1, ease: [0.17, 0.55, 0.55, 1] } },
-  };
-  
-  const emphasisClasses = {
-    base: '', // Will inherit color from parent
-    resonance: 'font-medium tracking-tight',
-  }
-
-  const glowStyle = glow ? { textShadow: '0 0 40px hsla(var(--foreground), 0.25), 0 0 80px hsla(var(--foreground), 0.1)' } : {};
-
+// Reusable Callout with scroll-triggered animation
+export function ScrollCallout({ label, children }: { label: string, children: React.ReactNode }) {
   return (
-    <Component
-      ref={ref}
-      className={cn('font-headline !mb-4', emphasisClasses[emphasisLevel], className)}
-    >
-      <motion.span 
-        className="inline-block"
-        style={glowStyle}
-        variants={variants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-      >
-        {children}
-      </motion.span>
-    </Component>
+    <div className="my-8 border-l-2 border-orange-500/50 pl-4 py-2 bg-gradient-to-r from-orange-500/10 to-transparent">
+        <p className="text-sm font-semibold text-orange-400">{label}</p>
+        <div className="text-neutral-300 text-sm mt-2">{children}</div>
+    </div>
   );
-};
-
-
-type ScrollCalloutProps = BaseScrollProps & {
-    label?: string;
-};
-
-export const ScrollCallout: React.FC<ScrollCalloutProps> = ({
-    children,
-    label,
-    className,
-}) => {
-    return (
-        <Section>
-            <div className={cn("my-12 border-l-4 border-neutral-300 pl-6 py-4", className)}>
-                {label && (
-                    <p className="text-xs font-semibold tracking-widest uppercase text-neutral-500 mb-3">{label}</p>
-                )}
-                <p className="text-lg md:text-xl font-headline tracking-tight leading-relaxed">{children}</p>
-            </div>
-        </Section>
-    )
-};
+}

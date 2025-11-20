@@ -1,42 +1,15 @@
+// src/app/layout.tsx
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { SiteHeader } from "@/components/SiteHeader";
+import { CognitiveCanvas } from "@/components/CognitiveCanvas"; // Import the new component
 
-import type { Metadata } from 'next';
-import { Montserrat, Playfair_Display } from 'next/font/google';
-import './globals.css';
-import { cn } from '@/lib/utils';
-import { Toaster } from '@/components/ui/toaster';
-import AnalyticsListener from '@/components/AnalyticsListener';
-import SiteHeader from '@/components/SiteHeader';
-import { FirebaseClientProvider } from '@/firebase/client-provider';
-
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-body',
-});
-
-const playfairDisplay = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-headline',
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: {
-    default: 'EZZ.AE — Intelligence System Architecture',
-    template: '%s — EZZ.AE',
-  },
-  description: "A living documentation of Mahmoud Ezz’s work on Forgetence, AI memory safety, intelligence OS design, real estate infrastructure, traps, puzzles, and behavioural systems.",
-  openGraph: {
-    title: 'EZZ.AE — Intelligence System Architecture',
-    description: "A living documentation of Mahmoud Ezz’s work on Forgetence, AI memory safety, intelligence OS design, real estate infrastructure, traps, puzzles, and behavioural systems.",
-    url: 'https://ezz.ae',
-    siteName: 'EZZ.AE',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'EZZ.AE — Intelligence System Architecture',
-    description: "A living documentation of Mahmoud Ezz’s work on Forgetence, AI memory safety, intelligence OS design, real estate infrastructure, traps, puzzles, and behavioural systems.",
-  },
+  title: "EZZ.AE | A Living Intelligence",
+  description: "An interactive demonstration of a new cognitive architecture for artificial intelligence, based on the principles of Forgetting Core Thinking (FCT).",
 };
 
 export default function RootLayout({
@@ -45,20 +18,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          'min-h-screen bg-background font-body text-foreground antialiased overflow-x-hidden',
-          montserrat.variable,
-          playfairDisplay.variable
-        )}
-      >
-        <FirebaseClientProvider>
-          <SiteHeader />
-          <AnalyticsListener />
-          {children}
-          <Toaster />
-        </FirebaseClientProvider>
+    <html lang="en">
+      <body className={inter.className}>
+        <CognitiveCanvas /> {/* Add the canvas here */}
+        <SiteHeader />
+        <main>{children}</main>
       </body>
     </html>
   );
