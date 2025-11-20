@@ -8,11 +8,13 @@ import { Menu, X } from 'lucide-react';
 
 const mainNav = [
   { href: '/', label: 'Home' },
+  { href: '/notebooks', label: 'Notebooks' }, // Add the new link
   { href: '/aixa', label: 'AIXA Protocol' },
-  { href: '/journal', label: 'Journal' },
-  { href: '/implementation', label: 'Implementation' },
+  { href: '/thesis', label: 'The Thesis' },
+  { href: '/mindmap', label: 'Mind Map' },
+  { href: '/contribution-map', label: 'Contribution' },
+  { href: '/projection', label: 'Projection' },
   { href: '/source', label: 'Source' },
-  { href: '/contribution', label: 'Contribution' },
 ];
 
 export function MobileNav() {

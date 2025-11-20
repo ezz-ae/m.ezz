@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import IdentityStatement from '@/components/IdentityStatement';
 import TopicMap from '@/components/TopicMap';
-import FooterMinimal from '@/components/FooterMinimal';
+// FooterMinimal is no longer needed as SiteFooter is in the global layout
 import { Button } from '@/components/ui/button';
 
 const problemPoints = [
@@ -131,7 +131,7 @@ export default function FCTHome() {
       
       <TopicMap />
       
-      <FooterMinimal />
+      {/* FooterMinimal is no longer rendered here */}
     </div>
   );
 }

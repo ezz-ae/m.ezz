@@ -2,7 +2,7 @@
 import { notFound } from 'next/navigation';
 import { NOTEBOOKS, isNotebookId } from '@/components/notebooks/notebook-data';
 import NotebookRenderer from '@/components/notebooks/NotebookRenderer';
-import FooterMinimal from '@/components/FooterMinimal';
+// import FooterMinimal from '@/components/FooterMinimal'; // This was causing the build error
 import type { Metadata } from 'next';
 import { NotebookQueryInterface } from '@/components/notebooks/NotebookQueryInterface';
 import { NotebookResources } from '@/components/notebooks/NotebookResources';
@@ -26,14 +26,12 @@ type NotebookPageProps = {
   };
 };
 
-// Generate static paths for all notebooks at build time for performance.
 export async function generateStaticParams() {
   return Object.keys(NOTEBOOKS).map((slug) => ({
     slug,
   }));
 }
 
-// Generate dynamic metadata for each notebook page for SEO and social sharing.
 export async function generateMetadata({ params }: NotebookPageProps): Promise<Metadata> {
   const slug = params.slug;
   if (!isNotebookId(slug)) {
@@ -65,7 +63,6 @@ export async function generateMetadata({ params }: NotebookPageProps): Promise<M
 export default function NotebookPage({ params }: NotebookPageProps) {
   const slug = params.slug;
 
-  // Type guard and validation to ensure the slug corresponds to a real notebook.
   if (!isNotebookId(slug)) {
     notFound();
   }
@@ -74,9 +71,6 @@ export default function NotebookPage({ params }: NotebookPageProps) {
     notFound();
   }
 
-  // This logic derives the component's file name to create a dynamic link
-  // to its source code on GitHub. It relies on the component function name
-  // matching the file name (e.g., `BrainGamesNotebook` component is in `BrainGamesNotebook.tsx`).
   const componentName = notebook.component.name;
 
   return (
@@ -87,7 +81,6 @@ export default function NotebookPage({ params }: NotebookPageProps) {
       abilities={notebook.abilities}
     >
         <main className="pb-16">
-            {/* The main tabbed interface for interacting with the notebook */}
             <Tabs defaultValue="mind" className="w-full max-w-4xl mx-auto px-6 py-8 bg-neutral-950 rounded-lg shadow-xl border border-neutral-800">
                 <TabsList className="grid w-full grid-cols-4 bg-neutral-900/50 border border-neutral-800 h-auto">
                     <TabsTrigger value="mind">The Mind</TabsTrigger>
@@ -96,22 +89,19 @@ export default function NotebookPage({ params }: NotebookPageProps) {
                     <TabsTrigger value="query">Query AI</TabsTrigger>
                 </TabsList>
                 
-                {/* Tab 1: Renders the core content of the notebook */}
                 <TabsContent value="mind" className="py-8">
                     <NotebookRenderer slug={slug} />
                 </TabsContent>
                 
-                {/* Tab 2: Placeholder for future resource links */}
                 <TabsContent value="resources" className="py-8">
                     <NotebookResources />
                 </TabsContent>
                 
-                {/* Tab 3: A link to a future discussions area */}
                 <TabsContent value="discussion" className="py-8 text-center">
                     <div className="prose prose-invert mx-auto">
                         <h3 className="text-xl font-light">Join the Conversation</h3>
                         <p className="text-neutral-400">
-                            Open discussions for this notebook are active. Share your insights, ask questions, and collaborate with others exploring these concepts.
+                            Open discussions for this notebook are active.
                         </p>
                         <Link href="/discussions">
                             <Button variant="outline" className="mt-4">
@@ -121,7 +111,6 @@ export default function NotebookPage({ params }: NotebookPageProps) {
                     </div>
                 </TabsContent>
 
-                {/* Tab 4: The interactive AI query and Autothinker interface */}
                 <TabsContent value="query" className="py-8">
                     <NotebookQueryInterface 
                         slug={slug} 
@@ -131,7 +120,6 @@ export default function NotebookPage({ params }: NotebookPageProps) {
                 </TabsContent>
             </Tabs>
 
-            {/* The subtle, elegant link to the notebook's source code */}
             <div className="text-center mt-12 px-6">
                 <a 
                     href={`https://github.com/mahmoud-ezz/ezz.ae/blob/main/src/components/notebooks/${componentName}.tsx`}
@@ -140,12 +128,12 @@ export default function NotebookPage({ params }: NotebookPageProps) {
                     className="text-xs text-neutral-600 hover:text-orange-400 transition-colors inline-flex items-center gap-2"
                 >
                     <Code2 size={14} />
-                    <span>This notebook is an open-source component. View the source and experiment with the logic.</span>
+                    <span>This notebook is an open-source component. View the source.</span>
                 </a>
             </div>
 
         </main>
-        <FooterMinimal />
+        {/* The global SiteFooter in layout.tsx handles the footer now */}
     </NotebookLayout>
   );
 }
