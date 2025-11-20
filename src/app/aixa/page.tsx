@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-// import FooterMinimal from '@/components/FooterMinimal'; // This component was removed
 import { AIXASystemNotebook } from '@/components/notebooks/AIXASystemNotebook';
 
 const AixaPage: React.FC = () => {
@@ -10,7 +9,6 @@ const AixaPage: React.FC = () => {
       <main className="pb-16 pt-24">
         <AIXASystemNotebook />
       </main>
-      {/* The global SiteFooter in layout.tsx handles the footer now */}
     </div>
   );
 };
