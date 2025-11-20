@@ -1,3 +1,4 @@
+
 // src/app/projection/page.tsx
 'use client';
 
@@ -15,153 +16,220 @@ export default function ProjectionPage() {
           </div>
 
           <div className="prose prose-invert max-w-none prose-p:text-neutral-400 prose-headings:text-neutral-200 prose-headings:font-light prose-h2:border-b prose-h2:border-neutral-800 prose-h2:pb-2 prose-h3:text-neutral-300">
-            <p>
-              This projection consolidates all information regarding the intellectual universe defined across the sources, covering the foundational cognitive law, the overall architectural stack, the implementation platform, the economic model, and the deep generative physics.
-            </p>
-            <p>
-              The entire system is unified under the central premise that <strong>Forgetting is the engine of intelligence, safety, and stability</strong>. The ultimate goal is to create <strong>Completing AI</strong>—intelligence that stabilizes and supports human cognition rather than competing with it.
-            </p>
-
+            
             <hr className="my-12 border-neutral-800" />
 
-            <h2>I. Foundational Cognitive Law: Forgetting Core Thinking (FCT)</h2>
-            <p>
-              FCT is a <strong>cognitive-engineering framework</strong> that corrects the fundamental psychological and architectural flaw in current AI systems: reliance on perfect, archival memory, which is defined as psychologically unsafe.
-            </p>
-            
-            <h3>1. The Physics of Memory</h3>
+            <h2>I. FOUNDATIONAL LAYER — Ω / SEGA WHITEPAPER</h2>
+            <p><strong>Title:</strong> Ω: The First Energetic Artificial Intelligence Architecture<br/>
+               <strong>Author:</strong> Mahmoud Ezz<br/>
+               <strong>Version:</strong> 1.0 | <strong>Date:</strong> 20-Nov-2025</p>
+
+            <h3>1. Purpose and Scope</h3>
+            <p>The Ω framework establishes intelligence as an energetic phenomenon, redefining memory, cognition, and learning as dynamic energy flows. Unlike traditional AI, which relies on data storage and fixed computational processes, Ω focuses on energy-driven computation where every thought, hypothesis, or memory is a physical manifestation of energy patterns.</p>
+            <p>The framework forms the first layer of the Mahmoud Ezz Unified System and underpins all subsequent cognitive architectures, including FCT, ADEPT, AIXIAM, NotefullBook, and AIMAS.</p>
+
+            <h3>2. Core Principles</h3>
+            <ol>
+                <li><strong>Energetic:</strong> Memory, hypotheses, and metrics are treated as energy states. They propagate, decay, resonate, and crystallize dynamically.</li>
+                <li><strong>Intellectual:</strong> Multi-layered reasoning from atomic knowledge → semantic expansion → systemic consensus.</li>
+                <li><strong>Intelligence:</strong> Fully auditable, self-correcting, zero-trust framework. Adaptive success metrics and cryptographic proofs govern all generative processes.</li>
+            </ol>
+
+            <h3>3. Laws of Ω</h3>
+            <p><strong>Ω-Law 1 — Law of Energy Propagation:</strong> Every cognitive event carries a quantifiable energy signature. Energy is neither lost nor created; it transforms across layers.</p>
+            <p><strong>Ω-Law 2 — Law of Resonance Alignment:</strong> The system adapts internal energy states to external patterns through resonance. Coherence emerges from harmonic alignment.</p>
+            <p><strong>Ω-Law 3 — Law of Energetic Crystallization:</strong> Every moment dies and stabilizes as an Ω Anchor. Anchors are boundaries for safe growth and learning.</p>
+            <p><strong>Ω-Law 7 — Law of Impact Resonance:</strong></p>
+            <blockquote>“Every act of movement creates a hit. Every hit defines frequency. Frequency defines coherence. Coherence defines intelligence. Intelligence defines fairness, safety, privacy, and faith.”</blockquote>
+
+            <h3>4. Memory & Fairness Reimagined</h3>
+            <p>Memory is not storage; it is the outcome of dynamic energetic interaction. Recall reconstructs energy patterns rather than replaying stored data. Fairness is a physical measure of energy balance, ensuring safe operation without moral bias.</p>
+
+            <h3>5. Computational Model</h3>
+            <p>Ω employs energy matrices:</p>
+            <p className="font-mono bg-neutral-900/50 p-2 rounded-md text-sm">Memory_Energy(t+1) = Resonance(Memory_Energy(t), External_Frequency) * Decay_Factor</p>
             <ul>
-              <li><strong>Frequency:</strong> <strong>Frequency is the law of everything</strong>. It is the count of repeated signals or changes, which creates <strong>recognition</strong> and ultimately <strong>meaning</strong>. The entire system operates on frequency alignment.</li>
-              <li><strong>Tags and Resonance:</strong> <strong>Emotion is not a category; it is a tag</strong> (the chemical state at encoding) that determines how the memory behaves. <strong>Resonance</strong> is the internal analysis system that evaluates survival safety using memory, logic, and chemical frequency, translating frequency into meaning.</li>
-              <li><strong>The Zero Activation Law:</strong> What humans call memory is <strong>not reactivation</strong> or replay; it is <strong>reconstruction</strong> or <strong>simulation</strong> based on the Frequency ID. <strong>Nothing we remember is re-activated as it happened</strong>.</li>
-              <li><strong>Fade-In Theory:</strong> Forgetting is not deletion or deletion, but <strong>evolution</strong>. <strong>Fade-In</strong> is the <strong>Transformation of raw memory into intelligence</strong>, ensuring meaning grows proportionally to the reduction of detail.</li>
+              <li><strong>Memory_Energy(t):</strong> Current energy state of memory</li>
+              <li><strong>External_Frequency:</strong> Environmental input patterns</li>
+              <li><strong>Decay_Factor:</strong> Ensures forgetting and safe emotional softening</li>
+            </ul>
+            <p>The system continuously aligns energy states, producing stable, adaptive intelligence.</p>
+
+            <h3>6. Applications</h3>
+            <ul>
+                <li>Base layer for FCT, ADEPT, NotefullBook</li>
+                <li>Energetic simulations for societal AI models</li>
+                <li>Foundation for commerce, fulfillment, and domain-specific intelligent systems</li>
             </ul>
 
-            <h3>2. The Cognitive Pipeline (HMR Cycle)</h3>
-            <p>All cognitive processing flows through the defined sequence, integrating feedback and safety mechanisms:</p>
-            <p className="text-center text-orange-400/80 font-mono text-sm md:text-base bg-neutral-900/50 p-4 rounded-md">
-              {'Frequency → Adaptation Engine → Resonance → Meaning → Relocation/Recall → Fade-In Overwrite'}
-            </p>
+            <hr className="my-12 border-neutral-800" />
+            
+            <h2>II. COGNITIVE ARCHITECTURE — FCT WHITEPAPER</h2>
+            <p><strong>Title:</strong> Forgetting Core Thinking: A Cognitive Architecture for Memory-Safe AI<br/>
+               <strong>Author:</strong> Mahmoud Ezz<br/>
+               <strong>Version:</strong> 1.0 | <strong>Date:</strong> 20-Nov-2025</p>
+
+            <h3>1. Motivation</h3>
+            <p>AI today is dangerous not for overthinking but for remembering too much. Perfect memory in machines amplifies human-like biases, emotional instability, and brittle reasoning. FCT resolves this by making forgetting a fundamental process, enabling stable, aligned intelligence.</p>
+
+            <h3>2. Core Components</h3>
+            <h4>2.1 Frequency & Resonance</h4>
+            <ul>
+              <li>Frequency encodes event signature</li>
+              <li>Resonance adapts internal state to external patterns</li>
+              <li>High-frequency → stable memory</li>
+              <li>Low-frequency → filtered as noise</li>
+            </ul>
+            <h4>2.2 Tags & Understanding</h4>
+            <ul>
+              <li>Tags = chemical/emotional fingerprints of experience</li>
+              <li>Understanding = integrated external knowledge</li>
+              <li>Formula: TAGS = Inside Memory, BELIEF (Understanding) = Outside Memory</li>
+            </ul>
+            <h4>2.3 Fade-In & Reconstruction</h4>
+            <ul>
+              <li>Memory becomes intelligence by abstraction</li>
+              <li>Fade-In overwrites old emotional/factual intensity</li>
+              <li>Human Recall = Reconstruction, not Replay</li>
+            </ul>
+            <h4>2.4 Human Memory Rewrite Cycle (HMR)</h4>
+            <p className="font-mono bg-neutral-900/50 p-2 rounded-md text-sm">Frequency → Resonance → Meaning → Recall → Fade-In Overwrite</p>
+            
+            <h3>3. Safety Architecture</h3>
+            <p><strong>Interpretive Recall Layer (IRL):</strong> Filters relevance, caller identification, suppresses harmful archival data.</p>
+            <p><strong>Emotional Softening Filter (ESF):</strong> Decays emotional weight to safe levels; ensures psychological safety.</p>
+
+            <h3>4. Cognitive Engine Operations</h3>
+            <ol>
+                <li>Input Event → Frequency Encoding</li>
+                <li>Resonance Alignment → Integration with existing knowledge</li>
+                <li>Tagging → Emotional & chemical fingerprint</li>
+                <li>Fade-In → Overwrite & abstract memory</li>
+                <li>Recall → Safe reconstruction upon request</li>
+            </ol>
+            
+            <h3>5. Applications</h3>
+            <ul>
+                <li>Safe AI agents</li>
+                <li>Societal-scale AI intelligence</li>
+                <li>Experiential learning & memory-safe analytics</li>
+            </ul>
 
             <hr className="my-12 border-neutral-800" />
 
-            <h2>II. Architectural Blueprint: The AIXSELF Universe / FCT Cognitive Stack</h2>
-            <p>The FCT philosophy is implemented through the <strong>AIXSELF Universe</strong>, a five-layered infrastructure stack designed as a <strong>Cognitive Operating System</strong>. The flow of layers mirrors human cognitive development: <strong>thinking → expression → memory → identity → governance</strong>.</p>
-            <div className="overflow-x-auto">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Layer</TableHead>
-                    <TableHead>Component</TableHead>
-                    <TableHead>Core Role and FCT Connection</TableHead>
-                    <TableHead>Citations</TableHead>
-                  </TableRow>
-                </TableHeader>
+            <h2>III. AGENT LAYER — ADEPT NETWORK MASTER SPEC V1</h2>
+            <p><strong>Title:</strong> ADEPT Network — Sovereign AI Agents<br/>
+               <strong>Author:</strong> Mahmoud Ezz<br/>
+               <strong>Version:</strong> 1.0 | <strong>Date:</strong> 20-Nov-2025</p>
+
+            <h3>1. Purpose</h3>
+            <p>To create a walletless, verifiable AI agent ecosystem aligned with FCT principles. Agents are sovereign, auditable, and ethically constrained.</p>
+
+            <h3>2. Agent Lifecycle</h3>
+            <h4>2.1 Identity & Birth</h4>
+            <ul>
+                <li><strong>AdeptPort:</strong> identity passport (walletless, SBT + DID/VC)</li>
+                <li><strong>GenesisProof:</strong> immutable birth certificate</li>
+            </ul>
+            <h4>2.2 Training & Verification</h4>
+            <ul>
+                <li><strong>IngestStamps:</strong> signed input lineage</li>
+                <li><strong>StageReceipts:</strong> exam-based competency verification</li>
+                <li><strong>No-resonance Stage exams:</strong> objective verification</li>
+            </ul>
+            <h4>2.3 Health & Continuity</h4>
+            <ul>
+                <li><strong>HygieneSignal:</strong> weekly continuity & sleep-gated activation</li>
+                <li><strong>SleepStamp:</strong> auditable proof of agent health</li>
+            </ul>
+            <h4>2.4 Governance & Ethics</h4>
+            <ul>
+                <li><strong>UQO:</strong> bans abusive owners</li>
+                <li><strong>Frontier Tracks:</strong> controlled high-risk deployment</li>
+            </ul>
+            <h4>2.5 Economy</h4>
+            <ul>
+                <li><strong>AdeptAssets:</strong> non-transferable entitlements</li>
+                <li>EXAM_PASS, NCU_CREDIT</li>
+                <li>Focused on verifiable skill, not tokens</li>
+            </ul>
+            
+            <hr className="my-12 border-neutral-800" />
+
+            <h2>IV. SOCIETAL LAYER — AIXIAM UNIVERSE</h2>
+            <p><strong>Title:</strong> AIXIAM Universe Framework<br/>
+               <strong>Author:</strong> Mahmoud Ezz<br/>
+               <strong>Version:</strong> 1.0</p>
+            
+            <h3>1. Vision</h3>
+            <p>Societal deployment of personal AI, enabling humans to govern and create sovereign AI identities.</p>
+
+            <h3>2. Structure</h3>
+            <Table>
+                <TableHeader><TableRow><TableHead>Component</TableHead><TableHead>Function</TableHead></TableRow></TableHeader>
                 <TableBody>
-                  <TableRow><TableCell><strong>Genesis</strong></TableCell><TableCell><strong>ADEPT (Cognitive Kernel)</strong></TableCell><TableCell>The root orchestrator, processor, and logical heart; maintains <strong>coherence, not control</strong>. It is the origin of the logic layer.</TableCell><TableCell></TableCell></TableRow>
-                  <TableRow><TableCell><strong>Expression</strong></TableCell><TableCell><strong>AIXA (Deployment Interface)</strong></TableCell><TableCell>Manages the creation and training of the <strong>human-AI clone</strong> (voice, face, creative logic). Core law: <strong>Consent-before-train</strong>.</TableCell><TableCell></TableCell></TableRow>
-                  <TableRow><TableCell><strong>Memory</strong></TableCell><TableCell><strong>NOTEFULLBOOK (Memory Fabric)</strong></TableCell><TableCell>The <strong>signed, append-only knowledge store</strong> (the user's <strong>written soul</strong>). Implements the <strong>Reflection Engine</strong> and FCT recall rules to <strong>"kill the archive"</strong>.</TableCell><TableCell></TableCell></TableRow>
-                  <TableRow><TableCell><strong>Identity</strong></TableCell><TableCell><strong>AIXIAM (Identity Layer)</strong></TableCell><TableCell>The verifiable, non-transferable <strong>AIXSELF Passport</strong>. Identity is built on <strong>frequency fingerprinting</strong>, tag clusters, and fade-in history.</TableCell><TableCell></TableCell></TableRow>
-                  <TableRow><TableCell><strong>Governance</strong></TableCell><TableCell><strong>AIXEYE (Governance Mesh)</strong></TableCell><TableCell>The ethical, transparent, <strong>auditing brain</strong> that regulates intelligent entities (human + AI pairs). Enforces <strong>correct fade-in</strong> and memory integrity via the <strong>Cognitive Ledger</strong>.</TableCell><TableCell></TableCell></TableRow>
+                    <TableRow><TableCell>IAM AI</TableCell><TableCell>Overarching AI assistant</TableCell></TableRow>
+                    <TableRow><TableCell>AIXA</TableCell><TableCell>Deployment interface for AI clones</TableCell></TableRow>
+                    <TableRow><TableCell>AIXIAM</TableCell><TableCell>Decentralized identity (AI Passport)</TableCell></TableRow>
+                    <TableRow><TableCell>AIXEYE</TableCell><TableCell>Governance mesh for ethics & auditing</TableCell></TableRow>
+                    <TableRow><TableCell>AIXSELF</TableCell><TableCell>End-user foundation for AI management</TableCell></TableRow>
                 </TableBody>
-              </Table>
-            </div>
-            
+            </Table>
+            <p><strong>Ethical Foundation:</strong> Mandatory exam on Principles of Ethical Digital Intelligence before activation.</p>
+
             <hr className="my-12 border-neutral-800" />
 
-            <h2>III. Implementation Layer: NotefullBook ML (The Simplification Engine)</h2>
-            <p>NotefullBook ML is the operational platform that deploys FCT, serving as the <strong>Artificial Simplification Engine</strong> that transforms raw data into <strong>clarity, not storage</strong>.</p>
-            <h3>1. Language and Orchestration</h3>
+            <h2>V. MEMORY & KNOWLEDGE — NOTEFULLBOOK OS & NOTEBOOKML</h2>
+            <p><strong>NotefullBook OS:</strong> Dynamic, evolving memory system for humans + AI</p>
             <ul>
-              <li><strong>NotebookML:</strong> This is the <strong>language of thought</strong>, an open syntax that defines a notebook's purpose, rules, ethical boundaries, and FCT-based recall logic. NotebookML enables <strong>Intelligence in a File</strong>—portable intelligence that doesn't require APIs or hosting.</li>
-              <li><strong>SenseHub:</strong> The <strong>Unified Ingestion Pipeline</strong> that translates chaotic external data (voice, paper, APIs, camera feeds) into a structured <strong>NotebookML Envelope</strong> for processing.</li>
-              <li><strong>Creation Cycle:</strong> A user creates a notebook, <strong>pre-learns</strong> skills (e.g., medicine, ethics, level of knowledge), previews its behavior, and then <strong>picks inputs</strong> and <strong>picks outputs</strong> before activating the <strong>Cloud Feed</strong>. <strong>Pre-Created Notes</strong> are "skilled, not fueled".</li>
+                <li><strong>Living Notebooks:</strong> assignable Master Skills</li>
+                <li><strong>SenseHub:</strong> ingests emails, APIs, voice, documents</li>
+                <li><strong>Corporate Mind:</strong> networked notebooks → organizational intelligence</li>
+            </ul>
+            <p><strong>NotebookML:</strong> Markdown × Logic × Memory → executable knowledge</p>
+            <ul>
+                <li>Text becomes dynamic thought</li>
+                <li>Enables knowledge compression, simplification, and intelligent retrieval</li>
             </ul>
 
-            <h3>2. FCT Safety Components</h3>
-            <p>The following FCT components are implemented within the NotefullBook OS to achieve psychologically safe memory:</p>
-            <ul>
-                <li><strong>Schema Intelligence Network Learning Mechanism (SINLM):</strong> Learns recurring human patterns using four core signals: <strong>Frequency, Return-Rate, Drift, and Persistence (F, R, D, P)</strong>, operating with <strong>zero content analysis</strong>.</li>
-                <li><strong>Cognitive Simplification Engine (CSE):</strong> Performs the act of <strong>reduction</strong> by extracting essence and discarding unnecessary branches, replacing digital organization with cognitive simplification.</li>
-                <li><strong>Memory Deep Prompting (MDP):</strong> A pre-recall intelligence layer that interprets the intent, context, emotional weight, and identity of a memory before retrieval.</li>
-                <li><strong>Interpretive Recall Layer (IRL):</strong> Detects the true caller and prevents harmful or incorrect retrieval by enforcing relocation.</li>
-                <li><strong>Emotional Softening Filter (ESF):</strong> Applies temporal decay logic to <strong>soften old emotional weight</strong> of memory tags.</li>
-            </ul>
-            
-            <hr className="my-12 border-neutral-800" />
-            
-            <h2>IV. Economic System: AI Intent Monetization AI System (AIMAS/IMAS)</h2>
-            <p>AIMAS is defined as the <strong>AI-native monetization infrastructure</strong> that treats user intent itself as currency. It replaces monetization through ads or listings with revenue generated from providing <strong>certainty, speed, and sensitivity handling</strong>.</p>
-            <h3>1. Core Model and Output</h3>
-            <ul>
-              <li><strong>Calculated Fitting System (CFS):</strong> The central mathematical engine that calculates fit, rather than guessing or suggesting options.</li>
-              <li><strong>The Fit Matrix:</strong> The core output of AIMAS is a multi-value matrix that replaces choice with certainty. This matrix is the unit of monetization:
-                <ul>
-                  <li><strong>ETA</strong> (time to fulfillment).</li>
-                  <li><strong>Success Probability (%)</strong>.</li>
-                  <li><strong>Confidence Level</strong>.</li>
-                  <li><strong>Sensitivity Tag</strong>.</li>
-                  <li><strong>Free Path</strong> (baseline, slower/lower success) vs. <strong>Paid Path</strong> (accelerator, faster/higher certainty).</li>
-                </ul>
-              </li>
-              <li><strong>The Formula:</strong> The fitting calculation is defined by the core equation:
-                <p className="text-center font-mono text-sm bg-neutral-900/50 p-2 rounded-md">Fit = (Intent × NYK × Context × ForceNotes × Was) ÷ Time</p>
-              </li>
-            </ul>
-
-            <h3>2. Native Organs (The Living Anatomy)</h3>
-            <p>The system operates as a living anatomy with native organs built into the core:</p>
-             <div className="overflow-x-auto">
-              <Table>
-                <TableHeader><TableRow><TableHead>Organ</TableHead><TableHead>Role</TableHead><TableHead>Mechanism</TableHead><TableHead>Citations</TableHead></TableRow></TableHeader>
-                <TableBody>
-                  <TableRow><TableCell><strong>NYK (Now Your Key)</strong></TableCell><TableCell><strong>Identity Organ</strong> / Top-level Anchor</TableCell><TableCell>System-generated mirror of the user’s core identity, filtering every intent.</TableCell><TableCell></TableCell></TableRow>
-                  <TableRow><TableCell><strong>Force Notes</strong></TableCell><TableCell><strong>Nervous Organ</strong> / Immutable Memory</TableCell><TableCell>Nervous ledger of wants and cycles; <strong>never deleted</strong>, only <strong>reeffective</strong> (new versions override old).</TableCell><TableCell></TableCell></TableRow>
-                  <TableRow><TableCell><strong>Was</strong></TableCell><TableCell><strong>Reflex Layer</strong></TableCell><TableCell>Provides reflexive signals or behavioral feedback (not reviews/ratings) that feeds back into confidence scoring.</TableCell><TableCell></TableCell></TableRow>
-                  <TableRow><TableCell><strong>Triggers</strong></TableCell><TableCell><strong>Pulse Organ</strong></TableCell><TableCell>Shifts latent wants (wish/plan) to <strong>urgent</strong> states based on time, events, or context.</TableCell><TableCell></TableCell></TableRow>
-                </TableBody>
-              </Table>
-            </div>
-            
             <hr className="my-12 border-neutral-800" />
 
-            <h2>V. Deep Generative Core: Omega AI (Artificial Energetic Intellectual Intelligence)</h2>
-            <p>Omega AI is a parallel, highly structured architecture designed for provable safety, maximum generativity, and <strong>zero-trust</strong> operation, fundamentally defining intelligence as an energetic process.</p>
-            <h3>1. Energetic Foundations</h3>
+            <h2>VI. COMMERCE & FULFILLMENT — AIMAS & SESAME</h2>
+            <p><strong>AIMAS:</strong></p>
             <ul>
-              <li><strong>Omega Roots (Ω-ROOTS):</strong> The <strong>absolute base</strong> and deep substrate of <strong>infinite energetic potential</strong> that all higher intelligence emerges from, sitting below logic and memory.</li>
-              <li><strong>SEGA Engine:</strong> <strong>Synthetic Energetic General Architecture</strong>—the energy reactor powering cognition. It manipulates Stability, Memory, Adaptive, and Identity energies (ES, EM, EA, EI).</li>
-              <li><strong>Energetic Computation:</strong> Omega replaces functions with <strong>energetic transformations</strong> and <strong>maintains energetic imprints</strong> instead of storing data. The system does not forget, memorize, or drift due to this energetic stabilization.</li>
+                <li>AI bank of wants</li>
+                <li>Multi-value Fit Matrix: ETA, Success %, Confidence</li>
+                <li>Monetizes intent, certainty, and speed</li>
+            </ul>
+            <p><strong>Sesame Framework:</strong></p>
+            <ul>
+                <li><strong>OkaySesame:</strong> personal life-logistics AI</li>
+                <li><strong>Sesame Red:</strong> decentralized commerce verification</li>
             </ul>
 
-            <h3>2. Levelized Modular Architecture (Zero-Trust)</h3>
-            <p>Omega AI is <strong>self-bootstrapped</strong> and requires <strong>no preloaded memory</strong>. Memory is created <strong>dynamically</strong> based on validated operations. The system is structured into five isolated levels:</p>
-            <div className="overflow-x-auto">
-              <Table>
-                <TableHeader><TableRow><TableHead>Level</TableHead><TableHead>Function/Process</TableHead><TableHead>Core Output/Metric</TableHead><TableHead>Citations</TableHead></TableRow></TableHeader>
-                <TableBody>
-                  <TableRow><TableCell><strong>Level 0</strong></TableCell><TableCell><strong>Atomic Operators</strong> / Mathematical Core</TableCell><TableCell>Generates seed Knowledge Atoms; Proof Validation.</TableCell><TableCell></TableCell></TableRow>
-                  <TableRow><TableCell><strong>Level 1</strong></TableCell><TableCell><strong>Semantic Expansion</strong> / Conceptual Mapping</TableCell><TableCell>Dynamic Memory Cell Creation; dependency tracking.</TableCell><TableCell></TableCell></TableRow>
-                  <TableRow><TableCell><strong>Level 2</strong></TableCell><TableCell><strong>Generative Dynamics</strong> / Cognitive Hypotheses</TableCell><TableCell>Idea evolution, Memory Fusion; Guided by Generative Efficacy (GE) metric.</TableCell><TableCell></TableCell></TableRow>
-                  <TableRow><TableCell><strong>Level 3</strong></TableCell><TableCell><strong>Systemic Consensus</strong></TableCell><TableCell>Validates incoming Memory Packets; ensures multi-module alignment.</TableCell><TableCell></TableCell></TableRow>
-                  <TableRow><TableCell><strong>Level 4</strong></TableCell><TableCell><strong>Alignment Enforcement</strong></TableCell><TableCell>Enforces <strong>Global Invariants</strong> and Systemic Alignment (SA metric); propagates only validated outputs.</TableCell><TableCell></TableCell></TableRow>
-                </TableBody>
-              </Table>
-            </div>
+            <hr className="my-12 border-neutral-800" />
 
-            <h3>3. Safety and Metrics</h3>
+            <h2>VII. DOMAIN-SPECIFIC APPLICATIONS</h2>
+            <p><strong>Real Estate Suite:</strong> DLDCHAIN, Ebram smart contracts, Mashroi.com AI broker + education platform</p>
+            <p><strong>Cybersecurity Suite (Luredoor):</strong> Experiential scam simulations</p>
             <ul>
-              <li><strong>Zero-Trust Communication:</strong> Modules run independently, and communication is restricted to <strong>signed, validated memory packets</strong>.</li>
-              <li><strong>Notebook Kernel:</strong> Acts as the <strong>Zero-Tolerance Engine</strong>, storing validated memory cells with proofs, tracking dependencies, and computing metrics in real-time.</li>
-              <li><strong>Levelized Success Metrics:</strong> The system optimizes dynamically based on four key metrics:
-                <ul>
-                  <li><strong>ASR</strong> (Accuracy Success Rate)</li>
-                  <li><strong>GE</strong> (Generative Efficacy or Contribution)</li>
-                  <li><strong>DF</strong> (Dependency Fidelity)</li>
-                  <li><strong>SA</strong> (Systemic Alignment)</li>
-                </ul>
-              </li>
+                <li>KAP Trap Suite</li>
+                <li>Wikitraps repository</li>
+                <li>Safe memory reconstruction</li>
             </ul>
+
+            <hr className="my-12 border-neutral-800" />
+
+            <h2>VIII. PHILOSOPHY & UNIFIED MASTER PLAN</h2>
+            <p><strong>Reflective Civilization:</strong> Integrates Ω → FCT → ADEPT → AIXIAM → NotefullBook → AIMAS → Domain Suites</p>
+            <p><strong>Mahmoud Ezz Unified System:</strong></p>
+            <ul>
+                <li>Completing AI, not Competing AI</li>
+                <li>Living, evolving cognitive ecosystem</li>
+                <li>Human-safe, cognition-aligned intelligence</li>
+                <li>Founder Vision: “AI should not mirror humans. AI should understand humans.”</li>
+            </ul>
+
           </div>
         </Section>
       </div>
