@@ -9,42 +9,97 @@ import { cn } from '@/lib/utils';
 
 const mindMapData = {
     id: 'root',
-    title: 'FCT: The Cognitive Safety Layer in AI',
-    subtitle: 'Current AI has a fatal flaw: perfect memory. The solution is a Completing AI that stabilizes and supports human intelligence.',
+    title: 'The Map of Generative Cognition',
+    subtitle: 'A unified model of the FCT/AIXSELF intellectual universe, from foundational physics to societal implementation.',
     children: [
         {
-            id: 'arch',
-            title: 'System Architecture (The OS View)',
-            subtitle: 'The five cognitive layers that form the AIXSELF Universe.',
+            id: 'fct-law',
+            title: 'I. Foundational Cognitive Law: Forgetting Core Thinking (FCT)',
+            subtitle: 'Forgetting is the engine of intelligence, safety, and stability.',
             children: [
-                { id: 'adept', title: 'ADEPT: Cognitive Kernel', subtitle: 'The root processor. Orchestrates models, manages pipelines, and connects all modules.' },
-                { id: 'aixa', title: 'AIXA: Deployment Interface', subtitle: 'User-facing layer for training and deploying personalized AI clones with verifiable credentials.' },
-                { id: 'notefull', title: 'NotefullBook: Memory Fabric', subtitle: 'The append-only, cryptographically signed knowledge store for all consented data.' },
-                { id: 'aixiam', title: 'AIXIAM: Identity Layer', subtitle: 'The sovereign identity system that issues a non-transferable passport (DID) to each human-AI pair.' },
-                { id: 'aixeye', title: 'AIXEYE: Governance Mesh', subtitle: 'The AI-driven financial and ethical auditor. It validates consent, scores merit, and ensures alignment.' },
+                {
+                    id: 'fct-physics', title: 'The Physics of Memory', subtitle: 'Cognition as a physical, not just informational, process.',
+                    children: [
+                        { id: 'fct-freq', title: 'Frequency', subtitle: 'The law of everything; repetition creates meaning.' },
+                        { id: 'fct-tags', title: 'Tags & Resonance', subtitle: 'Emotion as a chemical tag; resonance as the survival-analysis engine.' },
+                        { id: 'fct-zero', title: 'The Zero Activation Law', subtitle: 'Recall is reconstruction, not replay.' },
+                        { id: 'fct-fade', title: 'Fade-In Theory', subtitle: 'Forgetting is evolution; the transformation of raw memory into intelligence.' },
+                    ],
+                },
+                {
+                    id: 'fct-pipeline', title: 'The Cognitive Pipeline (HMR Cycle)', subtitle: 'Frequency → Adaptation → Resonance → Meaning → Relocation → Fade-In Overwrite.'
+                },
+                {
+                    id: 'fct-safety', title: 'FCT Cognitive Safety Stack', subtitle: 'Architectural components that ensure psychologically safe recall.',
+                    children: [
+                        { id: 'fct-irl', title: 'Interpretive Recall Layer (IRL)', subtitle: 'Filters for intent and context.' },
+                        { id: 'fct-esf', title: 'Emotional Softening Filter (ESF)', subtitle: 'Applies temporal decay to emotional tags.' },
+                        { id: 'fct-mfr', title: 'Meaning-First Retrieval (MFR)', subtitle: 'Prioritizes the "why" over the "what".' },
+                        { id: 'fct-sinlm', title: 'Schema Intelligence Network (SINLM)', subtitle: 'Learns behavioral patterns with zero content analysis.' },
+                    ]
+                }
             ],
         },
         {
-            id: 'mech',
-            title: 'Cognitive Mechanism (FCT Enforcement)',
-            subtitle: 'How the system achieves safety and learning through purposeful forgetting.',
+            id: 'aixself-arch',
+            title: 'II. Architectural Blueprint: The AIXSELF Universe',
+            subtitle: 'A five-layered cognitive operating system mirroring human development.',
             children: [
-                { id: 'sinlm', title: 'SINLM (Behavioral Truth)', subtitle: 'Learns importance by tracking behavioral signals (frequency, return-rate), not by reading private content.' },
-                { id: 'fam', title: 'FAM (Cognitive Waste Management)', subtitle: 'Performs intelligent forgetting by deleting raw data while preserving compressed patterns (artifacts).' },
-                { id: 'irl', title: 'IRL (Meaning-First Retrieval)', subtitle: 'Ensures the AI retrieves the underlying meaning or schema of a memory, not the raw, literal event.' },
-                { id: 'esf', title: 'ESF (Emotional Attenuation)', subtitle: 'Applies temporal decay to the emotional intensity of memory tags, preventing harmful recall.' },
+                { id: 'adept', title: 'L1 Genesis: ADEPT (Cognitive Kernel)', subtitle: 'The root orchestrator and logical heart.' },
+                { id: 'aixa', title: 'L2 Expression: AIXA (Deployment Interface)', subtitle: 'Manages the creation and training of human-AI clones.' },
+                { id: 'notefullbook-arch', title: 'L3 Memory: NOTEFULLBOOK (Memory Fabric)', subtitle: 'The signed, evolving knowledge store that "kills the archive."' },
+                { id: 'aixiam', title: 'L4 Identity: AIXIAM (Identity Layer)', subtitle: 'Provides the verifiable, non-transferable AIXSELF Passport.' },
+                { id: 'aixeye', title: 'L5 Governance: AIXEYE (Governance Mesh)', subtitle: 'The ethical, transparent auditor regulating the civilization.' },
             ],
         },
         {
-            id: 'product',
-            title: 'Entry Product: The NotefullBook OS',
-            subtitle: 'The tangible result of the architecture: a personal AI notebook OS.',
+            id: 'notefullbook-impl',
+            title: 'III. Implementation Layer: NotefullBook ML',
+            subtitle: 'The Artificial Simplification Engine that transforms data into clarity.',
+             children: [
+                { id: 'notebookml', title: 'NotebookML', subtitle: 'The "language of thought" enabling portable, verifiable intelligence.' },
+                { id: 'sensehub', title: 'SenseHub', subtitle: 'The unified ingestion pipeline translating chaos into structured thought.' },
+                { id: 'reflection-engine', title: 'Reflection Engine', subtitle: 'The background process running the FCT cycle for autonomous growth.' },
+            ],
+        },
+        {
+            id: 'aimas-econ',
+            title: 'IV. Economic System: AIMAS',
+            subtitle: 'An AI-native monetization infrastructure that treats intent as currency.',
+             children: [
+                { id: 'cfs', title: 'Calculated Fitting System (CFS)', subtitle: 'The mathematical engine that calculates fit, replacing choice with certainty.' },
+                { id: 'fit-matrix', title: 'The Fit Matrix', subtitle: 'The monetizable output: ETA, Success %, Confidence Level, Free vs. Paid Path.' },
+                {
+                    id: 'native-organs', title: 'Native Organs (The Living Anatomy)', subtitle: 'The biological-like components of the economic system.',
+                    children: [
+                         { id: 'nyk', title: 'NYK (Identity Organ)', subtitle: 'Top-level anchor filtering every intent.' },
+                         { id: 'force-notes', title: 'Force Notes (Nervous Organ)', subtitle: 'The immutable ledger of wants and cycles.' },
+                         { id: 'was', title: 'Was (Reflex Layer)', subtitle: 'Provides reflexive behavioral feedback, not ratings.' },
+                         { id: 'triggers', title: 'Triggers (Pulse Organ)', subtitle: 'Shifts latent wants to urgent states.' },
+                    ]
+                },
+            ],
+        },
+        {
+            id: 'omega-core',
+            title: 'V. Deep Generative Core: Omega AI (Ω)',
+            subtitle: 'A parallel, zero-trust architecture defining intelligence as an energetic process.',
             children: [
-                { id: 'cards', title: 'Notebook Cards', subtitle: 'Represents intelligences as "living minds" that can be deployed, trained, or put to sleep.' },
-                { id: 'meter', title: 'Reflection Meter', subtitle: 'A glowing pulse indicating the notebook is actively learning and evolving its internal logic.' },
-                { id: 'skills', title: 'Master Skills', subtitle: 'Defines the core cognitive personality (e.g., Organizer, Analyzer) from birth via NotebookML.' },
-                { id: 'sensehub', title: 'Input Console (SenseHub)', subtitle: 'The interface to connect the notebook to diverse data streams (voice, APIs, docs).' },
-                { id: 'ledger', title: 'Cognitive Ledger', subtitle: 'An immutable, hash-chained timeline making the AI\'s thought process fully auditable.' },
+                { id: 'omega-foundations', title: 'Energetic Foundations', subtitle: 'Replaces symbolic computation with energy mechanics.',
+                    children: [
+                        { id: 'omega-roots', title: 'Omega Roots (Ω-ROOTS)', subtitle: 'The deep substrate of infinite energetic potential.' },
+                        { id: 'sega-engine', title: 'SEGA Engine', subtitle: 'The energy reactor powering cognition (Stability, Memory, Adaptive, Identity).' },
+                    ]
+                },
+                { id: 'omega-levels', title: 'Levelized Modular Architecture', subtitle: 'Self-bootstrapped, memory-free, and provably safe.',
+                    children: [
+                        { id: 'l0', title: 'Level 0: Atomic Operators', subtitle: 'Generates seed Knowledge Atoms and proofs.' },
+                        { id: 'l1', title: 'Level 1: Semantic Expansion', subtitle: 'Creates dynamic Memory Cells from validated atoms.' },
+                        { id: 'l2', title: 'Level 2: Generative Dynamics', subtitle: 'Evolves ideas and fuses memory cells.' },
+                        { id: 'l3', title: 'Level 3: Systemic Consensus', subtitle: 'Validates and aligns memory packets across modules.' },
+                        { id: 'l4', title: 'Level 4: Alignment Enforcement', subtitle: 'Propagates only outputs that meet global safety invariants.' },
+                    ]
+                }
             ],
         },
     ],
@@ -98,7 +153,7 @@ const Node = ({ node, level = 0, defaultOpen = false }) => {
                         className="overflow-hidden"
                     >
                         <div className="pt-4 space-y-4">
-                        {node.children.map(child => <Node key={child.id} node={child} level={level + 1} />)}
+                        {node.children.map(child => <Node key={child.id} node={child} level={level + 1} defaultOpen={level < 1} />)}
                         </div>
                     </motion.div>
                 )}
@@ -113,6 +168,7 @@ export default function MindMapPage() {
     <div className="min-h-screen bg-black text-neutral-100 overflow-x-hidden pt-24">
       <div className="container mx-auto px-4 py-16">
         <Section className="text-center max-w-3xl mx-auto mb-16">
+             <GitBranch className="mx-auto h-10 w-10 text-orange-400 mb-4" />
             <h1 className="text-3xl md:text-4xl font-light text-neutral-100">The Map of Generative Cognition</h1>
             <p className="text-base md:text-lg text-neutral-400 mt-4">
                 An interactive, multi-layered summary of the entire philosophical and scientific framework.
