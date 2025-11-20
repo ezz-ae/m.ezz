@@ -6,15 +6,15 @@ import { Section } from '@/components/ScrollTypography';
 
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen bg-black text-neutral-100 overflow-x-hidden pt-24">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden pt-24">
       <div className="container mx-auto px-4 py-16">
         <Section className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-light text-neutral-100">Privacy Policy</h1>
-            <p className="text-sm text-neutral-500 mt-2">Effective Date: November 2025</p>
+            <h1 className="text-4xl font-light text-foreground">Privacy Policy</h1>
+            <p className="text-sm text-muted-foreground mt-2">Effective Date: November 2025</p>
           </div>
 
-          <div className="prose prose-invert max-w-none prose-p:text-neutral-400 prose-headings:text-neutral-200 prose-headings:font-light prose-headings:border-b prose-headings:border-neutral-800 prose-headings:pb-2">
+          <div className="prose prose-invert max-w-none prose-p:text-muted-foreground prose-headings:text-foreground prose-headings:font-light prose-headings:border-b prose-headings:border-border prose-headings:pb-2">
             
             <h2>1. Our Commitment to Privacy</h2>
             <p>This Platform is designed with a "privacy-by-architecture" philosophy. We are committed to protecting your data and providing a secure, transparent environment for intellectual exploration.</p>
@@ -43,7 +43,7 @@ export default function PrivacyPage() {
                 <li>Request correction of any inaccurate data.</li>
                 <li>Request the deletion of your contributions and personal data.</li>
             </ul>
-            <p>To exercise these rights, please contact us at <a href="mailto:m@ezz.ae" className="text-orange-400 hover:underline">m@ezz.ae</a>.</p>
+            <p>To exercise these rights, please contact us at <a href="mailto:m@ezz.ae" className="text-primary hover:text-primary/80">m@ezz.ae</a>.</p>
 
             <h2>5. Security</h2>
             <p>We implement industry-standard security measures, including encryption, to protect your data from unauthorized access, alteration, or disclosure.</p>

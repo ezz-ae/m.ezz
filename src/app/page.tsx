@@ -1,60 +1,85 @@
+// src/app/page.tsx
 'use client';
-import React from 'react';
-import { motion } from 'framer-motion';
+
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import IdentityStatement from '@/components/IdentityStatement';
-import TopicMap from '@/components/TopicMap';
-import { Button } from '@/components/ui/button';
-import { PhilosophicalProof } from '@/components/PhilosophicalProof';
+import { NOTEBOOKS } from '@/components/notebooks/notebook-data';
+import { cn } from '@/lib/utils';
+import { Section } from '@/components/ScrollTypography';
+import { NotebookCard } from '@/components/notebooks/NotebookCard';
 
-export default function FCTHome() {
+// A lightweight hook to track mouse position for the hover effect
+const useMousePosition = () => {
+    const [mousePosition, setMousePosition] = useState({ x: null, y: null });
+
+    useEffect(() => {
+        const updateMousePosition = (ev) => {
+            setMousePosition({ x: ev.clientX, y: ev.clientY });
+        };
+        window.addEventListener('mousemove', updateMousePosition);
+        return () => {
+            window.removeEventListener('mousemove', updateMousePosition);
+        };
+    }, []);
+
+    return mousePosition;
+};
+
+export default function HomePage() {
+  // We no longer need this state as NotebookCard handles its own hover/description
+  // const [hoveredNotebook, setHoveredNotebook] = useState(null);
+  const mousePosition = useMousePosition(); // Still needed for the floating hover card (if we keep it)
+
+  // Organize notebooks by a conceptual category for a more structured map
+  const architectureMap = {
+    "Cognitive Architecture": ['forgetence', 'aixself', 'imagination-lab', 'brain-games'],
+    "System Architecture": ['dldchain', 'notefullbook', 'puzzles', 'security'],
+    "Philosophical Frameworks": ['scroll-lesson', 'omega', 'marketing', 'stormstan'],
+  };
+
   return (
-    <div className="min-h-screen bg-black text-neutral-100 overflow-x-hidden">
-      <motion.section 
-        className="relative flex items-center justify-center min-h-screen text-center px-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.0 }}
-      >
-        <div className="absolute inset-0 bg-radial from-orange-500/5 via-black to-black opacity-40 z-0"></div>
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <motion.h1 
-            className="text-5xl md:text-7xl font-light text-neutral-50 font-headline"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            AI That Forgets
-          </motion.h1>
-          <motion.p 
-            className="mt-6 text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            A new cognitive architecture where forgetting isn't a bug—it's the core feature of safe, human-aligned intelligence.
-          </motion.p>
-          <motion.div
-            className="mt-10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <Link href="/aixa">
-              <Button variant="outline" className="text-lg py-6 px-8 rounded-full border-neutral-600 hover:bg-neutral-800 hover:text-white transition-all duration-300">
-                Explore the Architecture
-              </Button>
-            </Link>
-          </motion.div>
-        </div>
-      </motion.section>
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden pt-24">
+      <div className="container mx-auto px-4 py-16">
+        
+        <Section className="text-center max-w-3xl mx-auto mb-20">
+            <h1 className="text-4xl md:text-5xl font-mono font-bold text-foreground tracking-tighter">
+                from forget import intelligence
+            </h1>
+            <p className="text-base md:text-lg text-muted-foreground mt-6">
+                The Architecture of Thought. A live, explorable map of the "living intelligences"—cognitive models and interactive experiments—that form a new school of thought.
+            </p>
+        </Section>
+        
+        <Section>
+            <div className="space-y-16">
+                {Object.keys(architectureMap).map(category => (
+                    <div key={category}>
+                        <h2 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground mb-6">{category}</h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                            {architectureMap[category].map(notebookId => {
+                                const notebook = NOTEBOOKS[notebookId];
+                                if (!notebook) return null;
+                                return (
+                                    <NotebookCard 
+                                        key={notebook.id}
+                                        id={notebook.id}
+                                        title={notebook.title}
+                                        description={notebook.description}
+                                        tag={notebook.tag}
+                                        abilities={notebook.abilities} 
+                                    />
+                                );
+                            })}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </Section>
 
-      <IdentityStatement />
-      
-      <TopicMap />
+        {/* Floating Hover Card - This was removed, but if re-added, ensure styling is updated */}
 
-      <PhilosophicalProof />
-      
+      </div>
     </div>
   );
 }

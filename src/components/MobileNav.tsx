@@ -7,14 +7,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const mainNav = [
-  { href: '/', label: 'Home' },
-  { href: '/notebooks', label: 'Notebooks' }, // Add the new link
-  { href: '/aixa', label: 'AIXA Protocol' },
+  { href: '/', label: 'Home' }, // This now serves as the Notebooks page
+  { href: '/academy', label: 'Academy' },
+  { href: '/architecture-of-emergence', label: 'Architecture' },
   { href: '/thesis', label: 'The Thesis' },
+  { href: '/journal', label: 'Journal' },
   { href: '/mindmap', label: 'Mind Map' },
-  { href: '/contribution-map', label: 'Contribution' },
   { href: '/projection', label: 'Projection' },
   { href: '/source', label: 'Source' },
+  { href: '/contribution', label: 'Contribution' },
 ];
 
 export function MobileNav() {
@@ -29,8 +30,12 @@ export function MobileNav() {
 
   return (
     <div className="md:hidden">
-      <button onClick={toggleMenu} aria-label="Toggle Menu">
-        <Menu className="h-6 w-6 text-neutral-300" />
+      <button 
+        onClick={toggleMenu} 
+        aria-label="Toggle Menu"
+        className="relative -mr-2 p-2" 
+      >
+        <Menu className="h-6 w-6 text-foreground" />
       </button>
 
       <AnimatePresence>
@@ -40,12 +45,16 @@ export function MobileNav() {
             initial="closed"
             animate="open"
             exit="closed"
-            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm"
+            className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm"
           >
             <div className="container mx-auto px-4 h-full">
               <div className="flex justify-end h-16 items-center">
-                 <button onClick={toggleMenu} aria-label="Close Menu">
-                    <X className="h-6 w-6 text-neutral-300" />
+                 <button 
+                    onClick={toggleMenu} 
+                    aria-label="Close Menu"
+                    className="relative -mr-2 p-2"
+                  >
+                    <X className="h-6 w-6 text-foreground" />
                 </button>
               </div>
               <nav className="flex flex-col items-center justify-center h-[calc(100%-4rem)] space-y-8">
@@ -54,7 +63,7 @@ export function MobileNav() {
                     key={item.href}
                     href={item.href}
                     onClick={toggleMenu}
-                    className="text-2xl font-light text-neutral-200 hover:text-orange-400 transition-colors"
+                    className="text-2xl font-light text-foreground hover:text-primary transition-colors"
                   >
                     {item.label}
                   </Link>

@@ -6,27 +6,32 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { MobileNav } from './MobileNav';
+import { ThemeToggle } from './ThemeToggle';
 
 const mainNav = [
   { href: '/', label: 'Home' },
-  { href: '/notebooks', label: 'Notebooks' }, // Add the new link
-  { href: '/aixa', label: 'AIXA Protocol' },
+  { href: '/academy', label: 'Academy' },
+  { href: '/architecture-of-emergence', label: 'Architecture' },
   { href: '/thesis', label: 'The Thesis' },
+  { href: '/journal', label: 'Journal' },
   { href: '/mindmap', label: 'Mind Map' },
-  { href: '/contribution-map', label: 'Contribution' },
   { href: '/projection', label: 'Projection' },
   { href: '/source', label: 'Source' },
+  { href: '/contribution', label: 'Contribution' },
 ];
 
 export function SiteHeader() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-lg font-semibold text-neutral-100">
-            EZZ.AE
+          <Link href="/" className="text-foreground">
+            <div className="flex flex-col">
+              <span className="text-lg font-semibold leading-none">Mahmoud Ezz</span>
+              <span className="text-xs text-muted-foreground leading-none mt-1">Cognitive Architect</span>
+            </div>
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
             {mainNav.map((item) => (
@@ -34,24 +39,25 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  'text-sm font-medium text-neutral-400 hover:text-orange-400 transition-colors relative',
-                  pathname === item.href && 'text-orange-400'
+                  'text-sm font-medium text-muted-foreground hover:text-primary transition-colors relative',
+                  pathname === item.href && 'text-primary'
                 )}
               >
                 {item.label}
                 {pathname === item.href && (
                   <motion.div
-                    className="absolute bottom-[-4px] left-0 right-0 h-[1px] bg-orange-400"
+                    className="absolute bottom-[-4px] left-0 right-0 h-[1px] bg-primary"
                     layoutId="underline"
-                    initial={false}
-                    animate={{ opacity: 1 }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   />
                 )}
               </Link>
             ))}
+             <ThemeToggle />
           </nav>
-          <MobileNav />
+          <div className="md:hidden flex items-center gap-4">
+            <ThemeToggle />
+            <MobileNav />
+          </div>
         </div>
       </div>
     </header>

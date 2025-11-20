@@ -2,30 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=PT+Sans:wght@400;700&display=swap');
+
 @layer base {
+  /* Light Theme: The Architectural Light (Pure Black & White) */
   :root {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 84.2% 60.2%;
+    --background: 0 0% 100%; /* Pure white background */
+    --foreground: 0 0% 10%; /* Very dark grey/black text for high contrast */
+    --card: 0 0% 98%; /* Slightly off-white for cards, subtle matt effect */
+    --card-foreground: 0 0% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 0 0% 10%; /* Primary accent is now dark grey/black */
+    --primary-foreground: 0 0% 100%; /* White text on primary */
+    --secondary: 0 0% 95%; /* Light grey for secondary elements */
+    --secondary-foreground: 0 0% 10%;
+    --muted: 0 0% 90%; /* Muted light grey */
+    --muted-foreground: 0 0% 30%; /* Muted dark grey text */
+    --accent: 0 0% 95%;
+    --accent-foreground: 0 0% 10%;
+    --destructive: 0 84.2% 60.2%; /* Red for errors, keeping consistency */
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
+    --border: 0 0% 80%; /* Subtle light grey border */
+    --input: 0 0% 98%;
+    --ring: 0 0% 10%;
     --radius: 0.5rem;
   }
 
+  /* Dark Theme: The Cognitive Darkness (Existing) */
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -55,29 +59,129 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-color: #000;
-    /* The canvas component will handle the image backgrounds */
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+  /* Define custom font utility classes */
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+  .font-pt-sans {
+    font-family: 'PT Sans', sans-serif;
   }
 }
 
-/* Final Elevation: Add depth and transparency to core components */
+/* Final Elevation: Theme-aware component styles */
 @layer components {
-    .bg-neutral-950 {
-        background-color: hsl(var(--card) / 0.7);
+    /* --- Dark Theme Overrides (Transparency & Depth) --- */
+    .dark .bg-neutral-950, .dark .bg-neutral-950\/70 {
+        background-color: hsl(var(--background) / 0.7);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
     }
-    .bg-neutral-900 {
+    .dark .bg-neutral-900, .dark .bg-neutral-900\/50 {
         background-color: hsl(var(--secondary) / 0.5);
          backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
     }
-    .bg-neutral-800 {
+    .dark .bg-neutral-800 {
          background-color: hsl(var(--muted) / 0.4);
     }
-    header {
+    .dark header {
         background-color: hsl(var(--background) / 0.6) !important;
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
+    }
+    /* --- Light Theme Overrides (Pure Black & White with Glow) --- */
+    .light header {
+        background-color: hsl(var(--background) / 0.8) !important;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid hsl(var(--border));
+    }
+    /* Cards and panel backgrounds become clean, subtle white/light grey */
+    .light .bg-card, .light .bg-card\/70,
+    .light .bg-neutral-950, .light .bg-neutral-950\/70,
+    .light .bg-neutral-900, .light .bg-neutral-900\/50,
+    .light .bg-neutral-800 {
+        background-color: hsl(var(--card) / 0.7); /* Use --card for a soft white background */
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 4px 10px hsla(0, 0%, 0%, 0.05); /* Subtle shadow for depth */
+    }
+    /* Borders become subtle light grey */
+    .light .border-border, .light .border-neutral-800, .light .border-neutral-700,
+    .light .border-neutral-600, .light .border-neutral-500 {
+        border-color: hsl(var(--border));
+    }
+     /* Text colors remap to foreground and muted-foreground for black/grey */
+    .light .text-foreground, .light .text-neutral-100, .light .text-neutral-200, .light .text-neutral-300 {
+        color: hsl(var(--foreground));
+    }
+    .light .text-muted-foreground, .light .text-neutral-400, .light .text-neutral-500, .light .text-neutral-600 {
+        color: hsl(var(--muted-foreground));
+    }
+    /* Apply white glow and matt to hover states */
+    .light .group-hover\:shadow-lg:hover, .light .hover\:shadow-lg:hover {
+        box-shadow: 0 0 20px 5px hsla(0, 0%, 100%, 0.9), inset 0 0 10px hsla(0, 0%, 100%, 0.5);
+        border-color: hsla(0, 0%, 0%, 0.1); /* Subtle border on hover for light theme */
+    }
+    .light .group-hover\:dark\:shadow-white\/10:hover {
+        box-shadow: 0 0 30px 10px hsla(0, 0%, 100%, 0.8), inset 0 0 15px hsla(0, 0%, 100%, 0.6);
+        border-color: hsla(0, 0%, 0%, 0.1);
+    }
+    /* Ensure button variants adapt to light theme */
+    .light .button-outline {
+        border-color: hsl(var(--border));
+        color: hsl(var(--foreground));
+        background-color: hsl(var(--card));
+    }
+    .light .button-outline:hover {
+        background-color: hsl(var(--secondary));
+        color: hsl(var(--foreground));
+        border-color: hsl(var(--ring));
+        box-shadow: 0 0 10px hsla(0, 0%, 100%, 0.5);
+    }
+    .light .bg-orange-600 {
+        background-color: hsl(var(--foreground)); /* Dark button in light theme */
+        color: hsl(var(--background));
+    }
+    .light .bg-orange-600:hover {
+        background-color: hsl(var(--foreground) / 0.8);
+    }
+    /* Specific overrides for strong tags and links to use the --primary for highlighting */
+    .light strong, .light .text-primary, .light .text-orange-400, .light .text-orange-300,
+    .light .text-orange-400\/80, .light .text-orange-300\/90,
+    .light .ConceptLink {
+        color: hsl(var(--primary)); /* Use primary color for highlights */
+        font-weight: 700; /* Ensure strong is always bold */
+    }
+    .light .text-green-400\/70 {
+        color: hsla(120, 50%, 30%, 0.8); /* Keep a subtle green for positive feedback */
+    }
+     .light .text-red-400\/80 {
+        color: hsla(0, 70%, 40%, 0.8); /* Keep a subtle red for alerts */
+    }
+
+    /* --- General Component Overrides (to ensure B&W is default where possible) --- */
+    .text-orange-400 {
+        color: var(--primary);
+    }
+    .text-orange-400\/80 {
+        color: hsl(var(--primary) / 0.8);
+    }
+    .text-orange-300 {
+        color: var(--primary);
+    }
+    .text-orange-300\/90 {
+        color: hsl(var(--primary) / 0.9);
+    }
+    .bg-orange-500\/10 {
+        background-color: hsl(var(--primary) / 0.1);
+    }
+    .border-orange-500\/30 {
+        border-color: hsl(var(--primary) / 0.3);
+    }
+    .hover\:border-orange-500\/50:hover {
+        border-color: hsl(var(--primary) / 0.5);
     }
 }

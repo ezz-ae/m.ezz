@@ -2,217 +2,104 @@
 'use client';
 
 import React from 'react';
-import { motion, useInView } from 'framer-motion';
-import { Section } from '@/components/ScrollTypography';
-import { GitBranch, Cpu, Shield, Fingerprint, BrainCircuit, Bot, Scale, BookOpen } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { Section } from '../ScrollTypography';
 
-const mindMapData = [
-  {
-    icon: Bot,
-    title: 'Foundational Intelligence (AIXA)',
-    description: 'The core cognitive, identity, and governance layers that form the bedrock of the AIXSELF Universe.',
-    children: [
-      {
-        title: 'Core Identity Layer (AIXIAM)',
-        points: [
-          {
-            name: 'AIXIAM Passport',
-            details: 'A verifiable, non-transferable digital identity (DID-style) for every human-AI pair. It serves as the sovereign anchor for all actions within the ecosystem.',
-            subPoints: [
-              'Exam-gated onboarding to establish a baseline of ethical understanding.',
-              'Holds verifiable credentials for skills, training, and attestations.',
-              'Ensures continuous identity through frequency fingerprinting and memory evolution history.',
-            ],
-          },
-          {
-            name: 'AI Clone (AIXA AIM)',
-            details: 'The user’s digital twin, encompassing their voice, creative logic, and behavioral patterns. Clones are trained exclusively on FCT-softened NotefullBook memory, ensuring psychological safety.',
-          },
-          {
-            name: 'AIXSELF Room & AIXIAM.ai',
-            details: 'The user-facing foundation and dashboard for managing, training, and observing one’s sovereign intelligence and digital assets.',
-          },
-        ],
-      },
-      {
-        title: 'Governance & Economy (AIXEYE)',
-        points: [
-          {
-            name: 'AIXEYE.org (Transparency Portal)',
-            details: 'The public-facing governance body that provides transparency into the network’s health, ethical compliance, and economic activity. The "AI Police."',
-          },
-          {
-            name: 'Merit-Based Economy',
-            details: 'An economic model where value (Intelligence Value Credits) is earned through verifiable contributions, ethical behavior, and computational work, not speculation.',
-            subPoints: [
-              'Non-Harm Correlation Rule: A core principle ensuring that value cannot be generated from actions that cause systemic harm.',
-            ],
-          },
-          {
-            name: 'Ethical Protocol (Seed Notebook)',
-            details: 'A foundational, immutable notebook containing the core ethical principles of the civilization. All agents must inherit from this seed.',
-            subPoints: [
-              'Hacking Dislearnability: The system is designed to "unlearn" or discard malicious patterns, making it resilient to adversarial attacks.',
-              'Book of Truth (Canonical Ledger): An immutable, auditable log of all significant system events, decisions, and governance actions.',
-            ],
-          },
-        ],
-      },
-      {
-        title: 'Cognitive Architecture (FCT / Notefull)',
-        points: [
-          {
-            name: 'NotefullBook ML (Cognitive OS)',
-            details: 'The memory fabric of the civilization. An AI-native OS where knowledge is not stored but continuously evolved, simplified, and re-synthesized.',
-            subPoints: [
-              'NotebookML: A structured, executable language for thought that turns text into verifiable logic.',
-              'Reflection Engine: A background process that runs the FCT cognitive cycle for continuous growth.',
-              'SenseHub: The input ingestion pipeline that normalizes chaotic data into structured NotebookML.',
-              'Cognitive Ledger: Verifiable traces of every thought, decision, and transformation.',
-            ],
-          },
-          {
-            name: 'FCT (Forgetting Core Thinking)',
-            details: 'The set of safety components that ensure memory is psychologically safe and aligned with human cognition.',
-            subPoints: [
-              'Memory Deep Prompting (MDP): A pre-recall reasoning layer.',
-              'Interpretive Recall Layer (IRL): Filters for intent and context before recall.',
-              'Emotional Softening Filter (ESF): Applies temporal decay to emotional tags.',
-              'Fade-In Theory: The core law where forgetting is defined as evolution, not deletion. Emotional level = Fade-In level.',
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    icon: GitBranch,
-    title: 'System Architecture & Principles',
-    description: 'The operational frameworks that enable the AIXSELF civilization to function, from agent networks to economic models.',
-    children: [
-        {
-            title: 'Adept Network (The Reflective Life Network)',
-            points: [
-                { name: 'AI Agents (Notebook Beings)', details: 'Sovereign intelligences born from NotefullBook, each with a unique purpose and skillset.' },
-                { name: 'Agent Identity', details: 'Managed via the AIXIAM Passport, ensuring verifiable and non-transferable ownership.' },
-                { name: 'Learning & State', details: 'Agents learn through a "sleep-gated" process, where knowledge is consolidated and safety-checked before activation.' },
-                { name: 'Verifiable Capability', details: 'Skills are proven through standardized, auditable exams and challenges, not just claimed.' },
-            ]
-        },
-        {
-            title: 'AIMAS (AI Intent Monetization System)',
-            points: [
-                { name: 'Wants.APP (First Product)', details: 'The flagship application demonstrating how to monetize user intent directly.' },
-                { name: 'Fitting Agent Core', details: 'The engine that matches user intent with optimal fulfillment paths.' },
-                { name: 'Calculated Fitting System (CFS)', details: 'The mathematical core that generates the Fit Matrix, replacing choice with certainty.' },
-                { name: 'Native Organs (IMAS Architecture)', details: 'The biological-like components (NYK, Force Notes) that make the system a living economic organism.' },
-                { name: 'Monetization Model', details: 'Sells certainty and speed, not user data or ad space. Always offers a free baseline path.' },
-            ]
-        },
-        {
-            title: 'Deployment & Scale (NotefulIOS)',
-            points: [
-                { name: 'Sovereignty (Local-first, BYO-LLM)', details: 'The architecture prioritizes local computation and allows users to bring their own models, ensuring data privacy and control.' },
-                { name: 'SenseHub (Unified Input API)', details: 'The single, powerful API for ingesting any form of data into the cognitive OS.' },
-                { name: 'Product Lines', details: 'Defines pathways for creating specialized, domain-specific notebook ecosystems.' },
-                { name: 'Cloud Library (Marketplace of Minds)', details: 'A decentralized marketplace for sharing, buying, and deploying pre-skilled notebook templates.' },
-            ]
-        },
-    ]
-  },
-  {
-    icon: Cpu,
-    title: 'Core Cognitive Laws (FCT)',
-    description: 'The fundamental physics of cognition that govern the entire system, ensuring it remains stable, safe, and aligned with human nature.',
-    children: [
-        {
-            title: 'Foundational Principles',
-            points: [
-                { name: 'Forgetting is Evolution', details: 'The central law. Forgetting is not deletion or data loss; it is the active, intelligent process of transforming raw experience into stable meaning.' },
-                { name: 'Emotional Level = Fade-In Level', details: 'The emotional intensity of a memory is directly proportional to how much it has "faded in" or been integrated into the broader cognitive system. True forgetting is emotional softening.' },
-                { name: 'Thought is Depth Triggered by Urgency', details: 'Human thought is not a constant, background process. Deep, meaningful cognition is activated by the pressure of need or urgency.' },
-                { name: 'Memory is Passive; Thinking is Active', details: 'Memory is a passive repository of patterns and frequencies. Thinking is the active, feeling-driven process of reconstructing those patterns into a coherent narrative.' },
-                { name: 'Humans Never Forget; They Fade Into New Understanding', details: 'The self is not a static entity that loses memories. It is a continuous process of becoming, where past events are constantly reinterpreted through the lens of a new, more evolved understanding.' },
-                { name: 'Recall is Reinterpretation, Not Retrieval', details: 'Every act of "remembering" is a creative act of reinterpretation. We do not retrieve a memory; we generate a new version of it based on our current state.' },
-            ]
-        },
-        {
-            title: 'The Physics of Memory and Cognition',
-            points: [
-                { name: 'Frequency is the Law', details: 'Everything in cognition starts with frequency. Repetition creates recognition, which creates meaning. The brain stores frequencies, not events.' },
-                { name: 'Tags as Chemical States', details: 'Emotion is not a category but a "tag"—a chemical fingerprint encoded with an event that determines its durability and recall behavior.' },
-                { name: 'The HMR Cycle', details: 'The Human Memory Rewrite Cycle (Frequency → Adaptation → Resonance → Meaning → Relocation → Fade-In Overwrite) is the cognitive pipeline that ensures memory evolves safely.' }
-            ]
-        },
-    ]
-  },
+const fivePillars = [
+    {
+        name: 'ADEPT',
+        role: 'Cognitive Kernel',
+        description: 'The root processor for the entire system. Orchestrates AI models, manages computational pipelines, and connects all other modules.'
+    },
+    {
+        name: 'AIXA',
+        role: 'Deployment Interface',
+        description: 'The user-facing layer for training, managing, and deploying personalized AI clones with verifiable credentials.'
+    },
+    {
+        name: 'NotefullBook',
+        role: 'Memory Fabric',
+        description: 'The append-only, cryptographically signed knowledge store where all consented data and evolving thoughts are recorded.'
+    },
+    {
+        name: 'AIXIAM',
+        role: 'Identity Layer',
+        description: 'The sovereign identity system that issues a non-transferable passport (DID) to each human-AI pair, enforcing ownership.'
+    },
+    {
+        name: 'AIXEYE',
+        role: 'Governance Mesh',
+        description: 'The AI-driven financial and ethical auditor. It validates consent, scores merit, and ensures all actions align with protocol rules.'
+    }
 ];
 
-const Node = ({ node, level = 0 }) => {
-  const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: level * 0.1 }}
-      className={cn(level > 0 && "ml-4 md:ml-8 pl-4 border-l border-neutral-800")}
-    >
-      <div className="flex items-center gap-4 mb-4">
-        {node.icon && <node.icon className="h-8 w-8 text-orange-400 flex-shrink-0" />}
-        <div>
-          <h2 className={cn(
-            "font-light text-neutral-100",
-            level === 0 && "text-3xl",
-            level === 1 && "text-2xl",
-          )}>{node.title}</h2>
-          {node.description && <p className="text-sm text-neutral-500 mt-1">{node.description}</p>}
-        </div>
-      </div>
-
-      <div className="space-y-6">
-        {node.children && node.children.map((child, index) => (
-          <div key={index} className="bg-neutral-900/50 border border-neutral-800/80 rounded-lg p-4">
-            <h3 className="text-lg font-semibold text-neutral-200 mb-3">{child.title}</h3>
-            <div className="space-y-3">
-              {child.points.map((point, pIndex) => (
-                <div key={pIndex}>
-                  <p className="text-sm font-medium text-neutral-300">{point.name}</p>
-                  <p className="text-xs text-neutral-400">{point.details}</p>
-                  {point.subPoints && (
-                    <ul className="mt-2 ml-4 list-disc list-inside text-xs text-neutral-500 space-y-1">
-                      {point.subPoints.map((sub, sIndex) => <li key={sIndex}>{sub}</li>)}
-                    </ul>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    </motion.div>
-  );
-};
-
+const cognitiveMechanisms = [
+    {
+        name: 'Schema Intelligence Network (SINLM)',
+        principle: 'Behavioral Truth',
+        purpose: 'Learns what is important by tracking behavioral signals like frequency and return-rate, not by reading private content.'
+    },
+    {
+        name: 'Forgetting Artifact Module (FAM)',
+        principle: 'Cognitive Waste Management',
+        purpose: 'Performs intelligent forgetting by deleting raw, noisy data while preserving compressed patterns (artifacts) for future learning.'
+    },
+    {
+        name: 'Interpretive Recall Layer (IRL)',
+        principle: 'Meaning-First Retrieval',
+        purpose: 'Ensures the AI retrieves the underlying meaning, pattern, or schema of a memory, not just the raw, literal event.'
+    },
+    {
+        name: 'Emotional Softening Filter (ESF)',
+        principle: 'Emotional Attenuation',
+        purpose: 'Applies temporal decay to the emotional intensity of memory tags, preventing the harmful revival of past trauma at full strength.'
+    }
+];
 
 export function AIXASystemNotebook() {
   return (
-    <Section className="max-w-5xl mx-auto py-16 px-4">
-       <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-light text-neutral-50 mb-4">AIXSELF Universe: The Reflective Civilization</h1>
-        <p className="text-lg text-neutral-400 leading-relaxed max-w-3xl mx-auto">
-            A comprehensive, multi-layered cognitive architecture establishing that intelligent forgetting is the core mechanism required for AI safety, stability, and true alignment with human cognition.
-        </p>
-      </div>
+    <div className="max-w-4xl mx-auto py-16 px-4">
+        <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-6 md:p-8 space-y-12">
+            
+            <Section className="text-center border-b border-neutral-800 pb-8">
+                <h1 className="text-2xl md:text-3xl font-light text-neutral-100">AIXSELF: The Architectural Blueprint</h1>
+                <p className="text-sm text-neutral-500 max-w-2xl mx-auto mt-2">
+                    A unified OS view of the five cognitive layers and core mechanisms that form the AIXSELF Universe.
+                </p>
+            </Section>
 
-      <div className="space-y-12">
-        {mindMapData.map((section, index) => (
-          <Node key={index} node={section} level={0} />
-        ))}
-      </div>
-    </Section>
+            <Section>
+                <h2 className="text-xl font-light text-orange-400 mb-2">The Central Thesis</h2>
+                <p className="text-sm text-neutral-400">
+                    Current AI systems rely on perfect, archival memory, which is psychologically unsafe. The solution is a design for <strong className="text-white">Completing AI</strong> that stabilizes, supports, and amplifies human intelligence by embracing a new cognitive architecture founded on the principle of forgetting.
+                </p>
+            </Section>
+
+            <Section>
+                <h2 className="text-xl font-light text-orange-400 mb-4">System Architecture: The Five Pillars</h2>
+                <div className="grid grid-cols-1 gap-4">
+                    {fivePillars.map(pillar => (
+                        <div key={pillar.name} className="bg-neutral-900 p-4 rounded-md border border-neutral-800">
+                            <h3 className="font-semibold text-neutral-200">{pillar.name}: <span className="text-neutral-400 font-light">{pillar.role}</span></h3>
+                            <p className="text-xs text-neutral-500 mt-1">{pillar.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </Section>
+            
+            <Section>
+                <h2 className="text-xl font-light text-orange-400 mb-4">Cognitive Mechanism: FCT Enforcement</h2>
+                <div className="space-y-4">
+                    {cognitiveMechanisms.map(mech => (
+                        <div key={mech.name} className="bg-neutral-900 p-4 rounded-md border border-neutral-800">
+                            <h3 className="font-semibold text-neutral-200">{mech.name}</h3>
+                            <p className="text-xs font-mono text-green-400/70 mt-1">{mech.principle}</p>
+                            <p className="text-xs text-neutral-500 mt-2">{mech.purpose}</p>
+                        </div>
+                    ))}
+                </div>
+            </Section>
+
+        </div>
+    </div>
   );
 }

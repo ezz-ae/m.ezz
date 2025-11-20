@@ -3,66 +3,99 @@
 
 import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
-// FIX: Import the entire JSON object and then access the property for robustness.
-import data from '@/lib/placeholder-images.json';
+import { motion } from 'framer-motion';
+import { useTheme } from 'next-themes';
+import { cn } from '@/lib/utils';
 
-const { placeholderImages } = data;
+// Defines the properties for our animated glowing blobs
+// This function now expects the theme as an argument for consistency
+const createBlob = (theme: string) => {
+    const isDark = theme === 'dark';
+    const baseColor = isDark ? `hsl(25, 100%, 50%)` : `hsl(0, 0%, 100%)`; // Orange for dark, white for light
+    const accentColor = isDark ? `hsl(270, 70%, 50%)` : `hsl(0, 0%, 95%)`; // Purple for dark, very light grey for light
 
-const imageMappings = {
-    '/': ['hero-main', 'p1-cover', 'p2-cover', 'p3-cover'],
-    '/aixa': ['home-theory-bg', 'home-mindmap-bg', 'p6-img1'],
-    '/journal': ['home-library-bg', 'blog1-cover', 'blog2-cover'],
-    '/implementation': ['p2-img2', 'p6-cover', 'blog3-cover'],
-    '/source': ['blog2-cover', 'p1-img2', 'p2-img1'],
-    '/contribution': ['about-portrait', 'p3-img2', 'p4-img1'],
-    '/notebooks/imagination-lab': ['p3-img2', 'p1-img2', 'p5-img1'],
-    '/notebooks/brain-games': ['home-mindmap-bg', 'p1-img2'],
-    'default': ['p1-img2', 'p2-img1', 'p3-img2', 'p4-img1', 'p5-img1']
-};
+    const randomSize = 200 + Math.random() * 400; // Blobs can be 200px to 600px
+    const randomDuration = 20 + Math.random() * 15; // Animation duration 20s-35s
+    const randomDelay = Math.random() * 5;
 
-const getImagesForPath = (path) => {
-    const specificMapping = Object.keys(imageMappings).find(key => path.startsWith(key) && key !== '/');
-    const key = path === '/' ? '/' : specificMapping || 'default';
-    const imageIds = imageMappings[key] || imageMappings['default'];
-    return imageIds.map(id => placeholderImages.find(img => img.id === id)?.imageUrl).filter(Boolean);
+    return {
+        size: randomSize,
+        duration: randomDuration,
+        delay: randomDelay,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        color: Math.random() > 0.5 ? baseColor : accentColor,
+        opacity: isDark ? (0.05 + Math.random() * 0.1) : (0.1 + Math.random() * 0.2)
+    };
 };
 
 export function CognitiveCanvas() {
     const pathname = usePathname();
-    const [images, setImages] = useState([]);
-    const [index, setIndex] = useState(0);
+    const { theme, resolvedTheme } = useTheme(); // Use resolvedTheme for client-side theme
+    const [blobs, setBlobs] = useState<any[]>([]);
+    const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
-        const relevantImages = getImagesForPath(pathname);
-        setImages(relevantImages);
-        setIndex(0); 
-    }, [pathname]);
+      setIsMounted(true);
+    }, []);
 
+    // Regenerate blobs on theme or path change, but only after mount
     useEffect(() => {
-        if (images.length <= 1) return;
-        const timer = setInterval(() => {
-            setIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 7000); // Change image every 7 seconds
-        return () => clearInterval(timer);
-    }, [images]);
+        if (!isMounted || !resolvedTheme) return;
+        const newBlobs = Array.from({ length: 5 }).map(() => createBlob(resolvedTheme));
+        setBlobs(newBlobs);
+    }, [isMounted, resolvedTheme, pathname]); 
 
-    if (images.length === 0) {
-        return null;
+    // Animation loop for blobs
+    useEffect(() => {
+        if (blobs.length === 0) return;
+        let animationFrameId;
+        const animateBlobs = () => {
+            // Update blob positions (optional, if you want more dynamic movement not just CSS transitions)
+            // For now, let's rely on CSS transitions defined in motion.div
+            animationFrameId = requestAnimationFrame(animateBlobs);
+        };
+        animationFrameId = requestAnimationFrame(animateBlobs);
+        return () => cancelAnimationFrame(animationFrameId);
+    }, [blobs]);
+
+    if (!isMounted || blobs.length === 0) {
+        // Render a static background on the server to prevent hydration mismatch
+        return <div className={cn("fixed inset-0 w-full h-full z-[-1]", resolvedTheme === 'dark' ? "bg-black" : "bg-white")}></div>;
     }
 
     return (
-        <div className="fixed inset-0 w-full h-full z-[-1] overflow-hidden bg-black">
+        <div className={cn(
+            "fixed inset-0 w-full h-full z-[-1] overflow-hidden transition-colors duration-1000",
+            resolvedTheme === 'dark' ? "bg-black" : "bg-white"
+        )}>
             <AnimatePresence>
-                <motion.div
-                    key={images[index]}
-                    className="absolute inset-0 w-full h-full bg-cover bg-center"
-                    style={{ backgroundImage: `url(${images[index]})` }}
-                    initial={{ opacity: 0, scale: 1.05 }}
-                    animate={{ opacity: 0.15, scale: 1 }}
-                    exit={{ opacity: 0, scale: 1.05 }}
-                    transition={{ duration: 2, ease: 'easeInOut' }}
-                />
+                {blobs.map((blob, i) => (
+                    <motion.div
+                        key={i}
+                        className="absolute rounded-full filter blur-3xl"
+                        style={{
+                            width: blob.size,
+                            height: blob.size,
+                            backgroundColor: blob.color,
+                            left: `${blob.x}%`,
+                            top: `${blob.y}%`,
+                            opacity: blob.opacity
+                        }}
+                        animate={{
+                            x: [`${blob.x}%`, `${(blob.x + 10) % 100}%`, `${blob.x}%`],
+                            y: [`${blob.y}%`, `${(blob.y + 10) % 100}%`, `${blob.y}%`],
+                            scale: [1, 1.2, 1],
+                            rotate: [0, 360, 0]
+                        }}
+                        transition={{
+                            duration: blob.duration,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: blob.delay
+                        }}
+                    />
+                ))}
             </AnimatePresence>
         </div>
     );

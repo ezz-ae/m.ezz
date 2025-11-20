@@ -21,13 +21,13 @@
     {
       "id": "home-theory-bg",
       "description": "Background for the theory section on the homepage.",
-      "imageUrl": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0aGVvcnklMjBkaWFncmFtfGVufDB8fHx8MTc2NDI3ODU4Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0aGVvcnklMjBkaWFncmFtfGVufDB8fHx8MTc2NDI3ODU4Nnww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "theory diagram"
     },
     {
       "id": "home-mindmap-bg",
       "description": "Background for the mindmap section on the homepage.",
-      "imageUrl": "https://images.unsplash.com/photo-1583324132333-6a56b5d3550c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtaW5kbWFwfGVufDB8fHx8MTc2NDI3ODY0N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1583324132333-6a56b5d3550c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtaW5kbWFwfGVufDB8fHx8MTc2NDI3ODY0N3ww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "mindmap connections"
     },
     {
@@ -39,13 +39,13 @@
     {
       "id": "p1-img1",
       "description": "Interior of The Obelisk Villa.",
-      "imageUrl": "https://images.unsplash.com/photo-1618220179428-22790b461013?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxpbnRlcmlvciUyMGRlc2lnbnxlbnwwfHx8fDE3NjMzNjY4NjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1618220179428-22790b461013?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxpbnRlcmlvciUyMGRlc2lnbnxlbnwwfHx8fDE3NjMzNjY4NjN8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "interior design"
     },
     {
       "id": "p1-img2",
       "description": "Architectural detail of The Obelisk Villa.",
-      "imageUrl": "https://images.unsplash.com/photo-1696401680571-f6e9986026d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhcmNoaXRlY3R1cmFsJTIwZGV0YWlsfGVufDB8fHx8MTc2MzQwODI3N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1696401680571-f6e9986026d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhcmNoaXRlY3R1cmFsJTIwZGV0YWlsfGVufDB8fHx8MTc2MzQwODI3N3ww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "architectural detail"
     },
     {
@@ -93,7 +93,7 @@
     {
       "id": "p4-img1",
       "description": "Brutalist concrete detail of Desert Bloom House.",
-      "imageUrl": "https://images.unsplash.com/photo-1660404871825-6172f096ebfd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxicnV0YWxpc3QlMjBjb25jcmV0ZXxlbnwwfHx8fDE3NjM0MTg5NDJ8MA&ixlib_rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1660404871825-6172f096ebfd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxicnV0YWxpc3QlMjBjb25jcmV0ZXxlbnwwfHx8fDE3NjM0MTg5NDJ8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "brutalist concrete"
     },
     {
@@ -123,13 +123,13 @@
     {
       "id": "blog1-cover",
       "description": "Architect sketching on a tablet.",
-      "imageUrl": "https://images.unsplash.com/photo-1649688066818-8274c4004f0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhcmNoaXRlY3QlMjBza2V0Y2h8ZW58MHx8fHwxNzYzMzYzNTEwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1649688066818-8274c4004f0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhcmNoaXRlY3QlMjBza2V0Y2h8ZW58MHx8fHwxNzYzMzYzNTEwfDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "architect sketch"
     },
     {
       "id": "blog2-cover",
       "description": "Close up of a building blueprint.",
-      "imageUrl": "https://images.unsplash.com/photo-1721244653606-0d719a36fef5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxidWlsZGluZyUyMGJsdWVwcmludHxlbnwwfHx8fDE3NjM0MTg5NDJ8MA&ixlib_rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1721244653606-0d719a36fef5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxidWlsZGluZyUyMGJsdWVwcmludHxlbnwwfHx8fDE3NjM0MTg5NDJ8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "building blueprint"
     },
     {
