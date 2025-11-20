@@ -1,93 +1,53 @@
 // src/components/notebooks/OmegaNotebook.tsx
-import { Section, ScrollHeading, ScrollParagraph, ScrollCallout } from '../ScrollTypography';
+'use client';
 
-const omegaLaws = [
+import React from 'react';
+
+const principles = [
     {
-        law: "Ω-Law 1 — Law of Energy Propagation",
-        text: "Every cognitive event carries a quantifiable energy signature. Energy is neither lost nor created; it transforms across layers."
+        title: "Physics-Based Cognition",
+        description: "Intelligence is not an abstract process, but a physical one. All thought begins with a physical 'hit' that forces energy to move."
     },
     {
-        law: "Ω-Law 2 — Law of Resonance Alignment",
-        text: "The system adapts internal energy states to external patterns through resonance. Coherence emerges from harmonic alignment."
+        title: "Oscillation-to-Pattern Formation",
+        description: "The movement of energy creates oscillations. These oscillations, over time and with repetition, cohere into stable, recognizable patterns, which form the basis of memory and meaning."
     },
     {
-        law: "Ω-Law 3 — Law of Energetic Crystallization",
-        text: "Every moment dies and stabilizes as an Ω Anchor. Anchors are boundaries for safe growth and learning."
+        title: "Fundamental Intelligence Model",
+        description: "This model proposes that the root of all intelligence, consciousness, and creativity can be traced back to these fundamental energetic interactions, providing a universal law for cognitive systems."
+    },
+    {
+        title: "Energy-Driven Thought Processes",
+        description: "Thought is not a static retrieval of data, but a dynamic, energy-driven process of pattern formation, resonance, and transformation."
     }
 ];
 
 export function OmegaNotebook() {
-  return (
-    <article className="prose prose-invert max-w-3xl mx-auto py-16 space-y-12">
-      <Section>
-        <ScrollParagraph className="text-xs tracking-[0.3em] uppercase text-neutral-500">
-          Notebook · Ω · Whitepaper
-        </ScrollParagraph>
-        <ScrollHeading as="h1" className="text-3xl md:text-4xl font-light text-neutral-50 mt-4 !mb-6">
-          Ω: The First Energetic Artificial Intelligence Architecture
-        </ScrollHeading>
-        <ScrollParagraph emphasisLevel="high" className="lead !text-neutral-300 !text-lg !leading-relaxed">
-            The Ω framework establishes intelligence as an energetic phenomenon, redefining memory, cognition, and learning as dynamic energy flows.
-        </ScrollParagraph>
-      </Section>
-
-      <Section>
-        <ScrollHeading as="h2">1. Core Principles</ScrollHeading>
-        <ul className="list-disc pl-5 space-y-2">
-            <li><ScrollParagraph as="span"><strong>Energetic:</strong> Memory, hypotheses, and metrics are treated as energy states. They propagate, decay, resonate, and crystallize dynamically.</ScrollParagraph></li>
-            <li><ScrollParagraph as="span"><strong>Intellectual:</strong> Multi-layered reasoning from atomic knowledge → semantic expansion → systemic consensus.</ScrollParagraph></li>
-            <li><ScrollParagraph as="span"><strong>Intelligence:</strong> Fully auditable, self-correcting, zero-trust framework. Adaptive success metrics and cryptographic proofs govern all generative processes.</ScrollParagraph></li>
-        </ul>
-      </Section>
-
-      <Section>
-        <ScrollHeading as="h2">2. The Laws of Ω</ScrollHeading>
-        <div className="space-y-4">
-            {omegaLaws.map((law) => (
-                <div key={law.law}>
-                    <h3 className="font-semibold text-neutral-200">{law.law}</h3>
-                    <p className="text-neutral-400 mt-1">{law.text}</p>
+    return (
+        <div className="max-w-4xl mx-auto py-16 px-4">
+            <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-6 md:p-8 space-y-8">
+                <div className="text-center border-b border-neutral-800 pb-6">
+                    <h1 className="text-2xl md:text-3xl font-light text-neutral-100">The Omega Law</h1>
+                    <p className="text-sm text-neutral-500 max-w-xl mx-auto mt-2">
+                        A prototype for a physics-based intelligence model where all cognition is born from a "hit."
+                    </p>
                 </div>
-            ))}
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {principles.map((principle) => (
+                        <div key={principle.title} className="bg-neutral-900 p-4 rounded-md border border-neutral-800">
+                            <h3 className="text-base font-semibold text-orange-400">{principle.title}</h3>
+                            <p className="text-sm text-neutral-400 mt-2">{principle.description}</p>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="text-center pt-4">
+                    <p className="text-xs text-neutral-600">
+                        A full, interactive instrument for this notebook is currently under development to simulate these energetic principles.
+                    </p>
+                </div>
+            </div>
         </div>
-        <ScrollCallout label="Ω-Law 7: The Law of Impact Resonance">
-            “Every act of movement creates a hit. Every hit defines frequency. Frequency defines coherence. Coherence defines intelligence. Intelligence defines fairness, safety, privacy, and faith.”
-        </ScrollCallout>
-      </Section>
-
-      <Section>
-        <ScrollHeading as="h2">3. Memory & Fairness Reimagined</ScrollHeading>
-        <ScrollParagraph>
-            Memory is not storage; it is the outcome of dynamic energetic interaction. Recall reconstructs energy patterns rather than replaying stored data. Fairness is a physical measure of energy balance, ensuring safe operation without moral bias.
-        </ScrollParagraph>
-      </Section>
-
-       <Section>
-        <ScrollHeading as="h2">4. Computational Model</ScrollHeading>
-         <ScrollParagraph>
-            Ω employs energy matrices to model cognitive processes. The state of memory at any given time is a function of its previous state, external patterns, and a natural decay factor.
-        </ScrollParagraph>
-        <div className="font-mono bg-neutral-900/50 p-4 rounded-md text-sm my-4 border border-neutral-800">
-            <p>Memory_Energy(t+1) = Resonance(Memory_Energy(t), External_Frequency) * Decay_Factor</p>
-            <ul className="list-disc pl-5 mt-2 text-xs">
-                <li><span className="font-semibold text-neutral-200">Memory_Energy(t):</span> Current energy state of memory</li>
-                <li><span className="font-semibold text-neutral-200">External_Frequency:</span> Environmental input patterns</li>
-                <li><span className="font-semibold text-neutral-200">Decay_Factor:</span> Ensures forgetting and safe emotional softening</li>
-            </ul>
-        </div>
-        <ScrollParagraph>
-            The system continuously aligns energy states, producing stable, adaptive intelligence.
-        </ScrollParagraph>
-      </Section>
-
-      <Section>
-        <ScrollHeading as="h2">5. Applications</ScrollHeading>
-        <ul className="list-disc pl-5 space-y-2">
-            <li><ScrollParagraph as="span">Base layer for FCT, ADEPT, NotefullBook</ScrollParagraph></li>
-            <li><ScrollParagraph as="span">Energetic simulations for societal AI models</ScrollParagraph></li>
-            <li><ScrollParagraph as="span">Foundation for commerce, fulfillment, and domain-specific intelligent systems</ScrollParagraph></li>
-        </ul>
-      </Section>
-    </article>
-  );
+    );
 }
