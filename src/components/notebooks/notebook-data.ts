@@ -216,7 +216,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         description: 'A prototype for a physics-based intelligence model where all cognition is born from a "hit".',
         tag: 'Prototype · Physics',
         body: 'The Omega Law is a prototype for a physics-based intelligence model where all cognition is born from a "hit".',
-        component: PlaceholderNotebook,
+        component: OmegaNotebook,
         abilities: ["Physics-Based Cognition", "Energy-Driven Thought", "Fundamental Intelligence Models"],
         aiActions: [ { title: "What is the core idea of this notebook?", prompt: "Summarize the core idea of The Omega Law notebook." } ],
         autothinkerActions: [ { title: "Propose an experiment", prompt: "Propose a thought experiment to test the principles of The Omega Law." } ]
@@ -227,7 +227,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         description: 'An "Ideas Recycling Hub" where IP is released to accelerate collaborative creation.',
         tag: 'Ideation Platform',
         body: 'Stormstan is an "Ideas Recycling Hub" where IP is released to accelerate collaborative creation.',
-        component: PlaceholderNotebook,
+        component: StormstanNotebook,
         abilities: ["Open Collaboration", "IP Release Mechanisms", "Community-Driven Innovation"],
         aiActions: [ { title: "What is the purpose of Stormstan?", prompt: "Explain the purpose of the Stormstan 'Ideas Recycling Hub'." } ],
         autothinkerActions: [ { title: "Connect to the Imagination Lab", prompt: "Explain how the 'Recycled Idea Injection' in the Imagination Lab is a direct application of Stormstan's philosophy." } ]

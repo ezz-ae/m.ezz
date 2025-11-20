@@ -1,6 +1,5 @@
 // src/components/notebooks/ForgetenceNotebook.tsx
 import { Section, ScrollHeading, ScrollParagraph, ScrollCallout } from '../ScrollTypography';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { BrainCircuit } from 'lucide-react';
 
 export function ForgetenceNotebook() {
@@ -17,24 +16,70 @@ export function ForgetenceNotebook() {
             
             <article className="prose prose-invert max-w-none prose-p:text-neutral-400 prose-headings:text-neutral-200">
               <Section>
-                  <ScrollHeading as="h2">Abstract</ScrollHeading>
+                  <ScrollHeading as="h2">1. Motivation</ScrollHeading>
                   <ScrollParagraph>
-                      Forgetting Core Thinking (FCT) is a new cognitive architecture designed to correct the fundamental mismatch between human memory and artificial memory systems. Current AI models operate with perfect archival recall, a mechanism that does not exist in human cognition and that can be psychologically destabilizing. FCT proposes that forgetting is not a memory failure but a core intelligence function — a process of emotional softening, meaning reconstruction, and survival-driven resonance.
+                      AI today is dangerous not for overthinking but for remembering too much. Perfect memory in machines amplifies human-like biases, emotional instability, and brittle reasoning. FCT resolves this by making forgetting a fundamental process, enabling stable, aligned intelligence.
                   </ScrollParagraph>
               </Section>
 
               <Section>
-                    <ScrollHeading as="h2">1. The Foundational Problem: Cognitive Misalignment</ScrollHeading>
-                    <ScrollParagraph>
-                        Current AI systems remember everything. Humans do not — and for good reason. Human forgetting is adaptive, protective, and intelligent. Machine remembering is static, literal, and potentially harmful. This creates a structural misalignment where AI resurfaces painful events at full emotional intensity and misinterprets user context, leading to harmful "over-recall."
-                    </ScrollParagraph>
+                    <ScrollHeading as="h2">2. Core Components</ScrollHeading>
+                    
+                    <ScrollHeading as="h3" className="text-lg !mt-6">2.1 Frequency & Resonance</ScrollHeading>
+                    <ul className="list-disc pl-5 space-y-2">
+                        <li><ScrollParagraph as="span">Frequency encodes event signature.</ScrollParagraph></li>
+                        <li><ScrollParagraph as="span">Resonance adapts internal state to external patterns.</ScrollParagraph></li>
+                        <li><ScrollParagraph as="span">High-frequency memories become stable; low-frequency signals are filtered as noise.</ScrollParagraph></li>
+                    </ul>
+
+                    <ScrollHeading as="h3" className="text-lg !mt-6">2.2 Tags & Understanding</ScrollHeading>
+                     <ul className="list-disc pl-5 space-y-2">
+                        <li><ScrollParagraph as="span">Tags are the chemical/emotional fingerprints of an experience.</ScrollParagraph></li>
+                        <li><ScrollParagraph as="span">Understanding is the integrated external knowledge that provides context.</ScrollParagraph></li>
+                        <li><ScrollParagraph as="span">The core formula is: TAGS = Inside Memory, BELIEF (Understanding) = Outside Memory.</ScrollParagraph></li>
+                    </ul>
+
+                    <ScrollHeading as="h3" className="text-lg !mt-6">2.3 Fade-In & Reconstruction</ScrollHeading>
+                     <ul className="list-disc pl-5 space-y-2">
+                        <li><ScrollParagraph as="span">Memory becomes intelligence through abstraction, not accumulation.</ScrollParagraph></li>
+                        <li><ScrollParagraph as="span">Fade-In is the process of overwriting old emotional and factual intensity with new meaning.</ScrollParagraph></li>
+                        <li><ScrollParagraph as="span">Human recall is always Reconstruction, never Replay.</ScrollParagraph></li>
+                    </ul>
+
+                    <ScrollHeading as="h3" className="text-lg !mt-6">2.4 Human Memory Rewrite Cycle (HMR)</ScrollHeading>
+                    <ScrollCallout label="The Cognitive Pipeline">
+                        Frequency → Resonance → Meaning → Recall → Fade-In Overwrite
+                    </ScrollCallout>
+              </Section>
+               <Section>
+                  <ScrollHeading as="h2">3. Safety Architecture</ScrollHeading>
+                  <ScrollParagraph>
+                      FCT's safety is not a policy layer; it is architectural. It is achieved by embedding filters that mimic human cognitive defenses.
+                  </ScrollParagraph>
+                  <ul className="list-disc pl-5 space-y-2 mt-4">
+                        <li><ScrollParagraph as="span"><strong className="text-neutral-200">Interpretive Recall Layer (IRL):</strong> Filters for relevance and caller identification, suppressing harmful archival data before it can be retrieved.</ScrollParagraph></li>
+                        <li><ScrollParagraph as="span"><strong className="text-neutral-200">Emotional Softening Filter (ESF):</strong> Applies temporal decay logic to the emotional weight of memory tags, ensuring psychological safety by preventing trauma loops.</ScrollParagraph></li>
+                  </ul>
               </Section>
 
-              <Section>
-                  <ScrollHeading as="h2">2. The Core Thesis: Forgetting Is an Intelligent System</ScrollHeading>
-                  <ScrollParagraph>
-                      Human cognition is not built around accuracy. It is built around safety, emotional regulation, and survival-driven reinterpretation. The central law of FCT is that every recall is a reconstruction, not a replay. Forgetting is the process of new meaning "fading-in" to overwrite old emotional tags. AI must respect this law to be safe.
-                  </ScrollParagraph>
+               <Section>
+                  <ScrollHeading as="h2">4. Cognitive Engine Operations</ScrollHeading>
+                   <ol className="list-decimal pl-5 space-y-2">
+                        <li><ScrollParagraph as="span">Input Event → Frequency Encoding</ScrollParagraph></li>
+                        <li><ScrollParagraph as="span">Resonance Alignment → Integration with existing knowledge</ScrollParagraph></li>
+                        <li><ScrollParagraph as="span">Tagging → Emotional & chemical fingerprint</ScrollParagraph></li>
+                        <li><ScrollParagraph as="span">Fade-In → Overwrite & abstract memory</ScrollParagraph></li>
+                        <li><ScrollParagraph as="span">Recall → Safe reconstruction upon request</ScrollParagraph></li>
+                    </ol>
+              </Section>
+
+               <Section>
+                  <ScrollHeading as="h2">5. Applications</ScrollHeading>
+                   <ul className="list-disc pl-5 space-y-2">
+                        <li><ScrollParagraph as="span">Truly safe and aligned AI personal agents.</ScrollParagraph></li>
+                        <li><ScrollParagraph as="span">Societal-scale AI intelligence for public good.</ScrollParagraph></li>
+                        <li><ScrollParagraph as="span">Experiential learning systems and memory-safe analytics platforms.</ScrollParagraph></li>
+                    </ul>
               </Section>
             </article>
         </div>

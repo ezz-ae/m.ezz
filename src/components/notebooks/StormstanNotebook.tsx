@@ -26,7 +26,7 @@ export function StormstanNotebook() {
         <ScrollHeading as="h1" className="text-3xl md:text-4xl font-light text-neutral-50 mt-4 !mb-6">
           Stormstan: The Ideas Recycling Hub
         </ScrollHeading>
-        <ScrollParagraph emphasisLevel="resonance" className="lead !text-neutral-300 !text-lg !leading-relaxed">
+        <ScrollParagraph emphasisLevel="high" className="lead !text-neutral-300 !text-lg !leading-relaxed">
           Stormstan is a non-AI platform conceptualized as a "GitHub for human thinking." It is an Ideas Recycling Hub built on a radical philosophy: the complete giveaway of intellectual property to accelerate creation and collaborative development.
         </ScrollParagraph>
       </Section>
@@ -47,7 +47,7 @@ export function StormstanNotebook() {
           The ecosystem is designed for one-to-all communication, with a strict policy of NO FOLLOWERS, NO FANS, NO CHATTING. The focus is purely on the ideas themselves.
         </ScrollParagraph>
 
-        <ScrollHeading as="h3" className="mt-8">User Roles</ScrollHeading>
+        <ScrollHeading as="h3" className="mt-8 text-xl">User Roles</ScrollHeading>
         <Table>
             <TableHeader>
                 <TableRow>
@@ -65,7 +65,7 @@ export function StormstanNotebook() {
             </TableBody>
         </Table>
 
-        <ScrollHeading as="h3" className="mt-8">Platform Actions</ScrollHeading>
+        <ScrollHeading as="h3" className="mt-8 text-xl">Platform Actions</ScrollHeading>
          <Table>
             <TableHeader>
                 <TableRow>
@@ -90,9 +90,9 @@ export function StormstanNotebook() {
             Monetization in Stormstan is not based on owning the idea, but on accessing its detailed filing or contributing to its "energy."
         </ScrollParagraph>
         <ul className="list-disc pl-5 space-y-2">
-            <ScrollParagraph as="li"><strong className="text-neutral-200">Monetization Access:</strong> For a fee set by the original lister, users can access the full, detailed filing of an idea. This can be done a maximum of 10 times per idea.</ScrollParagraph>
-            <ScrollParagraph as="li"><strong className="text-neutral-200">Charging Storms:</strong> Anyone can "charge" any storm with a $1 contribution. This represents its "electricity level." 80% of this charge goes directly to the storm's owner.</ScrollParagraph>
-            <ScrollParagraph as="li"><strong className="text-neutral-200">Idea Deletion:</strong> In a unique twist, monetizers or collectors can pay a significant fee ($1,000 - $5,000) to request the deletion of an idea, creating a market for removing ideas as well as creating them.</ScrollParagraph>
+            <li><ScrollParagraph as="span"><strong className="text-neutral-200">Monetization Access:</strong> For a fee set by the original lister, users can access the full, detailed filing of an idea. This can be done a maximum of 10 times per idea.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-neutral-200">Charging Storms:</strong> Anyone can "charge" any storm with a $1 contribution. This represents its "electricity level." 80% of this charge goes directly to the storm's owner.</ScrollParagraph></li>
+            <li><ScrollParagraph as="span"><strong className="text-neutral-200">Idea Deletion:</strong> In a unique twist, monetizers or collectors can pay a significant fee ($1,000 - $5,000) to request the deletion of an idea, creating a market for removing ideas as well as creating them.</ScrollParagraph></li>
         </ul>
       </Section>
 
@@ -102,10 +102,10 @@ export function StormstanNotebook() {
             The platform is designed to be a frictionless "bocket of metaideas."
         </ScrollParagraph>
         <ul className="list-disc pl-5 space-y-2">
-           <ScrollParagraph as="li"><strong className="text-neutral-200">Immediate Save:</strong> Storms are ongoing work. Every word is saved immediately, allowing users to push and edit anytime, just like a code repository.</ScrollParagraph>
-           <ScrollParagraph as="li"><strong className="text-neutral-200">Brainstorming Sessions:</strong> Users can "storm a seed" (a starting idea), and the system will create a thoughts board for a brainstorming session.</ScrollParagraph>
-           <ScrollParagraph as="li"><strong className="text-neutral-200">Visibility Control:</strong> Storms can be public, private, or directed specifically to "Shark" accounts for high-investor visibility.</ScrollParagraph>
-           <ScrollParagraph as="li"><strong className="text-neutral-200">Background AI:</strong> While a non-AI platform for users, AI works in the background to check for spam, prevent duplicate monetization, and provide reviews.</ScrollParagraph>
+           <li><ScrollParagraph as="span"><strong className="text-neutral-200">Immediate Save:</strong> Storms are ongoing work. Every word is saved immediately, allowing users to push and edit anytime, just like a code repository.</ScrollParagraph></li>
+           <li><ScrollParagraph as="span"><strong className="text-neutral-200">Brainstorming Sessions:</strong> Users can "storm a seed" (a starting idea), and the system will create a thoughts board for a brainstorming session.</ScrollParagraph></li>
+           <li><ScrollParagraph as="span"><strong className="text-neutral-200">Visibility Control:</strong> Storms can be public, private, or directed specifically to "Shark" accounts for high-investor visibility.</ScrollParagraph></li>
+           <li><ScrollParagraph as="span"><strong className="text-neutral-200">Background AI:</strong> While a non-AI platform for users, AI works in the background to check for spam, prevent duplicate monetization, and provide reviews.</ScrollParagraph></li>
         </ul>
       </Section>
 
