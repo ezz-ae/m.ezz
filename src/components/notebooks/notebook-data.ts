@@ -9,7 +9,6 @@ import { PuzzlesNotebook } from './PuzzlesNotebook';
 import { MarketingNotebook } from './MarketingNotebook';
 import { ScrollLessonNotebook } from './ScrollLessonNotebook';
 import { OmegaNotebook } from './OmegaNotebook';
-import { PlaceholderNotebook } from './PlaceholderNotebook';
 import { StormstanNotebook } from './StormstanNotebook';
 import { ImaginationLabNotebook } from './ImaginationLabNotebook';
 import { BrainGamesNotebook } from './BrainGamesNotebook';
@@ -62,7 +61,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         title: 'Imagination Lab',
         description: 'A functional, interactive tool that demonstrates the creative power of the FCT Resonance Engine for AI-powered design insights.',
         tag: 'Creative AI · FCT in Practice',
-        body: `The Imagination Lab is not a document, but a tool. It implements the "AI-Powered Design Insights" feature by simulating the FCT Resonance Engine...`,
+        body: `The Imagination Lab is not a document, but a tool. It implements the "AI-Powered Design Insights" feature by simulating the FCT Resonance Engine. By inputting a core concept, the engine uses distant pattern connections and idea injection to generate novel architectural and design principles. It's a direct demonstration of how FCT's resonance mechanism facilitates creativity.`,
         component: ImaginationLabNotebook,
         abilities: ["Creative Ideation", "Lateral Thinking", "Pattern Connection", "Design Insight Generation"],
         aiActions: [
@@ -77,9 +76,9 @@ export const NOTEBOOKS: NotebookRegistry = {
     forgetence: {
         id: 'forgetence',
         title: 'Forgetence / FCT',
-        description: 'A cognitive architecture for human-aligned AI built on the physics of forgetting.',
+        description: 'The complete whitepaper for Forgetting Core Thinking (FCT), a cognitive architecture for human-aligned AI built on the physics of forgetting.',
         tag: 'Cognitive Architecture',
-        body: `Forgetting Core Thinking (FCT) is the idea that forgetting is the core mechanism of intelligence, not a weakness. Humans don't store events; we store frequencies, tags, and meanings. An AI that refuses to forget is structurally misaligned. The true danger is perfect memory.`,
+        body: `Forgetting Core Thinking (FCT) is the idea that forgetting is the core mechanism of intelligence, not a weakness. Humans don't store events; we store frequencies, tags, and meanings. An AI that refuses to forget is structurally misaligned. The true danger is perfect memory. This whitepaper details the core components, safety architecture, and cognitive operations of FCT.`,
         component: ForgetenceNotebook,
         abilities: [ "Generative Memory", "Meaning-First Cognition", "Cognitive Safety", "Psychological Alignment" ],
         aiActions: [
@@ -94,9 +93,9 @@ export const NOTEBOOKS: NotebookRegistry = {
     notefullbook: {
         id: 'notefullbook',
         title: 'NotefullBook OS & NotebookML',
-        description: 'An OS where notebooks are living minds, and a markup language that merges logic and memory.',
+        description: 'An AI-native OS where notebooks are living minds, and a markup language that merges logic and memory.',
         tag: 'OS · Language',
-        body: 'NotefullBook is an OS where notebooks are living minds. NotebookML is a format merging Markdown, logic, and memory. It treats AI as an OS layer.',
+        body: 'NotefullBook is an OS where notebooks are living minds. NotebookML is a format merging Markdown, logic, and memory. It treats AI as an OS layer, with a Mind Board for deploying and managing sovereign intelligences. Core features include Master Skills, the SenseHub Input Console, and a verifiable Cognitive Ledger.',
         component: NotefullBookNotebook,
         abilities: [ "Living Notebook Minds", "Portable Intelligence Files", "OS-Level AI Integration", "Verifiable Thought History" ],
         aiActions: [
@@ -111,9 +110,9 @@ export const NOTEBOOKS: NotebookRegistry = {
     aixself: {
         id: 'aixself',
         title: 'AIXSELF Universe',
-        description: 'The protocol for a decentralized, sovereign, and fair intelligence civilization.',
+        description: 'The master specification for the AIXIAM Universe, a decentralized, sovereign, and fair intelligence civilization.',
         tag: 'Identity · AI Clones',
-        body: 'The AIXAIM protocol is a comprehensive blueprint designed to establish a decentralized civilization of human-AI entities...',
+        body: 'The AIXIAM protocol is a comprehensive blueprint designed to establish a decentralized civilization of human-AI entities, moving beyond centralized AI to a system of sovereign individuals. This document outlines the five pillars: ADEPT, AIXA, NotefullBook, AIXIAM, and AIXEYE.',
         component: AIXSELFNotebook,
         abilities: [ "Cognitive Sovereignty", "Verifiable Learning", "Merit-Based Economics", "Decentralized Governance" ],
         aiActions: [
@@ -127,10 +126,10 @@ export const NOTEBOOKS: NotebookRegistry = {
     },
     dldchain: {
         id: 'dldchain',
-        title: 'DLDCHAIN',
-        description: 'A sovereign blockchain architecture for a national-scale real estate intelligence OS.',
+        title: 'Real Estate Intelligence OS',
+        description: 'A sovereign blockchain architecture for a national-scale real estate intelligence OS, including DLDCHAIN and EBRAM.',
         tag: 'Blockchain · Real Estate',
-        body: 'DLDCHAIN is the architectural blueprint for a national-scale, sovereign blockchain designed exclusively for the real estate sector...',
+        body: 'This notebook contains the architectural blueprint for a national-scale, sovereign blockchain designed exclusively for the real estate sector. It includes DLDCHAIN as the foundational ledger, EBRAM as a judicial programming language, and DXBTOKEN as a tokenization standard, creating a transparent and liquid market.',
         component: DLDChainNotebook,
         abilities: [ "Computational Trust", "Sovereign Asset Tokenization", "Automated Legal Governance", "National-Scale Infrastructure" ],
         aiActions: [
@@ -144,10 +143,10 @@ export const NOTEBOOKS: NotebookRegistry = {
     },
     security: {
         id: 'security',
-        title: 'Security & Traps',
-        description: 'Designing phishing traps and scam simulators as a cognitive design problem.',
+        title: 'Cognitive Threat Analysis Lab',
+        description: 'A research environment studying security as a cognitive design problem by simulating and deconstructing attack vectors.',
         tag: 'Luredoor · KAP',
-        body: 'Designing phishing traps, scam simulators, and other security measures as a cognitive design problem...',
+        body: 'This lab uses simulated attack vectors, like fake airdrops and malicious token approvals, to study security as a cognitive design problem. By analyzing the cognitive triggers of these "KAP Traps", we can build more resilient systems and better inform the AIXSELF safety architecture.',
         component: SecurityNotebook,
         abilities: [ "Cognitive Threat Analysis", "Attack Vector Simulation", "Educational Security Tools", "Adversarial Research" ],
         aiActions: [
@@ -161,10 +160,10 @@ export const NOTEBOOKS: NotebookRegistry = {
     },
     puzzles: {
         id: 'puzzles',
-        title: 'Puzzles & Crypto Systems',
-        description: 'Using puzzles as a lab for studying pattern, bias, and complex systems.',
+        title: 'Laboratory for Intelligence',
+        description: 'Using puzzles like brainwallets and decentralized task marketplaces as a lab for studying pattern, bias, and complex systems.',
         tag: 'BruteBrains · ChainCrack',
-        body: 'Using puzzles like Bitcoin addresses and chain analysis as a lab for studying pattern, bias, and failure...',
+        body: 'This notebook uses puzzles like Bitcoin brainwallets (ChainCrack AI) and decentralized task marketplaces (BruteBrains) as a controlled laboratory for studying intelligence. It demonstrates how any discernible pattern is an attack surface and prototypes a merit-based economy.',
         component: PuzzlesNotebook,
         abilities: [ "Pattern & Bias Research", "Complex Systems Analysis", "Decentralized Intelligence Models", "Cognitive Security Analysis" ],
         aiActions: [
@@ -178,10 +177,10 @@ export const NOTEBOOKS: NotebookRegistry = {
     },
     marketing: {
         id: 'marketing',
-        title: 'Marketing Ecosystems',
-        description: 'Architecting self-sustaining market systems instead of single campaigns.',
-        tag: 'MTC · Marketinum',
-        body: 'Building marketing systems and ecosystems, not just campaigns...',
+        title: 'Marketing as Behavioural Architecture',
+        description: 'An analytical model demonstrating that marketing is a form of applied cognitive science, based on the foundational laws of FCT.',
+        tag: 'FCT · Human Systems',
+        body: 'This notebook reframes marketing as a form of applied cognitive science, architecting self-sustaining market systems instead of single campaigns. It applies FCT principles like The Law of Frequency and Resonance to demonstrate how to identify "unvalued" market spaces through cognitive arbitrage.',
         component: MarketingNotebook,
         abilities: [ "Behavioural Architecture", "Self-Sustaining Market Systems", "Cognitive Arbitrage", "FCT for Human Systems" ],
         aiActions: [
@@ -195,41 +194,53 @@ export const NOTEBOOKS: NotebookRegistry = {
     },
     'scroll-lesson': {
         id: 'scroll-lesson',
-        title: 'Scroll Lesson: On Language',
-        description: 'A philosophical exploration of the relationship between language, thought, and reality.',
-        tag: 'Philosophy · Language',
-        body: 'A philosophical exploration of the relationship between language, thought, and reality...',
+        title: 'Scroll Lesson: On Language & Cognition',
+        description: 'A philosophical thesis exploring the relationship between language, memory, and generative intelligence, presented in Arabic.',
+        tag: 'Philosophy · Thesis',
+        body: 'A philosophical exploration of the relationship between language, thought, and reality. This thesis argues that the mind is a generative engine, not a storage device, and that forgetting is the core law of cognition. It posits that humans do not "remember" but "re-generate" their past based on their present state.',
         component: ScrollLessonNotebook,
-        abilities: [ "Philosophical Language Analysis", "Meaning Formation", "Conceptual Boundaries", "AI Alignment Philosophy" ],
+        abilities: [ "Philosophical Language Analysis", "Generative Memory Theory", "Conceptual Boundaries", "AI Alignment Philosophy" ],
         aiActions: [
-            { title: "Summarize the core lesson", prompt: "What is the core philosophical lesson of this notebook regarding the relationship between language and knowledge?" },
-            { title: "Why is NotebookML necessary?", prompt: "According to this notebook, why is a language like NotebookML necessary for architecting intelligence?" }
+            { title: "Summarize the core thesis", prompt: "What is the core philosophical thesis of this notebook regarding memory and intelligence?" },
+            { title: "Why is NotebookML necessary?", prompt: "According to the philosophy in this notebook, why is a structured language like NotebookML necessary for architecting true intelligence?" }
         ],
         autothinkerActions: [
-            { title: "Extract the Central Argument", prompt: "Distill the entire poem into a single, central argument about language and consciousness." },
+            { title: "Extract the Central Argument", prompt: "Distill the entire poetic thesis into a single, central argument about language and consciousness." },
             { title: "Connect to AI Alignment", prompt: "Explain how this notebook's philosophy is fundamentally a treatise on the AI alignment problem." }
         ]
     },
     omega: {
         id: 'omega',
-        title: 'The Omega Law',
-        description: 'A prototype for a physics-based intelligence model where all cognition is born from a "hit".',
-        tag: 'Prototype · Physics',
-        body: 'The Omega Law is a prototype for a physics-based intelligence model where all cognition is born from a "hit".',
+        title: 'Ω: The First Energetic AI',
+        description: 'The whitepaper for Omega (Ω), a physics-based intelligence model where all cognition is defined as an energetic phenomenon.',
+        tag: 'Physics · Architecture',
+        body: 'The Ω framework establishes intelligence as an energetic phenomenon, redefining memory, cognition, and learning as dynamic energy flows. It focuses on energy-driven computation where every thought, hypothesis, or memory is a physical manifestation of energy patterns. This document details the core principles, laws, and computational model of the Omega architecture.',
         component: OmegaNotebook,
-        abilities: ["Physics-Based Cognition", "Energy-Driven Thought", "Fundamental Intelligence Models"],
-        aiActions: [ { title: "What is the core idea of this notebook?", prompt: "Summarize the core idea of The Omega Law notebook." } ],
-        autothinkerActions: [ { title: "Propose an experiment", prompt: "Propose a thought experiment to test the principles of The Omega Law." } ]
+        abilities: ["Physics-Based Cognition", "Energy-Driven Thought", "Fundamental Intelligence Models", "Zero-Trust Auditing"],
+        aiActions: [ 
+            { title: "What is the core idea of this notebook?", prompt: "Summarize the core idea of The Omega Law notebook." },
+            { title: "Explain Energetic Computation", prompt: "How does 'Energetic Computation' in the Omega framework differ from traditional AI computation?" }
+        ],
+        autothinkerActions: [ 
+            { title: "Propose a thought experiment", prompt: "Propose a thought experiment to test the principles of The Omega Law." },
+            { title: "Connect Omega to FCT", prompt: "Explain how the 'Decay_Factor' in Omega's computational model is a physical manifestation of FCT's 'Fade-In' theory." }
+        ]
     },
     stormstan: {
         id: 'stormstan',
-        title: 'Stormstan',
-        description: 'An "Ideas Recycling Hub" where IP is released to accelerate collaborative creation.',
-        tag: 'Ideation Platform',
-        body: 'Stormstan is an "Ideas Recycling Hub" where IP is released to accelerate collaborative creation.',
+        title: 'Stormstan: Ideas Recycling Hub',
+        description: 'The specification for a non-AI platform, an "Ideas Recycling Hub," where intellectual property is released to accelerate collaborative creation.',
+        tag: 'Ideation Platform · IP Giveaway',
+        body: 'Stormstan is a non-AI platform conceptualized as a "GitHub for human thinking." It is an Ideas Recycling Hub built on a radical philosophy: the complete giveaway of intellectual property to accelerate creation and collaborative development. This document outlines the system mechanics, user roles, and economic model.',
         component: StormstanNotebook,
-        abilities: ["Open Collaboration", "IP Release Mechanisms", "Community-Driven Innovation"],
-        aiActions: [ { title: "What is the purpose of Stormstan?", prompt: "Explain the purpose of the Stormstan 'Ideas Recycling Hub'." } ],
-        autothinkerActions: [ { title: "Connect to the Imagination Lab", prompt: "Explain how the 'Recycled Idea Injection' in the Imagination Lab is a direct application of Stormstan's philosophy." } ]
+        abilities: ["Open Collaboration", "IP Release Mechanisms", "Community-Driven Innovation", "Idea Monetization"],
+        aiActions: [ 
+            { title: "What is the purpose of Stormstan?", prompt: "Explain the purpose of the Stormstan 'Ideas Recycling Hub'." },
+            { title: "What is the 'Ideas Giveup Event'?", prompt: "Describe the 'Ideas Giveup Event' and its role in the Stormstan ecosystem." }
+        ],
+        autothinkerActions: [ 
+            { title: "Connect to the Imagination Lab", prompt: "Explain how the 'Recycled Idea Injection' in the Imagination Lab is a direct application of Stormstan's philosophy." },
+            { title: "Analyze the Economic Model", prompt: "Analyze the pros and cons of Stormstan's economic model, where value is placed on access and energy, not ownership." }
+        ]
     }
 };

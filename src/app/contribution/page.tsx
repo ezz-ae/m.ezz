@@ -37,10 +37,9 @@ export default function ContributionPage() {
           </p>
         </Section>
 
-        <Section className="mt-20 md:mt-24">
-            <h2 className="text-2xl md:text-3xl font-light text-center text-neutral-200 mb-12">The Layers of Inquiry</h2>
+        <div className="mt-20 md:mt-24">
             <TimelineView />
-        </Section>
+        </div>
         
         <Section className="mt-20 md:mt-24 text-center max-w-3xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-light text-neutral-200 mb-4">The Architectural Synthesis</h2>

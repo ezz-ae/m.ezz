@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { Section } from '@/components/ScrollTypography';
-import { Book, Code, GitBranch, Puzzle, Mail, MessageSquare } from 'lucide-react';
+import { Book, Code, GitBranch, Mail, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const sourceComponents = [
@@ -11,17 +11,9 @@ const sourceComponents = [
         icon: Code,
         category: "Living Intelligence Components",
         title: "The Interactive Notebooks",
-        description: "The complete source for the custom, interactive UIs that transform static documents into scientific instruments. Each is a self-contained demonstration of FCT principles.",
+        description: "The complete source for the custom, interactive UIs that transform static documents into scientific instruments. Each is a self-contained demonstration of FCT principles, from the FCT Proving Ground to the Imagination Lab.",
         link: "https://github.com/mahmoud-ezz/ezz.ae/tree/main/src/components/notebooks",
-        items: ["PuzzlesNotebook.tsx", "SecurityNotebook.tsx", "DLDChainNotebook.tsx", "ImaginationLabNotebook.tsx", "BrainGamesNotebook.tsx"]
-    },
-    {
-        icon: Puzzle,
-        category: "Cognitive Primitives & UI",
-        title: "The Core Building Blocks",
-        description: "The foundational, reusable components that define the platform's aesthetic and interactive logic, from the Reflection Meter to the Cognitive Focus system.",
-        link: "https://github.com/mahmoud-ezz/ezz.ae/tree/main/src/components/ui",
-        items: ["ReflectionMeter.tsx", "ConceptLink.tsx", "ScrollTypography.tsx"]
+        items: ["BrainGamesNotebook.tsx", "ImaginationLabNotebook.tsx", "SecurityNotebook.tsx", "NotefullBookNotebook.tsx", "PuzzlesNotebook.tsx"]
     },
     {
         icon: GitBranch,
@@ -29,7 +21,7 @@ const sourceComponents = [
         title: "The Entire EZZ.AE Repository",
         description: "The complete source code for the entire platform, including the global UI, navigation, data structures, and the full ecosystem of notebooks. A complete blueprint for building a 'living intelligence.'",
         link: "https://github.com/mahmoud-ezz/ezz.ae",
-        items: ["Next.js 14", "Tailwind CSS", "Framer Motion"]
+        items: ["Next.js 14", "Tailwind CSS", "Framer Motion", "ShadCN UI", "Genkit"]
     }
 ];
 
@@ -41,7 +33,7 @@ export default function SourcePage() {
           <Book className="mx-auto h-12 w-12 text-orange-400 mb-4" />
           <h1 className="text-4xl font-light text-neutral-100">The Source Library</h1>
           <p className="text-lg text-neutral-400 mt-4">
-            This project is an open scientific contribution. The components are provided for research and adaptation. For academic or commercial implementation, a formal request is invited.
+            This project is an open scientific contribution. The components are provided for research, adaptation, and collaboration. For academic or commercial implementation, a formal request is invited.
           </p>
         </Section>
 

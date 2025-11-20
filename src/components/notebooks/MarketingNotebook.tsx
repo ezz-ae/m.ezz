@@ -1,82 +1,73 @@
 // src/components/notebooks/MarketingNotebook.tsx
 'use client';
 
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { motion, AnimatePresence } from 'framer-motion';
-import { cn } from '@/lib/utils';
+import React from 'react';
+import { Section, ScrollHeading, ScrollParagraph, ScrollCallout } from '../ScrollTypography';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
-const fctPrinciples = {
-    'frequency': { name: 'The Law of Frequency', description: 'A brand or message gains meaning only through repetition. Consistent exposure creates familiarity, which creates recognition, which ultimately creates the "meaning" of a brand in a consumer\'s mind.' },
-    'resonance': { name: 'Resonance as Market Fit', description: 'A message can be broadcast at high frequency, but if it does not resonate with the audience\'s existing cognitive schemas and survival needs, it is rejected as noise. Successful marketing is the act of achieving resonance.' },
-    'sin': { name: 'Schema Intelligence Network (SIN)', description: 'This is the model for ethical market intelligence. By observing behavioral truths (frequency, return-rate, drift) without analyzing private content, we can identify "unvalued" spaces and quiet needs.' }
-};
+const marketingPrinciples = [
+    { 
+        principle: "The Law of Frequency", 
+        description: "A brand or message gains meaning only through repetition. Consistent exposure creates familiarity, which creates recognition, which ultimately creates the 'meaning' of a brand in a consumer's mind."
+    },
+    { 
+        principle: "Resonance as Market Fit", 
+        description: "A message can be broadcast at high frequency, but if it does not resonate with the audience's existing cognitive schemas and survival needs, it is rejected as noise. Successful marketing is the act of achieving resonance."
+    },
+    { 
+        principle: "Schema Intelligence Network (SIN)", 
+        description: "This is the model for ethical market intelligence. By observing behavioral truths (frequency, return-rate, drift) without analyzing private content, we can identify 'unvalued' spaces and quiet needs."
+    },
+];
 
-type PrincipleKey = keyof typeof fctPrinciples;
-
-function CognitiveArchitectureModel() {
-    const [selectedPrinciple, setSelectedPrinciple] = useState<PrincipleKey>('frequency');
-    const activePrinciple = fctPrinciples[selectedPrinciple];
-
-    return (
-        <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-4 md:p-8 space-y-8">
+export function MarketingNotebook() {
+  return (
+    <div className="max-w-4xl mx-auto py-16">
+        <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-6 md:p-8 space-y-8">
             <div className="text-center border-b border-neutral-800 pb-6">
-                <h1 className="text-2xl md:text-3xl font-light text-neutral-100">Marketing as Behavioural Architecture</h1>
+                <h1 className="text-2xl font-light text-neutral-100">Marketing as Behavioural Architecture</h1>
                 <p className="text-sm text-neutral-500 max-w-xl mx-auto mt-2">
                     An analytical model demonstrating that marketing is a form of applied cognitive science, based on the foundational laws of FCT.
                 </p>
             </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                <div className="lg:col-span-8">
-                    <Card className="bg-neutral-900 border-neutral-800 h-full">
-                        <CardHeader><CardTitle className="text-base font-semibold text-neutral-300">FCT Principles in Marketing</CardTitle></CardHeader>
-                        <CardContent>
-                            <div className="flex flex-wrap gap-2 mb-4">
-                                {Object.keys(fctPrinciples).map((key) => {
-                                    const principle = fctPrinciples[key as PrincipleKey];
-                                    return (
-                                        <Button key={key} variant="outline" size="sm" onClick={() => setSelectedPrinciple(key as PrincipleKey)}
-                                            className={cn("text-xs h-8", selectedPrinciple === key ? "bg-orange-500/10 border-orange-500/30 text-orange-300" : "text-neutral-300")}>
-                                            {principle.name}
-                                        </Button>
-                                    );
-                                })}
-                            </div>
-                            <AnimatePresence mode="wait">
-                                <motion.div key={selectedPrinciple} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }}
-                                    className="bg-neutral-950/50 p-3 rounded-md border border-neutral-800/50">
-                                    <h4 className="text-sm font-medium text-neutral-200 mb-1">{activePrinciple.name}</h4>
-                                    <p className="text-xs text-neutral-400">{activePrinciple.description}</p>
-                                </motion.div>
-                            </AnimatePresence>
-                        </CardContent>
-                    </Card>
-                </div>
-                <div className="lg:col-span-4 flex flex-col items-center justify-center bg-neutral-900 p-4 rounded-md border border-neutral-800 text-center">
-                    <h3 className="text-sm font-semibold text-neutral-300 mb-2">Cognitive Arbitrage</h3>
-                     <p className="text-xs text-neutral-500 mb-4">Seeing the pattern the market has dismissed as noise.</p>
-                    <div className="w-full">
-                        <div className="mb-3">
-                             <div className="h-2 w-full bg-red-500/50 rounded-full"></div>
-                             <p className="text-xs text-red-400/80 mt-1">High-Frequency Signals (Crowded Market)</p>
-                        </div>
-                         <div className="">
-                             <div className="h-2 w-1/4 bg-green-500/50 rounded-full"></div>
-                             <p className="text-xs text-green-400/80 mt-1">Low-Frequency Signals ("Unvalued" Space)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
+            <article className="prose prose-invert max-w-none prose-p:text-neutral-400 prose-headings:text-neutral-200">
+                <Section>
+                    <ScrollHeading as="h2">Core Thesis</ScrollHeading>
+                    <ScrollParagraph>
+                        Marketing is not about campaigns, slogans, or channels. It is a form of applied cognitive science. Its purpose is to architect a behavioral system where a brand's message achieves a stable, resonant frequency within a target audience's cognitive framework. The goal is not to be seen, but to be integrated.
+                    </ScrollParagraph>
+                </Section>
+                <Section>
+                    <ScrollHeading as="h2">FCT Principles in Marketing</ScrollHeading>
+                     <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead>Principle</TableHead>
+                                <TableHead>Description in Marketing</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {marketingPrinciples.map((item) => (
+                                <TableRow key={item.principle}>
+                                    <TableCell className="font-medium text-neutral-100">{item.principle}</TableCell>
+                                    <TableCell className="text-neutral-400">{item.description}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </Section>
+                 <Section>
+                    <ScrollHeading as="h2">The Concept of Cognitive Arbitrage</ScrollHeading>
+                    <ScrollParagraph>
+                        The market is a sea of signals. Most organizations compete for high-frequency signals (crowded, obvious trends). Cognitive Arbitrage is the art of detecting and amplifying the low-frequency signals—the "unvalued" spaces and quiet needs that the market has dismissed as noise. By applying the SIN model, we can identify these gaps ethically and build systems that resonate with unmet needs.
+                    </ScrollParagraph>
+                    <ScrollCallout label="Practical Application">
+                        Instead of asking "What are our competitors doing?", ask "What frequency has the market failed to hear?".
+                    </ScrollCallout>
+                </Section>
+            </article>
         </div>
-    );
-}
-
-export function MarketingNotebook() {
-  return (
-    <div className="max-w-4xl mx-auto py-16 px-4">
-        <CognitiveArchitectureModel />
     </div>
   );
 }

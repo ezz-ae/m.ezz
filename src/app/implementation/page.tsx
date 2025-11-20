@@ -48,7 +48,7 @@ export default function ImplementationPage() {
         <Section className="text-center max-w-3xl mx-auto">
           <h1 className="text-4xl font-light text-neutral-100">From Science to Action</h1>
           <p className="text-lg text-neutral-400 mt-4">
-            The AIXSELF Universe is not just a theoretical framework; it is a practical blueprint for building the next generation of intelligent systems. This is how this science can work in action.
+            The AIXSELF Universe is not just a theoretical framework; it is a practical blueprint for building the next generation of intelligent systems. This is how this science can be put into action.
           </p>
         </Section>
 
