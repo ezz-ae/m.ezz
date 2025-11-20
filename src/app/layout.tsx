@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
-import { CognitiveCanvas } from "@/components/CognitiveCanvas"; // Import the new component
+import { CognitiveCanvas } from "@/components/CognitiveCanvas";
+import { SiteFooter } from "@/components/SiteFooter"; // Import the new footer
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,9 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <CognitiveCanvas /> {/* Add the canvas here */}
+        <CognitiveCanvas />
         <SiteHeader />
         <main>{children}</main>
+        <SiteFooter /> {/* Use the new footer here */}
       </body>
     </html>
   );

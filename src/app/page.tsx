@@ -1,27 +1,22 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ShieldOff, BrainCircuit, Layers } from 'lucide-react';
 import Link from 'next/link';
 import IdentityStatement from '@/components/IdentityStatement';
 import TopicMap from '@/components/TopicMap';
 import FooterMinimal from '@/components/FooterMinimal';
 import { Button } from '@/components/ui/button';
-import { PhilosophicalProof } from '@/components/PhilosophicalProof';
 
 const problemPoints = [
     {
-        icon: ShieldOff,
         title: 'Psychologically Unsafe',
         text: 'AI revives past trauma at full emotional intensity, a process a healthy human mind naturally softens.',
     },
     {
-        icon: BrainCircuit,
         title: 'Cognitively Misaligned',
         text: 'AI gives equal weight to every piece of data, failing to distinguish between core principles and trivial details.',
     },
     {
-        icon: Layers,
         title: 'Lacks Interpretive Depth',
         text: 'It recalls literal events, not the meaning or pattern behind them, leading to context-blind interactions.',
     },
@@ -135,8 +130,6 @@ export default function FCTHome() {
       <IdentityStatement />
       
       <TopicMap />
-
-      <PhilosophicalProof />
       
       <FooterMinimal />
     </div>
