@@ -136,7 +136,15 @@ const mindMapData = [
                 { name: 'Humans Never Forget; They Fade Into New Understanding', details: 'The self is not a static entity that loses memories. It is a continuous process of becoming, where past events are constantly reinterpreted through the lens of a new, more evolved understanding.' },
                 { name: 'Recall is Reinterpretation, Not Retrieval', details: 'Every act of "remembering" is a creative act of reinterpretation. We do not retrieve a memory; we generate a new version of it based on our current state.' },
             ]
-        }
+        },
+        {
+            title: 'The Physics of Memory and Cognition',
+            points: [
+                { name: 'Frequency is the Law', details: 'Everything in cognition starts with frequency. Repetition creates recognition, which creates meaning. The brain stores frequencies, not events.' },
+                { name: 'Tags as Chemical States', details: 'Emotion is not a category but a "tag"—a chemical fingerprint encoded with an event that determines its durability and recall behavior.' },
+                { name: 'The HMR Cycle', details: 'The Human Memory Rewrite Cycle (Frequency → Adaptation → Resonance → Meaning → Relocation → Fade-In Overwrite) is the cognitive pipeline that ensures memory evolves safely.' }
+            ]
+        },
     ]
   },
 ];
