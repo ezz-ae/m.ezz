@@ -1,4 +1,3 @@
-
 // src/app/projection/page.tsx
 'use client';
 
@@ -13,6 +12,12 @@ export default function ProjectionPage() {
         <Section className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h1 className="text-2xl md:text-3xl font-light text-neutral-200">“AI SHOULD NOT MIRROR HUMANS. AI SHOULD UNDERSTAND HUMANS.”</h1>
+            <p className="text-base text-neutral-400 mt-6">
+                This projection consolidates all information regarding the intellectual universe defined across the sources, covering the foundational cognitive law, the overall architectural stack, the implementation platform, the economic model, and the deep generative physics.
+            </p>
+            <p className="text-base text-neutral-400 mt-4">
+                The entire system is unified under the central premise that <strong>Forgetting is the engine of intelligence, safety, and stability</strong>. The ultimate goal is to create <strong>Completing AI</strong>—intelligence that stabilizes and supports human cognition rather than competing with it.
+            </p>
           </div>
 
           <div className="prose prose-invert max-w-none prose-p:text-neutral-400 prose-headings:text-neutral-200 prose-headings:font-light prose-h2:border-b prose-h2:border-neutral-800 prose-h2:pb-2 prose-h3:text-neutral-300">
@@ -175,7 +180,7 @@ export default function ProjectionPage() {
                     <TableRow><TableCell>AIXSELF</TableCell><TableCell>End-user foundation for AI management</TableCell></TableRow>
                 </TableBody>
             </Table>
-            <p><strong>Ethical Foundation:</strong> Mandatory exam on Principles of Ethical Digital Intelligence before activation.</p>
+            <p className="mt-4"><strong>Ethical Foundation:</strong> Mandatory exam on Principles of Ethical Digital Intelligence before activation.</p>
 
             <hr className="my-12 border-neutral-800" />
 
