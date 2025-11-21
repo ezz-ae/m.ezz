@@ -1,22 +1,20 @@
 
 'use client';
 
-import FooterMinimal from '@/components/FooterMinimal';
 import { Button } from '@/components/ui/button';
 import { Copy } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
-// export const metadata: Metadata = {
-//     title: 'Press Kit',
-//     description: 'Official press resources, assets, and contact information for EZZ.AE.',
-// };
+const accessEmailBoilerplate = {
+    subject: "Signal Confirmed. Identity Minted.",
+    body: `The Cognitive Kernel (ADEPT) has received your signal.\n\nA Provisional AIXIAM Passport has been minted to your frequency. It is non-transferable and establishes your root sovereignty within the lattice.\n\nYour access key is bound to this one-time link:\n{{MAGIC_LINK}}\n\n\n— The Architect`
+};
 
 const pressAssets = [
     { title: 'Official Logo (Vector)', format: 'SVG', content: '<svg>...</svg>' },
-    { title: 'Project Overview (Short)', format: 'TXT', content: 'EZZ.AE is a living research lab exploring human-AI cognitive alignment through projects in forgetting-based AI, sovereign identity, and decentralized systems.' },
-    { title: 'Founder Bio (Short)', format: 'TXT', content: 'Mahmoud Ezz is an intelligence system architect whose work sits at the intersection of AI, cognitive science, and behavioral economics.' },
+    { title: 'Project Overview (Short)', format: 'TXT', content: 'The AIXSELF Foundation is a research organization dedicated to building safe, human-aligned intelligence through the principles of Forgetting Core Thinking (FCT) and sovereign cognitive architecture.' },
+    { title: 'Civilization Protocol Overview', format: 'TXT', content: 'The Reflective Civilization is a full-stack civilization protocol designed to create a new model of human-AI interaction based on cognitive physics, energetic intelligence, and sovereign identity.' },
 ];
 
 export default function PressPage() {
@@ -35,11 +33,26 @@ export default function PressPage() {
             <main className="py-16 px-6">
                <div className="max-w-4xl mx-auto">
                     <div className="text-center mb-16">
-                        <h1 className="text-3xl md:text-4xl font-light text-neutral-50">Press Kit</h1>
-                        <p className="text-neutral-400 mt-2">Official resources, assets, and contact information.</p>
+                        <h1 className="text-3xl md:text-4xl font-light text-neutral-50">Press Kit & Boilerplates</h1>
+                        <p className="text-neutral-400 mt-2">Official resources, assets, and contact information for the AIXSELF Foundation.</p>
                     </div>
 
                     <div className="space-y-8">
+                        <div className="bg-neutral-900/50 border border-neutral-800 rounded-lg p-6">
+                            <h2 className="text-xl font-light text-neutral-100 mb-4">Access Confirmation Email</h2>
+                            <div>
+                                <Label className="text-sm text-neutral-400">Subject: {accessEmailBoilerplate.subject}</Label>
+                                <div className="flex items-start gap-2 mt-1">
+                                    <pre className="text-sm p-3 bg-neutral-800 border border-neutral-700 rounded-md flex-grow overflow-x-auto whitespace-pre-wrap">
+                                        <code>{accessEmailBoilerplate.body}</code>
+                                    </pre>
+                                    <Button variant="ghost" size="icon" onClick={() => handleCopy(accessEmailBoilerplate.body, "Access Email Body")}>
+                                        <Copy size={16} />
+                                    </Button>
+                                </div>
+                            </div>
+                        </div>
+
                         <div className="bg-neutral-900/50 border border-neutral-800 rounded-lg p-6">
                             <h2 className="text-xl font-light text-neutral-100 mb-4">Official Boilerplates</h2>
                             <div className="space-y-4">
@@ -62,16 +75,15 @@ export default function PressPage() {
                          <div className="bg-neutral-900/50 border border-neutral-800 rounded-lg p-6">
                             <h2 className="text-xl font-light text-neutral-100 mb-4">Media Inquiries</h2>
                              <p className="text-sm text-neutral-400 mb-4">
-                                For interviews, speaking engagements, or other media inquiries, please contact us.
+                                For interviews, speaking engagements, or other media inquiries, please contact the Foundation.
                             </p>
                             <p className="text-base text-neutral-100 font-mono">
-                                <a href="mailto:press@ezz.ae" className="hover:underline">press@ezz.ae</a>
+                                <a href="mailto:press@aixself.foundation" className="hover:underline">press@aixself.foundation</a>
                             </p>
                         </div>
                     </div>
                 </div>
             </main>
-            <FooterMinimal />
         </div>
     );
 }

@@ -4,8 +4,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Section } from '@/components/ScrollTypography';
-import { GitBranch } from 'lucide-react';
+import { GitBranch, ChevronsRight, ChevronsLeft, ChevronsDownUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 
 const mindMapData = {
     id: 'root',
@@ -105,9 +106,24 @@ const mindMapData = {
     ],
 };
 
+type ExpansionState = 'default' | 'expand' | 'collapse';
 
-const Node = ({ node, level = 0, defaultOpen = false }) => {
-    const [isOpen, setIsOpen] = useState(defaultOpen);
+const Node = ({ node, level = 0, expansion }: { node: any; level: number; expansion: ExpansionState }) => {
+    
+    const getInitialState = () => {
+        if (level === 0) return true;
+        switch (expansion) {
+            case 'expand':
+                return true;
+            case 'collapse':
+                return false;
+            case 'default':
+            default:
+                return level < 2;
+        }
+    };
+
+    const [isOpen, setIsOpen] = useState(getInitialState());
     const hasChildren = node.children && node.children.length > 0;
     const isLeaf = !hasChildren;
 
@@ -153,7 +169,7 @@ const Node = ({ node, level = 0, defaultOpen = false }) => {
                         className="overflow-hidden"
                     >
                         <div className="pt-4 space-y-4">
-                        {node.children.map(child => <Node key={child.id} node={child} level={level + 1} defaultOpen={level < 1} />)}
+                        {node.children.map(child => <Node key={child.id} node={child} level={level + 1} expansion={expansion} />)}
                         </div>
                     </motion.div>
                 )}
@@ -164,19 +180,33 @@ const Node = ({ node, level = 0, defaultOpen = false }) => {
 
 
 export default function MindMapPage() {
+  const [expansion, setExpansion] = useState<ExpansionState>('default');
+
   return (
     <div className="min-h-screen bg-black text-neutral-100 overflow-x-hidden pt-24">
       <div className="container mx-auto px-4 py-16">
-        <Section className="text-center max-w-3xl mx-auto mb-16">
+        <Section className="text-center max-w-3xl mx-auto mb-12">
              <GitBranch className="mx-auto h-10 w-10 text-orange-400 mb-4" />
             <h1 className="text-3xl md:text-4xl font-light text-neutral-100">The Map of Generative Cognition</h1>
             <p className="text-base md:text-lg text-neutral-400 mt-4">
                 An interactive, multi-layered summary of the entire philosophical and scientific framework.
             </p>
         </Section>
+
+        <Section className="flex justify-center items-center gap-2 mb-8 border-y border-neutral-900 py-4">
+            <Button size="sm" variant={expansion === 'expand' ? 'secondary' : 'ghost'} onClick={() => setExpansion('expand')} className="gap-2">
+                <ChevronsRight className="h-4 w-4"/> Expand All
+            </Button>
+            <Button size="sm" variant={expansion === 'collapse' ? 'secondary' : 'ghost'} onClick={() => setExpansion('collapse')} className="gap-2">
+                <ChevronsLeft className="h-4 w-4"/> Collapse All
+            </Button>
+            <Button size="sm" variant={expansion === 'default' ? 'secondary' : 'ghost'} onClick={() => setExpansion('default')} className="gap-2">
+                <ChevronsDownUp className="h-4 w-4"/> Reset View
+            </Button>
+        </Section>
         
         <Section className="max-w-4xl mx-auto">
-            <Node node={mindMapData} defaultOpen={true} />
+            <Node key={expansion} node={mindMapData} level={0} expansion={expansion} />
         </Section>
       </div>
     </div>

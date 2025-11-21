@@ -4,6 +4,7 @@
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 
+// A bespoke Stanza component for this page's unique animation
 const Stanza = ({ children, className = '' }) => {
     const ref = React.useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.3 });
@@ -41,7 +42,7 @@ export default function ThesisPage() {
   return (
       <div className="min-h-screen bg-[--background] text-[--foreground] overflow-x-hidden pt-32">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-right font-pt-sans" dir="rtl"> {/* Ensure font-pt-sans is applied here as well */}
+          <div className="max-w-3xl mx-auto text-right font-pt-sans" dir="rtl"> {/* Apply font-pt-sans here */}
               
               <motion.div 
                 className="text-center mb-24"
@@ -63,7 +64,7 @@ export default function ThesisPage() {
                   لكن الآن… لأول مرة، يمكن للإنسان أن ينظر إلى عقله بدون خوف، أن يدرس <strong>“النسيان” ليس كعجز، بل كالقانون الذي يحكم العقل</strong>، وأن يعيد تعريف الذكاء الاجتماعي ليس كمهارة، بل كنظام تواصل مبني على المعنى لا الذاكرة.
               </Stanza>
               
-              <ChapterTitle>العقل كمحرّك للمعنى</ChapterTitle>
+              <ChapterTitle>الفصل الأول: العقل كمحرّك للمعنى</ChapterTitle>
               <Stanza>
                   العقل لا يملك خزائن. لا يملك أرففًا. لا يملك أرشيفًا. <strong>العقل لا يتذكر… العقل يولّد</strong>. انت لا ترى الماضي كما كان. أنت ترى الماضي كما أصبحت. إنها هندسة الدماغ البشري. عقولنا تنعم بما يمكن تسميته <strong>بالمحدودية النفعية</strong>.
               </Stanza>
@@ -71,12 +72,12 @@ export default function ThesisPage() {
                   الإنسان لا يحتاج الاحداث ليتعلم. <strong>الإنسان يحتاج المعنى فقط</strong>. العقل لا يحتفظ بما حدث… بل يحتفظ بما سيحتاج إليه لاحقًا.
               </Stanza>
 
-              <ChapterTitle>الذاكرة كنظام توليدي</ChapterTitle>
+              <ChapterTitle>الفصل الثاني: الذاكرة كنظام توليدي</ChapterTitle>
               <Stanza>
                   <strong>النسيان ليس فقدان بل نضج</strong>، ليس محوًا… بل اندماج. العقل لا يمحو شيئًا… <strong>العقل لا يخزن أصلًا</strong>. ما يحدث هو أن تمر تجربة، يقرأ العقل درجة فائدتها، يتكوّن منها “مفهوم”، وليس “حدثًا”، ثم يتلاشى كل شيء آخر.
               </Stanza>
 
-              <ChapterTitle>الذكاء كعملية لا صفة</ChapterTitle>
+              <ChapterTitle>الفصل الثالث: الذكاء كعملية لا صفة</ChapterTitle>
               <Stanza>
                   الذكاء ليس صفة. <strong>الذكاء عملية</strong>. يُقاس بقدرتين: <strong>دقة الاستخلاص</strong> (كيف يستخلص عقلك المفهوم من الحدث) و<strong>دقة الربط</strong> (كيف يربط المفاهيم ببعضها). الذكاء ليس ملكية، بل حركة. ذبذبة. ثم فكرة.
               </Stanza>

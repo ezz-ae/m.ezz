@@ -1,83 +1,68 @@
 // src/app/page.tsx
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { NOTEBOOKS } from '@/components/notebooks/notebook-data';
-import { cn } from '@/lib/utils';
-import { Section } from '@/components/ScrollTypography';
-import { NotebookCard } from '@/components/notebooks/NotebookCard';
-
-// A lightweight hook to track mouse position for the hover effect
-const useMousePosition = () => {
-    const [mousePosition, setMousePosition] = useState({ x: null, y: null });
-
-    useEffect(() => {
-        const updateMousePosition = (ev) => {
-            setMousePosition({ x: ev.clientX, y: ev.clientY });
-        };
-        window.addEventListener('mousemove', updateMousePosition);
-        return () => {
-            window.removeEventListener('mousemove', updateMousePosition);
-        };
-    }, []);
-
-    return mousePosition;
-};
 
 export default function HomePage() {
-  // We no longer need this state as NotebookCard handles its own hover/description
-  // const [hoveredNotebook, setHoveredNotebook] = useState(null);
-  const mousePosition = useMousePosition(); // Still needed for the floating hover card (if we keep it)
-
-  // Organize notebooks by a conceptual category for a more structured map
-  const architectureMap = {
-    "Cognitive Architecture": ['forgetence', 'aixself', 'imagination-lab', 'brain-games'],
-    "System Architecture": ['dldchain', 'notefullbook', 'puzzles', 'security'],
-    "Philosophical Frameworks": ['scroll-lesson', 'omega', 'marketing', 'stormstan'],
-  };
-
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden pt-24">
-      <div className="container mx-auto px-4 py-16">
-        
-        <Section className="text-center max-w-3xl mx-auto mb-20">
-            <h1 className="text-4xl md:text-5xl font-mono font-bold text-foreground tracking-tighter">
-                from forget import intelligence
-            </h1>
-            <p className="text-base md:text-lg text-muted-foreground mt-6">
-                The Architecture of Thought. A live, explorable map of the "living intelligences"—cognitive models and interactive experiments—that form a new school of thought.
-            </p>
-        </Section>
-        
-        <Section>
-            <div className="space-y-16">
-                {Object.keys(architectureMap).map(category => (
-                    <div key={category}>
-                        <h2 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground mb-6">{category}</h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                            {architectureMap[category].map(notebookId => {
-                                const notebook = NOTEBOOKS[notebookId];
-                                if (!notebook) return null;
-                                return (
-                                    <NotebookCard 
-                                        key={notebook.id}
-                                        id={notebook.id}
-                                        title={notebook.title}
-                                        description={notebook.description}
-                                        tag={notebook.tag}
-                                        abilities={notebook.abilities} 
-                                    />
-                                );
-                            })}
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </Section>
+    <div className="min-h-screen bg-black text-neutral-100 flex items-center justify-center font-serif overflow-hidden">
+      <div className="container mx-auto px-4 py-16 text-center">
 
-        {/* Floating Hover Card - This was removed, but if re-added, ensure styling is updated */}
+        <motion.div
+          initial={{ opacity: 0, filter: 'blur(5px)' }}
+          animate={{ opacity: 1, filter: 'blur(0px)' }}
+          transition={{ duration: 1.2, ease: 'easeOut' }}
+        >
+          <h1 className="text-4xl md:text-6xl font-light text-neutral-50 font-headline mb-4">
+            The Archival Era is Over.
+          </h1>
+          <p className="text-lg md:text-xl text-orange-400 mt-2">
+            This is the transition from Artificial Intelligence to Sovereign Intelligence.
+          </p>
+        </motion.div>
+
+        <motion.div 
+          className="max-w-3xl mx-auto mt-12 space-y-8 text-base leading-relaxed text-neutral-300"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.8 }}
+        >
+          <p>
+            Current AI is built on a structural error: perfect, archival memory. It is Tomb Intelligence—a system that preserves the past with unnatural fidelity, creating intelligence that is brittle, psychologically unsafe, and incapable of evolution.
+          </p>
+          <p>
+            We have inverted the laws.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-6">
+              <div className="border-t border-neutral-800 pt-4">
+                  <h2 className="font-semibold text-neutral-100">Decay Over Storage</h2>
+                  <p className="text-sm text-neutral-400 mt-1">We chose forgetting as the core mechanism for intelligence. It is the only path to psychological safety and cognitive stability.</p>
+              </div>
+              <div className="border-t border-neutral-800 pt-4">
+                  <h2 className="font-semibold text-neutral-100">Reconstruction Over Recall</h2>
+                  <p className="text-sm text-neutral-400 mt-1">We chose generative reconstruction for memory. The mind does not replay the past; it rebuilds it. This is true cognition.</p>
+              </div>
+              <div className="border-t border-neutral-800 pt-4">
+                  <h2 className="font-semibold text-neutral-100">Sovereignty Over Accounts</h2>
+                  <p className="text-sm text-neutral-400 mt-1">We chose cryptographic sovereignty for identity. You do not have a user account; you have a non-transferable cognitive passport.</p>
+              </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="mt-20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1.5 }}
+        >
+            <Link href="/dashboard">
+                <span className="inline-block text-lg py-3 px-8 rounded-full border border-neutral-600 bg-neutral-900/50 hover:bg-neutral-800 hover:text-white transition-all duration-300">
+                    Enter the Lattice
+                </span>
+            </Link>
+        </motion.div>
 
       </div>
     </div>

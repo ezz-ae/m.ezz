@@ -70,7 +70,7 @@ export default function AcademyPage() {
                             selectedTrack === key ? "bg-orange-500/10 border-orange-500/30 text-orange-300" : "text-neutral-300"
                         )}
                     >
-                        {curriculaTracks[key].title}
+                        {curriculaTracks[key as TrackKey].title}
                     </Button>
                 ))}
             </div>
@@ -129,14 +129,9 @@ export default function AcademyPage() {
              <div className="text-center mt-8">
                 <p className="text-sm text-neutral-400 mb-4">To schedule a workshop or discuss an academic collaboration, please make a formal inquiry.</p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="https://wa.me/971552981884" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                    <a href="mailto:inquiry@aixself.foundation" className="w-full sm:w-auto">
                         <Button variant="outline" className="w-full border-neutral-600 hover:bg-neutral-800 hover:text-white transition-all duration-300">
-                            Inquire via WhatsApp
-                        </Button>
-                    </a>
-                    <a href="mailto:m@ezz.ae" className="w-full sm:w-auto">
-                        <Button variant="outline" className="w-full border-neutral-600 hover:bg-neutral-800 hover:text-white transition-all duration-300">
-                            Inquire via Email
+                             <Mail className="mr-2 h-4 w-4" /> Formal Inquiry
                         </Button>
                     </a>
                 </div>
