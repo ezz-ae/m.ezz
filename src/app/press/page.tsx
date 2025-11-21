@@ -7,8 +7,27 @@ import { useToast } from '@/hooks/use-toast';
 import { Label } from '@/components/ui/label';
 
 const accessEmailBoilerplate = {
-    subject: "Signal Confirmed. Identity Minted.",
-    body: `The Cognitive Kernel (ADEPT) has received your signal.\n\nA Provisional AIXIAM Passport has been minted to your frequency. It is non-transferable and establishes your root sovereignty within the lattice.\n\nYour access key is bound to this one-time link:\n{{MAGIC_LINK}}\n\n\n— The Architect`
+    subject: "Identity Minted. The Lattice is Open.",
+    body: `Citizen,
+
+You have requested entry to the Reflective Civilization.
+
+The Kernel (ADEPT) has received your signal.
+The Governance Mesh (AIXEYE) has validated your request.
+
+Your Provisional AIXIAM Passport has been minted. It is currently a blank slate, waiting for your Frequency Fingerprint.
+
+We do not use passwords. We use Continuity.
+
+Click below to anchor your identity to the Genesis Block:
+
+[ {{MAGIC_LINK}} ]
+
+Do not share this link. Identity is non-transferable.
+
+Welcome home.
+
+— The Architect`
 };
 
 const pressAssets = [

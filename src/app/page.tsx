@@ -15,7 +15,7 @@ export default function HomePage() {
           animate={{ opacity: 1, filter: 'blur(0px)' }}
           transition={{ duration: 1.2, ease: 'easeOut' }}
         >
-          <h1 className="text-4xl md:text-6xl font-light text-neutral-50 font-headline mb-4">
+          <h1 className="text-4xl md:text-6xl font-light text-neutral-50 font-playfair mb-4">
             The Archival Era is Over.
           </h1>
           <p className="text-lg md:text-xl text-orange-400 mt-2">
