@@ -13,6 +13,7 @@ const siteMap = {
     ],
     "The Thesis": [
         { href: "/architecture-of-emergence", label: "Architecture" },
+        { href: "/whitepaper", label: "Whitepaper" },
         { href: "/thesis", label: "The Thesis (Arabic)" },
         { href: "/mindmap", label: "Mind Map" },
         { href: "/projection", label: "Projection" },

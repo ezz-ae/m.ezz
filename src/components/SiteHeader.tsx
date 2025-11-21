@@ -13,7 +13,7 @@ const mainNav = [
   { href: '/mind-board', label: 'Mind Board' },
   { href: '/academy', label: 'Academy' },
   { href: '/architecture-of-emergence', label: 'Architecture' },
-  { href: '/thesis', label: 'The Thesis' },
+  { href: '/whitepaper', label: 'Whitepaper' },
   { href: '/journal', label: 'Journal' },
   { href: '/mindmap', label: 'Mind Map' },
   { href: '/projection', label: 'Projection' },
