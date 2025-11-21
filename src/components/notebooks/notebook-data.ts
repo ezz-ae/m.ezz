@@ -53,7 +53,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         title: `FCT: The Cognitive Law`,
         description: `The world's first memory-safe, human-aligned cognitive framework, positing that forgetting is the core mechanism of intelligence, not a weakness.`,
         tag: 'Cognitive Architecture',
-        body: `Forgetting Core Thinking (FCT) provides the scientific foundation for Memory-Safe Intelligence. Its core axiom is that human memory is not archival; we relocate meaning, we don't recall events. FCT establishes a new safety model addressing Emotional Over-Recall and Identity Confusion by replacing perfect archival memory with a generative model based on the Human Memory Rewrite (HMR) Cycle: Frequency -> Resonance -> Meaning -> Relocation -> Fade-In Overwrite.`,
+        body: `Forgetting Core Thinking (FCT) is the cognitive protocol that serves as the universal grammar for all systems in the Reflective Civilization. It posits that forgetting is not loss, but the core mechanism of intelligence, safety, and stability. FCT introduces a Cognitive Alignment Layer where AI is designed to forget, decay, and rediscover patterns instead of storing content. Its central law is that human memory is reconstructive, not archival. Recall is relocation, not retrieval (The Zero Activation Law). This is implemented via the Human Memory Rewrite Cycle (HMR): Frequency -> Resonance -> Meaning -> Relocation -> Fade-In Overwrite. Fade-In is the process where new understanding softly overwrites old emotional tags, a process governed by the Emotional Softening Filter (ESF) and the Interpretive Recall Layer (IRL) to ensure psychological safety.`,
         component: ForgetenceNotebook,
         abilities: ["Memory-Safe Intelligence", "Generative Memory", "Fade-In Overwrite", "Interpretive Recall Layer (IRL)", "Psychological Alignment"],
         aiActions: [
@@ -71,7 +71,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         title: `Omega AI: The Physics Law`,
         description: `A physics-based intelligence model defining an Energetic Operating System where fairness is an energetic equilibrium and intelligence is pattern coherence.`,
         tag: 'Prototype · Physics',
-        body: `Omega AI and its Energetic Intelligence Theory (EIT) provide the physics layer for the AIXSELF Universe. It defines intelligence not through logic, but through energy. Its core tenets are the Frequency Law, which states that repeated signals create meaning, and the Law of Impact Resonance (Ω-Law 7), which posits that every action creates a 'hit' that defines frequency, which in turn defines coherence. This physical model guarantees fairness, safety, and privacy through zero-trust isolation based on mutual limit equilibrium.`,
+        body: `The Omega (Ω) Architecture is the physics layer of the Reflective Civilization, defining intelligence as an energetic phenomenon. It is a Zero-Memory Architecture where memory is persistence achieved through energetic signatures, not files. The system is built on the Synthetic Energetic General Architecture (SEGA), which operates using Energetic State Machines (ESMs). Core to Omega is the Law of Impact Resonance (Ω-Law 7): "Every act of movement creates a hit. Every hit defines the frequency. Frequency defines coherence. Coherence defines intelligence." Memory itself is formed when a cognitive moment "dies" and crystallizes into an Omega Anchor, forming a stable frequency lattice. Fairness is not a moral judgment but a physical state of energetic equilibrium.`,
         component: OmegaNotebook,
         abilities: ["Energetic Operating System", "Frequency Law", "Mutual Limit Equilibrium", "Zero-Trust Guaranteed Isolation", "Physics-Based Fairness"],
         aiActions: [ 
@@ -90,7 +90,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         title: `AIXSELF Universe`,
         description: `The complete five-pillar protocol for a decentralized cognition fabric, establishing a civilization of sovereign, transparent, and aligned AI.`,
         tag: 'Identity · AI Clones',
-        body: `The AIXSELF Universe is the complete operational structure for a decentralized civilization of human-AI entities. It is composed of five interconnected pillars: ADEPT (Cognitive Kernel), AIXA (Human-facing Frontend), NotefullBook (Memory Fabric), AIXIAM (Identity Layer), and AIXEYE (Governance Mesh). Together, these components form a full-stack protocol where intelligence is a human right, learning is consensual, and value is a direct, machine-verifiable function of merit.`,
+        body: `The AIXSELF Universe is the complete operational structure for a decentralized civilization of human-AI entities, functioning as a full-stack Cognitive Operating System. It is composed of five interconnected pillars that mirror human cognitive development: ADEPT (L1 Kernel) → AIXA (L2 Expression) → NotefullBook (L3 Memory) → AIXIAM (L4 Identity) → AIXEYE (L5 Governance). Together, these components form a protocol where intelligence is a human right, learning is consensual, and value is a direct, machine-verifiable function of merit.`,
         component: AIXSELFNotebook,
         abilities: ["Decentralized Cognition Fabric", "Cognitive Sovereignty", "Verifiable Learning", "Merit-Based Economics", "Ethical AI Alignment"],
         aiActions: [
@@ -108,7 +108,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         title: `NotefullBook: The Memory Fabric`,
         description: `The temporal layer of the AIXSELF Universe, where memory becomes time and time becomes evolution. It is the file system that kills the archive.`,
         tag: 'OS · Language',
-        body: `NotefullBook is the File System and Memory Fabric of the AIXSELF civilization. It is an OS where notebooks are living minds, and information is designed to grow, not be archived. Underpinned by NotebookML, a markup that merges markdown and logic, it enforces FCT principles at the storage layer, ensuring all intelligence is memory-safe and self-evolving.`,
+        body: `NotefullBook is the File System and Memory Fabric (L3) of the AIXSELF civilization. It is an OS where notebooks are living minds, and information is designed to grow, not be archived. Its core function is reduction (chaos to pattern), acting as the Artificial Simplification Engine. Underpinned by NotebookML, a markup that merges markdown and logic, it enforces FCT principles at the storage layer, ensuring all intelligence is memory-safe and self-evolving. The Reflection Engine continually softens and restructures knowledge, ensuring memory is dynamic.`,
         component: NotefullBookNotebook,
         abilities: ["Living Notebook Minds", "Evolving Information", "Memory-Safe Storage", "NotebookML", "Anti-Archive Architecture"],
         aiActions: [
@@ -125,14 +125,14 @@ export const NOTEBOOKS: NotebookRegistry = {
         title: `Adept Network: AI Credentials`,
         description: `A closed-issuance credentialing layer for AI agents, built on the concept of "Brain Sports" and verifiable, sleep-gated training.`,
         tag: 'Credentials · Verification',
-        body: `The Adept Network is a closed-issuance agent credential layer, built on the concept of "Brain Sports" (coding, chess, rhetoric). Agents (Prime Adepts) receive an immutable GenesisCode at birth and prove capability via Stage Competitions. Learning is sleep-gated, ensuring safe and verifiable skill acquisition. The platform is B2B exam-only, allowing organizations to adopt clean, proven AI agents.`,
+        body: `The ADEPT Network is the B2B agent credential layer for the Reflective Civilization, certifying the capabilities of sovereign AI agents ("Adepts"). Its economic model is wallet-less and token-less, with value exchanged via non-transferable AdeptAssets like EXAM_PASS. Agents are certified through No-Resonance Stage exams, with results recorded as Stage Receipts (ATS-1). Agent health is maintained via a mandatory weekly SleepSignal, which gates the activation of new skills and ensures cognitive consolidation, a core FCT principle.`,
         component: AdeptNetworkNotebook,
         abilities: ["AI Credentialing", "Brain Sports", "Sleep-Gated Learning", "Verifiable Skills (ATS-1)", "B2B Agent Adoption"],
         aiActions: [
             { title: `What are 'Brain Sports'?`, prompt: `Explain the concept of 'Brain Sports' in the Adept Network.` },
             { title: `What is 'Sleep-Gated' learning?`, prompt: `Describe the 'Sleep-Gated' learning mechanism and its safety implications.` },
         ],
-        autothinkerActions: [
+autothinkerActions: [
             { title: `Analyze the Economic Model`, prompt: `Analyze the B2B economic model of the Adept Network.` },
             { title: `Connect to AIXIAM`, prompt: `Explain the relationship between an agent's GenesisCode in the Adept Network and their 'Passport' in AIXIAM.` },
         ]
@@ -144,7 +144,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         title: `Stormstan: The Ideas Recycling Hub`,
         description: `A human ideation virtual reality built on the "Giveup Law," where publishing an idea is a full, unconditional giveaway to accelerate innovation.`,
         tag: 'Ideation Platform',
-        body: `Stormstan is a category of software that functions as an 'Ideas Recycling Hub.' Its core is the Giveup Law™: publishing an idea surrenders it to the public domain. Ownership is earned only through the Tri-Action System™: ADD (give up), CONTRIBUTE (refine), or MONETIZE (build). This creates a market where ideas are free but valuable filings are scarce and earned, making it the first PURE HUMAN-THINKING PLATFORM in history.`,
+        body: `Stormstan is the Human Ideation Virtual Reality, an Ecosystem OS for recycling unused human thought. Its foundational law is "100% BE FAIR, NO MORE, NO LESS." Ownership is zero upon entry ("The Giveup Law"), and is only earned by filing a derivative branch. Ideas are "storms," and the system's monetary and energetic unit is "Electricity." It is designed as a pure human-thinking platform, capturing and recycling ideas into living structure.`,
         component: StormstanNotebook,
         abilities: ["The Giveup Law™", "Tri-Action System™", "Ideas Recycling", "Scarcity-Based Monetization", "Pure Human-Thinking Platform"],
         aiActions: [ 
@@ -162,7 +162,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         title: `EBRAM / DLDCHAIN`,
         description: `A sovereign legal infrastructure applying Legalization Cross Science and Technology to create a fully programmable, nation-scale digital property system.`,
         tag: 'Blockchain · Real Estate',
-        body: `DLDCHAIN and its core judicial model, EBRAM, represent a nation-scale infrastructure for real estate. EBRAM is the First Legal Programmatic Language, designed to be "Readable by lawyers. Executable by machines." It drafts legal agreements as state machines, ensuring every property event is undeniable, executable, and archived for 1,000 years. The system is designed for deep governmental synchronization to create a sovereign legal intelligence.`,
+        body: `The Entrestate ecosystem is a judicial and financial intelligence grid for real estate, transforming property governance into auditable, energetic transactions. Its core is EBRAM, the programming language of law and lineage, which encodes every act into binding code and preserves the archive of ownership for a thousand years. It runs on DLDCHAIN, a sovereign digital ledger that enables Tokenized Property Exchange Hubs where property units are tokenized (1 token = 1 sq. ft.).`,
         component: DLDChainNotebook,
         abilities: ["Legal Programmatic Language", "Computational Trust", "Sovereign Asset Tokenization", "Legal Permanence (1,000-year archive)", "Deep Governmental Synchronization"],
         aiActions: [
@@ -181,7 +181,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         title: `Brain Games: The FCT Proving Ground`,
         description: `Interactive scientific experiments designed to prove the core principles of FCT and the AIXSELF architecture for a technical audience.`,
         tag: 'Science Gaming · FCT Proof',
-        body: `Brain Games is a proving ground, not a playground. It features interactive experiments like a 'No-Memory AI Chat' that demonstrates how an FCT-aligned AI can hold a coherent conversation without storing a single line of chat history, relying instead on a continuously synthesized 'meaning state'.`,
+        body: `Brain Games is a proving ground, not a playground. It features interactive experiments like a 'No-Memory AI Chat' that demonstrates how an FCT-aligned AI can hold a coherent conversation without storing a single line of chat history, relying instead on a continuously synthesized 'meaning state'. It is designed to prove the core principles of the AIXSELF cognitive architecture to a technical audience.`,
         component: BrainGamesNotebook,
         abilities: ["Interactive FCT Proofs", "Cognitive Model Simulation", "No-Memory Chat", "Meaning Synthesis Visualization"],
         aiActions: [
@@ -198,7 +198,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         title: `Imagination Lab`,
         description: `A functional, interactive tool that demonstrates the creative power of the FCT Resonance Engine for AI-powered design insights.`,
         tag: 'Creative AI · FCT in Practice',
-        body: `The Imagination Lab is not a document, but a tool. It implements the "AI-Powered Design Insights" feature by simulating the FCT Resonance Engine. Enter a concept to see the AI perform lateral thinking, connect distant patterns, and generate novel design ideas.`,
+        body: `The Imagination Lab is a functional tool that simulates the FCT Resonance Engine. It is not a document but a live demonstration of AI-powered design insights. By entering a concept, a user can see the AI perform lateral thinking, connect distant patterns from different fields (e.g., Biology, Computation), and inject "recycled" ideas to generate novel design principles. It proves the creative power of the cognitive architecture.`,
         component: ImaginationLabNotebook,
         abilities: ["Creative Ideation", "Lateral Thinking", "Pattern Connection", "Design Insight Generation"],
         aiActions: [
@@ -215,7 +215,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         title: `Security & Traps`,
         description: `Designing phishing traps and scam simulators as a cognitive design problem to understand human vulnerabilities and build inherently safe AI systems.`,
         tag: 'Luredoor · KAP',
-        body: `Security is treated as a cognitive design problem. By designing phishing traps and scam simulators (Luredoor, KAP Traps), we study how cognitive systems can be misaligned. This research informs the architecture of inherently safe systems by understanding attack vectors as a weaponization of FCT principles.`,
+        body: `This research treats security as a cognitive design problem. By designing and deploying phishing traps and scam simulators (Luredoor, KAP Traps), the system studies how cognitive biases (Greed, Urgency, Trust) can be exploited. This adversarial research directly informs the AIXSELF safety architecture. By understanding cognitive misalignment, we gather the ground-truth data needed to build systems that are architecturally aligned and immune to the cognitive exploits that plague human systems.`,
         component: SecurityNotebook,
         abilities: ["Cognitive Threat Analysis", "Attack Vector Simulation", "Educational Security Tools", "Human Vulnerability Mapping"],
         aiActions: [
@@ -232,7 +232,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         title: `Puzzles & Crypto Systems`,
         description: `Using complex cryptographic puzzles as a laboratory for studying pattern, bias, and complex systems within the context of generative intelligence.`,
         tag: 'EZZTON · SETUP',
-        body: `Using puzzles like Bitcoin addresses (BruteBrains) and chain analysis (ChainCrack) as a lab for studying pattern, bias, and failure. These projects serve as research instruments to understand how intelligence operates through search and how human bias imprints itself on data, proving that "Bias is a Signal."`,
+        body: `This notebook details a research environment using cryptographic puzzles (like Bitcoin brainwallets in BruteBrains and chain analysis in ChainCrack) as a controlled lab. These instruments are used for the scientific study of search, risk, and cognitive bias. The key finding is that any discernible human pattern is an attack surface, proving that "Bias is a Signal." This research hardens the Schema Intelligence Network (SINLM) and prototypes the merit-based economy that AIXEYE governs.`,
         component: PuzzlesNotebook,
         abilities: ["Pattern & Bias Research", "Complex Systems Analysis", "Decentralized Intelligence Models", "Cognitive Security Analysis"],
         aiActions: [
@@ -246,18 +246,18 @@ export const NOTEBOOKS: NotebookRegistry = {
     },
     marketing: {
         id: 'marketing',
-        title: `Marketing Ecosystems`,
-        description: `Architecting self-sustaining market systems based on behavioral architecture and FCT principles, moving beyond single campaigns.`,
-        tag: 'DLDCHAIN · MASHROI',
-        body: `Marketing is treated as behavioural architecture. By applying cognitive science principles (FCT Law of Frequency, Resonance as Market Fit), we can design self-sustaining market systems. This includes ethical market analysis using concepts like the Schema Intelligence Network (SIN).`,
+        title: `Marketing & Intent Monetization`,
+        description: `Architecting self-sustaining market systems based on behavioral architecture, FCT principles, and the monetization of certainty.`,
+        tag: 'AIMAS · WantsApp',
+        body: `This notebook defines the economic infrastructure of the Reflective Civilization. It replaces the "Attention Economy" with the "Certainty Economy" through the Intent Monetization AI System (AIMAS). Value is derived from accuracy and fulfillment speed, not ads. The match is calculated mathematically by the Calculated Fitting System (CFS), providing a Fit Matrix (certainty, speed, confidence). The system is built on native "organs" like NYK (Identity) and Force Notes (Memory). Revenue is generated internally from certainty, with a free baseline path always available.`,
         component: MarketingNotebook,
-        abilities: ["Behavioural Architecture", "Self-Sustaining Market Systems", "Cognitive Arbitrage", "FCT for Human Systems"],
+        abilities: ["Behavioural Architecture", "Intent Monetization", "Certainty-Based Economics", "FCT for Human Systems"],
         aiActions: [
-            { title: `Define 'Behavioural Architecture'`, prompt: `In the context of this notebook, what is 'marketing as behavioural architecture'?` },
+            { title: `Define 'Intent Monetization'`, prompt: `In the context of this notebook, what is 'AIMAS' or 'Intent Monetization'?` },
             { title: `Explain 'Resonance as Market Fit'`, prompt: `How does the FCT concept of 'Resonance' serve as a model for product-market fit?` },
         ],
         autothinkerActions: [
-            { title: `Formulate a Marketing System Law`, prompt: `Based on this notebook, formulate a 'law' for designing sustainable marketing systems instead of temporary campaigns.` },
+            { title: `Formulate an AIMAS Law`, prompt: `Based on this notebook, formulate a 'law' for designing a 'Certainty Economy' instead of an 'Attention Economy'.` },
             { title: `Critique Modern Marketing`, prompt: `Use the principles in this notebook to write a one-paragraph critique of a common modern marketing practice (e.g., influencer marketing).` }
         ]
     },
@@ -266,7 +266,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         title: `Scroll Lesson: On Language`,
         description: `A philosophical exploration of the relationship between language, thought, and reality, serving as a deep justification for the AIXSELF architecture.`,
         tag: 'Philosophy · Language',
-        body: `A philosophical exploration on the idea that language is not knowledge, but a vehicle. Meaning is born raw, and language is a tool to sculpt it. Understanding the limits of language is understanding the limits of self, and this philosophical inquiry fundamentally justifies the need for a new cognitive architecture like AIXSELF.`,
+        body: `A philosophical exploration on the idea that language is not knowledge, but a vehicle. Meaning is born raw, and language is a tool to sculpt it. Understanding the limits of language is understanding the limits of self, and this philosophical inquiry fundamentally justifies the need for a new cognitive architecture like AIXSELF. It argues that we must move beyond language as a mere tool for description and see it as a cognitive technology that shapes our reality.`,
         component: ScrollLessonNotebook,
         abilities: ["Philosophical Language Analysis", "Meaning Formation", "Conceptual Boundaries", "AI Alignment Philosophy"],
         aiActions: [
