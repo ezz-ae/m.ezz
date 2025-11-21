@@ -5,7 +5,7 @@ import { DeployWizard } from '@/components/notebooks/DeployWizard';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import { NOTEBOOKS } from '@/components/notebooks/notebook-data';
-import FooterMinimal from "@/components/FooterMinimal";
+import { FooterMinimal } from "@/components/FooterMinimal";
 
 const notebooks = Object.values(NOTEBOOKS);
 
@@ -34,9 +34,10 @@ export default function MindBoardPage() {
                 <NotebookCard
                   key={notebook.id}
                   id={notebook.id}
-                  name={notebook.title}
+                  title={notebook.title}
                   description={notebook.description}
                   tag={notebook.tag}
+                  abilities={notebook.abilities}
                 />
               ))}
             </div>
