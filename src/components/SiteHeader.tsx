@@ -14,6 +14,7 @@ const mainNav = [
   { href: '/journal', label: 'Journal' },
   { href: '/about', label: 'About' },
   { href: '/contribution', label: 'Contribution' },
+  { href: '/whitepaper', label: 'Whitepaper' },
 ];
 
 export function SiteHeader() {

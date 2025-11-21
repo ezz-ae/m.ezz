@@ -9,7 +9,7 @@ import { Metadata } from 'next';
 // --- ADVANCED, CONTEXT-AWARE AI ANALYSIS SIMULATION ---
 
 // Keywords for each core Cognitive Vector
-const vectorKeywords = {
+const vectorKeywords: Record<string, string[]> = {
     Framework: ['generative memory', 'meaning-first', 'fct', 'forgetting'],
     Physics: ['physics', 'limitation', 'frequency', 'resonance'],
     Design: ['design', 'architecture', 'system']

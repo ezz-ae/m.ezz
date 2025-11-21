@@ -7,7 +7,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { Button } from '@/components/ui/button';
-import FooterMinimal from "@/components/FooterMinimal";
 import { NOTEBOOKS } from '@/components/notebooks/notebook-data';
 import Link from 'next/link';
 
@@ -16,7 +15,7 @@ export const metadata: Metadata = {
     description: 'Open discussions on the core projects and cognitive architectures of EZZ.AE.',
 };
 
-const discussionTopics = {
+const discussionTopics: Record<string, {title: string, author: string}[]> = {
     forgetence: [
         { title: "Is 'forgetting' truly the core of intelligence, or a byproduct?", author: "Community Member" },
         { title: "Applying FCT to enterprise knowledge management systems.", author: "System Architect" },
@@ -84,7 +83,6 @@ export default function DiscussionsPage() {
                     </Accordion>
                 </div>
             </main>
-            <FooterMinimal />
         </div>
     );
 }

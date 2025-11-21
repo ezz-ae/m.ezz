@@ -5,7 +5,7 @@ import React from 'react';
 import { Section } from '@/components/ScrollTypography';
 import { BrainCircuit, Zap, Scale, GitMerge, ShieldCheck } from 'lucide-react';
 
-const BridgeSection = ({ icon: Icon, title, content }) => (
+const BridgeSection = ({ icon: Icon, title, content }: { icon: React.ElementType, title: string, content: any[] }) => (
     <Section className="mt-16">
         <h2 className="text-2xl font-light text-foreground flex items-center gap-3 mb-6">
             <Icon size={24} className="text-primary" />

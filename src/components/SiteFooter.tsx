@@ -4,7 +4,7 @@
 
 import Link from 'next/link';
 
-const siteMap = {
+const siteMap: Record<string, { href: string; label: string }[]> = {
     "Core Platform": [
         { href: "/", label: "Home" },
         { href: "/mind-board", label: "Mind Board" },

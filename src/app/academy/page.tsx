@@ -6,7 +6,7 @@ import { Section } from '@/components/ScrollTypography';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { AnimatePresence, motion } from 'framer-motion';
-import { GraduationCap, ArrowRight, CheckCircle, Mail, MessageSquare } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const curriculaTracks = {

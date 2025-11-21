@@ -5,7 +5,7 @@ import React from 'react';
 import { motion, useInView } from 'framer-motion';
 
 // A bespoke Stanza component for this page's unique animation
-const Stanza = ({ children, className = '' }) => {
+const Stanza = ({ children, className = '' }: { children: React.ReactNode, className?: string }) => {
     const ref = React.useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.3 });
 
@@ -22,7 +22,7 @@ const Stanza = ({ children, className = '' }) => {
     );
 };
 
-const ChapterTitle = ({ children }) => {
+const ChapterTitle = ({ children }: { children: React.ReactNode }) => {
      const ref = React.useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.5 });
     return (

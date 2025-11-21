@@ -28,7 +28,7 @@ const getAiClusters = () => {
     });
 
     // 2. Dynamically create clusters based on shared vectors
-    const clusters = {};
+    const clusters: Record<string, { title: string; articles: typeof articlesWithVectors; synthesis?: string }> = {};
     articlesWithVectors.forEach(article => {
         if (article.vectors.length > 0) {
             // Create a cluster for each vector this article belongs to

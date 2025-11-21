@@ -5,6 +5,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export default function HomePage() {
   return (
@@ -46,10 +47,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-// Dummy Button component for structure. Assumes a real Button component exists.
-const Button = ({ children, ...props }) => (
-    <button className="inline-flex items-center justify-center px-8 py-3 text-base font-medium rounded-md text-primary-foreground bg-primary hover:bg-primary/90 transition-colors" {...props}>
-        {children}
-    </button>
-);
