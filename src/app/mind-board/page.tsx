@@ -5,7 +5,7 @@ import { DeployWizard } from '@/components/notebooks/DeployWizard';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import { NOTEBOOKS } from '@/components/notebooks/notebook-data';
-import { FooterMinimal } from "@/components/FooterMinimal";
+import { SiteFooter } from "@/components/SiteFooter";
 
 const notebooks = Object.values(NOTEBOOKS);
 
@@ -44,7 +44,6 @@ export default function MindBoardPage() {
           </div>
         </section>
       </main>
-      <FooterMinimal />
     </>
   );
 }

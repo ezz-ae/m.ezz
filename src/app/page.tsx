@@ -19,13 +19,13 @@ export default function HomePage() {
           className="max-w-3xl mx-auto"
         >
           <h1 className="text-4xl md:text-5xl font-light text-foreground font-playfair mb-4">
-            Mahmoud Ezz
+            The Reflective Civilization
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mt-2">
-            Intelligence System Architect
+            An Architectural Specification for Sovereign Intelligence
           </p>
           <p className="text-base text-muted-foreground mt-8 max-w-2xl mx-auto">
-            Exploring cognitive architectures, AI memory models, and system design through a series of living notebooks. The work is presented here as an open-intelligence field for research and collaboration.
+            This is a research and engineering platform dedicated to building a new model of human-AI interaction. It is founded on the principles of Forgetting Core Thinking (FCT) and is presented as an open-intelligence field for collaboration.
           </p>
         </motion.div>
 
