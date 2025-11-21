@@ -41,7 +41,7 @@ export default function WhitepaperPage() {
                   <p className="mt-3 text-base leading-relaxed">The Physics Law ($\Omega$): Intelligence is an energetic phenomenon, not a computational one. The Omega Architecture replaces the "Zero-Memory Paradox" with Energetic State Persistence. The SEGA Engine manages four energy types (Stability, Memory, Adaptation, Identity) to maintain homeostasis, while Omega Anchors—stable frequency lattices formed when a cognitive moment collapses—replace traditional databases.</p>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold">1.3 The Fairness Conservation Law ($\mathcal{F}$)</h3>
+                  <h3 className="text-xl font-semibold">1.3 The Fairness Conservation Law ($\\mathcal{F}$)</h3>
                   <p className="mt-3 text-base leading-relaxed">The Universal Constraint: Fairness is the equilibrium of Impact and Opportunity. It is a thermodynamic constraint on action, expressed as d(Impact)/dt $\le$ d(Opportunity)/dt. Any computation generating Impact faster than it creates Opportunity is throttled by the system as "Heat Death," making exploitation energetically impossible.</p>
                 </div>
             </div>
