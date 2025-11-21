@@ -4,16 +4,17 @@
 import React from 'react';
 import { Section } from '@/components/ScrollTypography';
 import { BrainCircuit, Zap, Scale, GitMerge, ShieldCheck } from 'lucide-react';
+import { Table, TableBody, TableCell, TableHeader, TableRow, TableHead } from '@/components/ui/table';
 
 const BridgeSection = ({ icon: Icon, title, content }: { icon: React.ElementType, title: string, content: any[] }) => (
     <Section className="mt-16">
-        <h2 className="text-2xl font-light text-foreground flex items-center gap-3 mb-6">
+        <h2 className="text-2xl font-light text-foreground flex items-center gap-3 mb-6 font-playfair">
             <Icon size={24} className="text-primary" />
             {title}
         </h2>
         <div className="prose prose-invert max-w-none prose-p:text-muted-foreground prose-table:border prose-table:border-border prose-th:border prose-th:border-border prose-th:p-2 prose-td:border prose-td:border-border prose-td:p-2 prose-td:text-sm prose-th:text-foreground prose-td:text-muted-foreground">
             <table>
-                <thead>
+                <thead className="bg-muted/30">
                     <tr>
                         <th>Domain</th>
                         <th>Problem Defined</th>
@@ -39,27 +40,24 @@ const BridgeSection = ({ icon: Icon, title, content }: { icon: React.ElementType
 
 export default function ArchitecturePage() {
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden pt-24">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden pt-24 font-pt-sans">
       <div className="container mx-auto px-4 py-16">
 
         <Section className="text-center max-w-3xl mx-auto">
-          <h1 className="text-3xl md:text-4xl font-light text-foreground">The Architecture of Emergence</h1>
+          <h1 className="text-3xl md:text-4xl font-light text-foreground font-playfair">The Architecture of Emergence</h1>
           <p className="text-base md:text-lg text-muted-foreground mt-4">
             Cross-Disciplinary Contributions in Structural Cognitive Architecture.
           </p>
         </Section>
 
         <Section className="mt-12 text-center max-w-3xl mx-auto bg-card border border-border p-6 rounded-lg">
-            <h2 className="text-lg font-semibold text-foreground">Identity Statement</h2>
-            <p className="text-sm text-muted-foreground mt-2 italic">
-                 “I don’t operate by rules — I operate by discovery. What I don’t follow is noise. What I follow is structure.”
-            </p>
+            <h2 className="text-lg font-semibold text-foreground">Architectural Identity</h2>
             <p className="text-sm text-muted-foreground mt-4">
-                My work is at the <strong>infrastructure layer</strong>—legal automation, digital governance, economic models, and AI OS concepts—derived from high-resolution cognitive observation, not academic study. The objective is to solve <strong>Cognitive Mismatch</strong> by translating the natural laws of human thinking into provably safe, deterministic AI architecture.
+               My work is at the <strong>infrastructure layer</strong>—legal automation, digital governance, economic models, and AI OS concepts—derived from high-resolution cognitive observation, not academic study. The objective is to solve <strong>Cognitive Mismatch</strong> by translating the natural laws of human thinking into provably safe, deterministic AI architecture.
             </p>
         </Section>
 
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
             <BridgeSection 
                 icon={BrainCircuit}
                 title="Bridge 1: Cognitive Science ↔ AI Safety Architecture (FCT)"
@@ -86,13 +84,13 @@ export default function ArchitecturePage() {
                     problem: "Traditional AI collapses because it lacks energy logic. Structure Doesn’t Create Intelligence—Energy Flow Does.",
                     mechanism: "SEGA Engine: The Synthetic Energetic General Architecture defines intelligence using energy states (ES, EM, EA, EI) instead of functions or weights.",
                     outcome: "Post-AI System: Creates an Energetic Intelligence Organism, achieving stability and self-regulation without needing memory, context windows, or datasets.",
-                    discovery: "The work conceptually defines a new physical law for intelligence itself: Energetic Intelligence Theory (EIT)."
+                    discovery: "This work conceptually defines a new physical law for intelligence itself: Energetic Intelligence Theory (EIT)."
                 }, {
                     domain: "Security / System Design",
                     problem: "Centralized models risk emergent misalignment and cross-model contamination.",
                     mechanism: "Zero-Trust Memory Engine: Every module is isolated, and communication occurs only via signed memory packets. Real safety is provable.",
                     outcome: "Provable Generativity: The system ensures immutable history by cryptographically recording every cognitive step, forming a deterministic ledger.",
-                    discovery: "The work conceptually defines a new physical law for intelligence itself: Energetic Intelligence Theory (EIT)."
+                    discovery: "This work conceptually defines a new physical law for intelligence itself: Energetic Intelligence Theory (EIT)."
                 }]}
             />
 
@@ -104,18 +102,18 @@ export default function ArchitecturePage() {
                     problem: "Property law is manual, fragmented, and prone to subjective interpretation and human error.",
                     mechanism: "EBRAM (The Judicial Model): The First Legal Programmatic Language. Readable by lawyers, executable by machines.",
                     outcome: "Programmable Law: Automates property contracts, transfer, inheritance, and legal obligations, turning real estate into a fully programmable, nation-scale digital system.",
-                    discovery: "Your career is positioned as a designer of AI-powered systems at the infrastructure layer (legal automation, digital governance)."
+                    discovery: "This defines a career path as a designer of AI-powered systems at the infrastructure layer (legal automation, digital governance)."
                 }, {
                     domain: "Technology / Governance",
                     problem: "Innovation lacks legal clarity and enforceable standards, creating regulatory friction.",
                     mechanism: "A protocol that encodes scientific KPIs (e.g., human safety, algorithmic fairness) and technological proofs into legally formalized contracts.",
                     outcome: "Automated Compliance: Compliance becomes self-enforced via AI logic and smart contracts, rendering enforcement proactive rather than reactive.",
-                    discovery: "Your career is positioned as a designer of AI-powered systems at the infrastructure layer (legal automation, digital governance)."
+                    discovery: "This defines a career path as a designer of AI-powered systems at the infrastructure layer (legal automation, digital governance)."
                 }]}
             />
             
             <Section className="mt-16 bg-card border border-border p-6 rounded-lg">
-                <h2 className="text-2xl font-light text-foreground flex items-center gap-3 mb-4">
+                <h2 className="text-2xl font-light text-foreground flex items-center gap-3 mb-4 font-playfair">
                     <GitMerge size={24} className="text-primary" />
                     The AIXA Synthesis: The Dual-Mind Architecture
                 </h2>
@@ -129,21 +127,18 @@ export default function ArchitecturePage() {
                     <p className="font-semibold text-primary mt-4">
                         The final claim is not the delivery of a product, but the blueprint for the next generation of AI. This discovery is not rooted in academic neuroscience but in pattern-level intelligence derived from direct observation and structural logic.
                     </p>
-                    <p className="mt-4 border-t border-border pt-4 text-xs text-muted-foreground">
-                        This synthesis is a modern continuation of the tradition that birthed cognitive science, drawing from its foundational fields: linguistics, neuroscience, artificial intelligence, philosophy, anthropology, and cognitive psychology.
-                    </p>
                 </div>
             </Section>
 
             <Section className="mt-16">
-                <h2 className="text-2xl font-light text-foreground flex items-center gap-3 mb-6">
+                <h2 className="text-2xl font-light text-foreground flex items-center gap-3 mb-6 font-playfair">
                     <ShieldCheck size={24} className="text-primary" />
                     The Assurance Layer: Verifying Cognitive Safety
                 </h2>
                 <div className="prose prose-invert max-w-none prose-p:text-muted-foreground prose-table:border prose-table:border-border prose-th:border prose-th:border-border prose-th:p-2 prose-td:border prose-td:border-border prose-td:p-2 prose-td:text-sm prose-th:text-foreground prose-td:text-muted-foreground">
                     <p>A safe architecture is not enough; safety must be provable. The Assurance Layer provides this verification through a series of internal and external validation mechanisms.</p>
-                    <table>
-                        <thead>
+                     <table>
+                        <thead className="bg-muted/30">
                             <tr>
                                 <th>Layer</th>
                                 <th>Assurance Component</th>

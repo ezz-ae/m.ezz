@@ -7,21 +7,20 @@ const siteMap: Record<string, { href: string; label: string }[]> = {
     "Core Platform": [
         { href: "/", label: "Home" },
         { href: "/mind-board", label: "Mind Board" },
+        { href: "/mindmap", label: "Mind Map" },
+        { href: "/projection", label: "Projection" },
         { href: "/source", label: "Source" },
-        { href: "/contribution", label: "Contribution" },
     ],
     "The Thesis": [
         { href: "/architecture-of-emergence", label: "Architecture" },
         { href: "/whitepaper", label: "Whitepaper" },
         { href: "/thesis", label: "The Thesis (Arabic)" },
-        { href: "/mindmap", label: "Mind Map" },
-        { href: "/projection", label: "Projection" },
+        { href: "/journal", label: "Journal" },
     ],
     "Applied Intelligence": [
         { href: "/academy", label: "Academy" },
         { href: "/implementation", label: "Implementation" },
-        { href: "/journal", label: "Journal" },
-        { href: "/notebooks/brain-games", label: "Brain Games" },
+        { href: "/contribution", label: "Contribution" },
     ]
 };
 
@@ -40,7 +39,7 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-1">
                  <h3 className="font-semibold text-foreground mb-4 font-playfair">EZZ.AE</h3>
-                 <p className="text-xs text-muted-foreground">A living intelligence demonstrating a new cognitive architecture for AI.</p>
+                 <p className="text-xs text-muted-foreground">A research and engineering platform building the architectural specification for a new model of human-AI interaction.</p>
             </div>
             <div className="md:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-8">
                 {Object.keys(siteMap).map(category => (

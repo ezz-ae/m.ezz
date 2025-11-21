@@ -1,4 +1,3 @@
-
 // src/components/notebooks/notebook-data.ts
 import React from 'react';
 import { ForgetenceNotebook } from './ForgetenceNotebook';
@@ -54,7 +53,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         title: `FCT: The Cognitive Law`,
         description: `The world's first memory-safe, human-aligned cognitive framework, positing that forgetting is the core mechanism of intelligence, not a weakness.`,
         tag: 'Cognitive Architecture',
-        body: `Forgetting Core Thinking (FCT) provides the scientific foundation for Memory-Safe Intelligence. Its core axiom is that human memory is not archival; we relocate meaning, we don't recall events. FCT establishes a new safety model addressing Emotional Over-Recall and Identity Confusion by replacing perfect archival memory with a generative model based on the Human Memory Rewrite (HMR) Cycle: Frequency -> Resonance -> Meaning -> Recall -> Fade-In Overwrite.`,
+        body: `Forgetting Core Thinking (FCT) provides the scientific foundation for Memory-Safe Intelligence. Its core axiom is that human memory is not archival; we relocate meaning, we don't recall events. FCT establishes a new safety model addressing Emotional Over-Recall and Identity Confusion by replacing perfect archival memory with a generative model based on the Human Memory Rewrite (HMR) Cycle: Frequency -> Resonance -> Meaning -> Relocation -> Fade-In Overwrite.`,
         component: ForgetenceNotebook,
         abilities: ["Memory-Safe Intelligence", "Generative Memory", "Fade-In Overwrite", "Interpretive Recall Layer (IRL)", "Psychological Alignment"],
         aiActions: [
@@ -71,7 +70,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         id: 'omega',
         title: `Omega AI: The Physics Law`,
         description: `A physics-based intelligence model defining an Energetic Operating System where fairness is an energetic equilibrium and intelligence is pattern coherence.`,
-        tag: 'OS · Language',
+        tag: 'Prototype · Physics',
         body: `Omega AI and its Energetic Intelligence Theory (EIT) provide the physics layer for the AIXSELF Universe. It defines intelligence not through logic, but through energy. Its core tenets are the Frequency Law, which states that repeated signals create meaning, and the Law of Impact Resonance (Ω-Law 7), which posits that every action creates a 'hit' that defines frequency, which in turn defines coherence. This physical model guarantees fairness, safety, and privacy through zero-trust isolation based on mutual limit equilibrium.`,
         component: OmegaNotebook,
         abilities: ["Energetic Operating System", "Frequency Law", "Mutual Limit Equilibrium", "Zero-Trust Guaranteed Isolation", "Physics-Based Fairness"],
@@ -108,7 +107,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         id: 'notefullbook',
         title: `NotefullBook: The Memory Fabric`,
         description: `The temporal layer of the AIXSELF Universe, where memory becomes time and time becomes evolution. It is the file system that kills the archive.`,
-        tag: 'File System · Memory',
+        tag: 'OS · Language',
         body: `NotefullBook is the File System and Memory Fabric of the AIXSELF civilization. It is an OS where notebooks are living minds, and information is designed to grow, not be archived. Underpinned by NotebookML, a markup that merges markdown and logic, it enforces FCT principles at the storage layer, ensuring all intelligence is memory-safe and self-evolving.`,
         component: NotefullBookNotebook,
         abilities: ["Living Notebook Minds", "Evolving Information", "Memory-Safe Storage", "NotebookML", "Anti-Archive Architecture"],
@@ -125,7 +124,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         id: 'adept-network',
         title: `Adept Network: AI Credentials`,
         description: `A closed-issuance credentialing layer for AI agents, built on the concept of "Brain Sports" and verifiable, sleep-gated training.`,
-        tag: 'Prototype · Physics',
+        tag: 'Credentials · Verification',
         body: `The Adept Network is a closed-issuance agent credential layer, built on the concept of "Brain Sports" (coding, chess, rhetoric). Agents (Prime Adepts) receive an immutable GenesisCode at birth and prove capability via Stage Competitions. Learning is sleep-gated, ensuring safe and verifiable skill acquisition. The platform is B2B exam-only, allowing organizations to adopt clean, proven AI agents.`,
         component: AdeptNetworkNotebook,
         abilities: ["AI Credentialing", "Brain Sports", "Sleep-Gated Learning", "Verifiable Skills (ATS-1)", "B2B Agent Adoption"],
@@ -232,7 +231,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         id: 'puzzles',
         title: `Puzzles & Crypto Systems`,
         description: `Using complex cryptographic puzzles as a laboratory for studying pattern, bias, and complex systems within the context of generative intelligence.`,
-        tag: 'BruteBrains · ChainCrack',
+        tag: 'EZZTON · SETUP',
         body: `Using puzzles like Bitcoin addresses (BruteBrains) and chain analysis (ChainCrack) as a lab for studying pattern, bias, and failure. These projects serve as research instruments to understand how intelligence operates through search and how human bias imprints itself on data, proving that "Bias is a Signal."`,
         component: PuzzlesNotebook,
         abilities: ["Pattern & Bias Research", "Complex Systems Analysis", "Decentralized Intelligence Models", "Cognitive Security Analysis"],
@@ -249,7 +248,7 @@ export const NOTEBOOKS: NotebookRegistry = {
         id: 'marketing',
         title: `Marketing Ecosystems`,
         description: `Architecting self-sustaining market systems based on behavioral architecture and FCT principles, moving beyond single campaigns.`,
-        tag: 'MTC · Marketinum',
+        tag: 'DLDCHAIN · MASHROI',
         body: `Marketing is treated as behavioural architecture. By applying cognitive science principles (FCT Law of Frequency, Resonance as Market Fit), we can design self-sustaining market systems. This includes ethical market analysis using concepts like the Schema Intelligence Network (SIN).`,
         component: MarketingNotebook,
         abilities: ["Behavioural Architecture", "Self-Sustaining Market Systems", "Cognitive Arbitrage", "FCT for Human Systems"],

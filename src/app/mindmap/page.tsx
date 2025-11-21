@@ -28,7 +28,7 @@ const mindMapData = {
                     ],
                 },
                 {
-                    id: 'fct-pipeline', title: 'The Cognitive Pipeline (HMR Cycle)', subtitle: 'Frequency → Adaptation → Resonance → Meaning → Relocation → Fade-In Overwrite.'
+                    id: 'fct-pipeline', title: 'The Cognitive Pipeline (HMR Cycle)', subtitle: 'Frequency → Resonance → Meaning → Relocation → Fade-In Overwrite.'
                 },
                 {
                     id: 'fct-safety', title: 'FCT Cognitive Safety Stack', subtitle: 'Architectural components that ensure psychologically safe recall.',
@@ -36,7 +36,6 @@ const mindMapData = {
                         { id: 'fct-irl', title: 'Interpretive Recall Layer (IRL)', subtitle: 'Filters for intent and context.' },
                         { id: 'fct-esf', title: 'Emotional Softening Filter (ESF)', subtitle: 'Applies temporal decay to emotional tags.' },
                         { id: 'fct-mfr', title: 'Meaning-First Retrieval (MFR)', subtitle: 'Prioritizes the "why" over the "what".' },
-                        { id: 'fct-sinlm', title: 'Schema Intelligence Network (SINLM)', subtitle: 'Learns behavioral patterns with zero content analysis.' },
                     ]
                 }
             ],
@@ -54,36 +53,8 @@ const mindMapData = {
             ],
         },
         {
-            id: 'notefullbook-impl',
-            title: 'III. Implementation Layer: NotefullBook ML',
-            subtitle: 'The Artificial Simplification Engine that transforms data into clarity.',
-             children: [
-                { id: 'notebookml', title: 'NotebookML', subtitle: 'The "language of thought" enabling portable, verifiable intelligence.' },
-                { id: 'sensehub', title: 'SenseHub', subtitle: 'The unified ingestion pipeline translating chaos into structured thought.' },
-                { id: 'reflection-engine', title: 'Reflection Engine', subtitle: 'The background process running the FCT cycle for autonomous growth.' },
-            ],
-        },
-        {
-            id: 'aimas-econ',
-            title: 'IV. Economic System: AIMAS',
-            subtitle: 'An AI-native monetization infrastructure that treats intent as currency.',
-             children: [
-                { id: 'cfs', title: 'Calculated Fitting System (CFS)', subtitle: 'The mathematical engine that calculates fit, replacing choice with certainty.' },
-                { id: 'fit-matrix', title: 'The Fit Matrix', subtitle: 'The monetizable output: ETA, Success %, Confidence Level, Free vs. Paid Path.' },
-                {
-                    id: 'native-organs', title: 'Native Organs (The Living Anatomy)', subtitle: 'The biological-like components of the economic system.',
-                    children: [
-                         { id: 'nyk', title: 'NYK (Identity Organ)', subtitle: 'Top-level anchor filtering every intent.' },
-                         { id: 'force-notes', title: 'Force Notes (Nervous Organ)', subtitle: 'The immutable ledger of wants and cycles.' },
-                         { id: 'was', title: 'Was (Reflex Layer)', subtitle: 'Provides reflexive behavioral feedback, not ratings.' },
-                         { id: 'triggers', title: 'Triggers (Pulse Organ)', subtitle: 'Shifts latent wants to urgent states.' },
-                    ]
-                },
-            ],
-        },
-        {
             id: 'omega-core',
-            title: 'V. Deep Generative Core: Omega AI (Ω)',
+            title: 'III. Deep Generative Core: Omega AI (Ω)',
             subtitle: 'A parallel, zero-trust architecture defining intelligence as an energetic process.',
             children: [
                 { id: 'omega-foundations', title: 'Energetic Foundations', subtitle: 'Replaces symbolic computation with energy mechanics.',
@@ -99,6 +70,28 @@ const mindMapData = {
                         { id: 'l2', title: 'Level 2: Generative Dynamics', subtitle: 'Evolves ideas and fuses memory cells.' },
                         { id: 'l3', title: 'Level 3: Systemic Consensus', subtitle: 'Validates and aligns memory packets across modules.' },
                         { id: 'l4', title: 'Level 4: Alignment Enforcement', subtitle: 'Propagates only outputs that meet global safety invariants.' },
+                    ]
+                }
+            ],
+        },
+         {
+            id: 'eco-protocol',
+            title: 'IV. The Economic and Civilizational Protocol (Eco)',
+            subtitle: 'Translating cognitive laws into self-sustaining markets and governance.',
+            children: [
+                {
+                    id: 'aimas-econ', title: 'The Economics of Understanding (AIMAS)', subtitle: 'A financial architecture that monetizes intent and provides a merit-driven digital economy.',
+                     children: [
+                        { id: 'value-axiom', title: 'Value Axiom', subtitle: 'Value is derived from accuracy, resonance-fit, and meaning extraction, replacing scarcity.' },
+                        { id: 'cfs', title: 'Calculated Fitting System (CFS)', subtitle: 'Engine that outputs the Fit Matrix (certainty, speed, confidence) to monetize intent itself.' },
+                        { id: 'gro', title: 'GRO and Ink', subtitle: 'GRO (Gross Reflective Output) replaces GDP; Ink is the cognitive currency earned by verified understanding.' },
+                    ]
+                },
+                {
+                    id: 'legal-idea-grid', title: 'The Legal Grid and Idea Ecology', subtitle: 'Structural mechanisms for law and creativity.',
+                    children: [
+                        { id: 'entrestate', title: 'The Legal Grid (Entrestate & EBRAM)', subtitle: 'EBRAM (programming language of law) encodes property rights into auditable, energetic structures.' },
+                        { id: 'stormstan', title: 'The Ideas Economy (Stormstan)', subtitle: 'Ecosystem where ideas ("storms") are public energy, and ownership is earned through derivative execution.' },
                     ]
                 }
             ],
@@ -151,7 +144,7 @@ const Node = ({ node, level = 0, expansion }: { node: any; level: number; expans
                 <div>
                     <h3 className={cn(
                         "font-semibold text-foreground",
-                        level === 0 && "text-xl",
+                        level === 0 && "text-xl font-playfair",
                         level === 1 && "text-lg",
                         level === 2 && "text-base",
                     )}>{node.title}</h3>

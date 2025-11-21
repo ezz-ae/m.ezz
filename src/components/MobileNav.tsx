@@ -1,4 +1,3 @@
-
 // src/components/MobileNav.tsx
 'use client';
 
@@ -9,14 +8,9 @@ import { Menu, X } from 'lucide-react';
 
 const mainNav = [
   { href: '/mind-board', label: 'Mind Board' },
-  { href: '/academy', label: 'Academy' },
-  { href: '/architecture-of-emergence', label: 'Architecture' },
   { href: '/whitepaper', label: 'Whitepaper' },
-  { href: '/thesis', label: 'The Thesis' },
   { href: '/journal', label: 'Journal' },
-  { href: '/mindmap', label: 'Mind Map' },
-  { href: '/projection', label: 'Projection' },
-  { href: '/source', label: 'Source' },
+  { href: '/about', label: 'About' },
   { href: '/contribution', label: 'Contribution' },
 ];
 

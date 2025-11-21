@@ -10,11 +10,10 @@ import { ThemeToggle } from './ThemeToggle';
 
 const mainNav = [
   { href: '/mind-board', label: 'Mind Board' },
-  { href: '/architecture-of-emergence', label: 'Architecture' },
+  { href: '/whitepaper', label: 'Whitepaper' },
   { href: '/journal', label: 'Journal' },
   { href: '/about', label: 'About' },
   { href: '/contribution', label: 'Contribution' },
-  { href: '/whitepaper', label: 'Whitepaper' },
 ];
 
 export function SiteHeader() {

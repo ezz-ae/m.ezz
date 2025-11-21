@@ -11,8 +11,8 @@ import { cn } from '@/lib/utils';
 
 const curriculaTracks = {
     'ai-science': {
-        title: "AI Architecture & Foundational Science",
-        subtitle: "For researchers and engineers who must understand the underlying physics of safe AI.",
+        title: "AI Architecture and Foundational Science",
+        subtitle: "For researchers and engineers who must understand the underlying cognitive physics of safe AI, focusing on FCT.",
         modules: [
             "FCT (Forgetting Core Thinking): Forgetting as the mechanism of intelligence, safety, and stability.",
             "Memory Mechanics: Frequency, chemical tags, and recall as reconstruction, not replay.",
@@ -21,8 +21,8 @@ const curriculaTracks = {
         ]
     },
     'system-architecting': {
-        title: "System Architecting",
-        subtitle: "For experts who need to convert knowledge into multi-layer, self-governing systems.",
+        title: "System Architecting: Building the Whole, Not the Part",
+        subtitle: "For experts who need to convert complex knowledge into multi-layer, self-governing systems.",
         modules: [
             "The P–M–O Formula: Translating complex architectures into simple, teachable workshops.",
             "Behavioral OS Design: Building systems that guide behavior by studying signals, with zero content reading.",
@@ -31,7 +31,7 @@ const curriculaTracks = {
     },
     'marketing': {
         title: "Behavioral Marketing & Cognitive Triggers",
-        subtitle: "For marketers who want to run campaigns like a calibrated scientific experiment.",
+        subtitle: "For marketers who want to run campaigns like calibrated scientific experiments, based on cognitive principles.",
         modules: [
             "Signal Mapping: Cognitive Triggers (novelty, urgency, social validation, loss aversion).",
             "Levelization Protocol: Algorithmic Harmonization to achieve the 'Hit Principle'.",
@@ -54,7 +54,7 @@ export default function AcademyPage() {
         <Section className="text-center max-w-3xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-light text-foreground font-playfair">The Academy of Regenerative Intelligence</h1>
           <p className="text-base md:text-lg text-muted-foreground mt-4">
-            Training for creators, experts, and organizations to become AI-native educators. This is Mastery, not Mimicry.
+            Training for creators, experts, and organizations to become AI-native educators. This curriculum focuses on Mastery, not Mimicry, teaching you how to think with and architect intelligent systems.
           </p>
         </Section>
 
@@ -99,7 +99,7 @@ export default function AcademyPage() {
         </Section>
         
         <Section className="mt-20 md:mt-24 max-w-5xl mx-auto">
-             <h2 className="text-2xl font-light text-center text-foreground mb-12">Workshops & University Labs</h2>
+             <h2 className="text-2xl font-light text-center text-foreground mb-12 font-playfair">Workshops & University Labs</h2>
              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <Card className="bg-card border-border">
                     <CardHeader><CardTitle className="text-base font-semibold text-card-foreground">Institutional Workshops</CardTitle></CardHeader>
