@@ -1,3 +1,4 @@
+
 // src/components/SiteHeader.tsx
 'use client';
 
@@ -9,14 +10,13 @@ import { MobileNav } from './MobileNav';
 import { ThemeToggle } from './ThemeToggle';
 
 const mainNav = [
-  { href: '/', label: 'Home' },
+  { href: '/mind-board', label: 'Mind Board' },
   { href: '/academy', label: 'Academy' },
   { href: '/architecture-of-emergence', label: 'Architecture' },
   { href: '/thesis', label: 'The Thesis' },
   { href: '/journal', label: 'Journal' },
   { href: '/mindmap', label: 'Mind Map' },
   { href: '/projection', label: 'Projection' },
-  { href: '/source', label: 'Source' },
   { href: '/contribution', label: 'Contribution' },
 ];
 
@@ -29,7 +29,7 @@ export function SiteHeader() {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="text-foreground">
             <div className="flex flex-col">
-              <span className="text-lg font-semibold leading-none">Mahmoud Ezz</span>
+              <span className="text-lg font-semibold leading-none font-playfair">EZZ.AE</span>
               <span className="text-xs text-muted-foreground leading-none mt-1">Cognitive Architect</span>
             </div>
           </Link>

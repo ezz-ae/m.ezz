@@ -1,3 +1,4 @@
+
 // src/components/MobileNav.tsx
 'use client';
 
@@ -7,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const mainNav = [
-  { href: '/', label: 'Home' }, // This now serves as the Notebooks page
+  { href: '/mind-board', label: 'Mind Board' },
   { href: '/academy', label: 'Academy' },
   { href: '/architecture-of-emergence', label: 'Architecture' },
   { href: '/thesis', label: 'The Thesis' },

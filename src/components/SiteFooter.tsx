@@ -1,3 +1,4 @@
+
 // src/components/SiteFooter.tsx
 'use client';
 
@@ -6,7 +7,7 @@ import Link from 'next/link';
 const siteMap = {
     "Core Platform": [
         { href: "/", label: "Home" },
-        { href: "/notebooks", label: "Notebooks" },
+        { href: "/mind-board", label: "Mind Board" },
         { href: "/source", label: "Source" },
         { href: "/contribution", label: "Contribution" },
     ],
@@ -38,7 +39,7 @@ export function SiteFooter() {
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-1">
-                 <h3 className="font-semibold text-neutral-200 mb-4">EZZ.AE</h3>
+                 <h3 className="font-semibold text-neutral-200 mb-4 font-playfair">EZZ.AE</h3>
                  <p className="text-xs text-neutral-500">A living intelligence demonstrating a new cognitive architecture for AI.</p>
             </div>
             <div className="md:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -67,7 +68,7 @@ export function SiteFooter() {
             </div>
         </div>
         <div className="mt-16 border-t border-neutral-800/50 pt-8 text-center text-xs text-neutral-600">
-             <p className="mb-2">&copy; 2025 Mahmoud Ezz. All rights reserved.</p>
+             <p className="mb-2">&copy; {new Date().getFullYear()} EZZ.AE. All rights reserved.</p>
              <div className="flex justify-center items-center gap-2 md:gap-4 flex-wrap">
                 <Link href="/terms" className="hover:text-orange-300 transition-colors">Terms</Link>
                 <span>|</span>
