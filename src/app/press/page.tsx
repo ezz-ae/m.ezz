@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -48,21 +47,21 @@ export default function PressPage() {
     };
 
     return (
-        <div className="bg-black min-h-screen pt-24 text-neutral-200">
+        <div className="bg-background min-h-screen pt-24 text-foreground font-pt-sans">
             <main className="py-16 px-6">
                <div className="max-w-4xl mx-auto">
                     <div className="text-center mb-16">
-                        <h1 className="text-3xl md:text-4xl font-light text-neutral-50">Press Kit & Boilerplates</h1>
-                        <p className="text-neutral-400 mt-2">Official resources, assets, and contact information for the AIXSELF Foundation.</p>
+                        <h1 className="text-3xl md:text-4xl font-light text-foreground font-playfair">Press Kit & Boilerplates</h1>
+                        <p className="text-muted-foreground mt-2">Official resources, assets, and contact information for the AIXSELF Foundation.</p>
                     </div>
 
                     <div className="space-y-8">
-                        <div className="bg-neutral-900/50 border border-neutral-800 rounded-lg p-6">
-                            <h2 className="text-xl font-light text-neutral-100 mb-4">Access Confirmation Email</h2>
+                        <div className="bg-card border border-border rounded-lg p-6">
+                            <h2 className="text-xl font-light text-card-foreground mb-4">Access Confirmation Email</h2>
                             <div>
-                                <Label className="text-sm text-neutral-400">Subject: {accessEmailBoilerplate.subject}</Label>
+                                <Label className="text-sm text-muted-foreground">Subject: {accessEmailBoilerplate.subject}</Label>
                                 <div className="flex items-start gap-2 mt-1">
-                                    <pre className="text-sm p-3 bg-neutral-800 border border-neutral-700 rounded-md flex-grow overflow-x-auto whitespace-pre-wrap">
+                                    <pre className="text-sm p-3 bg-secondary border border-border rounded-md flex-grow overflow-x-auto whitespace-pre-wrap">
                                         <code>{accessEmailBoilerplate.body}</code>
                                     </pre>
                                     <Button variant="ghost" size="icon" onClick={() => handleCopy(accessEmailBoilerplate.body, "Access Email Body")}>
@@ -72,14 +71,14 @@ export default function PressPage() {
                             </div>
                         </div>
 
-                        <div className="bg-neutral-900/50 border border-neutral-800 rounded-lg p-6">
-                            <h2 className="text-xl font-light text-neutral-100 mb-4">Official Boilerplates</h2>
+                        <div className="bg-card border border-border rounded-lg p-6">
+                            <h2 className="text-xl font-light text-card-foreground mb-4">Official Boilerplates</h2>
                             <div className="space-y-4">
                                 {pressAssets.map(asset => (
                                     <div key={asset.title}>
-                                        <Label className="text-sm text-neutral-400">{asset.title}</Label>
+                                        <Label className="text-sm text-muted-foreground">{asset.title}</Label>
                                         <div className="flex items-center gap-2 mt-1">
-                                            <pre className="text-sm p-3 bg-neutral-800 border border-neutral-700 rounded-md flex-grow overflow-x-auto">
+                                            <pre className="text-sm p-3 bg-secondary border border-border rounded-md flex-grow overflow-x-auto">
                                                 <code>{asset.content}</code>
                                             </pre>
                                             <Button variant="ghost" size="icon" onClick={() => handleCopy(asset.content, asset.title)}>
@@ -91,12 +90,12 @@ export default function PressPage() {
                             </div>
                         </div>
 
-                         <div className="bg-neutral-900/50 border border-neutral-800 rounded-lg p-6">
-                            <h2 className="text-xl font-light text-neutral-100 mb-4">Media Inquiries</h2>
-                             <p className="text-sm text-neutral-400 mb-4">
+                         <div className="bg-card border border-border rounded-lg p-6">
+                            <h2 className="text-xl font-light text-card-foreground mb-4">Media Inquiries</h2>
+                             <p className="text-sm text-muted-foreground mb-4">
                                 For interviews, speaking engagements, or other media inquiries, please contact the Foundation.
                             </p>
-                            <p className="text-base text-neutral-100 font-mono">
+                            <p className="text-base text-foreground font-mono">
                                 <a href="mailto:press@aixself.foundation" className="hover:underline">press@aixself.foundation</a>
                             </p>
                         </div>

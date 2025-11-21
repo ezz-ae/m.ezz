@@ -43,11 +43,11 @@ const implementationAreas = [
 
 export default function ImplementationPage() {
   return (
-    <div className="min-h-screen bg-black text-neutral-100 overflow-x-hidden pt-24">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden pt-24 font-pt-sans">
       <div className="container mx-auto px-4 py-16">
         <Section className="text-center max-w-3xl mx-auto">
-          <h1 className="text-4xl font-light text-neutral-100">From Science to Action</h1>
-          <p className="text-lg text-neutral-400 mt-4">
+          <h1 className="text-4xl font-light text-foreground font-playfair">From Science to Action</h1>
+          <p className="text-lg text-muted-foreground mt-4">
             The AIXSELF Universe is not just a theoretical framework; it is a practical blueprint for building the next generation of intelligent systems. This is how this science can be put into action.
           </p>
         </Section>
@@ -57,17 +57,17 @@ export default function ImplementationPage() {
                 <Section key={area.title}>
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
                         <div className="md:col-span-4 text-center md:text-left">
-                            <area.icon className="mx-auto md:mx-0 h-10 w-10 text-orange-400 mb-2" />
-                            <p className="text-sm font-semibold text-neutral-500">{area.audience}</p>
-                            <h2 className="text-2xl font-light text-neutral-200">{area.title}</h2>
+                            <area.icon className="mx-auto md:mx-0 h-10 w-10 text-primary mb-2" />
+                            <p className="text-sm font-semibold text-muted-foreground">{area.audience}</p>
+                            <h2 className="text-2xl font-light text-foreground">{area.title}</h2>
                         </div>
                         <div className="md:col-span-8">
-                            <p className="text-neutral-400 mb-4">{area.description}</p>
+                            <p className="text-muted-foreground mb-4">{area.description}</p>
                             <ul className="space-y-2">
                                 {area.examples.map((example, i) => (
                                     <li key={i} className="flex items-start">
-                                        <ArrowRight className="h-4 w-4 text-orange-400/80 mr-3 mt-1 flex-shrink-0" />
-                                        <span className="text-neutral-300">{example}</span>
+                                        <ArrowRight className="h-4 w-4 text-primary mr-3 mt-1 flex-shrink-0" />
+                                        <span className="text-foreground/80">{example}</span>
                                     </li>
                                 ))}
                             </ul>

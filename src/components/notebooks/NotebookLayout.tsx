@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
-import { ReflectionMeter } from '@/components/ui/ReflectionMeter'; // Import the new component
+import { ReflectionMeter } from '@/components/ui/ReflectionMeter'; 
 
 interface NotebookLayoutProps {
   title: string;
@@ -15,17 +15,16 @@ interface NotebookLayoutProps {
 
 export function NotebookLayout({ title, description, tag, abilities, children }: NotebookLayoutProps) {
   return (
-    <div className="min-h-screen bg-black text-neutral-100">
+    <div className="min-h-screen bg-background text-foreground">
       <motion.section 
-        className="relative flex flex-col items-center justify-center text-center px-6 pt-24 md:pb-32"
+        className="relative flex flex-col items-center justify-center text-center px-6 pt-24 pb-24 md:pb-32"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-900/10 via-black to-black opacity-50 z-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background z-0"></div>
         <div className="relative z-10 max-w-4xl mx-auto">
           
-          {/* Reflection Meter added here */}
           <motion.div
             className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-12"
             initial={{ opacity: 0 }}
@@ -36,7 +35,7 @@ export function NotebookLayout({ title, description, tag, abilities, children }:
           </motion.div>
 
           <motion.p
-            className="text-sm uppercase tracking-widest text-orange-500 mb-4"
+            className="text-sm uppercase tracking-widest text-primary mb-4 font-pt-sans"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -44,7 +43,7 @@ export function NotebookLayout({ title, description, tag, abilities, children }:
             {tag}
           </motion.p>
           <motion.h1 
-            className="text-4xl md:text-6xl font-light text-neutral-50 font-headline mb-6"
+            className="text-4xl md:text-6xl font-light text-foreground font-playfair mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -52,7 +51,7 @@ export function NotebookLayout({ title, description, tag, abilities, children }:
             {title}
           </motion.h1>
           <motion.p 
-            className="text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto"
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-pt-sans"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -68,9 +67,9 @@ export function NotebookLayout({ title, description, tag, abilities, children }:
               transition={{ duration: 0.8, delay: 0.5 }}
             >
               {abilities.map((ability, index) => (
-                <div key={index} className="flex items-center justify-center space-x-2 text-neutral-300">
-                  <CheckCircle2 className="w-5 h-5 text-orange-400 flex-shrink-0" />
-                  <span className="text-base font-medium">{ability}</span>
+                <div key={index} className="flex items-center justify-center space-x-2 text-foreground/80">
+                  <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
+                  <span className="text-base font-medium font-pt-sans">{ability}</span>
                 </div>
               ))}
             </motion.div>

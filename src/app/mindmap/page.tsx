@@ -133,7 +133,7 @@ const Node = ({ node, level = 0, expansion }: { node: any; level: number; expans
     };
 
     return (
-        <div className={cn('relative', level > 0 && 'pl-6 border-l border-neutral-800')}>
+        <div className={cn('relative', level > 0 && 'pl-6 border-l border-border')}>
             <div 
                 className={cn('flex items-center gap-3', hasChildren && 'cursor-pointer group')} 
                 onClick={() => hasChildren && setIsOpen(!isOpen)}
@@ -141,21 +141,21 @@ const Node = ({ node, level = 0, expansion }: { node: any; level: number; expans
                 <div className={cn(
                     "flex-shrink-0 h-3 w-3 rounded-full flex items-center justify-center transition-all",
                     isLeaf 
-                        ? 'bg-orange-500/80 border border-orange-500/80'
+                        ? 'bg-primary/80 border border-primary/80'
                         : isOpen 
-                            ? 'bg-orange-500/50 border border-orange-500'
-                            : 'bg-neutral-800 border border-neutral-700 group-hover:border-neutral-500'
+                            ? 'bg-primary/50 border border-primary'
+                            : 'bg-muted border border-border group-hover:border-foreground/50'
                 )}>
-                    {!isLeaf && <div className={cn("h-1 w-1 rounded-full", isOpen ? "bg-orange-200/50" : "bg-neutral-500")}></div>}
+                    {!isLeaf && <div className={cn("h-1 w-1 rounded-full", isOpen ? "bg-primary-foreground/50" : "bg-muted-foreground")}></div>}
                 </div>
                 <div>
                     <h3 className={cn(
-                        "font-semibold text-neutral-200",
+                        "font-semibold text-foreground",
                         level === 0 && "text-xl",
                         level === 1 && "text-lg",
                         level === 2 && "text-base",
                     )}>{node.title}</h3>
-                    {node.subtitle && <p className="text-xs text-neutral-500">{node.subtitle}</p>}
+                    {node.subtitle && <p className="text-xs text-muted-foreground">{node.subtitle}</p>}
                 </div>
             </div>
 
@@ -183,17 +183,17 @@ export default function MindMapPage() {
   const [expansion, setExpansion] = useState<ExpansionState>('default');
 
   return (
-    <div className="min-h-screen bg-black text-neutral-100 overflow-x-hidden pt-24">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden pt-24 font-pt-sans">
       <div className="container mx-auto px-4 py-16">
         <Section className="text-center max-w-3xl mx-auto mb-12">
-             <GitBranch className="mx-auto h-10 w-10 text-orange-400 mb-4" />
-            <h1 className="text-3xl md:text-4xl font-light text-neutral-100">The Map of Generative Cognition</h1>
-            <p className="text-base md:text-lg text-neutral-400 mt-4">
+             <GitBranch className="mx-auto h-10 w-10 text-primary mb-4" />
+            <h1 className="text-3xl md:text-4xl font-light text-foreground font-playfair">The Map of Generative Cognition</h1>
+            <p className="text-base md:text-lg text-muted-foreground mt-4">
                 An interactive, multi-layered summary of the entire philosophical and scientific framework.
             </p>
         </Section>
 
-        <Section className="flex justify-center items-center gap-2 mb-8 border-y border-neutral-900 py-4">
+        <Section className="flex justify-center items-center gap-2 mb-8 border-y border-border py-4">
             <Button size="sm" variant={expansion === 'expand' ? 'secondary' : 'ghost'} onClick={() => setExpansion('expand')} className="gap-2">
                 <ChevronsRight className="h-4 w-4"/> Expand All
             </Button>

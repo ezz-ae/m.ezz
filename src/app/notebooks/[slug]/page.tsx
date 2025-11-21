@@ -1,6 +1,6 @@
 // src/app/notebooks/[slug]/page.tsx
 import { notFound } from 'next/navigation';
-import { NOTEBOOKS, isNotebookId } from '@/components/notebooks/notebook-data';
+import { NOTEBOOKS, isNotebookId, NotebookId } from '@/components/notebooks/notebook-data';
 import NotebookRenderer from '@/components/notebooks/NotebookRenderer';
 import type { Metadata } from 'next';
 import { NotebookQueryInterface } from '@/components/notebooks/NotebookQueryInterface';
@@ -63,7 +63,7 @@ export default function NotebookPage({ params }: NotebookPageProps) {
   const notebook = NOTEBOOKS[slug];
   if (!notebook) notFound();
 
-  const componentName = notebook.component.name;
+  const componentName = notebook.component.displayName || notebook.component.name;
   const isInteractive = interactiveNotebookSlugs.includes(slug);
 
   return (
@@ -73,7 +73,7 @@ export default function NotebookPage({ params }: NotebookPageProps) {
       tag={notebook.tag}
       abilities={notebook.abilities}
     >
-        <main className="pb-16">
+        <main className="pb-16 font-pt-sans">
             {isInteractive ? (
                 // For interactive notebooks, render the component directly.
                 // The UI is the mind.
@@ -82,8 +82,8 @@ export default function NotebookPage({ params }: NotebookPageProps) {
                 </div>
             ) : (
                 // For text-based notebooks, render the tabbed interface.
-                <Tabs defaultValue="mind" className="w-full max-w-4xl mx-auto px-4 md:px-6 py-8 bg-neutral-950 rounded-lg shadow-xl border border-neutral-800">
-                    <TabsList className="grid w-full grid-cols-4 bg-neutral-900/50 border border-neutral-800 h-auto">
+                <Tabs defaultValue="mind" className="w-full max-w-4xl mx-auto px-4 md:px-6 py-8 bg-card rounded-lg shadow-xl border border-border">
+                    <TabsList className="grid w-full grid-cols-4 bg-muted h-auto">
                         <TabsTrigger value="mind">The Mind</TabsTrigger>
                         <TabsTrigger value="resources">Resources</TabsTrigger>
                         <TabsTrigger value="discussion">Discussion</TabsTrigger>
@@ -101,7 +101,7 @@ export default function NotebookPage({ params }: NotebookPageProps) {
                     <TabsContent value="discussion" className="py-8 text-center">
                         <div className="prose prose-invert mx-auto">
                             <h3 className="text-xl font-light">Join the Conversation</h3>
-                            <p className="text-neutral-400">
+                            <p className="text-muted-foreground">
                                 Open discussions for this notebook are active.
                             </p>
                             <Link href="/discussions">
@@ -127,7 +127,7 @@ export default function NotebookPage({ params }: NotebookPageProps) {
                     href={`https://github.com/mahmoud-ezz/ezz.ae/blob/main/src/components/notebooks/${componentName}.tsx`}
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-xs text-neutral-600 hover:text-orange-400 transition-colors inline-flex items-center gap-2"
+                    className="text-xs text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-2"
                 >
                     <Code2 size={14} />
                     <span>This notebook is an open-source component. View the source.</span>

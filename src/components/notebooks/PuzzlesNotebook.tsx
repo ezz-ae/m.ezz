@@ -12,16 +12,17 @@ const keyFindings = [
 ];
 
 export function PuzzlesNotebook() {
+  PuzzlesNotebook.displayName = "PuzzlesNotebook";
   return (
-    <div className="max-w-4xl mx-auto py-16">
-        <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-6 md:p-8 space-y-8">
-            <div className="text-center border-b border-neutral-800 pb-6">
-                <h1 className="text-2xl font-light text-neutral-100">Laboratory for Intelligence</h1>
-                <p className="text-sm text-neutral-500 max-w-xl mx-auto mt-2">
+    <div className="max-w-4xl mx-auto py-16 font-pt-sans">
+        <div className="bg-card border border-border rounded-lg p-6 md:p-8 space-y-8">
+            <div className="text-center border-b border-border pb-6">
+                <h1 className="text-2xl font-light text-foreground font-playfair">Laboratory for Intelligence</h1>
+                <p className="text-sm text-muted-foreground max-w-xl mx-auto mt-2">
                     A research environment using cryptographic puzzles (BruteBrains, ChainCrack) as a controlled lab for the scientific study of search, risk, and cognitive bias.
                 </p>
             </div>
-            <article className="prose prose-invert max-w-none prose-p:text-neutral-400 prose-headings:text-neutral-200">
+            <article className="prose prose-invert max-w-none prose-p:text-muted-foreground prose-headings:text-foreground prose-headings:font-light">
                 <Section>
                     <ScrollHeading as="h2">Research Instruments</ScrollHeading>
                     <ScrollParagraph>
@@ -29,10 +30,10 @@ export function PuzzlesNotebook() {
                     </ScrollParagraph>
                     <ul className="list-disc pl-5 space-y-2">
                         <li>
-                            <strong className="text-neutral-200">ChainCrack AI Pattern Analyzer:</strong> A tool designed to analyze Bitcoin brainwallets. It demonstrates that any discernible human pattern—no matter how clever—is an attack surface. Its core finding is that security through creativity is an anti-pattern.
+                            <strong className="text-foreground/90">ChainCrack AI Pattern Analyzer:</strong> A tool designed to analyze Bitcoin brainwallets. It demonstrates that any discernible human pattern—no matter how clever—is an attack surface. Its core finding is that security through creativity is an anti-pattern.
                         </li>
                         <li>
-                            <strong className="text-neutral-200">BruteBrains Ticket Marketplace:</strong> A system that transforms a monolithic computational task (like cracking a brainwallet) into a decentralized, incentivized ecosystem. It sells "tickets" representing small slices of the search space, prototyping a merit-based economy where value is derived from verifiable computational work.
+                            <strong className="text-foreground/90">BruteBrains Ticket Marketplace:</strong> A system that transforms a monolithic computational task (like cracking a brainwallet) into a decentralized, incentivized ecosystem. It sells "tickets" representing small slices of the search space, prototyping a merit-based economy where value is derived from verifiable computational work.
                         </li>
                     </ul>
                 </Section>

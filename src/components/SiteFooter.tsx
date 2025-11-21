@@ -1,4 +1,3 @@
-
 // src/components/SiteFooter.tsx
 'use client';
 
@@ -36,48 +35,48 @@ const keywordPages = [
 
 export function SiteFooter() {
   return (
-    <footer className="bg-neutral-950/50 text-neutral-400 py-16 px-4 border-t border-neutral-800/50 mt-24">
+    <footer className="bg-card text-muted-foreground py-16 px-4 border-t border-border mt-24 font-pt-sans">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-1">
-                 <h3 className="font-semibold text-neutral-200 mb-4 font-playfair">EZZ.AE</h3>
-                 <p className="text-xs text-neutral-500">A living intelligence demonstrating a new cognitive architecture for AI.</p>
+                 <h3 className="font-semibold text-foreground mb-4 font-playfair">EZZ.AE</h3>
+                 <p className="text-xs text-muted-foreground">A living intelligence demonstrating a new cognitive architecture for AI.</p>
             </div>
             <div className="md:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-8">
                 {Object.keys(siteMap).map(category => (
                     <div key={category}>
-                        <h4 className="text-sm font-semibold text-neutral-300 mb-3">{category}</h4>
+                        <h4 className="text-sm font-semibold text-foreground mb-3">{category}</h4>
                         <ul className="space-y-2">
                             {siteMap[category].map(link => (
                                 <li key={link.href}>
-                                    <Link href={link.href} className="text-xs text-neutral-400 hover:text-orange-300 transition-colors">{link.label}</Link>
+                                    <Link href={link.href} className="text-xs text-muted-foreground hover:text-primary transition-colors">{link.label}</Link>
                                 </li>
                             ))}
                         </ul>
                     </div>
                 ))}
                 <div>
-                     <h4 className="text-sm font-semibold text-neutral-300 mb-3">Keyword Pages</h4>
+                     <h4 className="text-sm font-semibold text-foreground mb-3">Keyword Pages</h4>
                      <ul className="space-y-2">
                         {keywordPages.map(link => (
                             <li key={link.href}>
-                                <Link href={link.href} className="text-xs text-neutral-400 hover:text-orange-300 transition-colors">{link.label}</Link>
+                                <Link href={link.href} className="text-xs text-muted-foreground hover:text-primary transition-colors">{link.label}</Link>
                             </li>
                         ))}
                     </ul>
                 </div>
             </div>
         </div>
-        <div className="mt-16 border-t border-neutral-800/50 pt-8 text-center text-xs text-neutral-600">
+        <div className="mt-16 border-t border-border pt-8 text-center text-xs text-muted-foreground/80">
              <p className="mb-2">&copy; {new Date().getFullYear()} EZZ.AE. All rights reserved.</p>
              <div className="flex justify-center items-center gap-2 md:gap-4 flex-wrap">
-                <Link href="/terms" className="hover:text-orange-300 transition-colors">Terms</Link>
+                <Link href="/terms" className="hover:text-primary transition-colors">Terms</Link>
                 <span>|</span>
-                <Link href="/privacy" className="hover:text-orange-300 transition-colors">Privacy</Link>
+                <Link href="/privacy" className="hover:text-primary transition-colors">Privacy</Link>
                  <span>|</span>
-                <Link href="/cookies" className="hover:text-orange-300 transition-colors">Cookies</Link>
+                <Link href="/cookies" className="hover:text-primary transition-colors">Cookies</Link>
                 <span>|</span>
-                <Link href="/legal" className="hover:text-orange-300 transition-colors">Disclaimer</Link>
+                <Link href="/legal" className="hover:text-primary transition-colors">Disclaimer</Link>
             </div>
         </div>
       </div>

@@ -1,4 +1,3 @@
-
 // src/components/notebooks/NotebookQueryInterface.tsx
 'use client';
 
@@ -9,7 +8,7 @@ import { Send, Loader2, BrainCircuit, Wand2, Sparkles } from 'lucide-react';
 import { queryLivingNotebook } from '@/lib/actions';
 import { useStudioStore } from '@/lib/store';
 import { motion } from 'framer-motion';
-import { AIAction } from './notebook-data';
+import type { AIAction } from './notebook-data';
 
 type NotebookQueryInterfaceProps = {
   slug: string;
@@ -52,7 +51,7 @@ export function NotebookQueryInterface({ slug, aiActions, autothinkerActions }: 
   };
 
   return (
-    <div className="max-w-3xl mx-auto">
+    <div className="max-w-3xl mx-auto font-pt-sans">
       <div className="relative">
         <h2 className="text-sm tracking-[0.3em] uppercase text-muted-foreground mb-6 flex items-center gap-3">
           <BrainCircuit size={16} />
@@ -73,14 +72,14 @@ export function NotebookQueryInterface({ slug, aiActions, autothinkerActions }: 
                     <span>Thinking...</span>
                 </div>
             )}
-            {error && <p className="text-red-500">{error}</p>}
+            {error && <p className="text-destructive">{error}</p>}
             {answer && <p>{answer}</p>}
             </motion.div>
         )}
         
         {/* Autothinker Actions */}
-        <div className="mb-6 bg-gradient-to-br from-orange-500/10 to-transparent p-4 rounded-lg border border-orange-500/20">
-            <h3 className="text-xs tracking-widest uppercase text-orange-400 mb-3 flex items-center gap-2">
+        <div className="mb-6 bg-gradient-to-br from-primary/10 to-transparent p-4 rounded-lg border border-primary/20">
+            <h3 className="text-xs tracking-widest uppercase text-primary mb-3 flex items-center gap-2">
                 <Sparkles size={14}/>
                 Autothinker Actions
             </h3>
@@ -92,7 +91,7 @@ export function NotebookQueryInterface({ slug, aiActions, autothinkerActions }: 
                         size="sm"
                         onClick={() => handleActionClick(action.prompt)}
                         disabled={isLoading}
-                        className="text-orange-300 border-orange-500/30 hover:bg-orange-500/10 hover:text-orange-200"
+                        className="text-primary border-primary/30 hover:bg-primary/10 hover:text-primary"
                     >
                         {action.title}
                     </Button>
@@ -114,7 +113,7 @@ export function NotebookQueryInterface({ slug, aiActions, autothinkerActions }: 
                         size="sm"
                         onClick={() => handleActionClick(action.prompt)}
                         disabled={isLoading}
-                        className="text-neutral-300"
+                        className="text-foreground/80"
                     >
                         {action.title}
                     </Button>

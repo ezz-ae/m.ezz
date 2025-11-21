@@ -2,6 +2,9 @@
 'use client';
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Textarea } from '../ui/textarea';
+import { Button } from '../ui/button';
+import { Loader2 } from 'lucide-react';
 
 const NotefullDemo = () => {
   const [input, setInput] = useState('');
@@ -22,12 +25,17 @@ const NotefullDemo = () => {
     try {
       const response = await fetch('/api/genesis-reflection', {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: input }),
       });
       const data = await response.json();
       
-      setOutput(data.crystallized_thought); 
-      setStatus('CRYSTALLIZED');
+      if (response.ok) {
+        setOutput(data.crystallized_thought); 
+        setStatus('CRYSTALLIZED');
+      } else {
+        throw new Error(data.error || "Unknown API error");
+      }
     } catch (error) {
       console.error("Kernel Error", error);
       setStatus('ERROR');
@@ -38,16 +46,16 @@ const NotefullDemo = () => {
   const isProcessing = status !== 'IDLE' && status !== 'CRYSTALLIZED' && status !== 'ERROR';
 
   return (
-    <div className="w-full max-w-2xl mx-auto bg-black border border-gray-800 p-6 rounded-lg font-mono text-sm">
-      <div className="flex justify-between mb-4 text-gray-500 uppercase tracking-widest text-xs">
+    <div className="w-full max-w-2xl mx-auto bg-card border border-border p-6 rounded-lg font-mono text-sm">
+      <div className="flex justify-between mb-4 text-muted-foreground uppercase tracking-widest text-xs">
         <span>L3: Memory Fabric</span>
         <span>Status: {status}</span>
       </div>
 
       <div className="mb-6">
-        <label className="block text-gray-400 mb-2">RAW INPUT (High Resonance)</label>
-        <textarea
-          className="w-full bg-gray-900 text-white p-4 rounded border border-gray-700 focus:border-blue-500 outline-none transition-all"
+        <label className="block text-muted-foreground mb-2">RAW INPUT (High Resonance)</label>
+        <Textarea
+          className="w-full bg-background text-foreground p-4 rounded border-input focus:border-primary outline-none transition-all"
           rows={3}
           placeholder="Example: 'I am panicking about the deadline! Everything is breaking.'"
           value={input}
@@ -86,14 +94,14 @@ const NotefullDemo = () => {
       <AnimatePresence>
         {(status === 'CRYSTALLIZED' || status === 'ERROR') && (
             <motion.div 
-                className="mb-6 border-l-2 border-white pl-4"
+                className="mb-6 border-l-2 border-foreground pl-4"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
             >
-            <label className="block text-gray-400 mb-2">CRYSTALLIZED MEMORY (Low Resonance)</label>
-            <p className={`text-lg leading-relaxed ${status === 'ERROR' ? 'text-red-400' : 'text-white'}`}>{output}</p>
+            <label className="block text-muted-foreground mb-2">CRYSTALLIZED MEMORY (Low Resonance)</label>
+            <p className={`text-lg leading-relaxed ${status === 'ERROR' ? 'text-destructive' : 'text-foreground'}`}>{output}</p>
             {status === 'CRYSTALLIZED' && (
-                <div className="mt-2 text-xs text-gray-500">
+                <div className="mt-2 text-xs text-muted-foreground">
                     Saved to Omega Anchor • Anxiety Decayed by 85%
                 </div>
             )}
@@ -101,13 +109,13 @@ const NotefullDemo = () => {
         )}
       </AnimatePresence>
 
-      <button
+      <Button
         onClick={runGenesisCycle}
-        disabled={isProcessing}
-        className="w-full py-3 bg-white text-black font-bold uppercase tracking-widest hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        disabled={isProcessing || !input.trim()}
+        className="w-full py-3 bg-primary text-primary-foreground font-bold uppercase tracking-widest hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
       >
-        {isProcessing ? 'CALCULATING...' : 'INITIATE REFLECTION'}
-      </button>
+        {isProcessing ? <Loader2 className="animate-spin h-4 w-4" /> : 'INITIATE REFLECTION'}
+      </Button>
     </div>
   );
 };

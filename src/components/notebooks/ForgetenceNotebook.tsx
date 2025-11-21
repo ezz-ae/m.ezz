@@ -3,18 +3,19 @@ import { Section, ScrollHeading, ScrollParagraph, ScrollCallout } from '../Scrol
 import { BrainCircuit } from 'lucide-react';
 
 export function ForgetenceNotebook() {
+  ForgetenceNotebook.displayName = "ForgetenceNotebook";
   return (
-    <div className="max-w-4xl mx-auto py-16">
-        <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-6 md:p-8 space-y-8">
-            <div className="text-center border-b border-neutral-800 pb-6">
-                <BrainCircuit className="mx-auto h-8 w-8 text-orange-400 mb-2" />
-                <h1 className="text-2xl font-light text-neutral-100">Forgetting Core Thinking (FCT)</h1>
-                <p className="text-sm text-neutral-500 max-w-xl mx-auto mt-2">
+    <div className="max-w-4xl mx-auto py-16 font-pt-sans">
+        <div className="bg-card border border-border rounded-lg p-6 md:p-8 space-y-8">
+            <div className="text-center border-b border-border pb-6">
+                <BrainCircuit className="mx-auto h-8 w-8 text-primary mb-2" />
+                <h1 className="text-2xl font-light text-foreground font-playfair">Forgetting Core Thinking (FCT)</h1>
+                <p className="text-sm text-muted-foreground max-w-xl mx-auto mt-2">
                   A cognitive architecture for human-aligned, psychologically safe AI based on the physics of forgetting.
                 </p>
             </div>
             
-            <article className="prose prose-invert max-w-none prose-p:text-neutral-400 prose-headings:text-neutral-200">
+            <article className="prose prose-invert max-w-none prose-p:text-muted-foreground prose-headings:text-foreground prose-headings:font-light">
               <Section>
                   <ScrollHeading as="h2">1. Motivation</ScrollHeading>
                   <ScrollParagraph>
@@ -57,8 +58,8 @@ export function ForgetenceNotebook() {
                       FCT's safety is not a policy layer; it is architectural. It is achieved by embedding filters that mimic human cognitive defenses.
                   </ScrollParagraph>
                   <ul className="list-disc pl-5 space-y-2 mt-4">
-                        <li><ScrollParagraph as="span"><strong className="text-neutral-200">Interpretive Recall Layer (IRL):</strong> Filters for relevance and caller identification, suppressing harmful archival data before it can be retrieved.</ScrollParagraph></li>
-                        <li><ScrollParagraph as="span"><strong className="text-neutral-200">Emotional Softening Filter (ESF):</strong> Applies temporal decay logic to the emotional weight of memory tags, ensuring psychological safety by preventing trauma loops.</ScrollParagraph></li>
+                        <li><ScrollParagraph as="span"><strong className="text-foreground/90">Interpretive Recall Layer (IRL):</strong> Filters for relevance and caller identification, suppressing harmful archival data before it can be retrieved.</ScrollParagraph></li>
+                        <li><ScrollParagraph as="span"><strong className="text-foreground/90">Emotional Softening Filter (ESF):</strong> Applies temporal decay logic to the emotional weight of memory tags, ensuring psychological safety by preventing trauma loops.</ScrollParagraph></li>
                   </ul>
               </Section>
 

@@ -9,8 +9,9 @@ import { cn } from '@/lib/utils';
 
 const createBlob = (theme: string | undefined) => {
     const isDark = theme === 'dark';
-    const baseColor = isDark ? `hsl(25, 100%, 50%)` : `hsl(0, 0%, 100%)`; // Orange for dark, white for light
-    const accentColor = isDark ? `hsl(270, 70%, 50%)` : `hsl(0, 0%, 95%)`; // Purple for dark, very light grey for light
+    // Use the CSS variables for colors to respect the theme
+    const baseColor = isDark ? `hsl(var(--primary))` : `hsl(var(--secondary))`; 
+    const accentColor = isDark ? `hsl(var(--secondary))` : `hsl(var(--accent))`; 
 
     const randomSize = 200 + Math.random() * 400;
     const randomDuration = 20 + Math.random() * 15;
@@ -51,7 +52,7 @@ export function CognitiveCanvas() {
     return (
         <div className={cn(
             "fixed inset-0 w-full h-full z-[-1] overflow-hidden transition-colors duration-1000",
-            resolvedTheme === 'dark' ? "bg-black" : "bg-white"
+            "bg-background"
         )}>
             <AnimatePresence>
                 {blobs.map((blob, i) => (

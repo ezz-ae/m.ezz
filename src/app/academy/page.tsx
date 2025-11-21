@@ -48,13 +48,13 @@ export default function AcademyPage() {
     const activeTrack = curriculaTracks[selectedTrack];
 
   return (
-    <div className="min-h-screen bg-black text-neutral-100 overflow-x-hidden pt-24">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden pt-24 font-pt-sans">
       <div className="container mx-auto px-4 py-16">
 
         <Section className="text-center max-w-3xl mx-auto">
-          <h1 className="text-3xl md:text-4xl font-light text-neutral-100">The Academy of Regenerative Intelligence</h1>
-          <p className="text-base md:text-lg text-neutral-400 mt-4">
-            We train creators, experts, and organizations to become AI-native educators. This is <strong className="text-white">Mastery, not Mimicry</strong>.
+          <h1 className="text-3xl md:text-4xl font-light text-foreground font-playfair">The Academy of Regenerative Intelligence</h1>
+          <p className="text-base md:text-lg text-muted-foreground mt-4">
+            Training for creators, experts, and organizations to become AI-native educators. This is Mastery, not Mimicry.
           </p>
         </Section>
 
@@ -67,7 +67,7 @@ export default function AcademyPage() {
                         onClick={() => setSelectedTrack(key as TrackKey)}
                         className={cn(
                             "transition-colors text-xs md:text-sm",
-                            selectedTrack === key ? "bg-orange-500/10 border-orange-500/30 text-orange-300" : "text-neutral-300"
+                            selectedTrack === key ? "bg-primary/10 border-primary/30 text-primary" : "text-muted-foreground"
                         )}
                     >
                         {curriculaTracks[key as TrackKey].title}
@@ -83,13 +83,13 @@ export default function AcademyPage() {
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.3 }}
                 >
-                    <Card className="bg-neutral-950/80 border-neutral-800">
+                    <Card className="bg-card border-border">
                         <CardHeader>
-                            <CardTitle className="text-lg font-light text-orange-400">{activeTrack.title}</CardTitle>
-                            <p className="text-xs text-neutral-500 italic">{activeTrack.subtitle}</p>
+                            <CardTitle className="text-lg font-light text-primary">{activeTrack.title}</CardTitle>
+                            <p className="text-xs text-muted-foreground italic">{activeTrack.subtitle}</p>
                         </CardHeader>
                         <CardContent>
-                            <ul className="list-disc list-inside text-sm text-neutral-400 space-y-2">
+                            <ul className="list-disc list-inside text-sm text-foreground/80 space-y-2">
                                 {activeTrack.modules.map(mod => <li key={mod}>{mod}</li>)}
                             </ul>
                         </CardContent>
@@ -99,26 +99,26 @@ export default function AcademyPage() {
         </Section>
         
         <Section className="mt-20 md:mt-24 max-w-5xl mx-auto">
-             <h2 className="text-2xl font-light text-center text-neutral-200 mb-12">Workshops & University Labs</h2>
+             <h2 className="text-2xl font-light text-center text-foreground mb-12">Workshops & University Labs</h2>
              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <Card className="bg-neutral-900/50 border-neutral-800">
-                    <CardHeader><CardTitle className="text-base font-semibold text-neutral-200">Institutional Workshops</CardTitle></CardHeader>
+                <Card className="bg-card border-border">
+                    <CardHeader><CardTitle className="text-base font-semibold text-card-foreground">Institutional Workshops</CardTitle></CardHeader>
                     <CardContent>
-                        <p className="text-xs text-neutral-400 mb-4">Intensive, on-site or remote workshops designed to integrate FCT principles and the AIXSELF architecture into your organization's workflow. Available for corporate, governmental, and academic teams.</p>
-                        <p className="font-semibold text-sm text-neutral-300 mb-2">Topics Include:</p>
-                        <ul className="list-disc list-inside text-xs text-neutral-400 space-y-1">
+                        <p className="text-xs text-muted-foreground mb-4">Intensive, on-site or remote workshops designed to integrate FCT principles and the AIXSELF architecture into an organization's workflow. Available for corporate, governmental, and academic teams.</p>
+                        <p className="font-semibold text-sm text-card-foreground mb-2">Topics Include:</p>
+                        <ul className="list-disc list-inside text-xs text-muted-foreground space-y-1">
                             <li>AI Safety by Cognitive Architecture</li>
                             <li>Building Behavioral OS for Enterprise</li>
                             <li>The P-M-O Framework for System Design</li>
                         </ul>
                     </CardContent>
                 </Card>
-                 <Card className="bg-neutral-900/50 border-neutral-800">
-                    <CardHeader><CardTitle className="text-base font-semibold text-neutral-200">University Lab Contributions</CardTitle></CardHeader>
+                 <Card className="bg-card border-border">
+                    <CardHeader><CardTitle className="text-base font-semibold text-card-foreground">University Lab Contributions</CardTitle></CardHeader>
                     <CardContent>
-                        <p className="text-xs text-neutral-400 mb-4">A collaborative framework for academic research. We offer our core architectures—FCT, Omega AI, AIXSELF—as a theoretical foundation for PhD programs, postdoctoral research, and university labs focused on the future of AI.</p>
-                         <p className="font-semibold text-sm text-neutral-300 mb-2">Research Areas:</p>
-                        <ul className="list-disc list-inside text-xs text-neutral-400 space-y-1">
+                        <p className="text-xs text-muted-foreground mb-4">A collaborative framework for academic research, offering core architectures—FCT, Omega AI, AIXSELF—as a theoretical foundation for PhD programs, postdoctoral research, and university labs focused on the future of AI.</p>
+                         <p className="font-semibold text-sm text-card-foreground mb-2">Research Areas:</p>
+                        <ul className="list-disc list-inside text-xs text-muted-foreground space-y-1">
                             <li>Generative Cognitive Epistemology (GCE)</li>
                             <li>Computational Models of Forgetting</li>
                             <li>State-Based AI Safety Frameworks</li>
@@ -127,10 +127,10 @@ export default function AcademyPage() {
                 </Card>
              </div>
              <div className="text-center mt-8">
-                <p className="text-sm text-neutral-400 mb-4">To schedule a workshop or discuss an academic collaboration, please make a formal inquiry.</p>
+                <p className="text-sm text-muted-foreground mb-4">To schedule a workshop or discuss an academic collaboration, please make a formal inquiry.</p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <a href="mailto:inquiry@aixself.foundation" className="w-full sm:w-auto">
-                        <Button variant="outline" className="w-full border-neutral-600 hover:bg-neutral-800 hover:text-white transition-all duration-300">
+                        <Button variant="outline" className="w-full border-border hover:bg-accent hover:text-accent-foreground transition-all duration-300">
                              <Mail className="mr-2 h-4 w-4" /> Formal Inquiry
                         </Button>
                     </a>
