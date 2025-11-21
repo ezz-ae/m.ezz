@@ -25,15 +25,6 @@ export function NotebookLayout({ title, description, tag, abilities, children }:
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background z-0"></div>
         <div className="relative z-10 max-w-4xl mx-auto">
           
-          <motion.div
-            className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1 }}
-          >
-            <ReflectionMeter />
-          </motion.div>
-
           <motion.p
             className="text-sm uppercase tracking-widest text-primary mb-4 font-pt-sans"
             initial={{ opacity: 0, y: 10 }}
@@ -58,6 +49,15 @@ export function NotebookLayout({ title, description, tag, abilities, children }:
           >
             {description}
           </motion.p>
+          
+          <motion.div 
+            className="mt-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <ReflectionMeter />
+          </motion.div>
 
           {abilities && abilities.length > 0 && (
             <motion.div

@@ -59,7 +59,7 @@ export function ForgetenceNotebook() {
                   </ScrollParagraph>
                   <ul className="list-disc pl-5 space-y-2 mt-4">
                         <li><ScrollParagraph as="span"><strong className="text-foreground/90">Interpretive Recall Layer (IRL):</strong> Filters for relevance and caller identification, suppressing harmful archival data before it can be retrieved.</ScrollParagraph></li>
-                        <li><ScrollParagraph as="span"><strong className="text-foreground/90">Emotional Softening Filter (ESF):</strong> Applies temporal decay logic to the emotional weight of memory tags, ensuring psychological safety by preventing trauma loops.</ScrollParagraph></li>
+                        <li><ScrollParagraph as="span"><strong className="text-foreground/90">Emotional Softening Filter (ESF):</strong> Applies temporal decay logic to the emotional weight of memory tags, ensuring psychological safety by preventing trauma loops.</ScrollParagraph>
                   </ul>
               </Section>
 
