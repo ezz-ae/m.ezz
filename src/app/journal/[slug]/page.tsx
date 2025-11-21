@@ -85,15 +85,15 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
   const aiReadout = getAiReadout(params.slug);
 
   return (
-    <div className="max-w-4xl mx-auto py-24 px-4 bg-background text-foreground">
+    <div className="max-w-4xl mx-auto py-24 px-4 bg-background text-foreground font-pt-sans">
       <div className="text-center mb-12">
         <p className="text-sm text-muted-foreground">{new Date(article.date).toLocaleDateString()}</p>
-        <h1 className="text-4xl font-light text-foreground mt-2">{article.title}</h1>
+        <h1 className="text-4xl font-light text-foreground mt-2 font-playfair">{article.title}</h1>
         <p className="text-lg text-muted-foreground mt-4">{article.excerpt}</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        <article className="lg:col-span-8 prose prose-invert max-w-none prose-p:text-muted-foreground prose-headings:text-foreground prose-headings:font-light"
+        <article className="lg:col-span-8 prose dark:prose-invert"
                  dangerouslySetInnerHTML={{ __html: article.content }} />
 
         <aside className="lg:col-span-4 lg:sticky top-24 self-start">
@@ -118,17 +118,19 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
                             ))}
                         </div>
                     </div>
-                    <div>
-                        <h4 className="text-xs font-semibold text-primary mb-2">Discovered Connections</h4>
-                        <div className="space-y-2">
-                        {aiReadout.connections.map(conn => (
-                            <Link key={conn.slug} href={`/journal/${conn.slug}`} className="block bg-secondary p-2 rounded-sm border border-border hover:border-primary/50 transition-colors">
-                                <p className="text-xs font-semibold text-foreground truncate">{conn.title}</p>
-                                <p className="text-xs text-muted-foreground truncate mt-1">{conn.excerpt}</p>
-                            </Link>
-                        ))}
+                    {aiReadout.connections.length > 0 && (
+                        <div>
+                            <h4 className="text-xs font-semibold text-primary mb-2">Discovered Connections</h4>
+                            <div className="space-y-2">
+                            {aiReadout.connections.map(conn => (
+                                <Link key={conn.slug} href={`/journal/${conn.slug}`} className="block bg-secondary p-2 rounded-sm border border-border hover:border-primary/50 transition-colors">
+                                    <p className="text-xs font-semibold text-foreground truncate">{conn.title}</p>
+                                    <p className="text-xs text-muted-foreground truncate mt-1">{conn.excerpt}</p>
+                                </Link>
+                            ))}
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </CardContent>
             </Card>
         </aside>

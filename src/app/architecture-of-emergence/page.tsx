@@ -4,7 +4,6 @@
 import React from 'react';
 import { Section } from '@/components/ScrollTypography';
 import { BrainCircuit, Zap, Scale, GitMerge, ShieldCheck } from 'lucide-react';
-import { Table, TableBody, TableCell, TableHeader, TableRow, TableHead } from '@/components/ui/table';
 
 const BridgeSection = ({ icon: Icon, title, content }: { icon: React.ElementType, title: string, content: any[] }) => (
     <Section className="mt-16">
@@ -12,7 +11,7 @@ const BridgeSection = ({ icon: Icon, title, content }: { icon: React.ElementType
             <Icon size={24} className="text-primary" />
             {title}
         </h2>
-        <div className="prose prose-invert max-w-none prose-p:text-muted-foreground prose-table:border prose-table:border-border prose-th:border prose-th:border-border prose-th:p-2 prose-td:border prose-td:border-border prose-td:p-2 prose-td:text-sm prose-th:text-foreground prose-td:text-muted-foreground">
+        <div className="prose dark:prose-invert">
             <table>
                 <thead className="bg-muted/30">
                     <tr>
@@ -117,7 +116,7 @@ export default function ArchitecturePage() {
                     <GitMerge size={24} className="text-primary" />
                     The AIXA Synthesis: The Dual-Mind Architecture
                 </h2>
-                <div className="prose prose-invert max-w-none prose-p:text-muted-foreground text-sm">
+                <div className="prose dark:prose-invert text-sm">
                     <p>
                         The architect's personal experience of prolonged, high-density generative interaction with AI is itself a documented scientific contribution: <strong>AIXA (Artificial–Intellectual Cross-Augmentation)</strong>. This concept demonstrates the fusion of human and AI thought into a dual-mind system.
                     </p>
@@ -135,7 +134,7 @@ export default function ArchitecturePage() {
                     <ShieldCheck size={24} className="text-primary" />
                     The Assurance Layer: Verifying Cognitive Safety
                 </h2>
-                <div className="prose prose-invert max-w-none prose-p:text-muted-foreground prose-table:border prose-table:border-border prose-th:border prose-th:border-border prose-th:p-2 prose-td:border prose-td:border-border prose-td:p-2 prose-td:text-sm prose-th:text-foreground prose-td:text-muted-foreground">
+                <div className="prose dark:prose-invert">
                     <p>A safe architecture is not enough; safety must be provable. The Assurance Layer provides this verification through a series of internal and external validation mechanisms.</p>
                      <table>
                         <thead className="bg-muted/30">
@@ -152,7 +151,7 @@ export default function ArchitecturePage() {
                                 <td>Mathematically proves, via TAPE protocols and reconstruction attacks, that data has been truly "forgotten" and cannot be reverse-engineered.</td>
                             </tr>
                             <tr>
-                                <td><strong>Physics (Ω)</strong></td>
+                                <td><strong>Physics ($\Omega$)</strong></td>
                                 <td>AgentGuard Circuit Breakers</td>
                                 <td>Real-time state monitors that act as kill switches to prevent energetic collapse, hallucination spirals, or violations of the Fairness Law.</td>
                             </tr>

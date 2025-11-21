@@ -15,7 +15,7 @@ const Stanza = ({ children, className = '' }: { children: React.ReactNode, class
             initial={{ opacity: 0, filter: 'blur(5px)', y: 25 }}
             animate={isInView ? { opacity: 1, filter: 'blur(0px)', y: 0 } : {}}
             transition={{ duration: 0.9, ease: 'easeOut' }}
-            className={`text-xl md:text-2xl leading-relaxed text-[--foreground] mb-12 font-pt-sans ${className}`}
+            className={`text-xl md:text-2xl leading-relaxed text-foreground mb-12 font-pt-sans ${className}`}
         >
             {children}
         </motion.div>
@@ -31,7 +31,7 @@ const ChapterTitle = ({ children }: { children: React.ReactNode }) => {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 1, delay: 0.2 }}
-            className="font-playfair text-3xl md:text-4xl text-[--primary] mb-10 mt-24 border-b border-[--border] pb-4"
+            className="font-playfair text-3xl md:text-4xl text-primary mb-10 mt-24 border-b border-border pb-4"
         >
             {children}
         </motion.h2>
@@ -40,9 +40,9 @@ const ChapterTitle = ({ children }: { children: React.ReactNode }) => {
 
 export default function ThesisPage() {
   return (
-      <div className="min-h-screen bg-[--background] text-[--foreground] overflow-x-hidden pt-32">
+      <div className="min-h-screen bg-background text-foreground overflow-x-hidden pt-32">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-right font-pt-sans" dir="rtl"> {/* Apply font-pt-sans here */}
+          <div className="max-w-3xl mx-auto text-right font-pt-sans" dir="rtl">
               
               <motion.div 
                 className="text-center mb-24"
@@ -50,8 +50,8 @@ export default function ThesisPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.2 }}
               >
-                  <h1 className="font-playfair text-4xl md:text-5xl font-bold text-[--foreground]">الإنسان والذاكرة والذكاء الاجتماعي</h1>
-                  <p className="text-base text-[--muted-foreground] mt-4">صياغة تأسيسية – نسخة علمية فلسفية</p>
+                  <h1 className="font-playfair text-4xl md:text-5xl font-bold text-foreground">الإنسان والذاكرة والذكاء الاجتماعي</h1>
+                  <p className="text-base text-muted-foreground mt-4">صياغة تأسيسية – نسخة علمية فلسفية</p>
               </motion.div>
 
               <Stanza>
@@ -95,7 +95,7 @@ export default function ThesisPage() {
                 الإنسان لا يملك ذاكرة بمعنى ملفات التخزين، فالنسيان ليس فقدانًا بل عملية تذكر تولّد المعنى. عقولنا تولد اللحظة ولا تعرف الماضي كما نتوهم، بل تبني الغد وفق الخبرة والسياق الحالي. الوعي البشري ليس تراكمًا، بل تدفّق مستمر؛ والذكاء ليس صفة ثابتة، بل موجة تتحرك بقدرتنا على الربط والاستخلاص. نحن لا نتذكر الحياة… نحن نخلقها من جديد في كل لحظة نفكر فيها بها.
               </Stanza>
 
-              <div className="text-center text-sm text-[--muted-foreground] mt-20 pb-20">
+              <div className="text-center text-sm text-muted-foreground mt-20 pb-20">
                 <p>—</p>
                 <p>مختارات من بحث علمي متقدم: الذاكرة التوليدية ودور النسيان في الذاكرة البشرية</p>
               </div>

@@ -5,14 +5,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-
-const mainNav = [
-  { href: '/mind-board', label: 'Mind Board' },
-  { href: '/whitepaper', label: 'Whitepaper' },
-  { href: '/journal', label: 'Journal' },
-  { href: '/about', label: 'About' },
-  { href: '/contribution', label: 'Contribution' },
-];
+import { mainNavLinks } from '@/lib/constants';
 
 export function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,7 +47,7 @@ export function MobileNav() {
                 </button>
               </div>
               <nav className="flex flex-col items-center justify-center h-[calc(100%-4rem)] space-y-8">
-                {mainNav.map((item) => (
+                {mainNavLinks.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}

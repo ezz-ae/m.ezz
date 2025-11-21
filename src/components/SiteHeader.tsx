@@ -7,14 +7,7 @@ import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { MobileNav } from './MobileNav';
 import { ThemeToggle } from './ThemeToggle';
-
-const mainNav = [
-  { href: '/mind-board', label: 'Mind Board' },
-  { href: '/whitepaper', label: 'Whitepaper' },
-  { href: '/journal', label: 'Journal' },
-  { href: '/about', label: 'About' },
-  { href: '/contribution', label: 'Contribution' },
-];
+import { mainNavLinks } from '@/lib/constants';
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -30,7 +23,7 @@ export function SiteHeader() {
             </div>
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
-            {mainNav.map((item) => (
+            {mainNavLinks.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}

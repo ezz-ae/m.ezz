@@ -1,7 +1,7 @@
 // src/app/mindmap/page.tsx
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Section } from '@/components/ScrollTypography';
 import { GitBranch, ChevronsRight, ChevronsLeft, ChevronsDownUp } from 'lucide-react';
@@ -57,13 +57,15 @@ const mindMapData = {
             title: 'III. Deep Generative Core: Omega AI (Ω)',
             subtitle: 'A parallel, zero-trust architecture defining intelligence as an energetic process.',
             children: [
-                { id: 'omega-foundations', title: 'Energetic Foundations', subtitle: 'Replaces symbolic computation with energy mechanics.',
+                {
+                    id: 'omega-foundations', title: 'Energetic Foundations', subtitle: 'Replaces symbolic computation with energy mechanics.',
                     children: [
                         { id: 'omega-roots', title: 'Omega Roots (Ω-ROOTS)', subtitle: 'The deep substrate of infinite energetic potential.' },
                         { id: 'sega-engine', title: 'SEGA Engine', subtitle: 'The energy reactor powering cognition (Stability, Memory, Adaptive, Identity).' },
                     ]
                 },
-                { id: 'omega-levels', title: 'Levelized Modular Architecture', subtitle: 'Self-bootstrapped, memory-free, and provably safe.',
+                {
+                    id: 'omega-levels', title: 'Levelized Modular Architecture', subtitle: 'Self-bootstrapped, memory-free, and provably safe.',
                     children: [
                         { id: 'l0', title: 'Level 0: Atomic Operators', subtitle: 'Generates seed Knowledge Atoms and proofs.' },
                         { id: 'l1', title: 'Level 1: Semantic Expansion', subtitle: 'Creates dynamic Memory Cells from validated atoms.' },
@@ -101,24 +103,14 @@ const mindMapData = {
 
 type ExpansionState = 'default' | 'expand' | 'collapse';
 
-const Node = ({ node, level = 0, expansion }: { node: any; level: number; expansion: ExpansionState }) => {
-    
-    const getInitialState = () => {
-        if (level === 0) return true;
-        switch (expansion) {
-            case 'expand':
-                return true;
-            case 'collapse':
-                return false;
-            case 'default':
-            default:
-                return level < 2;
-        }
-    };
-
-    const [isOpen, setIsOpen] = useState(getInitialState());
+const Node = ({ node, level = 0, isExpanded }: { node: any; level: number; isExpanded: boolean }) => {
+    const [isOpen, setIsOpen] = useState(isExpanded);
     const hasChildren = node.children && node.children.length > 0;
     const isLeaf = !hasChildren;
+
+    useEffect(() => {
+        setIsOpen(isExpanded);
+    }, [isExpanded]);
 
     const variants = {
         open: { height: 'auto', opacity: 1, marginTop: level > 1 ? '16px' : '24px' },
@@ -162,7 +154,7 @@ const Node = ({ node, level = 0, expansion }: { node: any; level: number; expans
                         className="overflow-hidden"
                     >
                         <div className="pt-4 space-y-4">
-                        {node.children.map(child => <Node key={child.id} node={child} level={level + 1} expansion={expansion} />)}
+                        {node.children.map(child => <Node key={child.id} node={child} level={level + 1} isExpanded={isOpen} />)}
                         </div>
                     </motion.div>
                 )}
@@ -174,6 +166,15 @@ const Node = ({ node, level = 0, expansion }: { node: any; level: number; expans
 
 export default function MindMapPage() {
   const [expansion, setExpansion] = useState<ExpansionState>('default');
+
+  const getIsExpanded = () => {
+      switch(expansion) {
+          case 'expand': return true;
+          case 'collapse': return false;
+          case 'default':
+          default: return true; // Default to open
+      }
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden pt-24 font-pt-sans">
@@ -199,7 +200,7 @@ export default function MindMapPage() {
         </Section>
         
         <Section className="max-w-4xl mx-auto">
-            <Node key={expansion} node={mindMapData} level={0} expansion={expansion} />
+            <Node node={mindMapData} level={0} isExpanded={getIsExpanded()} />
         </Section>
       </div>
     </div>

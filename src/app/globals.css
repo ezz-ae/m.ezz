@@ -67,4 +67,12 @@
   .font-pt-sans {
     font-family: 'PT Sans', sans-serif;
   }
+
+  .prose {
+    @apply max-w-none;
+  }
+  .dark .prose-invert {
+     --tw-prose-p: theme(colors.muted.foreground);
+     --tw-prose-headings: theme(colors.foreground);
+  }
 }
