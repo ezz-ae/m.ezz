@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { Section } from '@/components/ScrollTypography';
-import { BrainCircuit, Zap, Scale, GitMerge } from 'lucide-react';
+import { BrainCircuit, Zap, Scale, GitMerge, ShieldCheck } from 'lucide-react';
 
 const BridgeSection = ({ icon: Icon, title, content }) => (
     <Section className="mt-16">
@@ -132,6 +132,52 @@ export default function ArchitecturePage() {
                     <p className="mt-4 border-t border-border pt-4 text-xs text-muted-foreground">
                         This synthesis is a modern continuation of the tradition that birthed cognitive science, drawing from its foundational fields: linguistics, neuroscience, artificial intelligence, philosophy, anthropology, and cognitive psychology.
                     </p>
+                </div>
+            </Section>
+
+            <Section className="mt-16">
+                <h2 className="text-2xl font-light text-foreground flex items-center gap-3 mb-6">
+                    <ShieldCheck size={24} className="text-primary" />
+                    The Assurance Layer: Verifying Cognitive Safety
+                </h2>
+                <div className="prose prose-invert max-w-none prose-p:text-muted-foreground prose-table:border prose-table:border-border prose-th:border prose-th:border-border prose-th:p-2 prose-td:border prose-td:border-border prose-td:p-2 prose-td:text-sm prose-th:text-foreground prose-td:text-muted-foreground">
+                    <p>A safe architecture is not enough; safety must be provable. The Assurance Layer provides this verification through a series of internal and external validation mechanisms.</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Layer</th>
+                                <th>Assurance Component</th>
+                                <th>Function</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Cognition (FCT)</strong></td>
+                                <td>Certified Removal Verification (CRV)</td>
+                                <td>Mathematically proves, via TAPE protocols and reconstruction attacks, that data has been truly "forgotten" and cannot be reverse-engineered.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Physics (Ω)</strong></td>
+                                <td>AgentGuard Circuit Breakers</td>
+                                <td>Real-time state monitors that act as kill switches to prevent energetic collapse, hallucination spirals, or violations of the Fairness Law.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Economy (Eco)</strong></td>
+                                <td>Shadow Economy Simulation</td>
+                                <td>Uses digital twins and "Attacker Agents" to stress-test economic policies and detect algorithmic collusion before they are deployed.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Identity (AIXIAM)</strong></td>
+                                <td>Cognitive Liveness Detection</td>
+                                <td>Prevents replay attacks on Frequency Fingerprints by using a Challenge-Response Resonance test to verify a mind's liveness.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Governance (AIXEYE)</strong></td>
+                                <td>Immutable "Glass Box" Node</td>
+                                <td>An external, tamper-proof, read-only audit node (on WORM storage) for the Cognitive Ledger, ensuring the system's history is verifiable by independent parties.</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </Section>
         </div>
