@@ -6,7 +6,7 @@ import { Globe, BrainCircuit, ShieldCheck } from 'lucide-react';
 
 export default function DashboardPage() {
   return (
-    <div className="min-h-screen bg-black text-neutral-200 flex items-center justify-center font-serif">
+    <div className="min-h-screen bg-black text-neutral-200 flex items-center justify-center font-pt-sans">
       <div className="container mx-auto px-4 py-16 text-center">
 
         <motion.div
@@ -14,7 +14,7 @@ export default function DashboardPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-3xl md:text-4xl font-light text-orange-400">
+          <h1 className="text-3xl md:text-4xl font-light text-orange-400 font-playfair">
             Welcome to the Bridge of the World Engine.
           </h1>
           <p className="text-base md:text-lg text-neutral-400 mt-2">
