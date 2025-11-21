@@ -13,43 +13,43 @@
     --card-foreground: 0 0% 10%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
-    --primary: 0 0% 10%; /* Primary accent is now dark grey/black */
+    --primary: 270 70% 50%; /* A professional purple for primary actions */
     --primary-foreground: 0 0% 100%; /* White text on primary */
     --secondary: 0 0% 95%; /* Light grey for secondary elements */
     --secondary-foreground: 0 0% 10%;
     --muted: 0 0% 90%; /* Muted light grey */
-    --muted-foreground: 0 0% 30%; /* Muted dark grey text */
+    --muted-foreground: 0 0% 40%; /* Muted dark grey text */
     --accent: 0 0% 95%;
     --accent-foreground: 0 0% 10%;
     --destructive: 0 84.2% 60.2%; /* Red for errors, keeping consistency */
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 80%; /* Subtle light grey border */
+    --border: 0 0% 85%; /* Subtle light grey border */
     --input: 0 0% 98%;
-    --ring: 0 0% 10%;
+    --ring: 270 70% 50%;
     --radius: 0.5rem;
   }
 
-  /* Dark Theme: The Cognitive Darkness (Existing) */
+  /* Dark Theme: A more professional and subtle dark mode */
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 25 100% 50%; /* Orange highlight for dark theme */
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
+    --background: 240 10% 3.9%;
+    --foreground: 210 40% 98%;
+    --card: 240 4% 10%;
+    --card-foreground: 210 40% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 270 70% 60%; /* A slightly brighter purple for dark mode contrast */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 4% 12%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 240 4% 15%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 240 4% 12%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 50.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 14.9%;
+    --border: 240 4% 15%;
+    --input: 240 4% 12%;
+    --ring: 270 70% 60%;
   }
 }
 
@@ -61,127 +61,10 @@
     @apply bg-background text-foreground;
     transition: background-color 0.5s ease, color 0.5s ease;
   }
-  /* Define custom font utility classes */
   .font-playfair {
     font-family: 'Playfair Display', serif;
   }
   .font-pt-sans {
     font-family: 'PT Sans', sans-serif;
   }
-}
-
-/* Final Elevation: Theme-aware component styles */
-@layer components {
-    /* --- Shared Component Overrides (for consistency across themes) --- */
-    /* Headers with blur and border */
-    header {
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        @apply border-b border-border; /* Ensure border exists in both themes */
-    }
-
-    /* Card-like components with subtle shadows/glows */
-    .bg-card, .bg-card\/70,
-    .bg-secondary, .bg-secondary\/50,
-    .bg-muted, .bg-muted\/50 {
-        @apply rounded-lg; /* Base rounded corners */
-        transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
-    }
-    
-    /* --- Dark Theme Overrides (Transparency & Depth with Orange Glow) --- */
-    .dark {
-        & header {
-            background-color: hsl(var(--background) / 0.6) !important;
-        }
-        & .bg-card, & .bg-card\/70 {
-            background-color: hsl(var(--card) / 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            box-shadow: 0 4px 15px hsla(0, 0%, 0%, 0.3);
-        }
-        & .bg-secondary, & .bg-secondary\/50 {
-            background-color: hsl(var(--secondary) / 0.5);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
-        & .bg-muted, & .bg-muted\/50 {
-             background-color: hsl(var(--muted) / 0.4);
-        }
-
-        & .text-primary { color: var(--primary); }
-        & .text-primary\/80 { color: hsl(var(--primary) / 0.8); }
-
-        /* Hover effects for dark theme - subtle orange glow */
-        & .group-hover\:border-primary\/50:hover { border-color: hsl(var(--primary) / 0.5); }
-        & .hover\:shadow-lg:hover, & .group-hover\:shadow-lg:hover {
-            box-shadow: var(--shadow-orange-glow-md);
-        }
-        & .dark\:shadow-orange-500\/10 { box-shadow: var(--shadow-orange-glow-sm); }
-        & .dark\:group-hover\:shadow-orange-500\/20:hover { box-shadow: var(--shadow-orange-glow-md); }
-    }
-
-    /* --- Light Theme Overrides (Pure Black & White with White Glow) --- */
-    .light {
-        & header {
-            background-color: hsl(var(--background) / 0.8) !important;
-        }
-        & .bg-card, & .bg-card\/70 {
-            background-color: hsl(var(--card)); /* Pure white background for cards */
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: var(--shadow-black-subtle); /* Subtle black shadow for depth */
-        }
-        & .bg-secondary, & .bg-secondary\/50 {
-            background-color: hsl(var(--secondary));
-        }
-        & .bg-muted, & .bg-muted\/50 {
-            background-color: hsl(var(--muted));
-        }
-        
-        & .text-primary { color: var(--primary); }
-        & .text-primary\/80 { color: hsl(var(--primary) / 0.8); }
-
-        /* Hover effects for light theme - white glow */
-        & .group-hover\:border-primary\/50:hover { border-color: hsl(var(--border)); } /* Less intrusive border change */
-        & .hover\:shadow-lg:hover, & .group-hover\:shadow-lg:hover {
-            box-shadow: var(--shadow-white-glow-md);
-        }
-        & .dark\:shadow-orange-500\/10, & .dark\:group-hover\:shadow-orange-500\/20:hover {
-            box-shadow: var(--shadow-white-glow-sm); /* Apply white glow for dark theme elements in light mode */
-        }
-        
-        /* Force strong tags and links to use the --primary (dark text) for highlighting */
-        & strong, & .text-primary, & .ConceptLink {
-            color: var(--primary); 
-            font-weight: 700; 
-        }
-        & .text-green-400\/70 { color: hsla(120, 50%, 20%, 0.8); } /* Darker subtle green */
-        & .text-red-400\/80 { color: hsla(0, 70%, 30%, 0.8); } /* Darker subtle red */
-
-        /* Hero radial gradient for light theme */
-        & .bg-radial {
-            background-image: radial-gradient(ellipse at center, hsla(0, 0%, 90%, 0.2) 0%, transparent 70%);
-            opacity: 1; /* More subtle in light mode */
-        }
-
-        /* Buttons in light theme */
-        & .button-outline {
-            border-color: hsl(var(--border));
-            color: hsl(var(--foreground));
-            background-color: hsl(var(--card));
-        }
-        & .button-outline:hover {
-            background-color: hsl(var(--secondary));
-            color: hsl(var(--foreground));
-            border-color: hsl(var(--ring));
-            box-shadow: 0 0 10px hsla(0, 0%, 100%, 0.5); /* Subtle white glow on button hover */
-        }
-        & .bg-orange-600 { /* This is for specific buttons that use bg-orange-600 directly */
-            background-color: hsl(var(--foreground)); /* Dark button in light theme */
-            color: hsl(var(--background));
-        }
-        & .bg-orange-600:hover {
-            background-color: hsl(var(--foreground) / 0.8);
-        }
-    }
 }
