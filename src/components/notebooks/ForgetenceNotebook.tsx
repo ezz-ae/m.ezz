@@ -3,7 +3,6 @@ import { Section, ScrollHeading, ScrollParagraph, ScrollCallout } from '../Scrol
 import { BrainCircuit } from 'lucide-react';
 
 export function ForgetenceNotebook() {
-  ForgetenceNotebook.displayName = "ForgetenceNotebook";
   return (
     <div className="max-w-4xl mx-auto py-16 font-pt-sans">
         <div className="bg-card border border-border rounded-lg p-6 md:p-8 space-y-8">
@@ -15,7 +14,7 @@ export function ForgetenceNotebook() {
                 </p>
             </div>
             
-            <article className="prose prose-invert max-w-none prose-p:text-muted-foreground prose-headings:text-foreground prose-headings:font-light">
+            <article className="prose dark:prose-invert max-w-none prose-p:text-muted-foreground prose-headings:text-foreground prose-headings:font-light">
               <Section>
                   <ScrollHeading as="h2">1. Motivation</ScrollHeading>
                   <ScrollParagraph>
@@ -48,9 +47,11 @@ export function ForgetenceNotebook() {
                     </ul>
 
                     <ScrollHeading as="h3" className="text-lg !mt-6">2.4 Human Memory Rewrite Cycle (HMR)</ScrollHeading>
-                    <ScrollCallout label="The Cognitive Pipeline">
-                        Frequency → Resonance → Meaning → Recall → Fade-In Overwrite
-                    </ScrollCallout>
+                    <li>
+                      <ScrollCallout label="The Cognitive Pipeline">
+                          Frequency → Resonance → Meaning → Recall → Fade-In Overwrite
+                      </ScrollCallout>
+                    </li>
               </Section>
                <Section>
                   <ScrollHeading as="h2">3. Safety Architecture</ScrollHeading>
@@ -59,7 +60,7 @@ export function ForgetenceNotebook() {
                   </ScrollParagraph>
                   <ul className="list-disc pl-5 space-y-2 mt-4">
                         <li><ScrollParagraph as="span"><strong className="text-foreground/90">Interpretive Recall Layer (IRL):</strong> Filters for relevance and caller identification, suppressing harmful archival data before it can be retrieved.</ScrollParagraph></li>
-                        <li><ScrollParagraph as="span"><strong className="text-foreground/90">Emotional Softening Filter (ESF):</strong> Applies temporal decay logic to the emotional weight of memory tags, ensuring psychological safety by preventing trauma loops.</ScrollParagraph>
+                        <li><ScrollParagraph as="span"><strong className="text-foreground/90">Emotional Softening Filter (ESF):</strong> Applies temporal decay logic to the emotional weight of memory tags, ensuring psychological safety by preventing trauma loops.</ScrollParagraph></li>
                   </ul>
               </Section>
 
@@ -87,3 +88,5 @@ export function ForgetenceNotebook() {
     </div>
   );
 }
+
+ForgetenceNotebook.displayName = "ForgetenceNotebook";
