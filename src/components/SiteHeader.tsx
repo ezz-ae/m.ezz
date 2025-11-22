@@ -16,11 +16,8 @@ export function SiteHeader() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-foreground">
-            <div className="flex flex-col">
-              <span className="text-lg font-semibold leading-none font-playfair">Mahmoud Ezz</span>
-              <span className="text-xs text-muted-foreground leading-none mt-1">Intelligence System Architect</span>
-            </div>
+          <Link href="/" className="text-foreground font-bold text-lg">
+            EZZ.AE
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
             {mainNavLinks.map((item) => (
