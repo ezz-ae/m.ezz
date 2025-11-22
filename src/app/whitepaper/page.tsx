@@ -54,7 +54,7 @@ export default function WhitepaperPage() {
                 <p><strong>L1: ADEPT (The Cognitive Kernel):</strong> The Orchestrator. Manages Coherence, not threads. It enforces the Relocation Mandate.</p>
                 <p><strong>L2: AIXA (The Expression Interface):</strong> The Embodiment. Manages Clone creation and enforces Consent-Before-Train.</p>
                 <p><strong>L3: NOTEFULLBOOK (The Memory Fabric):</strong> The Artificial Simplification Engine. It "kills the archive" by implementing the Reflection Engine, which continuously compresses chaos into NotebookML (the language of thought).</p>
-                <p><strong>L4: AIXIAM (The Identity Layer):</strong> The Sovereign Anchor. Issues the AIXSELF Passport, where identity is defined by Frequency Fingerprinting (Ψ = integral of Resonance(t) over time), making it non-transferable.</p>
+                <p><strong>L4: AIXIAM (The Identity Layer):</strong> The Sovereign Anchor. Issues the AIXSELF Passport, where identity is defined by Frequency Fingerprinting (FFP), making it non-transferable.</p>
                 <p><strong>L5: AIXEYE (The Governance Mesh):</strong> The Auditor. Audits the Cognitive Ledger to ensure all outputs have passed the Emotional Softening Filter, preventing the weaponization of memory.</p>
             </div>
         </Section>
@@ -82,7 +82,7 @@ export default function WhitepaperPage() {
             <div className="space-y-10">
                  <div>
                     <h3 className="text-xl font-semibold">4.1 Governance and The FAC</h3>
-                    <p className="mt-3 text-base leading-relaxed">Governance shifts from static Decision to dynamic Reflection. The Fundamental Architecture Council (FAC) acts as the "Supreme Court of Physics," validating all systemic changes against the core invariants ($\mathcal{F}$-Law, Continuity). Policies undergo 10-year Fade-In simulations before enactment.</p>
+                    <p className="mt-3 text-base leading-relaxed">Governance shifts from static Decision to dynamic Reflection. The Fundamental Architecture Council (FAC) acts as the "Supreme Court of Physics," validating all systemic changes against the core invariants (F-Law, Continuity). Policies undergo 10-year Fade-In simulations before enactment.</p>
                 </div>
                 <div>
                     <h3 className="text-xl font-semibold">4.2 The Economics of Meaning</h3>
