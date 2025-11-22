@@ -18,7 +18,7 @@ export function SiteHeader() {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="text-foreground">
             <div className="flex flex-col">
-              <span className="text-lg font-semibold leading-none font-playfair">EZZ.AE</span>
+              <span className="text-lg font-semibold leading-none font-playfair">Mahmoud Ezz</span>
               <span className="text-xs text-muted-foreground leading-none mt-1">Intelligence System Architect</span>
             </div>
           </Link>
