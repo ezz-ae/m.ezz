@@ -45,8 +45,8 @@ export default function DashboardPage() {
                 This pulsing sphere represents **Gross Reflective Output**. It is not measuring GDP; it is measuring **Meaning**.
             </p>
              <ul className="text-xs text-muted-foreground mt-4 space-y-1">
-                <li><span className="text-blue-400">Blue:</span> The system is integrating knowledge.</li>
-                <li><span className="text-red-400">Red:</span> The system is processing trauma.</li>
+                <li><span className="text-primary">Blue:</span> The system is integrating knowledge.</li>
+                <li><span className="text-destructive">Red:</span> The system is processing trauma.</li>
             </ul>
              <p className="text-xs text-muted-foreground mt-4 italic">
                 Status: The Orb is stabilizing. The first nodes are coming online.

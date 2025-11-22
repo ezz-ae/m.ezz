@@ -5,7 +5,6 @@ import { DeployWizard } from '@/components/notebooks/DeployWizard';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import { NOTEBOOKS } from '@/components/notebooks/notebook-data';
-import { SiteFooter } from "@/components/SiteFooter";
 
 const notebooks = Object.values(NOTEBOOKS);
 
@@ -13,11 +12,10 @@ export default function MindBoardPage() {
   const [showDeployWizard, setShowDeployWizard] = React.useState(false);
 
   return (
-    <>
       <main className="min-h-screen bg-background text-foreground overflow-x-hidden pt-24 md:pt-32">
-        <section id="mind-board" className="px-6 md:px-16">
+        <section id="mind-board" className="px-4 md:px-8">
           <div className="w-full max-w-7xl mx-auto p-4 md:p-8">
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
               <h1 className="text-2xl md:text-3xl font-light text-foreground">Mind Board</h1>
               <DeployWizard
                 open={showDeployWizard}
@@ -44,6 +42,5 @@ export default function MindBoardPage() {
           </div>
         </section>
       </main>
-    </>
   );
 }
