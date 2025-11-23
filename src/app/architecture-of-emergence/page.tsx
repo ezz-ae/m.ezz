@@ -129,7 +129,7 @@ export default function ArchitecturePage() {
                         problem="Property law is manual, fragmented, and prone to subjective interpretation and human error."
                         mechanism="EBRAM (The Judicial Model): The First Legal Programmatic Language. Readable by lawyers, executable by machines."
                         outcome="Programmable Law: Automates property contracts, transfer, inheritance, and legal obligations, turning real estate into a fully programmable, nation-scale digital system."
-                        discovery="This defines a career path as a designer of AI-powered systems at the infrastructure layer (legal automation, digital governance)."
+                        discovery="The discovery here is that AI can be forced by design with no zero policy if it is built with fairness logic as a core not as a layer."
                      />
                      <ContributionCard
                         domain="Technology / Governance"
