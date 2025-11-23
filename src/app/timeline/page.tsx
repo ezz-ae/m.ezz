@@ -1,7 +1,7 @@
 
 import type { Metadata } from 'next';
 import TimelineView from "@/components/TimelineView";
-import FooterMinimal from "@/components/FooterMinimal";
+import { FooterMinimal } from "@/components/FooterMinimal";
 
 export const metadata: Metadata = {
     title: 'FORGAIN SYSTEM – Contribution Layers Map',
