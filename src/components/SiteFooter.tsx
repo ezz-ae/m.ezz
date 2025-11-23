@@ -20,7 +20,7 @@ const siteMap: Record<string, { href: string; label: string }[]> = {
     "Applied Intelligence": [
         { href: "/academy", label: "Academy" },
         { href: "/implementation", label: "Implementation" },
-        { href: "/contribution", label: "Contribution" },
+        { href: "/press", label: "Press" },
     ]
 };
 

@@ -6,5 +6,5 @@ export const mainNavLinks = [
   { href: '/whitepaper', label: 'Whitepaper' },
   { href: '/journal', label: 'Journal' },
   { href: '/about', label: 'About' },
-  { href: '/contribution', label: 'Contribution' },
+  { href: '/press', label: 'Press' },
 ];

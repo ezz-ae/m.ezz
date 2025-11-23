@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import TimelineView from "@/components/TimelineView";
 import { FooterMinimal } from "@/components/FooterMinimal";
