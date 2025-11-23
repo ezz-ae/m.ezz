@@ -67,7 +67,7 @@ export function SiteFooter() {
             </div>
         </div>
         <div className="mt-16 border-t border-border pt-8 text-center text-xs text-muted-foreground/80">
-             <p className="mb-2">&copy; {new Date().getFullYear()} EZZ.AE. All rights reserved.</p>
+             <div className="mb-2">© {new Date().getFullYear()} EZZ.AE. All rights reserved.</div>
              <div className="flex justify-center items-center gap-2 md:gap-4 flex-wrap">
                 <Link href="/terms" className="hover:text-primary transition-colors">Terms</Link>
                 <span>|</span>

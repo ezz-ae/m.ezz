@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
 import { ReflectionMeter } from '@/components/ui/ReflectionMeter'; 
+import Image from 'next/image';
 
 interface NotebookLayoutProps {
   title: string;
@@ -25,14 +26,11 @@ export function NotebookLayout({ title, description, tag, abilities, children }:
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background z-0"></div>
         <div className="relative z-10 max-w-4xl mx-auto">
           
-          <motion.p
+          <div
             className="text-sm uppercase tracking-widest text-primary mb-4 font-pt-sans"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
           >
             {tag}
-          </motion.p>
+          </div>
           <motion.h1 
             className="text-4xl md:text-6xl font-light text-foreground font-playfair mb-6"
             initial={{ opacity: 0, y: 20 }}
@@ -51,7 +49,7 @@ export function NotebookLayout({ title, description, tag, abilities, children }:
           </motion.p>
           
           <motion.div 
-            className="mt-6"
+            className="mt-6 flex justify-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -61,13 +59,13 @@ export function NotebookLayout({ title, description, tag, abilities, children }:
 
           {abilities && abilities.length > 0 && (
             <motion.div
-              className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto"
+              className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
               {abilities.map((ability, index) => (
-                <div key={index} className="flex items-center justify-center space-x-2 text-foreground/80">
+                <div key={index} className="flex items-center justify-center sm:justify-start space-x-2 text-foreground/80">
                   <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
                   <span className="text-base font-medium font-pt-sans">{ability}</span>
                 </div>
