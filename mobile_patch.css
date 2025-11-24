@@ -1,15 +1,24 @@
-/* Mobile menu fix */
-.menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-  background: rgba(0,0,0,0.5);
-  overflow-y: auto;
+/* Full-screen mobile menu overlay */
+nav.mobile-menu, .mobile-nav-wrapper {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999 !important;
+    background-color: #fff;
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%);
 }
-.menu-content { position: relative; z-index: 1010; }
+
+/* When menu is open */
+body.menu-open nav.mobile-menu, 
+body.menu-open .mobile-nav-wrapper {
+    transform: translateX(0);
+}
+
+/* Prevent body scrolling when menu is open */
 body.menu-open { overflow: hidden; }
 
 /* Notebook text wrapping */
@@ -18,10 +27,11 @@ body.menu-open { overflow: hidden; }
   overflow-wrap: break-word;
   hyphens: auto;
   max-width: 100%;
+  padding: 0.5rem;
 }
 
 /* General mobile responsiveness */
 @media (max-width: 768px) {
-  .notebook-content { padding: 1rem; font-size: 0.95rem; }
+  .notebook-content { font-size: 0.95rem; }
   nav { font-size: 0.95rem; }
 }
